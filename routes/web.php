@@ -64,18 +64,24 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'a
         Route::resource('/permissions', 'Admin\Permissions\PermissionsController'); 
         Route::get('/logo', 'MasterController@logo')->name('admin-logo');
         Route::get('/setting', 'MasterController@setting')->name('admin-setting');
+
+        Route::resource('/courses', 'Admin\Courses\CoursesController'); 
+        Route::post('/disablecourse', 'Admin\Courses\CoursesController@disable')->name('course-disable');
+
+        Route::get('/drafts', 'Admin\Blogs\BlogsController@draft')->name('admin-draft');
+        Route::resource('/blogs', 'Admin\Blogs\BlogsController'); 
+        Route::resource('/categories', 'Admin\Blogs\CategoriesController');
+        Route::resource('/tags', 'Admin\Blogs\TagsController'); 
+        Route::post('/removecategory', 'Admin\Blogs\CategoriesController@removecategory')->name('remove-category');
+        Route::post('/removetag', 'Admin\Blogs\TagsController@removetag')->name('remove-tag');
+        Route::post('/removeblog', 'Admin\Blogs\BlogsController@removeblog')->name('remove-blog');
+
+        Route::resource('/careers', 'Admin\Careers\CareersController'); 
+        Route::get('/careerrequests', 'Admin\Careers\CareersController@requests')->name('career-requests'); 
+        Route::post('/removecareer', 'Careers\CareersController@removecareer')->name('remove-career');
     });
 
-    /*
-    |--------------------------------------------------------------------------
-    | Merchant Routes 
-    |--------------------------------------------------------------------------
-    */
 
-    Route::group(['prefix' => 'merchant','middleware' => [ 'merchant' ]], function () 
-    {
-        
-    });
 
 });
 

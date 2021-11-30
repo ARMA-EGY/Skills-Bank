@@ -52,6 +52,83 @@
                       </div>
                   </li>
 
+
+
+
+                  <li class="nav-item">
+                    <a class="nav-link collapsed" href="#navbar-career" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-components">
+                      <i class="fas fa-user-tie text-gray"></i>
+                      <span class="nav-link-text">Careers</span>
+                    </a>
+                    <div class="collapse" id="navbar-career" style="">
+                      <ul class="nav nav-sm flex-column">
+
+                        <li class="nav-item">
+                          <a href="{{ route('careers.index')}}" class="nav-link nav-link-sub {{request()->routeIs('careers.index') ? 'active' : '' }}">
+                            <i class="fas fa-user-tie"></i>
+                            <span class="sidenav-normal"> Careers</span>
+                          </a>
+                        </li>
+
+                        <li class="nav-item">
+                          <a href="{{route('career-requests')}}" class="nav-link nav-link-sub {{request()->routeIs('career-requests') ? 'active' : '' }}">
+                            <i class="fas fa-user-tie"></i>
+                            <span class="sidenav-normal"> Requests </span>
+                          </a>
+                        </li>
+                        
+                      </ul>
+                    </div>
+                </li>
+
+                 <li class="nav-item">
+                    <a class="nav-link collapsed" href="#navbar-components" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-components">
+                      <i class="fa fa-book text-green"></i>
+                      <span class="nav-link-text">Blogs</span>
+                    </a>
+                    <div class="collapse" id="navbar-components" style="">
+                      <ul class="nav nav-sm flex-column">
+
+                        <li class="nav-item">
+                          <a href="{{route('categories.index')}}" class="nav-link nav-link-sub {{request()->routeIs('categories.index') ? 'active' : '' }}">
+                            <i class="ni ni-chart-pie-35"></i>
+                            <span class="sidenav-normal"> Categories </span>
+                          </a>
+                        </li>
+
+                        <li class="nav-item">
+                          <a href="{{route('tags.index')}}" class="nav-link nav-link-sub {{request()->routeIs('tags.index') ? 'active' : '' }}">
+                            <i class="fa fa-tags"></i>
+                            <span class="sidenav-normal"> Tags </span>
+                          </a>
+                        </li>
+
+                        <li class="nav-item">
+                          <a href="{{route('blogs.index')}}" class="nav-link nav-link-sub {{request()->routeIs('blogs.index') ? 'active' : '' }}">
+                            <i class="fa fa-book"></i>
+                            <span class="sidenav-normal"> Posts </span>
+                          </a>
+                        </li>
+
+                        <li class="nav-item">
+                          <a href="{{route('admin-draft')}}" class="nav-link nav-link-sub {{request()->routeIs('admin-draft') ? 'active' : '' }}">
+                            <i class="fa fa-paste"></i>
+                            <span class="sidenav-normal"> Drafts </span>
+                          </a>
+                        </li>
+                        
+                      </ul>
+                    </div>
+                </li> 
+
+                <li class="nav-item">
+                    <a class="nav-link {{request()->routeIs('blogs.index') ? 'active' : '' }}" href="{{route('blogs.index')}}">
+                        <i class="fa fa-book text-green"></i>
+                        <span class="nav-link-text">Blogs</span>
+                    </a>
+                </li>
+
+
                   <li class="nav-item">
                       <a class="nav-link collapsed" href="#navbar-roles" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-components">
                         <i class="fas fa-user-tag"></i>
