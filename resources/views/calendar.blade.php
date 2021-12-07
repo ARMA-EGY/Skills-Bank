@@ -241,10 +241,6 @@
 
   <script>
 
-
-	
-            
-
     Fullcalendar = function(){
             var e,a,t=$('[data-toggle="calendar"]');
             t.length&&(a={header:{right:"",center:"",left:""},
@@ -360,9 +356,6 @@
                     $("body").on("click",".fullcalendar-btn-prev",function(a){a.preventDefault(),e.fullCalendar("prev")})
         )}()
 
-        
-	
-
-</script>
+  </script>
 
   @endsection
