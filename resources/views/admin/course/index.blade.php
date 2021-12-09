@@ -82,13 +82,13 @@
 
                   <tr class="parent">
                     <td>{{ $loop->iteration }}</td>
-                    <td>  <strong> {{  $item->name }} </strong> </td>
-                    <td>{{ $item->price_eg }}</td>
-                    <td>{{ $item->price_sr }} </td>
-                    <td>{{ $item->start_date }} </td>
-                    <td>{{ $item->end_date }} </td>
-                    <td>{{ $item->students_limit }} </td>
-                    <td>{{ $item->category->name_en }} </td>
+                    <td><strong> {{  $item->name }} </strong></td>
+                    <td><strong> {{ $item->price_eg }} </strong></td>
+                    <td><strong> {{ $item->price_sr }} </strong></td>
+                    <td><strong> {{ $item->start_date }} </strong></td>
+                    <td><strong> {{ $item->end_date }} </strong></td>
+                    <td><strong> {{ $item->students_limit }} </strong></td>
+                    <td><strong> {{ $item->category->name }} </strong></td>
                     <td>
                       <div class="col-3">
                         <input type="checkbox" class="check_off item_check" data-id="{{$item->id}}" data-url="{{route('course-disable')}}" data-toggle="toggle" data-size="sm"  @if ($item->disable == '0') checked @endif>

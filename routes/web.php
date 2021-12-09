@@ -60,6 +60,8 @@ Auth::routes();
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'auth','localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function () 
 {
 
+    Route::get('/home', 'MasterController@index')->name('home');
+    Route::get('/profile', 'MasterController@profile')->name('profile');
     /*
     |--------------------------------------------------------------------------
     | Admin Routes 
@@ -69,8 +71,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'a
     Route::group(['prefix' => 'admin','middleware' => [ 'admin' ]], function () 
     {        
 
-        Route::get('/home', 'MasterController@index')->name('home');
-        Route::get('/profile', 'MasterController@profile')->name('profile');
         Route::get('/calendar', 'MasterController@calendar')->name('calendar');
 
         Route::resource('/staff', 'Admin\Staff\StaffController'); 

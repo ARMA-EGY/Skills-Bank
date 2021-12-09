@@ -71,7 +71,7 @@
 
                                         <select class="form-control" name="category_id" required>
                                             @foreach ($categories as $category)
-                                                <option value="{{$category->id}}" @if (isset($item))  @if ($item->category_id == $category->id ) selected @endif @endif>{{$category->name_en}}</option>
+                                                <option value="{{$category->id}}" @if (isset($item))  @if ($item->category_id == $category->id ) selected @endif @endif>{{$category->name}}</option>
                                             @endforeach
                                         </select>
 

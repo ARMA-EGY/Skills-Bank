@@ -34,7 +34,7 @@
 				<div class="extra-features-content">
 					<div class="row">
 						
-						<div class="col-md-3 col-sm-6 hvr-pulse my-5">
+						<div class="col-md-3 col-sm-6 hvr-pulse">
 							<div class="extra-left-content" data-aos="fade-up-right" data-aos-duration="1000">
 								<a href="#tree-1" class="extra-icon-text text-left">
 									<div class="features-icon features-icon2 gradient-bg bg-yellow text-center">
@@ -53,7 +53,7 @@
 							</div>
 						</div>
 						
-						<div class="col-md-3 col-sm-6 hvr-pulse my-5">
+						<div class="col-md-3 col-sm-6 hvr-pulse">
 							<div class="extra-left-content" data-aos="fade-up-right" data-aos-duration="1000">
 								<a href="#tree-2" class="extra-icon-text text-left">
 									<div class="features-icon features-icon2 gradient-bg bg-yellow text-center">
@@ -72,7 +72,7 @@
 							</div>
 						</div>
 						
-						<div class="col-md-3 col-sm-6 hvr-pulse my-5">
+						<div class="col-md-3 col-sm-6 hvr-pulse">
 							<div class="extra-left-content" data-aos="fade-up-right" data-aos-duration="1000">
 								<a href="#tree-3" class="extra-icon-text text-left">
 									<div class="features-icon features-icon2 gradient-bg bg-yellow text-center">
@@ -91,7 +91,7 @@
 							</div>
 						</div>
 						
-						<div class="col-md-3 col-sm-6 hvr-pulse my-5">
+						<div class="col-md-3 col-sm-6 hvr-pulse">
 							<div class="extra-left-content" data-aos="fade-up-right" data-aos-duration="1000">
 								<a href="#tree-4" class="extra-icon-text text-left">
 									<div class="features-icon features-icon2 gradient-bg bg-yellow text-center">
@@ -110,8 +110,8 @@
 							</div>
 						</div>
 						
-						<div class="col-md-3 col-sm-6 hvr-pulse my-5">
-							<div class="extra-left-content" data-aos="fade-up-right" data-aos-duration="1000">
+						<div class="col-md-4 col-sm-6">
+							<div class="extra-left-content hvr-pulse my-5 d-block" data-aos="fade-up-right" data-aos-duration="1000">
 								<a href="#tree-5" class="extra-icon-text text-left">
 									<div class="features-icon features-icon2 gradient-bg bg-yellow text-center">
 										<div class="feat-tag">
@@ -127,10 +127,7 @@
 									</div>
 								</a>
 							</div>
-						</div>
-						
-						<div class="col-md-3 col-sm-6 hvr-pulse my-5">
-							<div class="extra-left-content" data-aos="fade-up-right" data-aos-duration="1000">
+							<div class="extra-left-content hvr-pulse my-5 d-block" data-aos="fade-up-right" data-aos-duration="1000">
 								<a href="#tree-6" class="extra-icon-text text-left">
 									<div class="features-icon features-icon2 gradient-bg bg-yellow text-center">
 										<div class="feat-tag">
@@ -148,8 +145,14 @@
 							</div>
 						</div>
 						
-						<div class="col-md-3 col-sm-6 hvr-pulse my-5">
-							<div class="extra-left-content" data-aos="fade-up-right" data-aos-duration="1000">
+						<div class="col-md-4" data-aos="zoom-in-up" data-aos-duration="1000">
+							<div class="extra-pic text-center">
+								<img src="{{asset('front_assets/img/skillzawy.png')}}" alt="img">
+							</div>
+						</div>
+						
+						<div class="col-md-4 col-sm-6">
+							<div class="extra-left-content hvr-pulse my-5 d-block" data-aos="fade-up-right" data-aos-duration="1000">
 								<a href="#tree-7" class="extra-icon-text text-left">
 									<div class="features-icon features-icon2 gradient-bg bg-yellow text-center">
 										<div class="feat-tag">
@@ -165,10 +168,7 @@
 									</div>
 								</a>
 							</div>
-						</div>
-						
-						<div class="col-md-3 col-sm-6 hvr-pulse my-5">
-							<div class="extra-left-content" data-aos="fade-up-right" data-aos-duration="1000">
+							<div class="extra-left-content hvr-pulse my-5 d-block" data-aos="fade-up-right" data-aos-duration="1000">
 								<a href="#tree-8" class="extra-icon-text text-left">
 									<div class="features-icon features-icon2 gradient-bg bg-yellow text-center">
 										<div class="feat-tag">
@@ -186,7 +186,8 @@
 							</div>
 						</div>
 						
-						<div class="col-md-3 col-sm-6 hvr-pulse my-5">
+						
+						<div class="col-md-3 col-sm-6 hvr-pulse">
 							<div class="extra-left-content" data-aos="fade-up-right" data-aos-duration="1000">
 								<a href="#tree-9" class="extra-icon-text text-left">
 									<div class="features-icon features-icon2 gradient-bg bg-yellow text-center">
@@ -205,7 +206,7 @@
 							</div>
 						</div>
 						
-						<div class="col-md-3 col-sm-6 hvr-pulse my-5">
+						<div class="col-md-3 col-sm-6 hvr-pulse">
 							<div class="extra-left-content" data-aos="fade-up-right" data-aos-duration="1000">
 								<a href="#tree-10" class="extra-icon-text text-left">
 									<div class="features-icon features-icon2 gradient-bg bg-yellow text-center">
@@ -224,7 +225,7 @@
 							</div>
 						</div>
 						
-						<div class="col-md-3 col-sm-6 hvr-pulse my-5">
+						<div class="col-md-3 col-sm-6 hvr-pulse">
 							<div class="extra-left-content" data-aos="fade-up-right" data-aos-duration="1000">
 								<a href="#tree-11" class="extra-icon-text text-left">
 									<div class="features-icon features-icon2 gradient-bg bg-yellow text-center">
@@ -243,7 +244,7 @@
 							</div>
 						</div>
 						
-						<div class="col-md-3 col-sm-6 hvr-pulse my-5">
+						<div class="col-md-3 col-sm-6 hvr-pulse">
 							<div class="extra-left-content" data-aos="fade-up-right" data-aos-duration="1000">
 								<a href="#tree-12" class="extra-icon-text text-left">
 									<div class="features-icon features-icon2 gradient-bg bg-yellow text-center">
@@ -268,7 +269,7 @@
 			
 		</section>
 
-		<section id="tree-1" class="faq-section faq-secound-home-version backgroud-style" style="background: #fccb41;;" data-aos="fade-up-right" data-aos-duration="1000">
+		<section id="tree-1" class="faq-section faq-secound-home-version backgroud-style py-4" style="background: #fccb41;;" data-aos="fade-up-right" data-aos-duration="1000">
 			<div class="container">
 				<div class="section-title headline text-center">
 					<h2> <span>1- Skills Bank Customized Programs</span></h2>
@@ -279,16 +280,16 @@
 		<section class="faq-section faq-secound-home-version backgroud-style" style="background-image: unset;" data-aos="zoom-in" data-aos-duration="1000">
 			<div class="container">
 				<div class="row justify-content-center">
-					<div class="col-md-6">
+					<div class="col-md-12">
 						<div class="about-us-content-item">
 							<div class="about-text-item text-center">
 								<div class="about-list mb30 ul-li-block text-left">
-									<ul>
-										<li>How to Make your Customer Happy  </li>
-										<li>The Champion  </li>
-										<li>The Professional Teller  </li>
-										<li>Super Trainer  </li>
-										<li>Drive for Strategic Results  </li>
+									<ul class="row">
+										<li class="col-md-6">How to Make your Customer Happy  </li>
+										<li class="col-md-6">The Champion  </li>
+										<li class="col-md-6">The Professional Teller  </li>
+										<li class="col-md-6">Super Trainer  </li>
+										<li class="col-md-6">Drive for Strategic Results  </li>
 									</ul>
 								</div>
 							</div>
@@ -300,7 +301,7 @@
 		</section>
 		<!-- /End 1 -->
 		
-		<section id="tree-2" class="faq-section faq-secound-home-version backgroud-style" style="background: #fccb41;;" data-aos="fade-up-right" data-aos-duration="1000">
+		<section id="tree-2" class="faq-section faq-secound-home-version backgroud-style py-4" style="background: #fccb41;;" data-aos="fade-up-right" data-aos-duration="1000">
 			<div class="container">
 				<div class="section-title headline text-center">
 					<h2> <span>2- Interpersonal skills and self-development </span></h2>
@@ -310,15 +311,38 @@
 
 		<section class="faq-section faq-secound-home-version backgroud-style" style="background-image: unset;" data-aos="zoom-in" data-aos-duration="1000">
 			<div class="container">
+
 				<div class="row justify-content-center">
-					<div class="col-md-6">
+					<div class="col-md-12">
 						<div class="about-us-content-item">
 							<div class="about-text-item text-center">
 								<div class="about-list mb30 ul-li-block text-left">
-									<ul>
-										<li>Aiming for Excellence   </li>
-										<li>self confidence   </li>
-										<li>Influencing others   </li>
+									<ul class="row">
+										<li class="col-md-6">Aiming for Excellence  </li>
+										<li class="col-md-6">self confidence</li>
+										<li class="col-md-6">Influencing others </li>
+										<li class="col-md-6">Communication</li>
+										<li class="col-md-6">Conflict</li>
+										<li class="col-md-6">Problem-solving & Decision Making</li>
+										<li class="col-md-6">Creativity & Innovation</li>
+										<li class="col-md-6">Public Speaking & Presentation Skills </li>
+										<li class="col-md-6">Administration</li>
+										<li class="col-md-6">Planning & Organizing</li>
+										<li class="col-md-6">Adaptability</li>
+										<li class="col-md-6">Result Oriented</li>
+										<li class="col-md-6">The opposite Thinking</li>
+										<li class="col-md-6">Negotiation</li>
+										<li class="col-md-6">Analytical Thinking</li>
+										<li class="col-md-6">Relationship Building</li>
+										<li class="col-md-6">Accountability</li>
+										<li class="col-md-6">Unlock Team’s Synergy</li>
+										<li class="col-md-6">Business Etiquette</li>
+										<li class="col-md-6">Emotional Intelligence</li>
+										<li class="col-md-6">Mind Mapping</li>
+										<li class="col-md-6">Time & Stress Management</li>
+										<li class="col-md-6">Productivity</li>
+										<li class="col-md-6">The power of Positive Attitude</li>
+										<li class="col-md-6">High Performance Team</li>
 									</ul>
 								</div>
 							</div>
@@ -326,11 +350,12 @@
 						</div>
 					</div>
 				</div>
+				
 			</div>
 		</section>
 		<!-- /End 2 -->
 		
-		<section id="tree-3" class="faq-section faq-secound-home-version backgroud-style" style="background: #fccb41;;" data-aos="fade-up-right" data-aos-duration="1000">
+		<section id="tree-3" class="faq-section faq-secound-home-version backgroud-style py-4" style="background: #fccb41;;" data-aos="fade-up-right" data-aos-duration="1000">
 			<div class="container">
 				<div class="section-title headline text-center">
 					<h2> <span>3- Business mindset and management </span></h2>
@@ -379,7 +404,7 @@
 		</section>
 		<!-- /End 3 -->
 		
-		<section id="tree-4" class="faq-section faq-secound-home-version backgroud-style" style="background: #fccb41;;" data-aos="fade-up-right" data-aos-duration="1000">
+		<section id="tree-4" class="faq-section faq-secound-home-version backgroud-style py-4" style="background: #fccb41;;" data-aos="fade-up-right" data-aos-duration="1000">
 			<div class="container">
 				<div class="section-title headline text-center">
 					<h2> <span>4- Leadership </span></h2>
@@ -430,7 +455,7 @@
 		</section>
 		<!-- /End 4 -->
 		
-		<section id="tree-5" class="faq-section faq-secound-home-version backgroud-style" style="background: #fccb41;;" data-aos="fade-up-right" data-aos-duration="1000">
+		<section id="tree-5" class="faq-section faq-secound-home-version backgroud-style py-4" style="background: #fccb41;;" data-aos="fade-up-right" data-aos-duration="1000">
 			<div class="container">
 				<div class="section-title headline text-center">
 					<h2> <span>5- Human Resources  </span></h2>
@@ -481,7 +506,7 @@
 		</section>
 		<!-- /End 5 -->
 		
-		<section id="tree-6" class="faq-section faq-secound-home-version backgroud-style" style="background: #fccb41;;" data-aos="fade-up-right" data-aos-duration="1000">
+		<section id="tree-6" class="faq-section faq-secound-home-version backgroud-style py-4" style="background: #fccb41;;" data-aos="fade-up-right" data-aos-duration="1000">
 			<div class="container">
 				<div class="section-title headline text-center">
 					<h2> <span>6- Marketing and sales   </span></h2>
@@ -532,7 +557,7 @@
 		</section>
 		<!-- /End 6 -->
 		
-		<section id="tree-7" class="faq-section faq-secound-home-version backgroud-style" style="background: #fccb41;;" data-aos="fade-up-right" data-aos-duration="1000">
+		<section id="tree-7" class="faq-section faq-secound-home-version backgroud-style py-4" style="background: #fccb41;;" data-aos="fade-up-right" data-aos-duration="1000">
 			<div class="container">
 				<div class="section-title headline text-center">
 					<h2> <span>7- Supply chain management   </span></h2>
@@ -583,7 +608,7 @@
 		</section>
 		<!-- /End 7 -->
 		
-		<section id="tree-8" class="faq-section faq-secound-home-version backgroud-style" style="background: #fccb41;;" data-aos="fade-up-right" data-aos-duration="1000">
+		<section id="tree-8" class="faq-section faq-secound-home-version backgroud-style py-4" style="background: #fccb41;;" data-aos="fade-up-right" data-aos-duration="1000">
 			<div class="container">
 				<div class="section-title headline text-center">
 					<h2> <span>8- Accounting and finance   </span></h2>
@@ -634,7 +659,7 @@
 		</section>
 		<!-- /End 8 -->
 		
-		<section id="tree-9" class="faq-section faq-secound-home-version backgroud-style" style="background: #fccb41;;" data-aos="fade-up-right" data-aos-duration="1000">
+		<section id="tree-9" class="faq-section faq-secound-home-version backgroud-style py-4" style="background: #fccb41;;" data-aos="fade-up-right" data-aos-duration="1000">
 			<div class="container">
 				<div class="section-title headline text-center">
 					<h2> <span>9- Customer   </span></h2>
@@ -685,7 +710,7 @@
 		</section>
 		<!-- /End 9 -->
 		
-		<section id="tree-10" class="faq-section faq-secound-home-version backgroud-style" style="background: #fccb41;;" data-aos="fade-up-right" data-aos-duration="1000">
+		<section id="tree-10" class="faq-section faq-secound-home-version backgroud-style py-4" style="background: #fccb41;;" data-aos="fade-up-right" data-aos-duration="1000">
 			<div class="container">
 				<div class="section-title headline text-center">
 					<h2> <span>10- Writing skills    </span></h2>
@@ -736,7 +761,7 @@
 		</section>
 		<!-- /End 10 -->
 		
-		<section id="tree-11" class="faq-section faq-secound-home-version backgroud-style" style="background: #fccb41;;" data-aos="fade-up-right" data-aos-duration="1000">
+		<section id="tree-11" class="faq-section faq-secound-home-version backgroud-style py-4" style="background: #fccb41;;" data-aos="fade-up-right" data-aos-duration="1000">
 			<div class="container">
 				<div class="section-title headline text-center">
 					<h2> <span>11- Banking and finance services  </span></h2>
@@ -785,7 +810,7 @@
 		</section>
 		<!-- /End 11 -->
 		
-		<section id="tree-12" class="faq-section faq-secound-home-version backgroud-style" style="background: #fccb41;;" data-aos="fade-up-right" data-aos-duration="1000">
+		<section id="tree-12" class="faq-section faq-secound-home-version backgroud-style py-4" style="background: #fccb41;;" data-aos="fade-up-right" data-aos-duration="1000">
 			<div class="container">
 				<div class="section-title headline text-center">
 					<h2> <span>12- MS. Office and data analysis   </span></h2>
