@@ -590,162 +590,37 @@
 					<h2>Top of the Month <span>Courses.</span> </h2>
 				</div>
 				<div id="course-slide-item" class="course-slide">
+
+					@foreach ($courses as $course)
 					
-					<div class="course-item-pic-text">
-						<div class="course-pic relative-position">
-							<img src="{{asset('front_assets/img/course/c-1.png')}}" alt="">
-							<div class="course-price text-center gradient-bg bg-yellow">
-								<span>2,500 L.E</span>
+						<div class="course-item-pic-text">
+							<div class="course-pic relative-position">
+								<img src="{{asset($course->image)}}" alt="">
+								<div class="course-price text-center gradient-bg bg-yellow">
+									<span>{{$course->price}} {{__('front.CURRENCY')}}</span>
+								</div>
+								<div class="course-details-btn">
+									<a href="#">COURSE DETAIL <i class="fas fa-arrow-right"></i></a>
+								</div>
 							</div>
-							<div class="course-details-btn">
-								<a href="#">COURSE DETAIL <i class="fas fa-arrow-right"></i></a>
+							<div class="course-item-text p-3">
+								<div class="course-title mt10 headline pb-2 relative-position">
+									<h3><a href="#">{{$course->name}}</a></h3>
+								</div>
+								<div class="course-viewer ul-li">
+									<ul>
+										<li><a href=""><i class="fas fa-calendar-alt mr-3"></i> Started {{\Carbon\Carbon::parse($course->start_date)->format('d F')}} </a></li>
+									</ul>
+								</div>
+								<div class="mt-2 text-center">
+									<button class="btn btn-sm text-uppercase gradient-bg text-white book-course" data-id="{{$course->id}}" data-name="{{$course->name}}" data-price="{{$course->price}}" data-image="{{asset($course->image)}}" data-date="{{\Carbon\Carbon::parse($course->start_date)->format('d F')}}">Book Now</button>
+								</div>
 							</div>
 						</div>
-						<div class="course-item-text p-3">
-							<div class="course-title mt10 headline pb-2 relative-position">
-								<h3><a href="#">Fundamentals of Design Thinking</a></h3>
-							</div>
-							<div class="course-viewer ul-li">
-								<ul>
-									<li><a href=""><i class="fas fa-calendar-alt mr-3"></i> Started 29 October</a></li>
-								</ul>
-							</div>
-							<div class="mt-2 text-center">
-								<button class="btn btn-sm text-uppercase gradient-bg text-white book-course">Book Now</button>
-							</div>
-						</div>
-					</div>
-					<!-- /item -->
+						<!-- /item -->
+						
+					@endforeach
 					
-					<div class="course-item-pic-text">
-						<div class="course-pic relative-position">
-							<img src="{{asset('front_assets/img/course/c-1.png')}}" alt="">
-							<div class="course-price text-center gradient-bg bg-yellow">
-								<span>2,500 L.E</span>
-							</div>
-							<div class="course-details-btn">
-								<a href="#">COURSE DETAIL <i class="fas fa-arrow-right"></i></a>
-							</div>
-						</div>
-						<div class="course-item-text p-3">
-							<div class="course-title mt10 headline pb-2 relative-position">
-								<h3><a href="#">Fundamentals of Design Thinking</a></h3>
-							</div>
-							<div class="course-viewer ul-li">
-								<ul>
-									<li><a href=""><i class="fas fa-calendar-alt mr-3"></i> Started 29 October</a></li>
-								</ul>
-							</div>
-							<div class="mt-2 text-center">
-								<button class="btn btn-sm text-uppercase gradient-bg text-white book-course">Book Now</button>
-							</div>
-						</div>
-					</div>
-					<!-- /item -->
-					
-					<div class="course-item-pic-text">
-						<div class="course-pic relative-position">
-							<img src="{{asset('front_assets/img/course/c-1.png')}}" alt="">
-							<div class="course-price text-center gradient-bg bg-yellow">
-								<span>2,500 L.E</span>
-							</div>
-							<div class="course-details-btn">
-								<a href="#">COURSE DETAIL <i class="fas fa-arrow-right"></i></a>
-							</div>
-						</div>
-						<div class="course-item-text p-3">
-							<div class="course-title mt10 headline pb-2 relative-position">
-								<h3><a href="#">Fundamentals of Design Thinking</a></h3>
-							</div>
-							<div class="course-viewer ul-li">
-								<ul>
-									<li><a href=""><i class="fas fa-calendar-alt mr-3"></i> Started 29 October</a></li>
-								</ul>
-							</div>
-							<div class="mt-2 text-center">
-								<button class="btn btn-sm text-uppercase gradient-bg text-white book-course">Book Now</button>
-							</div>
-						</div>
-					</div>
-					<!-- /item -->
-					
-					<div class="course-item-pic-text">
-						<div class="course-pic relative-position">
-							<img src="{{asset('front_assets/img/course/c-1.png')}}" alt="">
-							<div class="course-price text-center gradient-bg bg-yellow">
-								<span>2,500 L.E</span>
-							</div>
-							<div class="course-details-btn">
-								<a href="#">COURSE DETAIL <i class="fas fa-arrow-right"></i></a>
-							</div>
-						</div>
-						<div class="course-item-text p-3">
-							<div class="course-title mt10 headline pb-2 relative-position">
-								<h3><a href="#">Fundamentals of Design Thinking</a></h3>
-							</div>
-							<div class="course-viewer ul-li">
-								<ul>
-									<li><a href=""><i class="fas fa-calendar-alt mr-3"></i> Started 29 October</a></li>
-								</ul>
-							</div>
-							<div class="mt-2 text-center">
-								<button class="btn btn-sm text-uppercase gradient-bg text-white book-course">Book Now</button>
-							</div>
-						</div>
-					</div>
-					<!-- /item -->
-					
-					<div class="course-item-pic-text">
-						<div class="course-pic relative-position">
-							<img src="{{asset('front_assets/img/course/c-1.png')}}" alt="">
-							<div class="course-price text-center gradient-bg bg-yellow">
-								<span>2,500 L.E</span>
-							</div>
-							<div class="course-details-btn">
-								<a href="#">COURSE DETAIL <i class="fas fa-arrow-right"></i></a>
-							</div>
-						</div>
-						<div class="course-item-text p-3">
-							<div class="course-title mt10 headline pb-2 relative-position">
-								<h3><a href="#">Fundamentals of Design Thinking</a></h3>
-							</div>
-							<div class="course-viewer ul-li">
-								<ul>
-									<li><a href=""><i class="fas fa-calendar-alt mr-3"></i> Started 29 October</a></li>
-								</ul>
-							</div>
-							<div class="mt-2 text-center">
-								<button class="btn btn-sm text-uppercase gradient-bg text-white book-course">Book Now</button>
-							</div>
-						</div>
-					</div>
-					<!-- /item -->
-					
-					<div class="course-item-pic-text">
-						<div class="course-pic relative-position">
-							<img src="{{asset('front_assets/img/course/c-1.png')}}" alt="">
-							<div class="course-price text-center gradient-bg bg-yellow">
-								<span>2,500 L.E</span>
-							</div>
-							<div class="course-details-btn">
-								<a href="#">COURSE DETAIL <i class="fas fa-arrow-right"></i></a>
-							</div>
-						</div>
-						<div class="course-item-text p-3">
-							<div class="course-title mt10 headline pb-2 relative-position">
-								<h3><a href="#">Fundamentals of Design Thinking</a></h3>
-							</div>
-							<div class="course-viewer ul-li">
-								<ul>
-									<li><a href=""><i class="fas fa-calendar-alt mr-3"></i> Started 29 October</a></li>
-								</ul>
-							</div>
-							<div class="mt-2 text-center">
-								<button class="btn btn-sm text-uppercase gradient-bg text-white book-course">Book Now</button>
-							</div>
-						</div>
-					</div>
-					<!-- /item -->
 				</div>
 			</div>
 		</section>

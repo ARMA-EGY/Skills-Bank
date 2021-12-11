@@ -878,13 +878,14 @@ h1, h2, h3, h4, h5, h6 {
   .popup-logo img {
     border-radius: 4px; }
 
-.modal-dialog {
-  margin: 12.75rem auto; }
+/* .modal-dialog {
+  margin: 12.75rem auto; } */
 
-.modal-header {
+/* .modal-header {
   padding: 0;
   position: relative;
-  background-image: url(../img/banner/pb.jpg); }
+  background-image: url(../img/banner/pb.jpg); } */
+
   .modal-header .gradient-bg, .modal-header .modal-body .nws-button button, .modal-body .nws-button .modal-header button, .modal-header .teacher-pic-content .teacher-img-content:after, .teacher-pic-content .modal-header .teacher-img-content:after, .modal-header .course-details-category li:hover, .course-details-category .modal-header li:hover {
     position: absolute;
     top: 0;
@@ -948,8 +949,8 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0 20px;
   border-right: 1px solid #a29c9c; }
 
-.modal-body {
-  padding: 50px 65px; }
+/* .modal-body {
+  padding: 50px 65px; } */
   .modal-body .contact_form {
     margin-bottom: 20px; }
     .modal-body .contact_form input, .modal-body .contact_form .register-form-area select, .register-form-area .modal-body .contact_form select, .modal-body .contact_form .register-form-area textarea, .register-form-area .modal-body .contact_form textarea {

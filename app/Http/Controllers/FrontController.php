@@ -7,19 +7,33 @@ use Illuminate\Support\Facades\DB;
 
 use App\Models\Categories;
 use App\Models\Courses;
+use App\Models\CoursesRequest;
 use App\Models\Blog;
 
 use App\Mail\ContactUs;
 use Mail; 
+use LaravelLocalization;
 
 
 
 class FrontController extends Controller
 {
 
+/*
+|--------------------------------------------------------------------------
+| PAGES
+|--------------------------------------------------------------------------
+*/
+
     //-------------- Home Page ---------------\\
     public function index()
     {
+        $courses       = Courses::select('id', 'name', 'image', 'start_date', 'end_date', 'disable', 'price_'.LaravelLocalization::getCurrentLocale(). ' as price' )->where('disable', 0)->orderBy('id','desc')->limit(6)->get();
+
+        return view('front.welcome', [
+            'courses' => $courses,
+        ]);
+
         return view('front.welcome');     
     }
     
@@ -117,6 +131,46 @@ class FrontController extends Controller
     public function assessments()
     {
         return view('front.assessments');     
+    }
+
+
+/*
+|--------------------------------------------------------------------------
+| ACTIONS
+|--------------------------------------------------------------------------
+*/
+
+
+    //-------------- Booking Course ---------------\\
+
+    public function booking(Request $request)
+    {
+        $booking =  CoursesRequest::create([
+            'name'          => $request->name,
+            'email'         => $request->email,
+            'phone'         => $request->phone,
+            'company'       => $request->company,
+            'position'      => $request->position,
+            'message'       => $request->message,
+            'course_id'     => $request->course_id,
+            'country'       => LaravelLocalization::getCurrentLocale(),
+        ]);
+        
+        if($booking)
+        {
+            return response()->json([
+                'status' => 'true',
+                'msg' => 'success'
+            ]) ;
+        }
+        else
+        {
+            return response()->json([
+                'status' => 'false',
+                'msg' => 'error'
+            ]) ;
+        }
+
     }
 
 }

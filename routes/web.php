@@ -39,6 +39,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
     Route::get('/Solutions/Videos', 'FrontController@videos')->name('videos');
     Route::get('/Solutions/Designing', 'FrontController@designing')->name('designing');
     Route::get('/Solutions/Assessments', 'FrontController@assessments')->name('assessments');
+
+    Route::post('/booking', 'FrontController@booking')->name('booking');
 });
 
 Route::get('/admin', function () {return redirect('/login');});

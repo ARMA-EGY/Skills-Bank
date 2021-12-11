@@ -46,10 +46,16 @@
 							<ul class="">
                                 <li class="genius-btn gradient-bg br-30 text-center text-uppercase bold-font book-btn"><a href="#">BOOK NOW</a></li>
 								<li class="menu-item-has-children ul-li-block">
-									<a href="#"><img src="{{asset('front_assets/img/flags/egy.svg')}}" style="width: 20px;border-radius: 50%;"></a>
+
+									@if (LaravelLocalization::getCurrentLocale() == 'eg')
+										<a href="#"><img src="{{asset('front_assets/img/flags/egy.svg')}}" style="width: 20px;border-radius: 50%;"></a>
+									@elseif (LaravelLocalization::getCurrentLocale() == 'sa')  
+										<a href="#"><img src="{{asset('front_assets/img/flags/ksa.png')}}" style="width: 20px;border-radius: 50%;"></a>
+									@endif
+
 									<ul class="sub-menu" style="width: 100px;left: -40px;">
-										<li><a href="#"><img src="{{asset('front_assets/img/flags/egy.svg')}}" style="width: 20px;border-radius: 50%;"> <strong>Egypt</strong></a></li>
-										<li><a href="#"><img src="{{asset('front_assets/img/flags/ksa.png')}}" style="width: 20px;border-radius: 50%;"> <strong>KSA</strong></a></li>
+										<li><a href="{{ LaravelLocalization::getLocalizedURL('eg', null, [], true) }}"><img src="{{asset('front_assets/img/flags/egy.svg')}}" style="width: 20px;border-radius: 50%;"> <strong>Egypt</strong></a></li>
+										<li><a href="{{ LaravelLocalization::getLocalizedURL('sa', null, [], true) }}"><img src="{{asset('front_assets/img/flags/ksa.png')}}" style="width: 20px;border-radius: 50%;"> <strong>KSA</strong></a></li>
 									</ul>
 								</li>
 							</ul>
@@ -317,6 +323,82 @@
 	<!-- End of footer section
 		============================================= -->
 
+	<!-- Booking Modal -->
+	<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Booking Request</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			</div>
+			<form class="booking_form">
+				@csrf
+				<div class="modal-body">
+
+					<div class="course-item-pic-text text-center" style="border: unset;">
+						<div class="course-pic relative-position">
+							<img id="booking_image" src="" alt="" style="width: 80%;">
+							<div class="course-price text-center gradient-bg bg-yellow">
+								<span id="booking_price"></span> <span>{{__('front.CURRENCY')}}</span> 
+							</div>
+						</div>
+						<div class="course-item-text p-3">
+							<div class="course-title mt10 headline pb-2 relative-position">
+								<h3><a href="#" id="booking_name"></a></h3>
+								<input type="hidden" id="course_id" name="course_id">
+							</div>
+							<div class="course-viewer ul-li">
+								<ul>
+									<li><i class="fas fa-calendar-alt mr-3"></i> Started <span id="booking_date"></span></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="inputName">Name</label>
+						<input type="text" name="name" class="form-control field1" id="inputName" required>
+					</div>
+
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="inputEmail">Email</label>
+							<input type="email" name="email" class="form-control field1" id="inputEmail" required>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="inputphone">Phone</label>
+							<input type="number" name="phone" class="form-control field1" id="inputPhone" required>
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="inputCompany">Company</label>
+							<input type="text" name="company" class="form-control field1" id="inputCompany" required>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="inputPosition">Position</label>
+							<input type="text" name="position" class="form-control field1" id="inputPosition" required>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="inputMessage">Message</label>
+						<textarea name="message" rows="4" class="form-control field1" id="inputMessage" placeholder="Your Message Here ..."></textarea>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Confirm</button>
+				</div>
+			</form>
+		</div>
+		</div>
+	</div>
+
 		<!-- For Js Library -->
 		<script src="{{asset('front_assets/js/jquery-2.1.4.min.js')}}"></script>
 		<script src="{{asset('front_assets/js/bootstrap.min.js')}}"></script>
@@ -335,6 +417,7 @@
 
 		<script src="{{asset('front_assets/js/tooltipster.main.min.js')}}"></script>
 		<script src="{{asset('front_assets/js/script.js')}}"></script>
+		<script type="application/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
@@ -363,6 +446,87 @@
 			})();
 		</script>
 		<!-- /GetButton.io widget -->
+
+		<script>
+
+			$(document).on("click",".book-course", function()
+			{
+				var id 	  	= $(this).attr('data-id');
+				var name  	= $(this).attr('data-name');
+				var price  	= $(this).attr('data-price');
+				var date  	= $(this).attr('data-date');
+				var image  	= $(this).attr('data-image');
+
+				$('#bookingModal').modal('show');
+
+				$("#booking_name").text(name);
+				$("#booking_price").text(price);
+				$("#booking_date").text(date);
+				$("#course_id").val(id);
+				$('#booking_image').attr('src',image);
+			});
+
+
+			$('.booking_form').submit(function(e)
+			{
+				e.preventDefault();
+				$('.submit').prop('disabled', true);
+
+					var head1 	= 'Thank You';
+					var title1 	= 'Your Request Has Been Sent Successfully, We will contact you ASAP. ';
+					var head2 	= 'Oops...';
+					var title2 	= 'Something went wrong, please try again later.';
+
+				$.ajax({
+					url: 		"{{route('booking')}}",
+					method: 	'POST',
+					dataType: 	'json',
+					data:		$(this).serialize()	,
+					success : function(data)
+						{
+							$('.submit').prop('disabled', false);
+							
+							if (data['status'] == 'true')
+							{
+								Swal.fire(
+										head1,
+										title1,
+										'success'
+										)
+								$('.field1').text('');
+								$('.field1').val('');
+
+								$('.modal').modal('hide');
+							}
+							else if (data['status'] == 'false')
+							{
+								Swal.fire(
+										head2,
+										title2,
+										'error'
+										)
+							}
+						},
+						error : function(reject)
+						{
+							$('.submit').prop('disabled', false);
+
+							var response = $.parseJSON(reject.responseText);
+							$.each(response.errors, function(key, val)
+							{
+								Swal.fire(
+										head2,
+										val[0],
+										'error'
+										)
+							});
+						}
+					
+				});
+
+			});
+
+		</script>
 
         @yield('script')
 

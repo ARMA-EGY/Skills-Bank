@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 use Image;
+use LaravelLocalization;
 
 class CoursesController extends Controller
 {
@@ -101,7 +102,7 @@ class CoursesController extends Controller
             $course =  Courses::create([
                 'name' => $request->name,
                 'price_eg' => $request->price_eg,
-                'price_sr' => $request->price_sr,
+                'price_sa' => $request->price_sr,
                 'start_date' => $request->start_date,
                 'end_date' => $request->end_date,
                 'students_limit' => $request->students_limit,
@@ -133,7 +134,7 @@ class CoursesController extends Controller
     {
 
         $user = auth()->user();
-        $data = $request->only(['name', 'price_eg', 'price_sr', 'start_date', 'end_date', 'students_limit', 'category_id']);
+        $data = $request->only(['name', 'price_eg', 'price_sa', 'start_date', 'end_date', 'students_limit', 'category_id']);
 
 
         if($request->hasfile('image'))
