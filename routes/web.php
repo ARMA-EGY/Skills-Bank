@@ -23,6 +23,22 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function()
 {
     Route::get('/', 'FrontController@index')->name('welcome');
+    Route::get('/about', 'FrontController@about')->name('about');
+    Route::get('/team', 'FrontController@team')->name('team');
+    Route::get('/clients', 'FrontController@clients')->name('clients');
+    Route::get('/learningApproach', 'FrontController@learningApproach')->name('learningApproach');
+    Route::get('/learningTree', 'FrontController@learningTree')->name('learningTree');
+    Route::get('/workshop', 'FrontController@workshop')->name('workshop');
+    Route::get('/calendar', 'FrontController@calendar')->name('public.calendar');
+    Route::get('/collaborations', 'FrontController@collaborations')->name('collaborations');
+    Route::get('/blogs', 'FrontController@blogs')->name('blogs');
+    Route::get('/careers', 'FrontController@careers')->name('careers');
+    Route::get('/reachout', 'FrontController@reachout')->name('reachout');
+    Route::get('/Solutions/Practical', 'FrontController@practical')->name('practical');
+    Route::get('/Solutions/Virtual', 'FrontController@virtual')->name('virtual');
+    Route::get('/Solutions/Videos', 'FrontController@videos')->name('videos');
+    Route::get('/Solutions/Designing', 'FrontController@designing')->name('designing');
+    Route::get('/Solutions/Assessments', 'FrontController@assessments')->name('assessments');
 });
 
 Route::get('/admin', function () {return redirect('/login');});
@@ -46,8 +62,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'a
 
     Route::get('/home', 'MasterController@index')->name('home');
     Route::get('/profile', 'MasterController@profile')->name('profile');
-    Route::get('/calendar', 'MasterController@calendar')->name('calendar');
-
     /*
     |--------------------------------------------------------------------------
     | Admin Routes 
@@ -56,6 +70,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'a
 
     Route::group(['prefix' => 'admin','middleware' => [ 'admin' ]], function () 
     {   
+        
+
+
+        Route::get('/calendar', 'MasterController@calendar')->name('calendar');
         
         /*
         |--------------------------------------------------------------------------

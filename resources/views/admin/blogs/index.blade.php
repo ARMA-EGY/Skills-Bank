@@ -96,7 +96,6 @@
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                           <a href="{{ route('blogs.edit', $blog->id)}}" class="dropdown-item"><i class="fa fa-edit text-success"></i> Edit</a>
                           <button class="dropdown-item remove_item" data-id="{{$blog->id}}" data-url="{{route('remove-blog')}}"><i class="fa fa-trash-alt text-danger"></i> Remove</button>
-                          <button data-token="{{$blog->token}}" class="dropdown-item get_seo"><i class="fas fa-share-alt text-purple"></i> SEO</button>
                         </div>
                       </div>
                     </td>

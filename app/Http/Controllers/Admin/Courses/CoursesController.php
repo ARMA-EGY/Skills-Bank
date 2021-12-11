@@ -23,8 +23,6 @@ use Image;
 class CoursesController extends Controller
 {
 
-    use RegistersUsers;
-
     //-------------- Get All Data ---------------\\
 
     public function index()
@@ -83,8 +81,6 @@ class CoursesController extends Controller
     public function store(AddRequest $request)
     {
             $user = auth()->user();
-            $certificate_file   = '';
-            $contract_file      = '';
 
             if($request->hasfile('image'))
             {
@@ -92,7 +88,7 @@ class CoursesController extends Controller
                 $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
             
                 $destinationPath = public_path('images/courses');
-                ini_set('memory_limit', '256M');
+                ini_set('memory_limit', '2048M');
                 $img = Image::make($image->getRealPath());
                 $img->resize(400, null, function ($constraint) {
                     $constraint->aspectRatio();
@@ -152,7 +148,7 @@ class CoursesController extends Controller
             $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
         
             $destinationPath = public_path('/images/courses');
-            ini_set('memory_limit', '256M');
+            ini_set('memory_limit', '2048M');
             $img = Image::make($image->getRealPath());
             $img->resize(400, null, function ($constraint) {
                 $constraint->aspectRatio();
@@ -171,9 +167,6 @@ class CoursesController extends Controller
 		
 		return redirect(route('courses.index'));
     }
-
-
-
 
 
     //-------------- Disable Data  ---------------\\
