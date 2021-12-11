@@ -16,35 +16,35 @@
                   <li class="nav-item">
                       <a class="nav-link collapsed" href="#navbar-staff" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-components">
                         <i class="fa fa-users"></i>
-                        <span class="nav-link-text">{{__('master.STAFF')}}</span>
+                        <span class="nav-link-text">Staff</span>
                       </a>
                       <div class="collapse" id="navbar-staff" style="">
                         <ul class="nav nav-sm flex-column">
                           <li class="nav-item">
                             <a href="{{ route('staff.create')}}" class="nav-link nav-link-sub {{request()->routeIs('staff.create') ? 'active' : '' }}">
                               <i class="far fa-dot-circle"></i>
-                              <span class="sidenav-normal"> {{__('master.ADD-NEW-STAFF')}} </span>
+                              <span class="sidenav-normal"> Add New Staff </span>
                             </a>
                           </li>
                    
                           <li class="nav-item">
                             <a href="{{route('staff.index')}}" class="nav-link nav-link-sub {{request()->routeIs('staff.index') ? 'active' : '' }}">
                               <i class="far fa-dot-circle"></i>
-                              <span class="sidenav-normal"> {{__('master.ALL-STAFF')}} </span>
+                              <span class="sidenav-normal"> All Staff </span>
                             </a>
                           </li>
 
                           <li class="nav-item">
                             <a href="{{ route('active-staff')}}" class="nav-link nav-link-sub {{request()->routeIs('active-staff') ? 'active' : '' }}">
                               <i class="far fa-dot-circle"></i>
-                              <span class="sidenav-normal"> {{__('master.ACTIVE-STAFF')}} </span>
+                              <span class="sidenav-normal"> Active Staff </span>
                             </a>
                           </li>
 
                           <li class="nav-item">
                             <a href="{{ route('deactive-staff')}}" class="nav-link nav-link-sub {{request()->routeIs('deactive-staff') ? 'active' : '' }}">
                               <i class="far fa-dot-circle"></i>
-                              <span class="sidenav-normal"> {{__('master.BANNED-STAFF')}} </span>
+                              <span class="sidenav-normal"> Banned Staff </span>
                             </a>
                           </li>
 
@@ -121,12 +121,47 @@
                     </div>
                 </li> 
 
+
                 <li class="nav-item">
-                    <a class="nav-link {{request()->routeIs('blogs.index') ? 'active' : '' }}" href="{{route('blogs.index')}}">
-                        <i class="fa fa-book text-green"></i>
-                        <span class="nav-link-text">Blogs</span>
+                    <a class="nav-link collapsed" href="#navbar-components" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-components">
+                      <i class="fa fa-book text-green"></i>
+                      <span class="nav-link-text">Collaborations</span>
                     </a>
-                </li>
+                    <div class="collapse" id="navbar-components" style="">
+                      <ul class="nav nav-sm flex-column">
+
+                        <li class="nav-item">
+                          <a href="{{route('collaborationcategories.index')}}" class="nav-link nav-link-sub {{request()->routeIs('collaborationcategories.index') ? 'active' : '' }}">
+                            <i class="ni ni-chart-pie-35"></i>
+                            <span class="sidenav-normal"> Categories </span>
+                          </a>
+                        </li>
+
+                        <li class="nav-item">
+                          <a href="{{route('collaborationtags.index')}}" class="nav-link nav-link-sub {{request()->routeIs('tags.index') ? 'active' : '' }}">
+                            <i class="fa fa-tags"></i>
+                            <span class="sidenav-normal"> Tags </span>
+                          </a>
+                        </li>
+
+                        <li class="nav-item">
+                          <a href="{{route('collaboration.index')}}" class="nav-link nav-link-sub {{request()->routeIs('collaboration.index') ? 'active' : '' }}">
+                            <i class="fa fa-book"></i>
+                            <span class="sidenav-normal"> Posts </span>
+                          </a>
+                        </li>
+
+                        <li class="nav-item">
+                          <a href="{{route('collaboration-admin-draft')}}" class="nav-link nav-link-sub {{request()->routeIs('collaboration-admin-draft') ? 'active' : '' }}">
+                            <i class="fa fa-paste"></i>
+                            <span class="sidenav-normal"> Drafts </span>
+                          </a>
+                        </li>
+                        
+                      </ul>
+                    </div>
+                </li> 
+
 
 
                   <li class="nav-item">

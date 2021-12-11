@@ -55,7 +55,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'a
     */
 
     Route::group(['prefix' => 'admin','middleware' => [ 'admin' ]], function () 
-    {        
+    {   
+        
+        /*
+        |--------------------------------------------------------------------------
+        | Staff
+        |--------------------------------------------------------------------------
+        */        
         Route::resource('/staff', 'Admin\Staff\StaffController'); 
         Route::get('/activestaff', 'Admin\Staff\StaffController@active')->name('active-staff');
         Route::get('/deactivestaff', 'Admin\Staff\StaffController@deactive')->name('deactive-staff');
@@ -65,9 +71,40 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'a
         Route::get('/logo', 'MasterController@logo')->name('admin-logo');
         Route::get('/setting', 'MasterController@setting')->name('admin-setting');
 
+
+        /*
+        |--------------------------------------------------------------------------
+        | Courses
+        |--------------------------------------------------------------------------
+        */
         Route::resource('/courses', 'Admin\Courses\CoursesController'); 
         Route::post('/disablecourse', 'Admin\Courses\CoursesController@disable')->name('course-disable');
 
+        
+        /*
+        |--------------------------------------------------------------------------
+        | Courses Category
+        |--------------------------------------------------------------------------
+        */
+        Route::resource('/coursecategory', 'Admin\Courses\CoursesCategoryController');
+        Route::get('/activecoursecategory', 'Admin\Courses\CoursesCategoryController@active')->name('active-course-category');
+        Route::get('/deactivecoursecategory', 'Admin\Courses\CoursesCategoryController@deactive')->name('deactive-course-category');
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Team
+        |--------------------------------------------------------------------------
+        */
+        Route::resource('/team', 'Admin\Team\TeamController'); 
+        Route::post('/removeteam', 'Admin\Team\TeamController@removeteam')->name('remove-team');
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Blogs
+        |--------------------------------------------------------------------------
+        */        
         Route::get('/drafts', 'Admin\Blogs\BlogsController@draft')->name('admin-draft');
         Route::resource('/blogs', 'Admin\Blogs\BlogsController'); 
         Route::resource('/categories', 'Admin\Blogs\CategoriesController');
@@ -76,9 +113,37 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'a
         Route::post('/removetag', 'Admin\Blogs\TagsController@removetag')->name('remove-tag');
         Route::post('/removeblog', 'Admin\Blogs\BlogsController@removeblog')->name('remove-blog');
 
+
+        /*
+        |--------------------------------------------------------------------------
+        | Collaboration
+        |--------------------------------------------------------------------------
+        */        
+        Route::get('/collaborationdrafts', 'Admin\Collaboration\CollaborationController@draft')->name('collaboration-admin-draft');
+        Route::resource('/collaboration', 'Admin\Collaboration\CollaborationController'); 
+        Route::resource('/collaborationcategories', 'Admin\Collaboration\CategoriesController');
+        Route::resource('/collaborationtags', 'Admin\Collaboration\TagsController'); 
+        Route::post('/collaborationremovecategory', 'Admin\Collaboration\CategoriesController@removecategory')->name('collaboration-remove-category');
+        Route::post('/collaborationremovetag', 'Admin\Collaboration\TagsController@removetag')->name('collaboration-remove-tag');
+        Route::post('/collaborationremoveblog', 'Admin\Collaboration\CollaborationController@removeblog')->name('remove-collaboration');
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Careers
+        |--------------------------------------------------------------------------
+        */        
         Route::resource('/careers', 'Admin\Careers\CareersController'); 
         Route::get('/careerrequests', 'Admin\Careers\CareersController@requests')->name('career-requests'); 
         Route::post('/removecareer', 'Careers\CareersController@removecareer')->name('remove-career');
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Learning Tree
+        |--------------------------------------------------------------------------
+        */ 
+        Route::resource('/learningtree', 'Admin\LearningTree\LearningTreeController');  
     });
 
 
