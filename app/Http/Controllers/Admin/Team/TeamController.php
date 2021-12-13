@@ -76,7 +76,7 @@ class TeamController extends Controller
         ]);
 
 
-        session()->flash('success', 'Employee Added successfully');
+        session()->flash('success', 'Member Added successfully');
         
         return redirect(route('team.index'));
     }
@@ -142,7 +142,7 @@ class TeamController extends Controller
 
         $team->update($data);
         
-        session()->flash('success', 'Employee updated successfully');
+        session()->flash('success', 'Member updated successfully');
         
         return redirect(route('team.index'));
     }

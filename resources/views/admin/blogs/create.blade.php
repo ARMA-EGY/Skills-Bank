@@ -232,25 +232,25 @@
                 $('.tags').select2();
             });
 
-        tinymce.init({
+            tinymce.init({
                 selector:'textarea.content',
                 plugins: 'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
                 toolbar: 'undo redo | bold italic underline strikethrough | fontselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
 
-                file_picker_callback (callback, value, meta) {
-                let x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth
-                let y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight
+                    file_picker_callback (callback, value, meta) {
+                    let x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth
+                    let y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight
 
-                tinymce.activeEditor.windowManager.openUrl({
-                url : '/file-manager/tinymce5',
-                title : 'Laravel File manager',
-                width : x * 0.8,
-                height : y * 0.8,
-                onMessage: (api, message) => {
-                    callback(message.content, { text: message.text })
-                }
-                })
-            }
+                    tinymce.activeEditor.windowManager.openUrl({
+                    url : '/file-manager/tinymce5',
+                    title : 'Laravel File manager',
+                    width : x * 0.8,
+                    height : y * 0.8,
+                    onMessage: (api, message) => {
+                        callback(message.content, { text: message.text })
+                    }
+                    })
+                    }
 
             });
     </script>

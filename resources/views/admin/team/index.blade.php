@@ -19,7 +19,7 @@
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                   <li class="breadcrumb-item"><a href="{{route('home')}}"><i class="fas fa-home"></i></a></li>
                   <li class="breadcrumb-item"><a href="{{route('home')}}">Dashboard</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Our People</li>
+                  <li class="breadcrumb-item active" aria-current="page">Team</li>
                 </ol>
               </nav>
             </div>
@@ -69,9 +69,6 @@
                     <th scope="col">Title</th>
                     <th scope="col">phone</th>
                     <th scope="col">email</th>
-                    <th scope="col">description</th>
-                    <th scope="col">facebook</th> 
-                    <th scope="col">twitter</th> 
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
@@ -81,17 +78,13 @@
 
                   <tr class="parent">
                     <td>{{ $loop->iteration }}</td>
-                    <td> <b> {{  $employee->name }} </b></td>
-                    <td> {{  $employee->title }} </td>
-                    <td>{{  $employee->phone }}</td>
-                    <td> {{  $employee->email }} </td>
-                    <td>{{  $employee->description }}</td>
-                    <td> {{  $employee->facebook }} </td>
-                    <td>{{  $employee->twitter }}</td>
-  
+                    <td><strong> {{  $employee->name }} </strong></td>
+                    <td><strong> {{  $employee->title }} </strong></td>
+                    <td><strong> {{  $employee->phone }} </strong></td>
+                    <td><strong> {{  $employee->email }} </strong></td>
                     <td>
                       <a href="{{ route('team.edit', $employee->id)}}" class="btn btn-primary float-left btn-sm mx-1"><i class="fa fa-edit"></i> Edit</a>
-                      <span class="btn btn-sm btn-warning remove_item" data-id="{{$employee->id}}" data-url="{{route('remove-team')}}"><i class="fa fa-trash-alt"></i> Remove</span>
+                      <span class="btn btn-sm btn-danger remove_item" data-id="{{$employee->id}}" data-url="{{route('remove-team')}}"><i class="fa fa-trash-alt"></i> Remove</span>
                     </td>
                   </tr>
 

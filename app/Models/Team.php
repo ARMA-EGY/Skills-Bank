@@ -8,6 +8,6 @@ class Team extends Model
 {
     protected $table = 'team';
     
-    protected $fillable = ['name', 'title', 'image', 'phone', 'email', 'description', 'facebook','twitter' ];
+    protected $fillable = ['name', 'title', 'image', 'phone', 'email', 'description', 'facebook','twitter','linkedin' ];
 
 }

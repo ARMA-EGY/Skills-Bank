@@ -32,6 +32,8 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+	@yield('style')
+
 </head>
 <body>
 
@@ -44,7 +46,7 @@
 					<div class="nav-menu-4">
 						<div class=" float-right ul-li">
 							<ul class="">
-                                <li class="genius-btn gradient-bg br-30 text-center text-uppercase bold-font book-btn"><a href="#">BOOK NOW</a></li>
+                                <li class="genius-btn gradient-bg br-30 text-center text-uppercase bold-font book-btn"><a href="{{route('public.calendar')}}">BOOK NOW</a></li>
 								<li class="menu-item-has-children ul-li-block">
 
 									@if (LaravelLocalization::getCurrentLocale() == 'eg')
@@ -239,27 +241,27 @@
 									<div class="footer-menu ul-li-block">
 										<h2 class="widget-title"></h2>
 										<ul>
-											<li><a href="#"><i class="fas fa-caret-right"></i>About The Company</a></li>
-											<li><a href="#"><i class="fas fa-caret-right"></i>Meet The Team</a></li>
+											<li><a href="{{route('about')}}"><i class="fas fa-caret-right"></i>About The Company</a></li>
+											<li><a href="{{route('team')}}"><i class="fas fa-caret-right"></i>Meet The Team</a></li>
 											<li><a href="#"><i class="fas fa-caret-right"></i>Learning Approach</a></li>
-											<li><a href="#"><i class="fas fa-caret-right"></i>SB Learning Tree</a></li>
-											<li><a href="#"><i class="fas fa-caret-right"></i>Workshops Details</a></li>
-											<li><a href="#"><i class="fas fa-caret-right"></i>Public Calendar</a></li>
-											<li><a href="#"><i class="fas fa-caret-right"></i>Collaborations</a></li>
-											<li><a href="#"><i class="fas fa-caret-right"></i>Reach Out</a></li>
+											<li><a href="{{route('learningTree')}}"><i class="fas fa-caret-right"></i>SB Learning Tree</a></li>
+											<li><a href="{{route('workshop')}}"><i class="fas fa-caret-right"></i>Workshops Details</a></li>
+											<li><a href="{{route('public.calendar')}}"><i class="fas fa-caret-right"></i>Public Calendar</a></li>
+											<li><a href="{{route('collaborations')}}"><i class="fas fa-caret-right"></i>Collaborations</a></li>
+											<li><a href="{{route('reachout')}}"><i class="fas fa-caret-right"></i>Reach Out</a></li>
 										</ul>
 									</div>
 								</div>
 								<div class="footer-menu ul-li-block">
 									<h2 class="widget-title"></h2>
 									<ul>
-										<li><a href="#"><i class="fas fa-caret-right"></i>Practical Training</a></li>
-										<li><a href="#"><i class="fas fa-caret-right"></i>Virtual Training</a></li>
-										<li><a href="#"><i class="fas fa-caret-right"></i>E-learning Videos</a></li>
-										<li><a href="#"><i class="fas fa-caret-right"></i>Designing Learning Journey</a></li>
-										<li><a href="#"><i class="fas fa-caret-right"></i>Assessments</a></li>
-										<li><a href="#"><i class="fas fa-caret-right"></i>Blog</a></li>
-										<li><a href="#"><i class="fas fa-caret-right"></i>Careers</a></li>
+										<li><a href="{{route('practical')}}"><i class="fas fa-caret-right"></i>Practical Training</a></li>
+										<li><a href="{{route('virtual')}}"><i class="fas fa-caret-right"></i>Virtual Training</a></li>
+										<li><a href="{{route('videos')}}"><i class="fas fa-caret-right"></i>E-learning Videos</a></li>
+										<li><a href="{{route('designing')}}"><i class="fas fa-caret-right"></i>Designing Learning Journey</a></li>
+										<li><a href="{{route('assessments')}}"><i class="fas fa-caret-right"></i>Assessments</a></li>
+										<li><a href="{{route('blogs')}}"><i class="fas fa-caret-right"></i>Blog</a></li>
+										<li><a href="{{route('careers')}}"><i class="fas fa-caret-right"></i>Careers</a></li>
 									</ul>
 								</div>
 							</div>
@@ -296,10 +298,11 @@
 									<h2 class="widget-title">Subscribe Newsletter</h2>
 
 									<div class="subs-form relative-position">
-										<form action="#" method="post">
-											<input class="course" name="course" type="email" placeholder="Email Address.">
+										<form class="subscribe_form">
+											@csrf
+											<input class="course field1" name="subscriber_email" type="email" placeholder="Email Address." required>
 											<div class="nws-button text-center  gradient-bg text-uppercase">
-												<button type="submit" value="Submit">Subscribe now</button> 
+												<button type="submit" class="submit" value="Submit">Subscribe now</button> 
 											</div>
 										</form>
 									</div>
@@ -391,8 +394,8 @@
 
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-primary">Confirm</button>
+					<button type="button" class="btn btn-secondary font-weight-bold" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary font-weight-bold submit">Confirm</button>
 				</div>
 			</form>
 		</div>
@@ -466,7 +469,6 @@
 				$('#booking_image').attr('src',image);
 			});
 
-
 			$('.booking_form').submit(function(e)
 			{
 				e.preventDefault();
@@ -525,6 +527,127 @@
 				});
 
 			});
+
+			$('.contact_form').submit(function(e)
+			{
+				e.preventDefault();
+				$('.submit').prop('disabled', true);
+				$('.error').text('');
+
+					var head1 	= 'Thank You';
+					var title1 	= 'Your Message Has Been Sent Successfully, We will contact you ASAP. ';
+					var head2 	= 'Oops...';
+					var title2 	= 'Something went wrong, please try again later.';
+
+				$.ajax({
+					url: 		"{{route('message')}}",
+					method: 	'POST',
+					dataType: 	'json',
+					data:		$(this).serialize()	,
+					success : function(data)
+						{
+							$('.submit').prop('disabled', false);
+							
+							if (data['status'] == 'true')
+							{
+								Swal.fire(
+										head1,
+										title1,
+										'success'
+										)
+								$('.field1').text('');
+								$('.field1').val('');
+							}
+							else if (data['status'] == 'false')
+							{
+								Swal.fire(
+										head2,
+										title2,
+										'error'
+										)
+							}
+						},
+						error : function(reject)
+						{
+							$('.submit').prop('disabled', false);
+
+							var response = $.parseJSON(reject.responseText);
+							$.each(response.errors, function(key, val)
+							{
+								Swal.fire(
+										head2,
+										val[0],
+										'error'
+										)
+							});
+						}
+					
+					
+				});
+
+			});
+
+            $('.subscribe_form').submit(function(e)
+            {
+                e.preventDefault();
+                $('.submit').prop('disabled', true);
+                $('.error').text('');
+
+                var head1 	= 'Thank You';
+                var title1 	= 'You\'ve Subscribed Successfully. ';
+                var head2 	= 'Oops...';
+                var title2 	= 'Something went wrong, please try again later.';
+
+
+                $.ajax({
+                    url: 		"{{route('subscribe')}}",
+                    method: 	'POST',
+                    dataType: 	'json',
+                    data:		$(this).serialize()	,
+                    success : function(data)
+                        {
+                            $('.submit').prop('disabled', false);
+                            
+                            if (data['status'] == 'true')
+                            {
+                                Swal.fire(
+                                        head1,
+                                        title1,
+                                        'success'
+                                        )
+                                $('.field1').text('');
+                                $('.field1').val('');
+                            }
+                            else if (data['status'] == 'false')
+                            {
+                                Swal.fire(
+                                        head2,
+                                        title2,
+                                        'error'
+                                        )
+                            }
+                        },
+                        error : function(reject)
+                        {
+                            $('.submit').prop('disabled', false);
+
+                            var response = $.parseJSON(reject.responseText);
+                            $.each(response.errors, function(key, val)
+                            {
+                            $('#'+ key + '_error').text(val[0]);
+
+                                Swal.fire(
+                                        head2,
+                                        val[0],
+                                        'error'
+                                        )
+                            });
+                        }
+                    
+                    
+                });
+
+            });
 
 		</script>
 

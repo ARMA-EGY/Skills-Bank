@@ -35,110 +35,52 @@
 									<div class="tab-container">
 										<div class="blog-list-view">
 
-											<div class="list-blog-item" data-aos="fade-up" data-aos-duration="1000">
-												<div class="row">
-													<div class="col-md-4">
-														<div class="blog-post-img-content">
-															<div class="blog-img-date relative-position">
-																<div class="blog-thumnile">
-																	<img class="rounded" src="{{asset('front_assets/img/blog/bp-2.jpg')}}" alt="">
-																</div>
-																<div class="course-price text-center gradient-bg">
-																	<span>26 April 2018</span>
+											@foreach ($items as $item)
+
+												<div class="list-blog-item" data-aos="fade-up" data-aos-duration="1000">
+													<div class="row">
+														<div class="col-md-4">
+															<div class="blog-post-img-content">
+																<div class="blog-img-date relative-position">
+																	<div class="blog-thumnile">
+																		<img class="rounded" src="{{asset('storage/'.$item->image)}}" alt="">
+																	</div>
+																	<div class="course-price text-center gradient-bg">
+																		<span>{{ date('j M, Y', strtotime($item->created_at))}}</span>
+																	</div>
 																</div>
 															</div>
 														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="blog-title-content headline">
-															<h3><a href="collab-single.html">CHF - Cooperative Housing Foundation </a></h3>
-															<div class="blog-content">
-																Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-															</div>
+														<div class="col-md-6">
+															<div class="blog-title-content headline">
+																<h3><a href="{{route('collab.show', $item->url)}}">{{ $item->title}} </a></h3>
+																<div class="blog-content">
+																	{{ \Illuminate\Support\Str::limit(strip_tags($item->content), 100, '...') }}  
+																</div>
 
-															<div class="view-all-btn bold-font">
-																<a href="collab-single.html">Read More <i class="fas fa-chevron-circle-right"></i></a>
+																<div class="view-all-btn bold-font">
+																	<a href="{{route('collab.show', $item->url)}}">Read More <i class="fas fa-chevron-circle-right"></i></a>
+																</div>
 															</div>
 														</div>
 													</div>
 												</div>
-											</div>
 
-											<div class="list-blog-item" data-aos="fade-up" data-aos-duration="1000">
-												<div class="row">
-													<div class="col-md-4">
-														<div class="blog-post-img-content">
-															<div class="blog-img-date relative-position">
-																<div class="blog-thumnile">
-																	<img class="rounded" src="{{asset('front_assets/img/blog/bp-3.jpg')}}" alt="">
-																</div>
-																<div class="course-price text-center gradient-bg">
-																	<span>26 April 2018</span>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="blog-title-content headline">
-															<h3><a href="collab-single.html">ILO – International Labor Organization </a></h3>
-															<div class="blog-content">
-																Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-															</div>
-
-															<div class="view-all-btn bold-font">
-																<a href="collab-single.html">Read More <i class="fas fa-chevron-circle-right"></i></a>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="list-blog-item" data-aos="fade-up" data-aos-duration="1000">
-												<div class="row">
-													<div class="col-md-4">
-														<div class="blog-post-img-content">
-															<div class="blog-img-date relative-position">
-																<div class="blog-thumnile">
-																	<img class="rounded" src="{{asset('front_assets/img/blog/bp-5.jpg')}}" alt="">
-																</div>
-																<div class="course-price text-center gradient-bg">
-																	<span>26 April 2018</span>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="blog-title-content headline">
-															<h3><a href="collab-single.html">Capacity Building Programme for Leads of the Women with Disabilities   </a></h3>
-															<div class="blog-content">
-																Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-															</div>
-
-															<div class="view-all-btn bold-font">
-																<a href="collab-single.html">Read More <i class="fas fa-chevron-circle-right"></i></a>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
+											@endforeach
 
 										</div>
 									</div>
 								</div>
 
 
-								<div class="couse-pagination text-center ul-li">
-									<ul>
-										<li class="pg-text"><a href="#">PREV</a></li>
-										<li><a href="#">01</a></li>
-										<li><a href="#">02</a></li>
-										<li class="active"><a href="#">03</a></li>
-										<li><a href="#">04</a></li>
-										<li><a href="#">...</a></li>
-										<li><a href="#">15</a></li>
-										<li class="pg-text"><a href="#">NEXT</a></li>
-									</ul>
+								<!-- Pagination -->
+								<div class="row">
+									<div class="col-12 d-flex justify-content-center py-4">
+										{{$items->links()}}
+									</div>
 								</div>
+								<!-- end: Pagination -->
+
 							</div>
 						</div>
 						

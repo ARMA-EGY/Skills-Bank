@@ -7,8 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\LearningTree;
 use App\Models\TreeDescription;
-//use App\Http\Requests\CourseCategory\CategoryRequest;
-//use App\Http\Requests\CourseCategory\UpdateCategoryRequest;
+
 use Illuminate\Support\Facades\Storage;
 use DB;
 use App\Providers\RouteServiceProvider;
@@ -158,25 +157,6 @@ class LearningTreeController extends Controller
 		
 		return redirect(route('learningtree.index'));
     }
-/*
 
-    //-------------- Disable Data  ---------------\\
-
-    public function disable(Request $request)
-    {
-        $item     = Categories::where('id', $request->id)->first();
-
-        if($item->disable == 1)
-        {
-            $disable = 0;
-        }
-        elseif($item->disable == 0)
-        {
-            $disable = 1;
-        }
-
-        $item->disable = $disable;
-        $item->save();
-    }
-   */
+    
 }

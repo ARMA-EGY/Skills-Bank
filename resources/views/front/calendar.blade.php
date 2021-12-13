@@ -1,6 +1,16 @@
 
 @extends('layouts.front')
 
+@section('style')
+	<style>
+		.owl-nav 
+		{
+			right: 0;
+			top: -50px;
+			position: absolute;
+		}
+	</style>
+@endsection
 
 @section('content')
 

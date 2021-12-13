@@ -23,7 +23,7 @@
 						<div class="layer-1-4">
 							<div id="course-btn">
 								<div class="genius-btn gradient-bg text-center text-uppercase ul-li-block bold-font">
-									<a href="#">Know More About Us<i class="fas fa-caret-right"></i></a>
+									<a href="{{route('about')}}">Know More About Us<i class="fas fa-caret-right"></i></a>
 								</div>
 							</div>
 						</div>
@@ -235,13 +235,13 @@
 							<div class="about-us-text" style="background: url({{asset('front_assets/img/about/1.jpg')}});background-size: cover;position: relative;">
 								<div class="overlay"></div>
 								<div class="section-title2 relative-position mb20 headline text-center text-yellow">
-									<a href="#"><h6 class="font-weight-bold">Customized & Practical Training Programs </h6></a>
+									<a href="{{route('practical')}}"><h6 class="font-weight-bold">Customized & Practical Training Programs </h6></a>
 								</div>
 								<div class="about-content-text text-center relative-position">
 									<p class="text-white">The Skills Bank Learning Design team customizes all the training programs needed to level up every core competency your team members have in their skill banks </p>
 									<div class="about-btn mt-4 text-center">
 										<div class="genius-btn gradient-bg text-center text-uppercase ul-li-block bold-font">
-											<a href="#">Need Tranning<i class="fas fa-caret-right"></i></a>
+											<a href="{{route('practical')}}">Need Tranning<i class="fas fa-caret-right"></i></a>
 										</div>
 									</div>
 								</div>
@@ -255,13 +255,13 @@
 							<div class="about-us-text" style="background: url({{asset('front_assets/img/about/2.jpg')}});background-size: cover;position: relative;">
 								<div class="overlay"></div>
 								<div class="section-title2 relative-position mb20 headline text-center text-yellow">
-									<a href="#"><h6 class="font-weight-bold">Virtual Training </h6></a>
+									<a href="{{route('virtual')}}"><h6 class="font-weight-bold">Virtual Training </h6></a>
 								</div>
 								<div class="about-content-text text-center relative-position">
 									<p class="text-white">Amongst the Coronavirus circumstances, we became highly aware of the urge of providing you with virtual training options.</p>
 									<div class="about-btn mt-4 text-center">
 										<div class="genius-btn gradient-bg text-center text-uppercase ul-li-block bold-font">
-											<a href="#">Need Tranning<i class="fas fa-caret-right"></i></a>
+											<a href="{{route('virtual')}}">Need Tranning<i class="fas fa-caret-right"></i></a>
 										</div>
 									</div>
 								</div>
@@ -275,13 +275,13 @@
 							<div class="about-us-text" style="background: url({{asset('front_assets/img/about/3.jpg')}});background-size: cover;position: relative;">
 								<div class="overlay"></div>
 								<div class="section-title2 relative-position mb20 headline text-center text-yellow">
-									<a href="#"><h6 class="font-weight-bold">Customized e-Learning Training Production </h6></a>
+									<a href="{{route('videos')}}"><h6 class="font-weight-bold">Customized e-Learning Training Production </h6></a>
 								</div>
 								<div class="about-content-text text-center relative-position">
 									<p class="text-white">We have responded to the increasing number of clients who want to incorporate training videos in which star Subject Matter Experts (SMEs). </p>
 									<div class="about-btn mt-4 text-center">
 										<div class="genius-btn gradient-bg text-center text-uppercase ul-li-block bold-font">
-											<a href="#">Record a SME<i class="fas fa-caret-right"></i></a>
+											<a href="{{route('videos')}}">Record a SME<i class="fas fa-caret-right"></i></a>
 										</div>
 									</div>
 								</div>
@@ -295,13 +295,13 @@
 							<div class="about-us-text" style="background: url({{asset('front_assets/img/about/4.jpg')}});background-size: cover;position: relative;">
 								<div class="overlay"></div>
 								<div class="section-title2 relative-position mb20 headline text-center text-yellow">
-									<a href="#"><h6 class="font-weight-bold">Designing Learning Journeys for full tracks </h6></a>
+									<a href="{{route('designing')}}"><h6 class="font-weight-bold">Designing Learning Journeys for full tracks </h6></a>
 								</div>
 								<div class="about-content-text text-center relative-position">
 									<p class="text-white">We understand the huge effort, knowledge, and focus needed to create a long term training tracks. We spare you all of that through our professional</p>
 									<div class="about-btn mt-4 text-center">
 										<div class="genius-btn gradient-bg text-center text-uppercase ul-li-block bold-font">
-											<a href="#">Request a Design<i class="fas fa-caret-right"></i></a>
+											<a href="{{route('designing')}}">Request a Design<i class="fas fa-caret-right"></i></a>
 										</div>
 									</div>
 								</div>
@@ -315,13 +315,13 @@
 							<div class="about-us-text" style="background: url({{asset('front_assets/img/about/5.jpg')}});background-size: cover;position: relative;">
 								<div class="overlay"></div>
 								<div class="section-title2 relative-position mb20 headline text-center text-yellow">
-									<a href="#"><h6 class="font-weight-bold">Skills Assessments </h6></a>
+									<a href="{{route('assessments')}}"><h6 class="font-weight-bold">Skills Assessments </h6></a>
 								</div>
 								<div class="about-content-text text-center relative-position">
 									<p class="text-white">Every now and then, you need to know where your human assets stand and what they need to effectively move forward towards achieving your next organizational goal. </p>
 									<div class="about-btn mt-4 text-center">
 										<div class="genius-btn gradient-bg text-center text-uppercase ul-li-block bold-font">
-											<a href="#">Need Assessment<i class="fas fa-caret-right"></i></a>
+											<a href="{{route('assessments')}}">Need Assessment<i class="fas fa-caret-right"></i></a>
 										</div>
 									</div>
 								</div>
@@ -600,16 +600,16 @@
 									<span>{{$course->price}} {{__('front.CURRENCY')}}</span>
 								</div>
 								<div class="course-details-btn">
-									<a href="#">COURSE DETAIL <i class="fas fa-arrow-right"></i></a>
+									<a href="{{route('course.show', $course->id)}}">COURSE DETAIL <i class="fas fa-arrow-right"></i></a>
 								</div>
 							</div>
 							<div class="course-item-text p-3">
 								<div class="course-title mt10 headline pb-2 relative-position">
-									<h3><a href="#">{{$course->name}}</a></h3>
+									<h3><a href="{{route('course.show', $course->id)}}">{{$course->name}}</a></h3>
 								</div>
 								<div class="course-viewer ul-li">
 									<ul>
-										<li><a href=""><i class="fas fa-calendar-alt mr-3"></i> Started {{\Carbon\Carbon::parse($course->start_date)->format('d F')}} </a></li>
+										<li><i class="fas fa-calendar-alt mr-3"></i> Started {{\Carbon\Carbon::parse($course->start_date)->format('d F')}}</li>
 									</ul>
 								</div>
 								<div class="mt-2 text-center">
@@ -738,19 +738,20 @@
 								</div>
 
 								<div class="contact_secound_form">
-									<form class="contact_form" action="#" method="POST" enctype="multipart/form-data">
+									<form class="contact_form">
+										@csrf
 										<div class="contact-info">
-											<input class="name" name="name" type="text" placeholder="Your Name.">
+											<input class="name field1" name="name" type="text" placeholder="Your Name." required>
 										</div>
 										<div class="contact-info">
-											<input class="phone" name="phone" type="number" placeholder="Your Phone">
+											<input class="phone field1" name="phone" type="number" placeholder="Your Phone" required>
 										</div>
 										<div class="contact-info">
-											<input class="email" name="email" type="email" placeholder="Your Email">
+											<input class="email field1" name="email" type="email" placeholder="Your Email" required>
 										</div>
-										<textarea placeholder="Message." spellcheck="false"></textarea>
+										<textarea class="field1" placeholder="Message." name="message" spellcheck="false" required></textarea>
 										<div class="nws-button text-center  gradient-bg text-capitalize mb-4">
-											<button type="submit" value="Submit">SEND MESSAGE <i class="fas fa-caret-right text-yellow"></i></button> 
+											<button type="submit" class="submit" value="Submit">SEND MESSAGE <i class="fas fa-caret-right text-yellow"></i></button> 
 										</div>
 									</form>
 								</div>

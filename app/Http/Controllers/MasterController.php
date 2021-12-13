@@ -17,6 +17,10 @@ use App\Models\Event;
 use App\Models\Setting;
 use App\Models\Countries;
 
+use App\Models\Message;
+use App\Models\Social;
+use App\Models\Subscriber;
+
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
@@ -46,25 +50,9 @@ class MasterController extends Controller
     public function index()
     {
         $user = auth()->user();
-        if( $user->role == 'Admin')
-        {  
-
-            return view('admin.home', [
-            ]);
-        }
-        else if( $user->role == 'Staff')
-        {
-
-            return view('staff.home', [
-            ]);
-
-        }
-        else if( $user->role == 'Merchant')
-        {
-            return view('merchant.home', [
-            ]);
-
-        }
+       
+        return view('admin.home', [
+        ]);
 
     }
 
@@ -72,24 +60,10 @@ class MasterController extends Controller
     public function profile()
     {
         $user = auth()->user();
-        if( $user->role == 'Admin')
-        {
-            return view('admin.profile', [
-                'countries'   => Countries::all(),
-                ]);
-        }
-        else if( $user->role == 'Staff')
-        {
-            return view('staff.profile', [
-                'countries'   => Countries::all(),
-                ]);
-        }
-        else if( $user->role == 'Merchant')
-        {
-            return view('merchant.profile', [
-                'countries'   => Countries::all(),
-                ]);
-        }
+        
+        return view('admin.profile', [
+            'countries'   => Countries::all(),
+            ]);
         
     }
     
@@ -113,6 +87,35 @@ class MasterController extends Controller
         ]);
     }
     
+    //-------------- Messages Page ---------------\\
+    public function messages()
+    {
+        $messages     = Message::orderBy('id','desc')->paginate(10);
+
+        return view('admin.messages', [
+            'messages'    => $messages
+        ]);
+    }
+
+    //-------------- Subscribers Page ---------------\\
+    public function subscribers()
+    {
+        $subscribers     = Subscriber::orderBy('id','desc')->paginate(10);
+
+        return view('admin.subscribers', [
+            'subscribers'    => $subscribers
+        ]);
+    }
+
+    //-------------- Social Media Page ---------------\\
+    public function socialmedia()
+    {
+        $socials         = Social::orderBy('id','desc')->paginate(10);
+
+        return view('admin.socialmedia', [
+            'socials'    => $socials,
+        ]);
+    }
 
 /*
 |--------------------------------------------------------------------------

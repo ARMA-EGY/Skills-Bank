@@ -91,7 +91,7 @@ class CoursesController extends Controller
                 $destinationPath = public_path('images/courses');
                 ini_set('memory_limit', '2048M');
                 $img = Image::make($image->getRealPath());
-                $img->resize(400, null, function ($constraint) {
+                $img->resize(800, null, function ($constraint) {
                     $constraint->aspectRatio();
                 })->save($destinationPath.'/'.$input['imagename']);
 
@@ -108,6 +108,7 @@ class CoursesController extends Controller
                 'students_limit' => $request->students_limit,
                 'category_id' => $request->category_id,
                 'image' => $courseImage,
+                'description' => $request->description,
             ]);
             
             $request->session()->flash('success', 'Course Was Added successfully');
@@ -134,7 +135,7 @@ class CoursesController extends Controller
     {
 
         $user = auth()->user();
-        $data = $request->only(['name', 'price_eg', 'price_sa', 'start_date', 'end_date', 'students_limit', 'category_id']);
+        $data = $request->only(['name', 'price_eg', 'price_sa', 'start_date', 'end_date', 'students_limit', 'category_id', 'description']);
 
 
         if($request->hasfile('image'))
@@ -151,7 +152,7 @@ class CoursesController extends Controller
             $destinationPath = public_path('/images/courses');
             ini_set('memory_limit', '2048M');
             $img = Image::make($image->getRealPath());
-            $img->resize(400, null, function ($constraint) {
+            $img->resize(800, null, function ($constraint) {
                 $constraint->aspectRatio();
             })->save($destinationPath.'/'.$input['imagename']);
 

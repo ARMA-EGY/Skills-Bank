@@ -84,7 +84,7 @@
                     <td>{{ $loop->iteration }}</td>
                     <td><strong> {{  $item->name }} </strong></td>
                     <td><strong> {{ $item->price_eg }} </strong></td>
-                    <td><strong> {{ $item->price_sr }} </strong></td>
+                    <td><strong> {{ $item->price_sa }} </strong></td>
                     <td><strong> {{ $item->start_date }} </strong></td>
                     <td><strong> {{ $item->end_date }} </strong></td>
                     <td><strong> {{ $item->students_limit }} </strong></td>

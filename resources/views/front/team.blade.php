@@ -52,181 +52,48 @@
 						<div class="teachers-archive">
 							<div class="row justify-content-center">
 
-								<div class="col-md-3 col-sm-6" data-aos="flip-right" data-aos-duration="1000">
-									<div class="teacher-pic-content">
-										<div class="teacher-img-content relative-position">
-											<img src="{{asset('front_assets/img/teacher/mt-2.jpg')}}" alt="">
-											<div class="teacher-hover-item">
-												<div class="teacher-social-name ul-li-block">
-													<ul>
-														<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-														<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-														<li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-													</ul>
+								@foreach ($items as $item)
+									
+									<div class="col-md-3 col-sm-6" data-aos="flip-right" data-aos-duration="1000">
+										<div class="teacher-pic-content">
+											<div class="teacher-img-content relative-position">
+												<img src="{{asset($item->image)}}" alt="">
+												<div class="teacher-hover-item">
+													<div class="teacher-social-name ul-li-block">
+														<ul>
+															<li><a href="{{$item->facebook}}"><i class="fab fa-facebook-f"></i></a></li>
+															<li><a href="{{$item->twitter}}"><i class="fab fa-twitter"></i></a></li>
+															<li><a href="{{$item->linkedin}}"><i class="fab fa-linkedin"></i></a></li>
+														</ul>
+													</div>
+													<div class="teacher-text">
+														Know more about {{$item->name}} full journey 
+													</div>
 												</div>
-												<div class="teacher-text">
-													Know more about Mohamed’s full journey 
+												<div class="teacher-next text-center">
+													<a href="{{route('member.show', $item->id)}}"><i class="text-gradiant fas fa-arrow-right"></i></a>
 												</div>
 											</div>
-											<div class="teacher-next text-center">
-												<a href="team-details.html"><i class="text-gradiant fas fa-arrow-right"></i></a>
+											<div class="teacher-name-designation">
+												<span class="teacher-name">{{$item->name}} </span>
+												<span class="teacher-designation">{{$item->title}} </span>
 											</div>
-										</div>
-										<div class="teacher-name-designation">
-											<span class="teacher-name">Mohamed El-Baz </span>
-											<span class="teacher-designation">Managing Director </span>
 										</div>
 									</div>
-								</div>
 
-								<div class="col-md-3 col-sm-6" data-aos="flip-right" data-aos-duration="1000">
-									<div class="teacher-pic-content">
-										<div class="teacher-img-content relative-position">
-											<img src="{{asset('front_assets/img/teacher/mt-1.jpg')}}" alt="">
-											<div class="teacher-hover-item">
-												<div class="teacher-social-name ul-li-block">
-													<ul>
-														<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-														<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-														<li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-													</ul>
-												</div>
-												<div class="teacher-text">
-													Know more about Eman's full journey 
-												</div>
-											</div>
-											<div class="teacher-next text-center">
-												<a href="team-details.html"><i class="text-gradiant fas fa-arrow-right"></i></a>
-											</div>
-										</div>
-										<div class="teacher-name-designation">
-											<span class="teacher-name">Eman Fayrouz  </span>
-											<span class="teacher-designation">LD Supervisor  </span>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md-3 col-sm-6" data-aos="flip-right" data-aos-duration="1000">
-									<div class="teacher-pic-content">
-										<div class="teacher-img-content relative-position">
-											<img src="{{asset('front_assets/img/teacher/mt-3.jpg')}}" alt="">
-											<div class="teacher-hover-item">
-												<div class="teacher-social-name ul-li-block">
-													<ul>
-														<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-														<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-														<li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-													</ul>
-												</div>
-												<div class="teacher-text">
-													Know more about Mohamed’s full journey 
-												</div>
-											</div>
-											<div class="teacher-next text-center">
-												<a href="team-details.html"><i class="text-gradiant fas fa-arrow-right"></i></a>
-											</div>
-										</div>
-										<div class="teacher-name-designation">
-											<span class="teacher-name">Mohamed Youssef  </span>
-											<span class="teacher-designation">Corporate Training Supervisor  </span>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md-3 col-sm-6" data-aos="flip-right" data-aos-duration="1000">
-									<div class="teacher-pic-content">
-										<div class="teacher-img-content relative-position">
-											<img src="{{asset('front_assets/img/teacher/mt-5.jpg')}}" alt="">
-											<div class="teacher-hover-item">
-												<div class="teacher-social-name ul-li-block">
-													<ul>
-														<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-														<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-														<li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-													</ul>
-												</div>
-												<div class="teacher-text">
-													Know more about Shimaa’s full journey 
-												</div>
-											</div>
-											<div class="teacher-next text-center">
-												<a href="team-details.html"><i class="text-gradiant fas fa-arrow-right"></i></a>
-											</div>
-										</div>
-										<div class="teacher-name-designation">
-											<span class="teacher-name">Shimaa Abdellatif  </span>
-											<span class="teacher-designation">Senior Recruitment & Training Supervisor  </span>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md-3 col-sm-6" data-aos="flip-right" data-aos-duration="1000">
-									<div class="teacher-pic-content">
-										<div class="teacher-img-content relative-position">
-											<img src="{{asset('front_assets/img/teacher/mt-1.jpg')}}" alt="">
-											<div class="teacher-hover-item">
-												<div class="teacher-social-name ul-li-block">
-													<ul>
-														<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-														<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-														<li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-													</ul>
-												</div>
-												<div class="teacher-text">
-													Know more about Shimaa’s full journey 
-												</div>
-											</div>
-											<div class="teacher-next text-center">
-												<a href="team-details.html"><i class="text-gradiant fas fa-arrow-right"></i></a>
-											</div>
-										</div>
-										<div class="teacher-name-designation">
-											<span class="teacher-name">Shimaa Elhamaimy  </span>
-											<span class="teacher-designation">Marketing Supervisor  </span>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-md-3 col-sm-6" data-aos="flip-right" data-aos-duration="1000">
-									<div class="teacher-pic-content">
-										<div class="teacher-img-content relative-position">
-											<img src="{{asset('front_assets/img/teacher/mt-5.jpg')}}" alt="">
-											<div class="teacher-hover-item">
-												<div class="teacher-social-name ul-li-block">
-													<ul>
-														<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-														<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-														<li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-													</ul>
-												</div>
-												<div class="teacher-text">
-													Know more about Mai’s full journey 
-												</div>
-											</div>
-											<div class="teacher-next text-center">
-												<a href="team-details.html"><i class="text-gradiant fas fa-arrow-right"></i></a>
-											</div>
-										</div>
-										<div class="teacher-name-designation">
-											<span class="teacher-name">Mai Mohamed   </span>
-											<span class="teacher-designation">Senior Training Specialist   </span>
-										</div>
-									</div>
-								</div>
+								@endforeach
+								
 
 							</div>
-							<div class="couse-pagination text-center ul-li">
-								<ul>
-									<li class="pg-text"><a href="#">PREV</a></li>
-									<li><a href="#">01</a></li>
-									<li><a href="#">02</a></li>
-									<li class="active"><a href="#">03</a></li>
-									<li><a href="#">04</a></li>
-									<li><a href="#">...</a></li>
-									<li><a href="#">15</a></li>
-									<li class="pg-text"><a href="#">NEXT</a></li>
-								</ul>
+
+							
+							<!-- Pagination -->
+							<div class="row">
+								<div class="col-12 d-flex justify-content-center py-4">
+									{{$items->links()}}
+								</div>
 							</div>
+							<!-- end: Pagination -->
 							
 						</div>
 					</div>

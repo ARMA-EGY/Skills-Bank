@@ -36,143 +36,32 @@
 
 										<div class="row">
 
-											<div class="col-md-4" data-aos="fade-up" data-aos-duration="1000">
-												<div class="blog-post-img-content">
-													<div class="blog-img-date relative-position">
-														<div class="blog-thumnile">
-															<img class="rounded" src="{{asset('front_assets/img/blog/bp-1.jpg')}}" alt="">
+											@foreach ($blogs as $blog)
+												
+												<div class="col-md-4" data-aos="fade-up" data-aos-duration="1000">
+													<div class="blog-post-img-content">
+														<div class="blog-img-date relative-position">
+															<div class="blog-thumnile">
+																<img class="rounded" src="{{asset('storage/'.$blog->image)}}" alt="">
+															</div>
+															<div class="course-price text-center gradient-bg">
+																<span>{{ date('j M, Y', strtotime($blog->created_at))}}</span>
+															</div>
 														</div>
-														<div class="course-price text-center gradient-bg">
-															<span>26 April 2018</span>
-														</div>
-													</div>
-													<div class="blog-title-content headline">
-														<h3><a href="blog-single.html">Affiliate Marketing A Beginner’s Guide.</a></h3>
-														<div class="blog-content">
-															Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-														</div>
+														<div class="blog-title-content headline">
+															<h3><a href="{{route('blog.show', $blog->url)}}">{{ $blog->title}}</a></h3>
+															<div class="blog-content">
+																{{ \Illuminate\Support\Str::limit(strip_tags($blog->content), 100, '...') }} 
+															</div>
 
-														<div class="view-all-btn bold-font">
-															<a href="blog-single.html">Read More <i class="fas fa-chevron-circle-right"></i></a>
+															<div class="view-all-btn bold-font">
+																<a href="{{route('blog.show', $blog->url)}}">Read More <i class="fas fa-chevron-circle-right"></i></a>
+															</div>
 														</div>
 													</div>
 												</div>
-											</div>
-
-											<div class="col-md-4" data-aos="fade-up" data-aos-duration="1000">
-												<div class="blog-post-img-content">
-													<div class="blog-img-date relative-position">
-														<div class="blog-thumnile">
-															<img class="rounded" src="{{asset('front_assets/img/blog/bp-2.jpg')}}" alt="">
-														</div>
-														<div class="course-price text-center gradient-bg">
-															<span>26 April 2018</span>
-														</div>
-													</div>
-													<div class="blog-title-content headline">
-														<h3><a href="blog-single.html">Affiliate Marketing A Beginner’s Guide.</a></h3>
-														<div class="blog-content">
-															Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-														</div>
-
-														<div class="view-all-btn bold-font">
-															<a href="blog-single.html">Read More <i class="fas fa-chevron-circle-right"></i></a>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="col-md-4" data-aos="fade-up" data-aos-duration="1000">
-												<div class="blog-post-img-content">
-													<div class="blog-img-date relative-position">
-														<div class="blog-thumnile">
-															<img class="rounded" src="{{asset('front_assets/img/blog/bp-3.jpg')}}" alt="">
-														</div>
-														<div class="course-price text-center gradient-bg">
-															<span>26 April 2018</span>
-														</div>
-													</div>
-													<div class="blog-title-content headline">
-														<h3><a href="blog-single.html">Affiliate Marketing A Beginner’s Guide.</a></h3>
-														<div class="blog-content">
-															Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-														</div>
-
-														<div class="view-all-btn bold-font">
-															<a href="blog-single.html">Read More <i class="fas fa-chevron-circle-right"></i></a>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="col-md-4" data-aos="fade-up" data-aos-duration="1000">
-												<div class="blog-post-img-content">
-													<div class="blog-img-date relative-position">
-														<div class="blog-thumnile">
-															<img class="rounded" src="{{asset('front_assets/img/blog/bp-4.jpg')}}" alt="">
-														</div>
-														<div class="course-price text-center gradient-bg">
-															<span>26 April 2018</span>
-														</div>
-													</div>
-													<div class="blog-title-content headline">
-														<h3><a href="blog-single.html">Affiliate Marketing A Beginner’s Guide.</a></h3>
-														<div class="blog-content">
-															Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-														</div>
-
-														<div class="view-all-btn bold-font">
-															<a href="blog-single.html">Read More <i class="fas fa-chevron-circle-right"></i></a>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="col-md-4" data-aos="fade-up" data-aos-duration="1000">
-												<div class="blog-post-img-content">
-													<div class="blog-img-date relative-position">
-														<div class="blog-thumnile">
-															<img class="rounded" src="{{asset('front_assets/img/blog/bp-5.jpg')}}" alt="">
-														</div>
-														<div class="course-price text-center gradient-bg">
-															<span>26 April 2018</span>
-														</div>
-													</div>
-													<div class="blog-title-content headline">
-														<h3><a href="blog-single.html">Affiliate Marketing A Beginner’s Guide.</a></h3>
-														<div class="blog-content">
-															Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-														</div>
-
-														<div class="view-all-btn bold-font">
-															<a href="blog-single.html">Read More <i class="fas fa-chevron-circle-right"></i></a>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="col-md-4" data-aos="fade-up" data-aos-duration="1000">
-												<div class="blog-post-img-content">
-													<div class="blog-img-date relative-position">
-														<div class="blog-thumnile">
-															<img class="rounded" src="{{asset('front_assets/img/blog/bp-1.jpg')}}" alt="">
-														</div>
-														<div class="course-price text-center gradient-bg">
-															<span>26 April 2018</span>
-														</div>
-													</div>
-													<div class="blog-title-content headline">
-														<h3><a href="blog-single.html">Affiliate Marketing A Beginner’s Guide.</a></h3>
-														<div class="blog-content">
-															Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-														</div>
-
-														<div class="view-all-btn bold-font">
-															<a href="blog-single.html">Read More <i class="fas fa-chevron-circle-right"></i></a>
-														</div>
-													</div>
-												</div>
-											</div>
+											
+											@endforeach
 
 										</div>
 											
@@ -180,18 +69,14 @@
 								</div>
 
 
-								<div class="couse-pagination text-center ul-li">
-									<ul>
-										<li class="pg-text"><a href="#">PREV</a></li>
-										<li><a href="#">01</a></li>
-										<li><a href="#">02</a></li>
-										<li class="active"><a href="#">03</a></li>
-										<li><a href="#">04</a></li>
-										<li><a href="#">...</a></li>
-										<li><a href="#">15</a></li>
-										<li class="pg-text"><a href="#">NEXT</a></li>
-									</ul>
+								<!-- Pagination -->
+								<div class="row">
+									<div class="col-12 d-flex justify-content-center py-4">
+										{{$blogs->links()}}
+									</div>
 								</div>
+								<!-- end: Pagination -->
+								
 							</div>
 						</div>
 						

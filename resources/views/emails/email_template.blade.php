@@ -7,7 +7,7 @@ Here are the details:
 <br>
 <b>Email:</b> {{ $details['email'] }}
 <br>
-<b>Subject:</b> {{ $details['subject'] }}
+<b>Phone:</b> {{ $details['phone'] }}
 <br>
 <b>Message:</b> {{ $details['message'] }}
 <br>

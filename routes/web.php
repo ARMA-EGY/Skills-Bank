@@ -39,8 +39,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
     Route::get('/Solutions/Videos', 'FrontController@videos')->name('videos');
     Route::get('/Solutions/Designing', 'FrontController@designing')->name('designing');
     Route::get('/Solutions/Assessments', 'FrontController@assessments')->name('assessments');
+    Route::get('/course/{id}', 'FrontController@courseShow')->name('course.show');
+    Route::get('/blog/{url}', 'FrontController@blogShow')->name('blog.show');
+    Route::get('/collab/{url}', 'FrontController@collabShow')->name('collab.show');
+    Route::get('/member/{id}', 'FrontController@memberShow')->name('member.show');
 
     Route::post('/booking', 'FrontController@booking')->name('booking');
+    Route::post('/message', 'FrontController@message')->name('message');
+    Route::post('/subscribe', 'FrontController@subscribe')->name('subscribe');
 });
 
 Route::get('/admin', function () {return redirect('/login');});
@@ -71,10 +77,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'a
     */
 
     Route::group(['prefix' => 'admin','middleware' => [ 'admin' ]], function () 
-    {   
+    {
         
-
-
         Route::get('/calendar', 'MasterController@calendar')->name('calendar');
         
         /*
@@ -87,9 +91,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'a
         Route::get('/deactivestaff', 'Admin\Staff\StaffController@deactive')->name('deactive-staff');
         Route::get('/staff/{id}/profile', 'Admin\Staff\StaffController@profile')->name('staff.profile');
 
-        Route::resource('/permissions', 'Admin\Permissions\PermissionsController'); 
-        Route::get('/logo', 'MasterController@logo')->name('admin-logo');
-        Route::get('/setting', 'MasterController@setting')->name('admin-setting');
 
 
         /*
@@ -163,72 +164,85 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'a
         | Learning Tree
         |--------------------------------------------------------------------------
         */ 
-        Route::resource('/learningtree', 'Admin\LearningTree\LearningTreeController');  
+        Route::resource('/learningtree', 'Admin\LearningTree\LearningTreeController'); 
+        
+
+        /*
+        |--------------------------------------------------------------------------
+        | Others
+        |--------------------------------------------------------------------------
+        */ 
+        
+        Route::resource('/permissions', 'Admin\Permissions\PermissionsController'); 
+        Route::get('/logo', 'MasterController@logo')->name('admin-logo');
+        Route::get('/setting', 'MasterController@setting')->name('admin-setting');
+        Route::get('/messages', 'MasterController@messages')->name('messages');
+        Route::get('/subscribers', 'MasterController@subscribers')->name('subscribers');
+        Route::get('/socialmedia', 'MasterController@socialmedia')->name('socialmedia');
     });
 
 
-
 });
 
 
-/*
-|--------------------------------------------------------------------------
-| Back Routes (Admin Actions)
-|--------------------------------------------------------------------------
-*/
+    /*
+    |--------------------------------------------------------------------------
+    | Back Routes (Admin Actions)
+    |--------------------------------------------------------------------------
+    */
 
-Route::post('/changelogo', 'MasterController@changelogo')->name('changelogo');
-Route::post('/editsetting', 'MasterController@editsetting')->name('edit-setting');
-Route::post('/editinfo', 'MasterController@editinfo')->name('edit-info');
-Route::post('/changeProfilePicture', 'MasterController@changeProfilePicture')->name('change-profile-picture');
-Route::post('/changepassword', 'MasterController@changepassword')->name('change-password');
-Route::post('/enableuser', 'MasterController@enableuser')->name('enable-user');
+    Route::post('/changelogo', 'MasterController@changelogo')->name('changelogo');
+    Route::post('/editsetting', 'MasterController@editsetting')->name('edit-setting');
+    Route::post('/editinfo', 'MasterController@editinfo')->name('edit-info');
+    Route::post('/changeProfilePicture', 'MasterController@changeProfilePicture')->name('change-profile-picture');
+    Route::post('/changepassword', 'MasterController@changepassword')->name('change-password');
+    Route::post('/enableuser', 'MasterController@enableuser')->name('enable-user');
 
-/*
-|--------------------------------------------------------------------------
-| To-Do List
-|--------------------------------------------------------------------------
-*/
+    /*
+    |--------------------------------------------------------------------------
+    | To-Do List
+    |--------------------------------------------------------------------------
+    */
 
-Route::post('/addtodo', 'MasterController@addtodo')->name('add-todo');
-Route::post('/gettodo', 'MasterController@gettodo')->name('get-todo');
-Route::post('/edittodo', 'MasterController@edittodo')->name('edit-todo');
-Route::post('/removetodo', 'MasterController@removetodo')->name('remove-todo');
+    Route::post('/addtodo', 'MasterController@addtodo')->name('add-todo');
+    Route::post('/gettodo', 'MasterController@gettodo')->name('get-todo');
+    Route::post('/edittodo', 'MasterController@edittodo')->name('edit-todo');
+    Route::post('/removetodo', 'MasterController@removetodo')->name('remove-todo');
 
-/*
-|--------------------------------------------------------------------------
-| Notes
-|--------------------------------------------------------------------------
-*/
-    
-Route::post('/createnote', 'MasterController@createnote')->name('create-note');
-Route::post('/addnote', 'MasterController@addnote')->name('add-note');
-Route::post('/getnote', 'MasterController@getnote')->name('get-note');
-Route::post('/shownote', 'MasterController@shownote')->name('show-note');
-Route::post('/editnote', 'MasterController@editnote')->name('edit-note');
-Route::post('/removenote', 'MasterController@removenote')->name('remove-note');
+    /*
+    |--------------------------------------------------------------------------
+    | Notes
+    |--------------------------------------------------------------------------
+    */
+        
+    Route::post('/createnote', 'MasterController@createnote')->name('create-note');
+    Route::post('/addnote', 'MasterController@addnote')->name('add-note');
+    Route::post('/getnote', 'MasterController@getnote')->name('get-note');
+    Route::post('/shownote', 'MasterController@shownote')->name('show-note');
+    Route::post('/editnote', 'MasterController@editnote')->name('edit-note');
+    Route::post('/removenote', 'MasterController@removenote')->name('remove-note');
 
-/*
-|--------------------------------------------------------------------------
-| Calendar
-|--------------------------------------------------------------------------
-*/
-    
-Route::get('/getevent/{user}', 'MasterController@getevent')->name('get-event');
-Route::post('/addevent', 'MasterController@addevent')->name('add-event');
-Route::post('/updateevent', 'MasterController@updateevent')->name('update-event');
-Route::post('/showevent', 'MasterController@showevent')->name('show-event');
-Route::post('/editnevent', 'MasterController@editevent')->name('edit-event');
-Route::post('/removeevent', 'MasterController@removeevent')->name('remove-event');
+    /*
+    |--------------------------------------------------------------------------
+    | Calendar
+    |--------------------------------------------------------------------------
+    */
+        
+    Route::get('/getevent/{user}', 'MasterController@getevent')->name('get-event');
+    Route::post('/addevent', 'MasterController@addevent')->name('add-event');
+    Route::post('/updateevent', 'MasterController@updateevent')->name('update-event');
+    Route::post('/showevent', 'MasterController@showevent')->name('show-event');
+    Route::post('/editnevent', 'MasterController@editevent')->name('edit-event');
+    Route::post('/removeevent', 'MasterController@removeevent')->name('remove-event');
 
 
-/*
-|------------------------------------------------------------------------
-| Link Storage
-|------------------------------------------------------------------------
-*/
+    /*
+    |------------------------------------------------------------------------
+    | Link Storage
+    |------------------------------------------------------------------------
+    */
 
-Route::get('/linkstorage', function () {
-    Artisan::call('storage:link');
-});
+    Route::get('/linkstorage', function () {
+        Artisan::call('storage:link');
+    });
 

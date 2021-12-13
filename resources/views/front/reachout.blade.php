@@ -100,19 +100,20 @@
 								</div>
 
 								<div class="contact_secound_form">
-									<form class="contact_form" action="#" method="POST" enctype="multipart/form-data">
+									<form class="contact_form">
+										@csrf
 										<div class="contact-info">
-											<input class="name" name="name" type="text" placeholder="Your Name.">
+											<input class="name field1" name="name" type="text" placeholder="Your Name." required>
 										</div>
 										<div class="contact-info">
-											<input class="phone" name="phone" type="number" placeholder="Your Phone">
+											<input class="phone field1" name="phone" type="number" placeholder="Your Phone" required>
 										</div>
 										<div class="contact-info">
-											<input class="email" name="email" type="email" placeholder="Your Email">
+											<input class="email field1" name="email" type="email" placeholder="Your Email" required>
 										</div>
-										<textarea placeholder="Message." spellcheck="false"></textarea>
-										<div class="nws-button text-center  gradient-bg text-capitalize br-30 mb-4">
-											<button type="submit" value="Submit">SEND MESSAGE <i class="fas fa-caret-right text-yellow"></i></button> 
+										<textarea class="field1" placeholder="Message." name="message" spellcheck="false" required></textarea>
+										<div class="nws-button text-center  gradient-bg text-capitalize mb-4">
+											<button type="submit" class="submit" value="Submit">SEND MESSAGE <i class="fas fa-caret-right text-yellow"></i></button> 
 										</div>
 									</form>
 								</div>

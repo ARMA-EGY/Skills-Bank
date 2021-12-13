@@ -52,118 +52,153 @@
                       </div>
                   </li>
 
+                  <li class="nav-item">
+                      <a class="nav-link collapsed" href="#navbar-team" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-components">
+                        <i class="fas fa-user-friends"></i>
+                        <span class="nav-link-text">Team</span>
+                      </a>
+                      <div class="collapse" id="navbar-team" style="">
+                        <ul class="nav nav-sm flex-column">
+                          <li class="nav-item">
+                            <a href="{{ route('team.create')}}" class="nav-link nav-link-sub {{request()->routeIs('team.create') ? 'active' : '' }}">
+                              <i class="far fa-dot-circle"></i>
+                              <span class="sidenav-normal"> Add New Member </span>
+                            </a>
+                          </li>
+                   
+                          <li class="nav-item">
+                            <a href="{{route('team.index')}}" class="nav-link nav-link-sub {{request()->routeIs('team.index') ? 'active' : '' }}">
+                              <i class="far fa-dot-circle"></i>
+                              <span class="sidenav-normal"> All Members </span>
+                            </a>
+                          </li>
 
-
+                        </ul>
+                      </div>
+                  </li>
 
                   <li class="nav-item">
-                    <a class="nav-link collapsed" href="#navbar-career" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-components">
-                      <i class="fas fa-user-tie text-gray"></i>
-                      <span class="nav-link-text">Careers</span>
+                      <a class="nav-link collapsed" href="#navbar-courses" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-courses">
+                        <i class="fas fa-clipboard"></i>
+                        <span class="nav-link-text">Courses</span>
+                      </a>
+                      <div class="collapse" id="navbar-courses" style="">
+                        <ul class="nav nav-sm flex-column">
+
+                          <li class="nav-item">
+                            <a href="{{ route('courses.index')}}" class="nav-link nav-link-sub {{request()->routeIs('courses.index') ? 'active' : '' }}">
+                              <i class="far fa-dot-circle"></i>
+                              <span class="sidenav-normal">All Courses</span>
+                            </a>
+                          </li>
+
+                          <li class="nav-item">
+                            <a href="{{ route('coursecategory.index')}}" class="nav-link nav-link-sub {{request()->routeIs('coursecategory.index') ? 'active' : '' }}">
+                              <i class="far fa-dot-circle"></i>
+                              <span class="sidenav-normal">Categories</span>
+                            </a>
+                          </li>
+
+                          <li class="nav-item">
+                            <a href="#" class="nav-link nav-link-sub">
+                              <i class="far fa-dot-circle"></i>
+                              <span class="sidenav-normal">Bookings</span>
+                            </a>
+                          </li>
+                          
+                        </ul>
+                      </div>
+                  </li>
+
+                  <li class="nav-item">
+                      <a class="nav-link collapsed" href="#navbar-career" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-components">
+                        <i class="fas fa-briefcase"></i>
+                        <span class="nav-link-text">Careers</span>
+                      </a>
+                      <div class="collapse" id="navbar-career" style="">
+                        <ul class="nav nav-sm flex-column">
+
+                          <li class="nav-item">
+                            <a href="{{ route('careers.index')}}" class="nav-link nav-link-sub {{request()->routeIs('careers.index') ? 'active' : '' }}">
+                              <i class="far fa-dot-circle"></i>
+                              <span class="sidenav-normal"> Careers</span>
+                            </a>
+                          </li>
+
+                          <li class="nav-item">
+                            <a href="{{route('career-requests')}}" class="nav-link nav-link-sub {{request()->routeIs('career-requests') ? 'active' : '' }}">
+                              <i class="far fa-dot-circle"></i>
+                              <span class="sidenav-normal"> Requests </span>
+                            </a>
+                          </li>
+                          
+                        </ul>
+                      </div>
+                  </li>
+
+                  <li class="nav-item">
+                      <a class="nav-link {{request()->routeIs('learningtree.index') ? 'active' : '' }}" href="{{route('learningtree.index')}}">
+                          <i class="fas fa-code-branch"></i>
+                          <span class="nav-link-text">Learning Tree</span>
+                      </a>
+                  </li>
+
+                  <li class="nav-item">
+                      <a class="nav-link {{request()->routeIs('blogs.index') ? 'active' : '' }}" href="{{route('blogs.index')}}">
+                          <i class="fa fa-book"></i>
+                          <span class="nav-link-text">Blogs</span>
+                      </a>
+                  </li>
+
+                  <li class="nav-item">
+                      <a class="nav-link {{request()->routeIs('collaboration.index') ? 'active' : '' }}" href="{{route('collaboration.index')}}">
+                          <i class="far fa-handshake"></i>
+                          <span class="nav-link-text">Collaborations</span>
+                      </a>
+                  </li>
+
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">
+                          <i class="fas fa-tags"></i>
+                          <span class="nav-link-text">Clients</span>
+                      </a>
+                  </li>
+
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">
+                          <i class="fas fa-comment-dots"></i>
+                          <span class="nav-link-text">Testimonials</span>
+                      </a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link {{request()->routeIs('messages') ? 'active' : '' }}" href="{{route('messages')}}">
+                        <i class="ni ni-email-83"></i>
+                        <span class="nav-link-text">Messages</span>
                     </a>
-                    <div class="collapse" id="navbar-career" style="">
-                      <ul class="nav nav-sm flex-column">
+                  </li>
 
-                        <li class="nav-item">
-                          <a href="{{ route('careers.index')}}" class="nav-link nav-link-sub {{request()->routeIs('careers.index') ? 'active' : '' }}">
-                            <i class="fas fa-user-tie"></i>
-                            <span class="sidenav-normal"> Careers</span>
-                          </a>
-                        </li>
-
-                        <li class="nav-item">
-                          <a href="{{route('career-requests')}}" class="nav-link nav-link-sub {{request()->routeIs('career-requests') ? 'active' : '' }}">
-                            <i class="fas fa-user-tie"></i>
-                            <span class="sidenav-normal"> Requests </span>
-                          </a>
-                        </li>
-                        
-                      </ul>
-                    </div>
-                </li>
-
-                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#navbar-components" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-components">
-                      <i class="fa fa-book text-green"></i>
-                      <span class="nav-link-text">Blogs</span>
+                  <li class="nav-item">
+                    <a class="nav-link {{request()->routeIs('subscribers') ? 'active' : '' }}" href="{{route('subscribers')}}">
+                        <i class="ni ni-bullet-list-67"></i>
+                        <span class="nav-link-text">Subscribers List</span>
                     </a>
-                    <div class="collapse" id="navbar-components" style="">
-                      <ul class="nav nav-sm flex-column">
+                  </li>
 
-                        <li class="nav-item">
-                          <a href="{{route('categories.index')}}" class="nav-link nav-link-sub {{request()->routeIs('categories.index') ? 'active' : '' }}">
-                            <i class="ni ni-chart-pie-35"></i>
-                            <span class="sidenav-normal"> Categories </span>
-                          </a>
-                        </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">
+                          <i class="fas fa-copy"></i>
+                          <span class="nav-link-text">Pages</span>
+                      </a>
+                  </li>
 
-                        <li class="nav-item">
-                          <a href="{{route('tags.index')}}" class="nav-link nav-link-sub {{request()->routeIs('tags.index') ? 'active' : '' }}">
-                            <i class="fa fa-tags"></i>
-                            <span class="sidenav-normal"> Tags </span>
-                          </a>
-                        </li>
-
-                        <li class="nav-item">
-                          <a href="{{route('blogs.index')}}" class="nav-link nav-link-sub {{request()->routeIs('blogs.index') ? 'active' : '' }}">
-                            <i class="fa fa-book"></i>
-                            <span class="sidenav-normal"> Posts </span>
-                          </a>
-                        </li>
-
-                        <li class="nav-item">
-                          <a href="{{route('admin-draft')}}" class="nav-link nav-link-sub {{request()->routeIs('admin-draft') ? 'active' : '' }}">
-                            <i class="fa fa-paste"></i>
-                            <span class="sidenav-normal"> Drafts </span>
-                          </a>
-                        </li>
-                        
-                      </ul>
-                    </div>
-                </li> 
-
-
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#navbar-components" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-components">
-                      <i class="fa fa-book text-green"></i>
-                      <span class="nav-link-text">Collaborations</span>
-                    </a>
-                    <div class="collapse" id="navbar-components" style="">
-                      <ul class="nav nav-sm flex-column">
-
-                        <li class="nav-item">
-                          <a href="{{route('collaborationcategories.index')}}" class="nav-link nav-link-sub {{request()->routeIs('collaborationcategories.index') ? 'active' : '' }}">
-                            <i class="ni ni-chart-pie-35"></i>
-                            <span class="sidenav-normal"> Categories </span>
-                          </a>
-                        </li>
-
-                        <li class="nav-item">
-                          <a href="{{route('collaborationtags.index')}}" class="nav-link nav-link-sub {{request()->routeIs('tags.index') ? 'active' : '' }}">
-                            <i class="fa fa-tags"></i>
-                            <span class="sidenav-normal"> Tags </span>
-                          </a>
-                        </li>
-
-                        <li class="nav-item">
-                          <a href="{{route('collaboration.index')}}" class="nav-link nav-link-sub {{request()->routeIs('collaboration.index') ? 'active' : '' }}">
-                            <i class="fa fa-book"></i>
-                            <span class="sidenav-normal"> Posts </span>
-                          </a>
-                        </li>
-
-                        <li class="nav-item">
-                          <a href="{{route('collaboration-admin-draft')}}" class="nav-link nav-link-sub {{request()->routeIs('collaboration-admin-draft') ? 'active' : '' }}">
-                            <i class="fa fa-paste"></i>
-                            <span class="sidenav-normal"> Drafts </span>
-                          </a>
-                        </li>
-                        
-                      </ul>
-                    </div>
-                </li> 
-
-
-
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">
+                          <i class="far fa-images"></i>
+                          <span class="nav-link-text">Slider</span>
+                      </a>
+                  </li>
+                  
                   <li class="nav-item">
                       <a class="nav-link collapsed" href="#navbar-roles" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-components">
                         <i class="fas fa-user-tag"></i>
@@ -191,37 +226,29 @@
                   </li>
 
                   <li class="nav-item">
-                      <a class="nav-link collapsed" href="#navbar-reports" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-components">
-                        <i class="far fa-chart-bar"></i>
-                        <span class="nav-link-text"> {{__('master.REPORTS')}}</span>
-                        <span class="badge badge-warning fs-9 p-1 mx-2">{{__('master.PENDING')}}</span>
+                      <a class="nav-link collapsed" href="#navbar-setting" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-components">
+                        <i class="ni ni-settings"></i>
+                        <span class="nav-link-text"> {{__('master.SETTINGS')}}</span>
                       </a>
-                      <div class="collapse" id="navbar-reports" style="">
+                      <div class="collapse" id="navbar-setting" style="">
                         <ul class="nav nav-sm flex-column">
                           
                           <li class="nav-item">
-                              <a href="#" class="nav-link nav-link-sub">
+                              <a href="{{ route('admin-setting')}}" class="nav-link nav-link-sub {{request()->routeIs('admin-setting') ? 'active' : '' }}">
                                 <i class="far fa-dot-circle"></i>
-                                <span class="sidenav-normal"> Report 1 </span>
+                                <span class="sidenav-normal"> General Setting </span>
                               </a>
                           </li>
                           
                           <li class="nav-item">
-                              <a href="#" class="nav-link nav-link-sub">
+                              <a href="{{route('socialmedia')}}" class="nav-link nav-link-sub {{request()->routeIs('socialmedia') ? 'active' : '' }}">
                                 <i class="far fa-dot-circle"></i>
-                                <span class="sidenav-normal"> Report 2 </span>
+                                <span class="sidenav-normal"> Social Media </span>
                               </a>
                           </li>
                           
                         </ul>
                       </div>
-                  </li>
-
-                  <li class="nav-item">
-                      <a class="nav-link {{request()->routeIs('admin-setting') ? 'active' : '' }}" href="{{route('admin-setting')}}">
-                          <i class="ni ni-settings"></i>
-                          <span class="nav-link-text">{{__('master.SETTINGS')}}</span>
-                      </a>
                   </li>
                   
               </ul>
@@ -240,10 +267,10 @@
                       <div class="collapse" id="navbar-lang" style="">
                         <ul class="nav nav-sm flex-column">
 
-                          @if (LaravelLocalization::getCurrentLocale() == 'ar')
+                          @if (LaravelLocalization::getCurrentLocale() == 'sa')
 
                                   <li class="nav-item">
-                                      <a href="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}" class="nav-link nav-link-sub">
+                                      <a href="{{ LaravelLocalization::getLocalizedURL('eg', null, [], true) }}" class="nav-link nav-link-sub">
                                       <img class="w-20 mx-2" src="{{ asset('admin_assets/flags/en.png')}}" alt="English">
                                       <span class="sidenav-normal"> {{__('master.ENGLISH')}}</span>
                                       </a>
@@ -256,7 +283,7 @@
                                       </a>
                                   </li>
 
-                          @elseif (LaravelLocalization::getCurrentLocale() == 'en')  
+                          @elseif (LaravelLocalization::getCurrentLocale() == 'eg')  
 
                                   <li class="nav-item">
                                       <a href="#" class="nav-link nav-link-sub active">
@@ -266,7 +293,7 @@
                                   </li>
 
                                   <li class="nav-item">
-                                      <a href="{{ LaravelLocalization::getLocalizedURL('ar', null, [], true) }}" class="nav-link nav-link-sub ">
+                                      <a href="{{ LaravelLocalization::getLocalizedURL('sa', null, [], true) }}" class="nav-link nav-link-sub ">
                                       <img class="w-20 mx-2" src="{{ asset('admin_assets/flags/ar.png')}}" alt="Arabic">
                                       <span class="sidenav-normal">{{__('master.ARABIC')}}  </span>
                                       </a>

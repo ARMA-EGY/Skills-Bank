@@ -18,8 +18,8 @@
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                   <li class="breadcrumb-item"><a href="{{route('home')}}"><i class="fas fa-home"></i></a></li>
                   <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                  <li class="breadcrumb-item"><a href="{{route('learningtree.index')}}">Lear</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">{{ isset($item) ? 'Edit Leaning Tree' : 'Add New Learning Tree' }}</li>
+                  <li class="breadcrumb-item"><a href="{{route('learningtree.index')}}">Learning Tree</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">{{ isset($item) ? 'Edit' : 'Add' }}</li>
                 </ol>
               </nav>
             </div>
@@ -49,104 +49,66 @@
                   <div class="card card-defualt">
                       <div class="card-header"><i class="fa fa-info-circle"></i> {{__('master.INFORMATION')}} </div>
                       <div class="card-body">
-                              
 
-                    <!--=================  Tile  =================-->
-                    <div class="row">
-                        <div class="form-group col-md-6 mb-2 text-left">
-                            <label class="font-weight-bold text-uppercase">Title</label>
-                            <input type="text" name="title" class="@error('title') is-invalid @enderror form-control" placeholder="Title" value="{{ isset($item) ? $item->title : old('title') }}" required>
-                        
-                            @error('title')
-                                <div>
-                                    <span class="text-danger">{{ $message }}</span>
-                                </div>
-                            @enderror
-
-                        </div> 
-                        
-                        
-
-          
-                        
-
-
-
-
-
-
-
-
-
+                        <!--=================  Tile  =================-->
                         <div class="row">
-
-<!--=================  description  =================-->
-<div class="col-md-6">
-    <div class="card card-defualt">
-        <div class="card-header">description</div>
-
-        <div class="card-body">
-
-            <div class="tab-content my-4" id="myTabContent">
-                
-
-                    <div class="text-right mb-3">
-                        <a class="btn btn-sm btn-primary text-white add_description"><i class="fa fa-plus"></i>  </a>
-                    </div>
-
-                    <div id="append_description">
-                        
-                        @if (isset($item->description))
-                        
-                            @foreach ($item->description as $description)
-                                <div class="form-row parent description_en description_{{ $loop->iteration }}">
-                                    <div class="form-group col-md-10 mb-2">
-                                        <input type="text" class="form-control form-control-sm" name="description[]" value="{{$description->title}}" required>
+                            <div class="form-group col-md-12 mb-2 text-left">
+                                <label class="font-weight-bold text-uppercase">Title</label>
+                                <input type="text" name="title" class="@error('title') is-invalid @enderror form-control" placeholder="Title" value="{{ isset($item) ? $item->title : old('title') }}" required>
+                            
+                                @error('title')
+                                    <div>
+                                        <span class="text-danger">{{ $message }}</span>
                                     </div>
-                                    <div class="form-group col-md-2 m-auto text-center">
-                                        <a class="btn btn-sm btn-danger remove3 text-white" data-class="description_{{ $loop->iteration }}">
-                                            <i class="fa fa-times "></i>
-                                        </a>
+                                @enderror
+
+                            </div> 
+                        </div>
+                            
+                        <!--=================  description  =================-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card card-defualt">
+                                    <div class="card-header">description</div>
+
+                                    <div class="card-body">
+                                        <div class="tab-content" id="myTabContent">
+                                            
+                                            <div class="text-right mb-3">
+                                                <a class="btn btn-sm btn-primary text-white add_description"><i class="fa fa-plus"></i>  </a>
+                                            </div>
+
+                                            <div id="append_description">
+                                                
+                                                @if (isset($item->description))
+                                                
+                                                    @foreach ($item->description as $description)
+                                                        <div class="form-row parent description_en description_{{ $loop->iteration }}">
+                                                            <div class="form-group col-md-10 mb-2">
+                                                                <input type="text" class="form-control form-control-sm" name="description[]" value="{{$description->title}}" required>
+                                                            </div>
+                                                            <div class="form-group col-md-2 m-auto text-center">
+                                                                <a class="btn btn-sm btn-danger remove3 text-white" data-class="description_{{ $loop->iteration }}">
+                                                                    <i class="fa fa-times "></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                    
+                                                @endif
+                                                    
+                                            </div>
+                                            
+                                        </div>
                                     </div>
+                                    
                                 </div>
-                            @endforeach
-                            
-                        @endif
-                            
-                    </div>
-                    
-                
-            </div>
-
-
-        </div>
-    </div>
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-                    </div>
-                    
+                            </div>
+                        </div>
 
                       </div>
                   </div>
-
               </div>
-
-
           </div>
 
           <div class="card card-defualt">

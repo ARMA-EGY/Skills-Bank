@@ -9,7 +9,12 @@ use App\Models\Categories;
 use App\Models\Courses;
 use App\Models\CoursesRequest;
 use App\Models\Blog;
+use App\Models\Team;
 
+use App\Models\Message;
+use App\Models\Subscriber;
+use App\Http\Requests\SubscriberRequest;
+use App\Models\ReceiverEmail;
 use App\Mail\ContactUs;
 use Mail; 
 use LaravelLocalization;
@@ -43,12 +48,6 @@ class FrontController extends Controller
         return view('front.about');     
     }
     
-    //-------------- Team Page ---------------\\
-    public function team()
-    {
-        return view('front.team');     
-    }
-    
     //-------------- Clients Page ---------------\\
     public function clients()
     {
@@ -77,18 +76,6 @@ class FrontController extends Controller
     public function calendar()
     {
         return view('front.calendar');     
-    }
-    
-    //-------------- Collaborations Page ---------------\\
-    public function collaborations()
-    {
-        return view('front.collaborations');     
-    }
-    
-    //-------------- Blogs Page ---------------\\
-    public function blogs()
-    {
-        return view('front.blogs');     
     }
     
     //-------------- Careers Page ---------------\\
@@ -133,6 +120,78 @@ class FrontController extends Controller
         return view('front.assessments');     
     }
 
+    //-------------- Single Course Page ---------------\\
+    public function courseShow($id)
+    {
+        $item       = Courses::select('id', 'name', 'description', 'image', 'start_date', 'end_date', 'disable', 'price_'.LaravelLocalization::getCurrentLocale(). ' as price' )->where('disable', 0)->where('id',$id)->first();
+
+        return view('front.courseDetails',[
+            'item'        => $item,
+         ]);     
+    }
+    
+    //-------------- Blogs Page ---------------\\
+    public function blogs()
+    {
+        $blogs       = Blog::where('status', 1)->orderBy('id','desc')->paginate(9);
+
+        return view('front.blogs',[
+            'blogs' => $blogs,
+        ]);     
+    }
+    
+    //-------------- Single Blog Page ---------------\\
+    public function blogShow($url)
+    {
+        $blog               = Blog::where('url', $url)->first();
+		$related_blogs      = Blog::where('id', '!=', $blog->id)->where('status', 1)->orderBy('id','desc')->limit(2)->get();
+        
+        return view('front.blogDetails',[
+            'blog' => $blog,
+            'related_blogs' => $related_blogs,
+        ]);     
+    }
+    
+    //-------------- Collaborations Page ---------------\\
+    public function collaborations()
+    {
+        $collaborations       = Blog::where('status', 1)->orderBy('id','desc')->paginate(9);
+
+        return view('front.collaborations',[
+            'items' => $collaborations,
+        ]);    
+    }
+    
+    //-------------- Single Collaboration Page ---------------\\
+    public function collabShow($url)
+    {
+        $collaboration      = Blog::where('url', $url)->first();
+
+        return view('front.collabDetails',[
+            'item' => $collaboration,
+        ]);     
+    }
+    
+    //-------------- Team Page ---------------\\
+    public function team()
+    {
+        $items       = Team::orderBy('id','desc')->paginate(9);
+
+        return view('front.team',[
+            'items' => $items,
+        ]);     
+    }
+    
+    //-------------- Single Member Page ---------------\\
+    public function memberShow($id)
+    {
+        $item      = Team::where('id', $id)->first();
+
+        return view('front.teamDetails',[
+            'item' => $item,
+        ]);     
+    }
+
 
 /*
 |--------------------------------------------------------------------------
@@ -157,6 +216,74 @@ class FrontController extends Controller
         ]);
         
         if($booking)
+        {
+            return response()->json([
+                'status' => 'true',
+                'msg' => 'success'
+            ]) ;
+        }
+        else
+        {
+            return response()->json([
+                'status' => 'false',
+                'msg' => 'error'
+            ]) ;
+        }
+
+    }
+
+
+    //-------------- Messages ---------------\\
+
+    public function message(Request $request)
+    {
+        $message1 =  Message::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'subject' => $request->subject,
+            'phone' => $request->phone,
+            'message' => $request->message,
+        ]);
+
+        $receiver_email     = ReceiverEmail::first();
+
+        $data = [
+        'name' => $request->name,
+        'email' => $request->email,
+        'subject' => $request->subject,
+        'phone' => $request->phone,
+        'message' => $request->message,
+        ];
+
+        Mail::to($receiver_email->email)->send(new ContactUs($data));
+
+        if($message1)
+        {
+            return response()->json([
+                'status' => 'true',
+                'msg' => 'success'
+            ]) ;
+        }
+        else
+        {
+            return response()->json([
+                'status' => 'false',
+                'msg' => 'error'
+            ]) ;
+        }
+
+    }
+
+
+    //-------------- Subscribe ---------------\\
+    
+    public function subscribe(SubscriberRequest $request)
+    {
+        $subscribe =  Subscriber::create([
+            'subscriber_email' => $request->subscriber_email,
+        ]);
+
+        if($subscribe)
         {
             return response()->json([
                 'status' => 'true',
