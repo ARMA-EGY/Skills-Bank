@@ -193,14 +193,6 @@
                   </li>
 
                   <li class="nav-item">
-                      <a class="nav-link" href="#">
-                          <i class="far fa-images"></i>
-                          <span class="nav-link-text">Slider</span>
-                      </a>
-                  </li>
-
-
-                  <li class="nav-item">
                     <a class="nav-link collapsed" href="#navbar-slider" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-components">
                         <i class="fa fa-images"></i>
                       <span class="nav-link-text"> Slide Show</span>
@@ -224,7 +216,7 @@
                         
                       </ul>
                     </div>
-                </li>
+                  </li>
 
                   <li class="nav-item">
                       <a class="nav-link collapsed" href="#navbar-setting" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-components">
