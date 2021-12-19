@@ -9,6 +9,7 @@ use App\Models\Courses;
 use App\Models\Countries;
 use App\Models\Roles;
 use App\Models\Categories;
+use App\Models\CoursesRequest;
 use App\Http\Requests\Course\AddRequest;
 use App\Http\Requests\Course\UpdateRequest;
 use Illuminate\Support\Facades\Storage;
@@ -189,5 +190,40 @@ class CoursesController extends Controller
         $item->disable = $disable;
         $item->save();
     }
+
+
+    //-------------- Get Active Data ---------------\\
+
+    public function requestes()
+    {
+        $user = auth()->user();
+        $items       = CoursesRequest::orderBy('id','desc')->get();
+        
+        return view('admin.course.requests', [
+            'items' => $items,
+            'total_rows' => count($items),
+        ]);
+    }
+
+
+    //-------------- Disable Data  ---------------\\
+
+    public function accept(Request $request)
+    {
+        $item     = CoursesRequest::where('id', $request->id)->first();
+
+        if($item->accept == 1)
+        {
+            $accept = 0;
+        }
+        elseif($item->accept == 0)
+        {
+            $accept = 1;
+        }
+
+        $item->accept = $accept;
+        $item->save();
+    }
+
    
 }

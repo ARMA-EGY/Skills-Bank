@@ -309,6 +309,26 @@
                   })
         });
 
+
+        $(document).on("change",".item_request", function()
+        {
+            var id 	  = $(this).attr('data-id');
+            var url 	= $(this).attr('data-url');
+
+            $.ajax({
+                    url: url,
+                    type:"POST",
+                    dataType: 'text',
+                    data:    {"_token": "{{ csrf_token() }}",
+                                id: id},
+                    success : function(response)
+                        {
+                          
+                        }  
+                  })
+        });
+
+
         // =============  Remove Item =============
         $(document).on('click', '.remove_item', function() {
             

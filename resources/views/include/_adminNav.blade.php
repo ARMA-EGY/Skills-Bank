@@ -78,6 +78,31 @@
                   </li>
 
                   <li class="nav-item">
+                      <a class="nav-link collapsed" href="#navbar-clients" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-components">
+                        <i class="fas fa-user-friends"></i>
+                        <span class="nav-link-text">Clients</span>
+                      </a>
+                      <div class="collapse" id="navbar-clients" style="">
+                        <ul class="nav nav-sm flex-column">
+                          <li class="nav-item">
+                            <a href="{{ route('clients.create')}}" class="nav-link nav-link-sub {{request()->routeIs('clients.create') ? 'active' : '' }}">
+                              <i class="far fa-dot-circle"></i>
+                              <span class="sidenav-normal"> Add New Client </span>
+                            </a>
+                          </li>
+                   
+                          <li class="nav-item">
+                            <a href="{{route('clients.index')}}" class="nav-link nav-link-sub {{request()->routeIs('clients.index') ? 'active' : '' }}">
+                              <i class="far fa-dot-circle"></i>
+                              <span class="sidenav-normal"> All Clients </span>
+                            </a>
+                          </li>
+
+                        </ul>
+                      </div>
+                  </li>
+
+                  <li class="nav-item">
                       <a class="nav-link collapsed" href="#navbar-courses" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-courses">
                         <i class="fas fa-clipboard"></i>
                         <span class="nav-link-text">Courses</span>
@@ -103,6 +128,13 @@
                             <a href="#" class="nav-link nav-link-sub">
                               <i class="far fa-dot-circle"></i>
                               <span class="sidenav-normal">Bookings</span>
+                            </a>
+                          </li>
+
+                          <li class="nav-item">
+                            <a href="{{ route('meetings.index')}}" class="nav-link nav-link-sub {{request()->routeIs('meetings.index') ? 'active' : '' }}">
+                              <i class="far fa-dot-circle"></i>
+                              <span class="sidenav-normal">All meetings</span>
                             </a>
                           </li>
                           

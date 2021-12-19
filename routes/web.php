@@ -100,8 +100,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'a
         */
         Route::resource('/courses', 'Admin\Courses\CoursesController'); 
         Route::post('/disablecourse', 'Admin\Courses\CoursesController@disable')->name('course-disable');
+        Route::get('/course/requestes', 'Admin\Courses\CoursesController@requestes')->name('course-requestes');
+        Route::post('/courserequestaccept', 'Admin\Courses\CoursesController@accept')->name('course-request-accept');
 
-        
         /*
         |--------------------------------------------------------------------------
         | Courses Category
@@ -119,6 +120,16 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'a
         */
         Route::resource('/team', 'Admin\Team\TeamController'); 
         Route::post('/removeteam', 'Admin\Team\TeamController@removeteam')->name('remove-team');
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Clients
+        |--------------------------------------------------------------------------
+        */
+        Route::resource('/clients', 'Admin\Clients\ClientsController'); 
+        Route::post('/removeclients', 'Admin\Clients\ClientsController@removeclients')->name('remove-clients');
+
 
 
         /*
@@ -156,7 +167,17 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'a
         */        
         Route::resource('/careers', 'Admin\Careers\CareersController'); 
         Route::get('/careerrequests', 'Admin\Careers\CareersController@requests')->name('career-requests'); 
-        Route::post('/removecareer', 'Careers\CareersController@removecareer')->name('remove-career');
+        Route::post('/removecareer', 'Admin\Careers\CareersController@removecareer')->name('remove-career');
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Meetings
+        |--------------------------------------------------------------------------
+        */        
+        Route::resource('/meetings', 'Admin\Meetings\MeetingsController'); 
+        Route::get('/meetingrequests', 'Admin\Meetings\CareersController@requests')->name('meeting-requests'); 
+        Route::post('/removemeeting', 'Admin\Meetings\MeetingsController@removemeeting')->name('remove-meeting');
 
 
         /*
@@ -172,7 +193,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'a
         | Others
         |--------------------------------------------------------------------------
         */ 
-        
         Route::resource('/permissions', 'Admin\Permissions\PermissionsController'); 
         Route::get('/logo', 'MasterController@logo')->name('admin-logo');
         Route::get('/setting', 'MasterController@setting')->name('admin-setting');
