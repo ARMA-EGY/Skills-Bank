@@ -199,6 +199,16 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'a
         Route::get('/messages', 'MasterController@messages')->name('messages');
         Route::get('/subscribers', 'MasterController@subscribers')->name('subscribers');
         Route::get('/socialmedia', 'MasterController@socialmedia')->name('socialmedia');
+        
+        Route::post('/social', 'MasterController@social')->name('social');
+        Route::post('/getreceiveremail', 'MasterController@getreceiveremail')->name('getreceiveremail');
+        Route::post('/receiveremail', 'MasterController@receiveremail')->name('receiveremail');
+        Route::post('/getmessage', 'MasterController@getmessage')->name('getmessage');
+
+        Route::get('/slideshow/{lang}', 'Admin\Slider\SliderController@index')->name('admin-show-slider');
+        Route::post('/updateslideshow', 'Admin\Slider\SliderController@updatephotos')->name('admin-update-slider');
+        Route::post('/removeslider', 'Admin\Slider\SliderController@removegallery')->name('remove-slider');
+        
     });
 
 

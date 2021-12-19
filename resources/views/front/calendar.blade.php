@@ -34,49 +34,10 @@
 
 	<!-- Start of calendar section
 		============================================= -->
-		<section id="course-page" class="course-page-section pb-5 mt-4">
+		<section id="course-page" class="course-page-section pb-5 pt-3 mt-4">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						
-						<div class="sponsor-item sponsor-1">
-							<div class="text-center">
-								<a href="#"><h4 class="my-3">January</h4></a>
-							</div>
-							<div class="text-center">
-								<a href="#"><h4 class="my-3">February</h4></a>
-							</div>
-							<div class="text-center">
-								<a href="#"><h4 class="my-3">March</h4></a>
-							</div>
-							<div class="text-center">
-								<a href="#"><h4 class="my-3">April</h4></a>
-							</div>
-							<div class="text-center">
-								<a href="#"><h4 class="my-3">May</h4></a>
-							</div>
-							<div class="text-center">
-								<a href="#"><h4 class="my-3">June</h4></a>
-							</div>
-							<div class="text-center">
-								<a href="#"><h4 class="my-3">July</h4></a>
-							</div>
-							<div class="text-center">
-								<a href="#"><h4 class="my-3">August</h4></a>
-							</div>
-							<div class="text-center">
-								<a href="#"><h4 class="my-3">September</h4></a>
-							</div>
-							<div class="text-center">
-								<a href="#"><h4 class="my-3">October</h4></a>
-							</div>
-							<div class="text-center">
-								<a href="#"><h4 class="my-3">November</h4></a>
-							</div>
-							<div class="text-center">
-								<a href="#"><h4 class="my-3 bg-primary text-white">December</h4></a>
-							</div>
-						</div>
 						
 						<div class="short-filter-tab">
 							<div class="tab-button blog-button ul-li text-center float-right">
@@ -89,6 +50,25 @@
 
 						<div class="row">
 							<div class="col-md-3">
+								<div class="short-filter-tab">
+									<div class="shorting-filter">
+										<select class="m-0 w-100">
+											<option value="all" selected>All Months</option>
+											<option value="1">January</option>
+											<option value="2">February</option>
+											<option value="3">March</option>
+											<option value="4">April</option>
+											<option value="5">May</option>
+											<option value="6">June</option>
+											<option value="7">July</option>
+											<option value="8">August</option>
+											<option value="9">September</option>
+											<option value="10">October</option>
+											<option value="11">November</option>
+											<option value="12">December</option>
+										</select>
+									</div>
+								</div>
 							  <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 								<a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">All Courses</a>
 								<a class="nav-link" href="#" role="tab" >Interpersonal skills and self-development </a>

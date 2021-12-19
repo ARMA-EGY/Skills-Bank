@@ -8,5 +8,5 @@ class Setting extends Model
 {
     protected $table = 'settings';
     
-    protected $fillable = ['project_name', 'logo', 'favicon', 'contract_alert', 'tax'];
+    protected $fillable = ['project_name', 'phone', 'email', 'address'];
 }

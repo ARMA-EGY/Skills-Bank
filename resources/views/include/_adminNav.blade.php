@@ -225,36 +225,29 @@
                   </li>
 
                   <li class="nav-item">
-                      <a class="nav-link" href="#">
-                          <i class="far fa-images"></i>
-                          <span class="nav-link-text">Slider</span>
-                      </a>
-                  </li>
-                  
-                  <li class="nav-item">
-                      <a class="nav-link collapsed" href="#navbar-roles" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-components">
-                        <i class="fas fa-user-tag"></i>
-                        <span class="nav-link-text"> {{__('master.ROLES')}}</span>
-                      </a>
-                      <div class="collapse" id="navbar-roles" style="">
-                        <ul class="nav nav-sm flex-column">
-                          
-                          <li class="nav-item">
-                              <a href="{{ route('permissions.create')}}" class="nav-link nav-link-sub {{request()->routeIs('permissions.create') ? 'active' : '' }}">
+                    <a class="nav-link collapsed" href="#navbar-slider" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-components">
+                        <i class="fa fa-images"></i>
+                      <span class="nav-link-text"> Slide Show</span>
+                    </a>
+                    <div class="collapse" id="navbar-slider" style="">
+                      <ul class="nav nav-sm flex-column">
+                        
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-sub {{request()->is('slideshow/eg') ? 'active' : '' }}" href="{{ route('admin-show-slider', 'eg')}}">
                                 <i class="far fa-dot-circle"></i>
-                                <span class="sidenav-normal"> {{__('master.ADD-NEW-ROLE')}} </span>
-                              </a>
-                          </li>
-                          
-                          <li class="nav-item">
-                              <a href="{{route('permissions.index')}}" class="nav-link nav-link-sub {{request()->routeIs('permissions.index') ? 'active' : '' }}">
+                                <span class="nav-link-text">Egypt</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-sub {{request()->is('slideshow/sa') ? 'active' : '' }}" href="{{route('admin-show-slider', 'sa')}}">
                                 <i class="far fa-dot-circle"></i>
-                                <span class="sidenav-normal"> {{__('master.ALL-ROLES')}} </span>
-                              </a>
-                          </li>
-                          
-                        </ul>
-                      </div>
+                                <span class="nav-link-text">KSA</span>
+                            </a>
+                        </li>
+                        
+                      </ul>
+                    </div>
                   </li>
 
                   <li class="nav-item">
