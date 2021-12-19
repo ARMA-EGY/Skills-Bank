@@ -69,7 +69,7 @@
                     <td> <a href="{{ route('staff.profile', $item->id)}}"> <strong> {{  $item->name }} </strong> </a> </td>
                     <td>{{ $item->phone }}</td>
                     <td>{{ $item->hiring_date }} </td>
-                    <td>{{ $item->roleName->name }} </td>
+                    <td>{{ $item->role }} </td>
                     <td>
                       <div class="col-3">
                         <input type="checkbox" class="check_off item_check" data-id="{{$item->id}}" data-url="{{route('staff-disable')}}" data-toggle="toggle" data-size="sm"  @if ($item->disable == '0') checked @endif>
