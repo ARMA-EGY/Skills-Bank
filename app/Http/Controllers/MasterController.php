@@ -17,9 +17,18 @@ use App\Models\Event;
 use App\Models\Setting;
 use App\Models\Countries;
 
+use App\Models\Collaboration;
+use App\Models\Categories;
+use App\Models\Courses;
+use App\Models\CoursesRequest;
+use App\Models\Career;
+use App\Models\Blog;
+use App\Models\Team;
+
 use App\Models\Message;
 use App\Models\Social;
 use App\Models\Subscriber;
+use App\Models\ReceiverEmail;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -49,9 +58,18 @@ class MasterController extends Controller
     //-------------- Home Page ---------------\\
     public function index()
     {
-        $user = auth()->user();
-       
+        $user        = auth()->user();
+		$items       = Courses::where('disable',0)->orderBy('id','desc')->limit(10)->get();
+
         return view('admin.home', [
+            'items'                 => $items,
+            'team_count'            => Team::all()->count(),
+            'courses_count'         => Courses::where('disable', 0)->count(),
+            'careers_count'         => Career::where('disable', 0)->count(),
+            'blogs_count'           => Blog::where('status', 1)->count(),
+            'collaborations_count'  => Collaboration::where('status', 1)->count(),
+            'messages_count'        => Message::all()->count(),
+            'subscribers_count'     => Subscriber::all()->count(),
         ]);
 
     }
@@ -103,7 +121,7 @@ class MasterController extends Controller
         $subscribers     = Subscriber::orderBy('id','desc')->paginate(10);
 
         return view('admin.subscribers', [
-            'subscribers'    => $subscribers
+            'items'    => $subscribers
         ]);
     }
 
@@ -122,6 +140,87 @@ class MasterController extends Controller
 | ACTIONS
 |--------------------------------------------------------------------------
 */
+
+    //-------------- Social Media ---------------\\
+    public function social(Request $request)
+    {
+        
+        Social::truncate();
+
+        for ($i = 0; $i < count($request->platform); $i++) 
+        {
+            $socials[] = [
+                'platform' => $request->platform[$i],
+                'link' => $request->link[$i],
+                'off' => $request->off[$i]
+            ];
+        }
+
+        $social =  Social::insert($socials);
+
+        if($social)
+        {
+            return response()->json([
+                'status' => 'true',
+                'msg' => 'success'
+            ]) ;
+        }
+        else
+        {
+            return response()->json([
+                'status' => 'false',
+                'msg' => 'error'
+            ]) ;
+        }
+    }
+
+    //-------------- Get Receiver Email ---------------\\
+    public function getreceiveremail()
+    {
+        $email     = ReceiverEmail::first();
+
+        return view('admin.modals.receiver_email', [
+            'email'    => $email
+        ]);
+    }
+
+    //-------------- Get Message ---------------\\
+    public function getmessage(Request $request)
+    {
+        $message     = Message::find($request->id);
+
+        $message->open = 1;
+        $message->save();
+
+        return view('admin.modals.show_message', [
+            'message'    => $message
+        ]);
+    }
+
+    //-------------- Receiver Email ---------------\\
+    public function receiveremail(Request $request)
+    {
+        ReceiverEmail::truncate();
+
+        $create =  ReceiverEmail::create([
+            'email' => $request->email,
+        ]);
+
+        if($create)
+        {
+            return response()->json([
+                'status' => 'true',
+                'msg' => 'success'
+            ]) ;
+        }
+        else
+        {
+            return response()->json([
+                'status' => 'false',
+                'msg' => 'error'
+            ]) ;
+        }
+    }
 
     //-------------- Change Logo ---------------\\
     public function changelogo(LogoRequest $request)
@@ -148,8 +247,7 @@ class MasterController extends Controller
     {
             
         $setting     = Setting::first();
-
-        $data = $request->only(['project_name', 'contract_alert', 'tax']);
+        $data = $request->only(['project_name', 'phone', 'email', 'address']);
            
         if($request->hasfile('logo'))
         {

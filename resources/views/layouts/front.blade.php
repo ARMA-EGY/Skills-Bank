@@ -101,7 +101,7 @@
 									<li class="menu-item-has-children ul-li-block">
 										<a href="#">Workshops</a>
 										<ul class="sub-menu">
-											<li><a href="{{route('workshop')}}">Workshops Details</a></li>
+											<li><a href="{{route('workshop')}}">What's Different?</a></li>
 											<li><a href="{{route('public.calendar')}}">Public Calendar</a></li>
 										</ul>
 									</li>
@@ -195,7 +195,7 @@
 							</button>
 						</div>
 						<ul id="collapsefour" class="submenu collapse" aria-labelledby="headingfour" data-parent="#accordion" style="">
-							<li><a href="{{route('workshop')}}">Workshops Details</a></li>
+							<li><a href="{{route('workshop')}}">What's Different?</a></li>
 							<li><a href="{{route('public.calendar')}}">Public Calendar</a></li>
 						</ul>
 					</li>
@@ -271,9 +271,9 @@
 									<div class="footer-menu ul-li-block ml-0">
 										<h2 class="widget-title"></h2>
 										<ul>
-											<li><a href="#"><i class="fas fa-map-marker-alt"></i>1st Floor,Bulding No. 4, Street No. 158, Maadi, Cairo, Egypt</a></li>
-											<li><a href="#"><i class="fas fa-envelope"></i>info@skillsbankme.com</a></li>
-											<li><a href="#"><i class="fas fa-phone"></i>+2 (010) 0977 9374</a></li>
+											<li><a href="#"><i class="fas fa-map-marker-alt"></i>{{$setting->address}}</a></li>
+											<li><a href="#"><i class="fas fa-envelope"></i>{{$setting->email}}</a></li>
+											<li><a href="#"><i class="fas fa-phone"></i>{{$setting->phone}}</a></li>
 										</ul>
 									</div>
 								</div>
@@ -287,9 +287,37 @@
 								<div class="footer-social ul-li">
 									<h2 class="widget-title">Social Network</h2>
 									<ul>
-										<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-										<li><a href="#"><i class="fab fa-instagram"></i></a></li>
-										<li><a href="#"><i class="fab fa-twitter"></i></a></li>
+										@foreach ($socials as $social)
+
+											@if ($social->platform == 'Facebook' && $social->off == 1)
+												<li><a href="{{$social->link}}" target="_blank" title="{{$social->platform}}"><i class="fab fa-facebook-f"></i></a></li>
+											@endif
+
+											@if ($social->platform == 'Twitter' && $social->off == 1)
+												<li><a href="{{$social->link}}" target="_blank" title="{{$social->platform}}"><i class="fab fa-twitter"></i></a></li>
+											@endif
+
+											@if ($social->platform == 'Instagram' && $social->off == 1)
+												<li><a href="{{$social->link}}" target="_blank" title="{{$social->platform}}"><i class="fab fa-instagram"></i></a></li>
+											@endif
+
+											@if ($social->platform == 'Linkedin' && $social->off == 1)
+												<li><a href="{{$social->link}}" target="_blank" title="{{$social->platform}}"><i class="fab fa-linkedin-in"></i></a></li>
+											@endif
+
+											@if ($social->platform == 'Youtube' && $social->off == 1)
+											<li><a href="{{$social->link}}" target="_blank" title="{{$social->platform}}"><i class="fab fa-youtube"></i></a></li>
+											@endif
+
+											@if ($social->platform == 'Pinterest' && $social->off == 1)
+											<li><a href="{{$social->link}}" target="_blank" title="{{$social->platform}}"><i class="fab fa-pinterest-p"></i></a></li>
+											@endif
+
+											@if ($social->platform == 'Telegram' && $social->off == 1)
+											<li><a href="{{$social->link}}" target="_blank" title="{{$social->platform}}"><i class="fab fa-telegram"></i></a></li>
+											@endif
+
+										@endforeach
 									</ul>
 								</div>
 							</div>
@@ -361,35 +389,47 @@
 					</div>
 
 					<div class="form-group">
-						<label for="inputName">Name</label>
+						<label class="font-weight-bold" for="inputName">Full Name</label>
 						<input type="text" name="name" class="form-control field1" id="inputName" required>
 					</div>
 
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							<label for="inputEmail">Email</label>
+							<label class="font-weight-bold" for="inputEmail">Email</label>
 							<input type="email" name="email" class="form-control field1" id="inputEmail" required>
 						</div>
 						<div class="form-group col-md-6">
-							<label for="inputphone">Phone</label>
+							<label class="font-weight-bold" for="inputphone">Phone</label>
 							<input type="number" name="phone" class="form-control field1" id="inputPhone" required>
 						</div>
 					</div>
 
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							<label for="inputCompany">Company</label>
+							<label class="font-weight-bold" for="inputCompany">Company</label>
 							<input type="text" name="company" class="form-control field1" id="inputCompany" required>
 						</div>
 						<div class="form-group col-md-6">
-							<label for="inputPosition">Position</label>
+							<label class="font-weight-bold" for="inputPosition">Position</label>
 							<input type="text" name="position" class="form-control field1" id="inputPosition" required>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="inputMessage">Message</label>
+						<label class="font-weight-bold" for="inputMessage">Message</label>
 						<textarea name="message" rows="4" class="form-control field1" id="inputMessage" placeholder="Your Message Here ..."></textarea>
+					</div>
+
+					<div class="form-group">
+						<label class="font-weight-bold">Payment Information</label>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="payment_method" id="exampleRadios1" value="cash" checked="">
+							<label class="form-check-label" for="exampleRadios1">Pay by Cash</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="payment_method" id="exampleRadios2" value="online">
+							<label class="form-check-label" for="exampleRadios2"> Credit/Debit Card Payment</label>
+						</div>
 					</div>
 
 				</div>

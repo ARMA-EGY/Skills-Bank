@@ -36,57 +36,43 @@
 
                         <div class="card-body">
 
-                            <h6 class="heading-small text-muted font-weight-bold text-left mb-4"> {{__('master.HOSPITAL-NAME')}}  </h6>
+                            <h6 class="heading-small text-muted font-weight-bold text-left"> Project Name  </h6>
                             <div class="px-lg-4">
-                            <div class="row">
-
-                                <div class="input-group col-12 mb-3 px-0">
-                                    <div class="input-group-prepend">
-                                        <label for="project_name" class="input-group-text"><i class="fas fa-fingerprint"></i></label>
+                                <div class="row">
+                                    <div class="input-group col-12 px-0">
+                                        <input id="project_name" class="form-control" type="text" name="project_name"  value="{{$setting->project_name}}" required>
                                     </div>
-                                    <input id="project_name" class="form-control" type="text" name="project_name"  value="{{$setting->project_name}}" required>
                                 </div>
-                                
                             </div>
-                            
-                            </div>
-                            <hr class="my-4" />
+                            <hr class="my-3" />
 
-                            <h6 class="heading-small text-muted font-weight-bold text-left mb-4"> {{__('master.CONTRACT-EXPIRY-ALERT')}} </h6>
+                            <h6 class="heading-small text-muted font-weight-bold text-left"> Phone </h6>
                             <div class="px-lg-4">
-                            <div class="row">
-
-                                <div class="input-group col-12 mb-3 px-0">
-                                    <div class="input-group-prepend">
-                                        <label for="contract_alert" class="input-group-text"><i class="fas fa-file-signature"></i></label>
+                                <div class="row">
+                                    <div class="input-group col-12 px-0">
+                                        <input id="phone" class="form-control" type="text" name="phone"  value="{{$setting->phone}}" required>
                                     </div>
-
-                                    <select id="contract_alert" class="form-control" name="contract_alert" required>
-                                        <option value="7"  @if ($setting->contract_alert == 7) selected @endif >{{__('master.1-WEEK')}}</option>
-                                        <option value="14"  @if ($setting->contract_alert == 14) selected @endif >{{__('master.2-WEEK')}}</option>
-                                        <option value="21"  @if ($setting->contract_alert == 21) selected @endif >{{__('master.3-WEEK')}}</option>
-                                        <option value="28"  @if ($setting->contract_alert == 28) selected @endif >{{__('master.4-WEEK')}}</option>
-                                    </select>
                                 </div>
-                                
                             </div>
-                            
-                            </div>
-                            <hr class="my-4" />
+                            <hr class="my-3" />
 
-                            <h6 class="heading-small text-muted font-weight-bold text-left mb-4"> {{__('master.TAX')}} </h6>
+                            <h6 class="heading-small text-muted font-weight-bold text-left"> Email </h6>
                             <div class="px-lg-4">
-                            <div class="row">
-
-                                <div class="input-group col-12 mb-3 px-0">
-                                    <div class="input-group-prepend">
-                                        <label for="tax" class="input-group-text"><i class="fas fa-percent"></i></label>
+                                <div class="row">
+                                    <div class="input-group col-12 px-0">
+                                        <input id="email" class="form-control" type="email" name="email"  value="{{$setting->email}}" required>
                                     </div>
-                                    <input id="tax" class="form-control" type="number" step="0.1" name="tax" value="{{$setting->tax}}" required>
                                 </div>
-                                
                             </div>
-                            
+                            <hr class="my-3" />
+
+                            <h6 class="heading-small text-muted font-weight-bold text-left"> Address </h6>
+                            <div class="px-lg-4">
+                                <div class="row">
+                                    <div class="input-group col-12 px-0">
+                                        <input id="address" class="form-control" type="text" name="address"  value="{{$setting->address}}" required>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
@@ -98,7 +84,7 @@
                     <div class="card card-defualt">
                     <div class="card-header"><i class="far fa-id-badge"></i> {{__('master.LOGO')}} </div>
                         <div class="card-body px-3">
-                            <div class="logo-preview" style="background-image: url({{ asset('storage/'.$setting->logo) }})"></div>
+                            <div class="image-preview" style="background-image: url({{ asset('storage/'.$setting->logo) }})"></div>
                             
                             <input class="d-none" type="file" accept="image/*" id="logo" name="logo" multiple="false" />
                             <label for="logo" class="btn btn-info btn-block btn-sm my-3"><i class="fa fa-image"></i> {{__('master.CHANGE')}}</label>
@@ -141,7 +127,7 @@
             
             reader.onload = function (e) 
             {
-                $('.logo-preview').css('background-image','url('+e.target.result+')');
+                $('.image-preview').css('background-image','url('+e.target.result+')');
             };
             
             reader.readAsDataURL(input.files[0]);

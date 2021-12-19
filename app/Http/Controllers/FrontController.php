@@ -16,6 +16,7 @@ use App\Models\Subscriber;
 use App\Http\Requests\SubscriberRequest;
 use App\Models\ReceiverEmail;
 use App\Mail\ContactUs;
+use App\Models\Social;
 use Mail; 
 use LaravelLocalization;
 
@@ -37,87 +38,116 @@ class FrontController extends Controller
 
         return view('front.welcome', [
             'courses' => $courses,
+            'socials' => Social::all(),
         ]);
-
-        return view('front.welcome');     
+   
     }
     
     //-------------- About Page ---------------\\
     public function about()
-    {
-        return view('front.about');     
+    {         
+
+        return view('front.about', [
+            'socials' => Social::all(),
+        ]); 
     }
     
     //-------------- Clients Page ---------------\\
     public function clients()
     {
-        return view('front.clients');     
+
+        return view('front.clients', [
+            'socials' => Social::all(),
+        ]);     
     }
     
     //-------------- Learning Approach Page ---------------\\
     public function learningApproach()
     {
-        return view('front.learningApproach');     
+
+        return view('front.learningApproach', [
+            'socials' => Social::all(),
+        ]);        
     }
     
     //-------------- Learning Tree Page ---------------\\
     public function learningTree()
-    {
-        return view('front.learningTree');     
+    {  
+        return view('front.learningTree', [
+            'socials' => Social::all(),
+        ]);      
     }
     
     //-------------- Workshop Page ---------------\\
     public function workshop()
-    {
-        return view('front.workshop');     
+    { 
+        return view('front.workshop', [
+            'socials' => Social::all(),
+        ]);     
     }
     
     //-------------- Calendar Page ---------------\\
     public function calendar()
     {
-        return view('front.calendar');     
+        return view('front.calendar', [
+            'socials' => Social::all(),
+        ]);       
     }
     
     //-------------- Careers Page ---------------\\
     public function careers()
     {
-        return view('front.careers');     
+        return view('front.careers', [
+            'socials' => Social::all(),
+        ]);        
     }
     
     //-------------- Reach Out Page ---------------\\
     public function reachout()
-    {
-        return view('front.reachout');     
+    { 
+        return view('front.reachout', [
+            'socials' => Social::all(),
+        ]);      
     }
     
     //-------------- Practical Solution Page ---------------\\
     public function practical()
     {
-        return view('front.practical');     
+        return view('front.practical', [
+            'socials' => Social::all(),
+        ]);       
     }
     
     //-------------- Virtual Solution Page ---------------\\
     public function virtual()
     {
-        return view('front.virtual');     
+        return view('front.virtual', [
+            'socials' => Social::all(),
+        ]);        
     }
     
     //-------------- Videos Solution Page ---------------\\
     public function videos()
-    {
-        return view('front.videos');     
+    {  
+        return view('front.videos', [
+            'socials' => Social::all(),
+        ]);       
     }
     
     //-------------- Designing Solution Page ---------------\\
     public function designing()
     {
-        return view('front.designing');     
+        return view('front.designing', [
+            'socials' => Social::all(),
+        ]);        
     }
     
     //-------------- Assessments Solution Page ---------------\\
     public function assessments()
-    {
-        return view('front.assessments');     
+    { 
+        return view('front.assessments', [
+            'socials' => Social::all(),
+        ]);       
     }
 
     //-------------- Single Course Page ---------------\\
@@ -127,6 +157,7 @@ class FrontController extends Controller
 
         return view('front.courseDetails',[
             'item'        => $item,
+            'socials' => Social::all(),
          ]);     
     }
     
@@ -137,6 +168,7 @@ class FrontController extends Controller
 
         return view('front.blogs',[
             'blogs' => $blogs,
+            'socials' => Social::all(),
         ]);     
     }
     
@@ -149,6 +181,7 @@ class FrontController extends Controller
         return view('front.blogDetails',[
             'blog' => $blog,
             'related_blogs' => $related_blogs,
+            'socials' => Social::all(),
         ]);     
     }
     
@@ -159,6 +192,7 @@ class FrontController extends Controller
 
         return view('front.collaborations',[
             'items' => $collaborations,
+            'socials' => Social::all(),
         ]);    
     }
     
@@ -169,6 +203,7 @@ class FrontController extends Controller
 
         return view('front.collabDetails',[
             'item' => $collaboration,
+            'socials' => Social::all(),
         ]);     
     }
     
@@ -179,6 +214,7 @@ class FrontController extends Controller
 
         return view('front.team',[
             'items' => $items,
+            'socials' => Social::all(),
         ]);     
     }
     
@@ -189,6 +225,7 @@ class FrontController extends Controller
 
         return view('front.teamDetails',[
             'item' => $item,
+            'socials' => Social::all(),
         ]);     
     }
 
@@ -205,14 +242,15 @@ class FrontController extends Controller
     public function booking(Request $request)
     {
         $booking =  CoursesRequest::create([
-            'name'          => $request->name,
-            'email'         => $request->email,
-            'phone'         => $request->phone,
-            'company'       => $request->company,
-            'position'      => $request->position,
-            'message'       => $request->message,
-            'course_id'     => $request->course_id,
-            'country'       => LaravelLocalization::getCurrentLocale(),
+            'name'                  => $request->name,
+            'email'                 => $request->email,
+            'phone'                 => $request->phone,
+            'company'               => $request->company,
+            'position'              => $request->position,
+            'message'               => $request->message,
+            'course_id'             => $request->course_id,
+            'payment_method'        => $request->payment_method,
+            'country'               => LaravelLocalization::getCurrentLocale(),
         ]);
         
         if($booking)

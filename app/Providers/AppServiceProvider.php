@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\View;
 
 use App\Models\Logo;
 use App\Models\Setting;
+use App\Models\Social;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $logo       = Logo::first();
         $setting    = Setting::first();
+        $socials    = Social::first();
         
         $data = array(
             'logo' => $logo,
