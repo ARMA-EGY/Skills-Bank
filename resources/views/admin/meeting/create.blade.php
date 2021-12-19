@@ -49,7 +49,7 @@
                         <!--=================  Topic  =================-->
         
                         <div class="form-group">
-                          <label >Topic</label>
+                          <label class="font-weight-bold text-uppercase">Topic</label>
                           <input type="text" name="topic" class="@error('topic') is-invalid @enderror form-control" placeholder="Add New topic" value="{{ isset($meeting) ? $meeting->title : old('meeting') }}" required>
                           
                               @error('topic')
