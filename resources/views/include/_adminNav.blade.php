@@ -79,7 +79,7 @@
 
                   <li class="nav-item">
                       <a class="nav-link collapsed" href="#navbar-clients" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-components">
-                        <i class="fas fa-user-friends"></i>
+                        <i class="fas fa-tags"></i>
                         <span class="nav-link-text">Clients</span>
                       </a>
                       <div class="collapse" id="navbar-clients" style="">
@@ -125,7 +125,7 @@
                           </li>
 
                           <li class="nav-item">
-                            <a href="#" class="nav-link nav-link-sub">
+                            <a href="{{ route('course-requestes')}}  " class="nav-link nav-link-sub">
                               <i class="far fa-dot-circle"></i>
                               <span class="sidenav-normal">Bookings</span>
                             </a>
@@ -186,13 +186,6 @@
                       <a class="nav-link {{request()->routeIs('collaboration.index') ? 'active' : '' }}" href="{{route('collaboration.index')}}">
                           <i class="far fa-handshake"></i>
                           <span class="nav-link-text">Collaborations</span>
-                      </a>
-                  </li>
-
-                  <li class="nav-item">
-                      <a class="nav-link" href="#">
-                          <i class="fas fa-tags"></i>
-                          <span class="nav-link-text">Clients</span>
                       </a>
                   </li>
 

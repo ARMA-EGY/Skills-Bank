@@ -19,7 +19,7 @@
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                   <li class="breadcrumb-item"><a href="{{route('home')}}"><i class="fas fa-home"></i></a></li>
                   <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('master.DASHBOARD')}}</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">{{__('master.BANNED-STAFF')}}</li>
+                  <li class="breadcrumb-item active" aria-current="page">Banned Staff</li>
                 </ol>
               </nav>
             </div>
@@ -39,7 +39,7 @@
             <div class="card-header border-0">
               <div class="row align-items-center">
                 <div class="col">
-                  <h3 class="mb-0">{{__('master.BANNED-STAFF')}} <span class="badge badge-primary p-2">{{$total_rows}}</span></h3>
+                  <h3 class="mb-0">Banned Staff <span class="badge badge-primary p-2">{{$total_rows}}</span></h3>
                 </div>
               </div>
             </div>
@@ -89,7 +89,7 @@
 
 
             @else 
-                <p class="text-center"> {{__('master.NO-STAFF-AVAILABLE')}} </p>
+                <p class="text-center"> No Staff Available </p>
             @endif
 
             <!-- Card footer -->

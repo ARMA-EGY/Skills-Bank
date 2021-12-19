@@ -90,7 +90,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'a
         Route::get('/activestaff', 'Admin\Staff\StaffController@active')->name('active-staff');
         Route::get('/deactivestaff', 'Admin\Staff\StaffController@deactive')->name('deactive-staff');
         Route::get('/staff/{id}/profile', 'Admin\Staff\StaffController@profile')->name('staff.profile');
-
+        Route::post('/disablestaff', 'Admin\Staff\StaffController@disable')->name('staff-disable');
 
 
         /*

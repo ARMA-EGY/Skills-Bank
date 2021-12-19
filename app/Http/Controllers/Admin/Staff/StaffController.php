@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Admin\Staff;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Sector;
-use App\Models\Branches;
 use App\Models\Countries;
 use App\Models\Roles;
 use App\Http\Requests\Staff\AddRequest;
@@ -30,11 +28,11 @@ class StaffController extends Controller
     public function index()
     {
         $user = auth()->user();
-		$items       = User::where('role', 'Staff')->orderBy('id','desc')->get();
+		$items       = User::where('role_id','!=', 0)->orderBy('id','desc')->get();
 
         return view('admin.staff.index', [
             'items' => $items,
-            'total_rows' => User::where('role', 'Staff')->count(),
+            'total_rows' => count($items),
         ]);
     }
 
@@ -44,11 +42,11 @@ class StaffController extends Controller
     public function active()
     {
         $user = auth()->user();
-		$items       = User::where('role', 'Staff')->where('disable', 0)->orderBy('id','desc')->get();
+		$items       = User::where('role_id','!=', 0)->where('disable', 0)->orderBy('id','desc')->get();
 		
         return view('admin.staff.active', [
             'items' => $items,
-            'total_rows' => User::where('role', 'Staff')->where('disable', 0)->count(),
+            'total_rows' => count($items),
         ]);
     }
 
@@ -58,11 +56,11 @@ class StaffController extends Controller
     public function deactive()
     {
         $user = auth()->user();
-		$items       = User::where('role', 'Staff')->where('disable', 1)->orderBy('id','desc')->get();
+		$items       = User::where('role_id','!=', 0)->where('disable', 1)->orderBy('id','desc')->get();
 		
         return view('admin.staff.deactive', [
             'items' => $items,
-            'total_rows' => User::where('role', 'Staff')->where('disable', 1)->count(),
+            'total_rows' => count($items),
         ]);
     }
 
@@ -73,10 +71,8 @@ class StaffController extends Controller
     {
         $user = auth()->user();
         return view('admin.staff.create', [
-            'branches'   => Branches::where('disable', 0)->orderBy('id','desc')->get(),
-            'sectors'    => Sector::where('disable', 0)->orderBy('id','desc')->get(),
-            'roles'    => Roles::where('name', '!=', 'Doctor')->orderBy('id','desc')->get(),
             'countries'   => Countries::all(),
+            'roles'    => Roles::orderBy('id','desc')->get(),
             ]);
     }
 
@@ -85,78 +81,56 @@ class StaffController extends Controller
 
     public function store(AddRequest $request)
     {
-            $user = auth()->user();
-            $certificate_file   = '';
-            $contract_file      = '';
+        $user = auth()->user();
 
-            if($request->hasfile('avatar'))
+
+        if($request->hasfile('avatar'))
+        {
+            $image = $request->file('avatar');
+            $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
+        
+            $destinationPath = public_path('/images/avatars');
+            ini_set('memory_limit', '256M');
+            $img = Image::make($image->getRealPath());
+            $img->resize(400, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($destinationPath.'/'.$input['imagename']);
+
+            $avatar = 'images/avatars/'.$input['imagename'];
+        }
+        else
+        {
+            if ($request->gender == 'Male')
             {
-                $image = $request->file('avatar');
-                $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
-            
-                $destinationPath = public_path('/images/avatars');
-                ini_set('memory_limit', '256M');
-                $img = Image::make($image->getRealPath());
-                $img->resize(400, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                })->save($destinationPath.'/'.$input['imagename']);
-
-                $avatar = 'images/avatars/'.$input['imagename'];
+                $avatar = 'images/male.png';
             }
             else
             {
-                if ($request->gender == 'Male')
-                {
-                    $avatar = 'images/male.png';
-                }
-                else
-                {
-                    $avatar = 'images/female.png';
-                }
+                $avatar = 'images/female.png';
             }
+        }
 
-            if($request->hasfile('certificate_file'))
-            {
-                $certificate_file = $request->certificate_file->store('files/certificate', 'public');
-            }
 
-            if($request->hasfile('contract_file'))
-            {
-                $contract_file = $request->contract_file->store('files/contract', 'public');
-            }
+        $role = Roles::find($request->role_id);
+        $staff =  User::create([
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'gender' => $request->gender,
+            'birthdate' => $request->birthdate,
+            'nationality' => $request->nationality,
+            'role_id' => $request->role_id,
+            'avatar' => $avatar,
+            'role' => $role->name,
+            'password' => Hash::make($request->password),
+        ]);
 
-            $staff =  User::create([
-                'name' => $request->name,
-                'phone' => $request->phone,
-                'email' => $request->email,
-                'gender' => $request->gender,
-                'birthdate' => $request->birthdate,
-                'nationality' => $request->nationality,
-
-                'branch_id' => $request->branch_id,
-                'role_id' => $request->role_id,
-                'working_hours' => $request->working_hours,
-                'salary' => $request->salary,
-                'hiring_date' => $request->hiring_date,
-                'profit_ratio' => $request->profit_ratio,
-
-                'certificate_file' => $certificate_file,
-                'contract_file' => $contract_file,
-                'contract_duration' => $request->contract_duration,
-                'contract_end_date' => $request->contract_end_date,
-
-                'avatar' => $avatar,
-
-                'role' => 'Staff',
-                'password' => Hash::make($request->password),
-            ]);
-
-            $role = Roles::find($request->role_id);
-            $staff->assignRole($role->name);
-            
-            $request->session()->flash('success', 'Staff Added successfully');
-            
-            return redirect(route('staff.index'));
+        
+        $staff->assignRole($role->name);
+        
+        $request->session()->flash('success', 'Staff Added successfully');
+        
+        return redirect(route('staff.index'));
     }
 
 
@@ -167,9 +141,7 @@ class StaffController extends Controller
         $user = auth()->user();
 		return view('admin.staff.create', [
             'item' => $staff,
-            'branches'   => Branches::where('disable', 0)->orderBy('id','desc')->get(),
-            'sectors'    => Sector::where('disable', 0)->orderBy('id','desc')->get(),
-            'roles'    => Roles::where('name', '!=', 'Doctor')->orderBy('id','desc')->get(),
+            'roles'    => Roles::orderBy('id','desc')->get(),
             'countries'   => Countries::all(),
         ]);
     }
@@ -181,7 +153,7 @@ class StaffController extends Controller
     {
 
         $user = auth()->user();
-        $data = $request->only(['name', 'phone', 'email', 'gender', 'birthdate', 'nationality', 'branch_id', 'role_id', 'working_hours', 'salary', 'hiring_date', 'profit_ratio', 'contract_duration', 'contract_end_date']);
+        $data = $request->only(['name', 'phone', 'email', 'gender', 'birthdate', 'nationality', 'role_id']);
 
         if($request->hasfile('avatar'))
         {
@@ -200,17 +172,6 @@ class StaffController extends Controller
             $data['avatar'] = $avatar;
         }
            
-        if($request->hasfile('certificate_file'))
-        {
-            $certificate_file = $request->certificate_file->store('files/certificate', 'public');
-            $data['certificate_file'] = $certificate_file;
-        }
-
-        if($request->hasfile('contract_file'))
-        {
-            $contract_file = $request->contract_file->store('files/contract', 'public');
-            $data['contract_file'] = $contract_file;
-        }
 
         $staff->update($data);
 		

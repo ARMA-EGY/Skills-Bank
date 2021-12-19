@@ -11,8 +11,6 @@ use App\Models\Todo;
 use App\Models\Note;
 use App\Models\Event;
 
-use App\Models\Branches;
-use App\Models\Sector;
 use App\Models\Roles;
 
 class User extends Authenticatable
@@ -25,7 +23,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'phone', 'password', 'gender', 'avatar', 'nationality', 'salary', 'branch_id', 'sector_id', 'contract_duration', 'contract_end_date', 'contract_file', 'hiring_date', 'birthdate', 'certificate_file', 'working_hours', 'profit_ratio', 'license_number', 'role', 'role_id', 'disable',
+        'name','last_name', 'email', 'phone', 'password', 'gender', 'avatar', 'nationality', 'birthdate', 'role', 'role_id', 'disable',
     ];
 
     /**
@@ -47,10 +45,7 @@ class User extends Authenticatable
     ];
 
 
-    public function Appointment()
-    {
-        return $this->hasMany('App\Appointment','doctor_id');
-    }    
+   
 
     public function isAdmin()
     {
@@ -75,16 +70,6 @@ class User extends Authenticatable
     public function event()
     {
         return $this->hasMany(Event::class);
-    }
-    
-    public function branch()
-    {
-        return $this->belongsTo(Branches::class, 'branch_id', 'id');
-    }
-    
-    public function sector()
-    {
-        return $this->belongsTo(Sector::class);
     }
     
     public function roleName()

@@ -19,7 +19,7 @@
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                   <li class="breadcrumb-item"><a href="{{route('home')}}"><i class="fas fa-home"></i></a></li>
                   <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('master.DASHBOARD')}}</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">{{__('master.ACTIVE-STAFF')}}</li>
+                  <li class="breadcrumb-item active" aria-current="page">Active Staff</li>
                 </ol>
               </nav>
             </div>
@@ -39,7 +39,7 @@
             <div class="card-header border-0">
               <div class="row align-items-center">
                 <div class="col">
-                  <h3 class="mb-0">{{__('master.ACTIVE-STAFF')}} <span class="badge badge-primary p-2">{{$total_rows}}</span></h3>
+                  <h3 class="mb-0">Active Staff <span class="badge badge-primary p-2">{{$total_rows}}</span></h3>
                 </div>
               </div>
             </div>
@@ -54,7 +54,7 @@
                     <th scope="col">#</th>
                     <th scope="col" class="sort" >{{__('master.NAME')}}</th>
                     <th scope="col" class="sort" >{{__('master.PHONE')}}</th>
-                    <th scope="col" class="sort" >{{__('master.HIRING-DATE')}}</th>
+                    <th scope="col" class="sort" >Email</th>
                     <th scope="col" class="sort" >{{__('master.ROLE')}} </th>
                     <th scope="col">{{__('master.STATUS')}}</th>
                     <th scope="col"></th>
@@ -68,7 +68,7 @@
                     <td>{{ $loop->iteration }}</td>
                     <td> <a href="{{ route('staff.profile', $item->id)}}"> <strong> {{  $item->name }} </strong> </a> </td>
                     <td>{{ $item->phone }}</td>
-                    <td>{{ $item->hiring_date }} </td>
+                    <td>{{ $item->email }} </td>
                     <td>{{ $item->roleName->name }} </td>
                     <td>
                       <div class="col-3">
@@ -89,7 +89,7 @@
 
 
             @else 
-                <p class="text-center"> {{__('master.NO-STAFF-AVAILABLE')}} </p>
+                <p class="text-center"> No Staff Available </p>
             @endif
 
             <!-- Card footer -->
