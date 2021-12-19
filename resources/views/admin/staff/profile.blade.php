@@ -128,7 +128,7 @@
                         <!--=================  Role  =================-->
                         <div class="form-group col-md-6 mb-2 text-left">
                             <label class="font-weight-bold text-uppercase">{{__('master.ROLE')}}</label>
-                            <input type="text" class="form-control" value="{{ $item->roleName->name }}" disabled>                    
+                            <input type="text" class="form-control" value="{{ $item->role }}" disabled>                    
                         </div>                                 
 
                 </div>

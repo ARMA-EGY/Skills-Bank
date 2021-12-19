@@ -147,27 +147,7 @@
                                     </div>
 
                                 </div>
-
-                                <div class="row">
-                                    <!--=================  Role  =================-->
-                                    <div class="form-group col-md-6 mb-2 text-left">
-                                        <label class="font-weight-bold text-uppercase">{{__('master.ROLE')}}</label>
-
-                                        <select class="form-control" name="role_id" required>
-                                            @foreach ($roles as $role)
-                                                <option value="{{$role->id}}" @if (isset($item))  @if ($item->role_id == $role->id ) selected @endif @endif>{{$role->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    
-                                        @error('role_id')
-                                            <div>
-                                                <span class="text-danger">{{ $message }}</span>
-                                            </div>
-                                        @enderror
-                    
-                                    </div>  
-                                    
-                                </div>    
+   
                         </div>
                     </div>
 

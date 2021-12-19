@@ -28,7 +28,7 @@ class StaffController extends Controller
     public function index()
     {
         $user = auth()->user();
-		$items       = User::where('role_id','!=', 0)->orderBy('id','desc')->get();
+		$items       = User::where('role','!=' ,'Admin')->orderBy('id','desc')->get();
 
         return view('admin.staff.index', [
             'items' => $items,
@@ -42,7 +42,7 @@ class StaffController extends Controller
     public function active()
     {
         $user = auth()->user();
-		$items       = User::where('role_id','!=', 0)->where('disable', 0)->orderBy('id','desc')->get();
+		$items       = User::where('role','!=', 'Admin')->where('disable', 0)->orderBy('id','desc')->get();
 		
         return view('admin.staff.active', [
             'items' => $items,
@@ -56,7 +56,7 @@ class StaffController extends Controller
     public function deactive()
     {
         $user = auth()->user();
-		$items       = User::where('role_id','!=', 0)->where('disable', 1)->orderBy('id','desc')->get();
+		$items       = User::where('role','!=' ,'Admin')->where('disable', 1)->orderBy('id','desc')->get();
 		
         return view('admin.staff.deactive', [
             'items' => $items,
@@ -72,7 +72,6 @@ class StaffController extends Controller
         $user = auth()->user();
         return view('admin.staff.create', [
             'countries'   => Countries::all(),
-            'roles'    => Roles::orderBy('id','desc')->get(),
             ]);
     }
 
@@ -119,14 +118,12 @@ class StaffController extends Controller
             'gender' => $request->gender,
             'birthdate' => $request->birthdate,
             'nationality' => $request->nationality,
-            'role_id' => $request->role_id,
             'avatar' => $avatar,
-            'role' => $role->name,
+            'role' => 'Staff',
             'password' => Hash::make($request->password),
         ]);
 
         
-        $staff->assignRole($role->name);
         
         $request->session()->flash('success', 'Staff Added successfully');
         
@@ -141,7 +138,6 @@ class StaffController extends Controller
         $user = auth()->user();
 		return view('admin.staff.create', [
             'item' => $staff,
-            'roles'    => Roles::orderBy('id','desc')->get(),
             'countries'   => Countries::all(),
         ]);
     }
