@@ -51,7 +51,7 @@
                             <div class="row">
 
                                 <!--=================  Name  =================-->
-                                <div class="form-group col-md-6 mb-2">
+                                <div class="form-group col-md-12 mb-2">
                                     <label for="name">Name</label>
                                     <input id="name" type="text" name="name" class="@error('name') is-invalid @enderror form-control" placeholder="Add Name" value="{{ isset($clients) ? $clients->name : old('name') }}" required>
                                 
@@ -62,41 +62,7 @@
                                     @enderror
                                 </div>
 
-                                <!--=================  Title =================-->
-                                <div class="form-group col-md-6 mb-2">
-                                    <label for="title">Title</label>
-                                    <input id="title" type="text" name="title" class="@error('title') is-invalid @enderror form-control" placeholder="Add Position" value="{{ isset($clients) ? $clients->title : old('title') }}" required>
-                                
-                                    @error('title')
-                                        <div>
-                                            <span class="text-danger">{{ $message }}</span>
-                                        </div>
-                                    @enderror
-                
-                                </div>
-
                             </div>
-                            <hr class="my-2">
-
-
-                            <div class="row">
-                                
-                                <div class="form-group col-md-12 mb-2">
-                                <label for="title">Description</label>
-                                <textarea id="content" class="content" name="description" rows="20">{{ isset($clients) ? $clients->description : old('description') }}</textarea>
-                                @error('description')
-                                    <div>
-                                        <span class="text-danger">{{ $message }}</span>
-                                    </div>
-                                @enderror
-                                            
-                                </div>
-                 
-                            </div>
-
-
-
-           
                                 
                         </div>
                     </div>
@@ -106,9 +72,9 @@
                 <div class="col-xl-4">
 
                     <div class="card card-defualt">
-                        <div class="card-header"><i class="far fa-id-badge"></i> Profile Picture </div>
+                        <div class="card-header"><i class="far fa-id-badge"></i> Picture </div>
                         <div class="card-body px-3">
-                            <div class="avatar-preview" style="background-image: url({{ isset($clients) ?  asset($clients->image)  : asset('images/avatar.png') }})"></div>
+                            <div class="avatar-preview" style="background-image: url({{ isset($clients) ?  asset($clients->image)  : asset('images/no-image.png') }})"></div>
                             <div class="my-2 text-left">
                               <small> {!! __('master.IMAGE-INFO') !!} </small> 
                             </div>

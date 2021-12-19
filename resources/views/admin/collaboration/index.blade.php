@@ -25,7 +25,7 @@
             </div>
 
             <div class="col-lg-6 col-5 text-right">
-              <a href="{{ route('collaboration.create')}}" class="btn btn-sm btn-neutral"><i class="fa fa-plus"></i> New Post</a>
+              <a href="{{ route('collaboration.create')}}" class="btn btn-sm btn-neutral"><i class="fa fa-plus"></i> New </a>
             </div>
 
             @if(session()->has('success'))	
@@ -52,7 +52,7 @@
             <div class="card-header border-0">
               <div class="row align-items-center">
                 <div class="col">
-                  <h3 class="mb-0">All Posts  <span class="badge badge-primary p-2">{{$blog_count}}</span></h3>
+                  <h3 class="mb-0">All Collaborations  <span class="badge badge-primary p-2">{{$blog_count}}</span></h3>
                 </div>
               </div>
             </div>
@@ -120,7 +120,7 @@
 
 
             @else 
-                <p class="text-center"> No Posts Yet.</p>
+                <p class="text-center"> No Data Available.</p>
             @endif
 
             <!-- Card footer -->

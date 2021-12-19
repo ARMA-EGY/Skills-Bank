@@ -301,4 +301,11 @@ return [
     "MONTH" => "Month",
 
     "ADD-NEW-NOTES" => "Add New Notes",
+
+    "ARE-YOU-SURE" => "Are you sure?",
+    "CANT-REVERT-DATA" => "You will not be able to revert this data!",
+    "REMOVED" => "Removed",
+    "REMOVED-SUCCESSFULLY" => "Removed Successfully.",
+    "YES" => "Yes",
+    "NO" => "No",
 ];

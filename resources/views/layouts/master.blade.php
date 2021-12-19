@@ -277,6 +277,7 @@
     <script src="{{ asset('vendor/file-manager/js/file-manager.js') }}"></script>
 
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
 
     <script>
 

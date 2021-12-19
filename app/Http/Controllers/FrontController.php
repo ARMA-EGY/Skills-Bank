@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use App\Models\Slider;
 use App\Models\Categories;
 use App\Models\Courses;
 use App\Models\CoursesRequest;
 use App\Models\Blog;
 use App\Models\Team;
+use App\Models\Client;
 
 use App\Models\Message;
 use App\Models\Subscriber;
@@ -34,10 +36,14 @@ class FrontController extends Controller
     //-------------- Home Page ---------------\\
     public function index()
     {
+		$sliders       = Slider::where('lang', LaravelLocalization::getCurrentLocale())->orderBy('id','desc')->get();
         $courses       = Courses::select('id', 'name', 'image', 'start_date', 'end_date', 'disable', 'price_'.LaravelLocalization::getCurrentLocale(). ' as price' )->where('disable', 0)->orderBy('id','desc')->limit(6)->get();
+		$clients       = client::orderBy('id','desc')->get();
 
         return view('front.welcome', [
+            'sliders' => $sliders,
             'courses' => $courses,
+            'clients' => $clients,
             'socials' => Social::all(),
         ]);
    

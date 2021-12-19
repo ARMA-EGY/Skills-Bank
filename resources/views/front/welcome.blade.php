@@ -9,106 +9,30 @@
 		<section id="slide" class="slider-section">
 			<div id="slider-item" class="slider-item-details">
 
-				<div class="slider-area slider-bg-1 relative-position" style="background-image: url({{asset('front_assets/img/slide-1.jpg')}});">
-					<div id="particles-stars" class="particles"></div>
-					<div class="slider-text">
-						<div class="section-title mb20 headline text-center">
-							<div class="layer-1-1">
-								<span class="subtitle text-uppercase text-white">EDUCATION & TRAINING ORGANIZATION</span>
+				@foreach ($sliders as $slider)
+					
+					<div class="slider-area slider-bg-1 relative-position" style="background-image: url({{asset('storage/'.$slider->image)}});">
+						<div id="particles-stars" class="particles"></div>
+						<div class="slider-text">
+							<div class="section-title mb20 headline text-center">
+								<div class="layer-1-1">
+									<span class="subtitle text-uppercase text-white">EDUCATION & TRAINING ORGANIZATION</span>
+								</div>
+								<div class="layer-1-3">
+									<h2><span>Inventive</span> Solution <br> for <span>Education</span></h2>
+								</div>
 							</div>
-							<div class="layer-1-3">
-								<h2><span>Inventive</span> Solution <br> for <span>Education</span></h2>
-							</div>
-						</div>
-						<div class="layer-1-4">
-							<div id="course-btn">
-								<div class="genius-btn gradient-bg text-center text-uppercase ul-li-block bold-font">
-									<a href="{{route('about')}}">Know More About Us<i class="fas fa-caret-right"></i></a>
+							<div class="layer-1-4">
+								<div id="course-btn">
+									<div class="genius-btn gradient-bg text-center text-uppercase ul-li-block bold-font">
+										<a href="{{route('about')}}">Know More About Us<i class="fas fa-caret-right"></i></a>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
 
-				<div class="slider-area slider-bg-2 relative-position" style="background-image: url({{asset('front_assets/img/banner/bg2.jpg')}});">
-					<div class="slider-text">
-						<div class="section-title mb20 headline text-center">
-							<div class="layer-1-1">
-								<span class="subtitle text-uppercase text-white">EDUCATION & TRAINING ORGANIZATION</span>
-							</div>
-							<div class="layer-1-3">
-								<h2><span>Inventive</span> Solution <br> for <span>Education</span></h2>
-							</div>
-						</div>
-						<div class="layer-1-4">
-							<div id="course-btn">
-								<div class="genius-btn gradient-bg text-center text-uppercase ul-li-block bold-font">
-									<a href="#">Know More About Us<i class="fas fa-caret-right"></i></a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="slider-area slider-bg-3 relative-position" style="background-image: url({{asset('front_assets/img/banner/bg.jpg')}});">
-					<div class="slider-text">
-						<div class="section-title mb20 headline text-center">
-							<div class="layer-1-1">
-								<span class="subtitle text-uppercase text-white">EDUCATION & TRAINING ORGANIZATION</span>
-							</div>
-							<div class="layer-1-3">
-								<h2><span>Inventive</span> Solution <br> for <span>Education</span></h2>
-							</div>
-						</div>
-						<div class="layer-1-4">
-							<div id="course-btn">
-								<div class="genius-btn gradient-bg text-center text-uppercase ul-li-block bold-font">
-									<a href="#">Know More About Us<i class="fas fa-caret-right"></i></a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="slider-area slider-bg-4 relative-position" style="background-image: url({{asset('front_assets/img/banner/bg2.jpg')}});">
-					<div class="slider-text">
-						<div class="section-title mb20 headline text-center">
-							<div class="layer-1-1">
-								<span class="subtitle text-uppercase text-white">EDUCATION & TRAINING ORGANIZATION</span>
-							</div>
-							<div class="layer-1-3">
-								<h2><span>Inventive</span> Solution <br> for <span>Education</span></h2>
-							</div>
-						</div>
-						<div class="layer-1-4">
-							<div id="course-btn">
-								<div class="genius-btn gradient-bg text-center text-uppercase ul-li-block bold-font">
-									<a href="#">Know More About Us<i class="fas fa-caret-right"></i></a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="slider-area slider-bg-5 relative-position" style="background-image: url({{asset('front_assets/img/banner/bg.jpg')}});">
-					<div class="slider-text">
-						<div class="section-title mb20 headline text-center">
-							<div class="layer-1-1">
-								<span class="subtitle text-uppercase text-white">EDUCATION & TRAINING ORGANIZATION</span>
-							</div>
-							<div class="layer-1-3">
-								<h2><span>Inventive</span> Solution <br> for <span>Education</span></h2>
-							</div>
-						</div>
-						<div class="layer-1-4">
-							<div id="course-btn">
-								<div class="genius-btn gradient-bg text-center text-uppercase ul-li-block bold-font">
-									<a href="#">Know More About Us<i class="fas fa-caret-right"></i></a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				@endforeach
 
 			</div>
 		</section>
@@ -690,33 +614,11 @@
 				</div>
 
 				<div class="sponsor-item sponsor-1">
-					<div class="sponsor-pic text-center">
-						<img src="{{asset('front_assets/img/sponsor/1.png')}}" alt="">
-					</div>
-					<div class="sponsor-pic text-center">
-						<img src="{{asset('front_assets/img/sponsor/2.png')}}" alt="">
-					</div>
-					<div class="sponsor-pic text-center">
-						<img src="{{asset('front_assets/img/sponsor/3.png')}}" alt="">
-					</div>
-					<div class="sponsor-pic text-center">
-						<img src="{{asset('front_assets/img/sponsor/4.png')}}" alt="">
-					</div>
-					<div class="sponsor-pic text-center">
-						<img src="{{asset('front_assets/img/sponsor/5.png')}}" alt="">
-					</div>
-					<div class="sponsor-pic text-center">
-						<img src="{{asset('front_assets/img/sponsor/6.png')}}" alt="">
-					</div>
-					<div class="sponsor-pic text-center">
-						<img src="{{asset('front_assets/img/sponsor/7.png')}}" alt="">
-					</div>
-					<div class="sponsor-pic text-center">
-						<img src="{{asset('front_assets/img/sponsor/8.png')}}" alt="">
-					</div>
-					<div class="sponsor-pic text-center">
-						<img src="{{asset('front_assets/img/sponsor/9.png')}}" alt="">
-					</div>
+					@foreach ($clients as $client)
+						<div class="sponsor-pic text-center">
+							<img src="{{asset($client->image)}}" alt="{{$client->name}}">
+						</div>
+					@endforeach
 				</div>
 			</div>
 		</section>
