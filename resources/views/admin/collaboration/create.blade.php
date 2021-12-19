@@ -16,7 +16,7 @@
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                   <li class="breadcrumb-item"><a href="{{route('home')}}"><i class="fas fa-home"></i></a></li>
                   <li class="breadcrumb-item"><a href="{{route('home')}}">Dashboard</a></li>
-                  <li class="breadcrumb-item"><a href="{{route('collaboration.index')}}">Blogs</a></li>
+                  <li class="breadcrumb-item"><a href="{{route('collaboration.index')}}">Collaborations</a></li>
                   <li class="breadcrumb-item active" aria-current="page">{{ isset($blog) ? 'Edit Collaboration' : 'Create Collaboration' }}</li>
                 </ol>
               </nav>
@@ -45,7 +45,7 @@
 
             <!--=================  Post Details  =================-->
             <div class="card card-defualt">
-                <div class="card-header"> {{ isset($blog) ? 'Edit Post Details' : 'Add Post Details' }}</div>
+                <div class="card-header"> {{ isset($blog) ? 'Edit Details' : 'Add Details' }}</div>
         
                 <div class="card-body">
         
@@ -64,7 +64,7 @@
         
                         <!--=================  Description  =================-->
                         <div class="form-group">
-                            <label for="description">Summary & Description (Meta Tag)</label>
+                            <label for="description">Summary & Description</label>
                             <textarea id="description" type="text" name="description" class="@error('description') is-invalid @enderror form-control" rows="2" placeholder="Add Summary & Description">{{ isset($blog) ? $blog->description : old('description') }}</textarea>
                         
                             @error('description')
@@ -75,18 +75,43 @@
         
                         </div>
         
-                        <!--=================  Keywords  =================-->
+                        <!--=================  Project Date  =================-->
                         <div class="form-group">
-                            <label for="keywords">Keywords (Meta Tag)</label>
-                            <textarea id="keywords" type="text" name="keywords" class="@error('keywords') is-invalid @enderror form-control" rows="2" placeholder="Add Keywords">{{ isset($blog) ? $blog->keywords : old('keywords') }}</textarea>
-                        
-                            @error('keywords')
+                            <label for="project_date">Project Date</label>
+                            <input id="project_date" type="text" name="project_date" class="@error('project_date') is-invalid @enderror form-control"  value="{{ isset($blog) ? $blog->project_date : old('project_date') }}">
+                            @error('project_date')
                                 <div>
                                      <span class="text-danger">{{ $message }}</span>
                                 </div>
                             @enderror
         
                         </div>
+        
+                        <!--=================  Trainees Number  =================-->
+                        <div class="form-group">
+                            <label for="trainees_no">Trainees Number</label>
+                            <input id="trainees_no" type="text" name="trainees_no" class="@error('trainees_no') is-invalid @enderror form-control"  value="{{ isset($blog) ? $blog->trainees_no : old('trainees_no') }}">
+                            @error('trainees_no')
+                                <div>
+                                     <span class="text-danger">{{ $message }}</span>
+                                </div>
+                            @enderror
+        
+                        </div>
+        
+                        <!--=================  Training Hours  =================-->
+                        <div class="form-group">
+                            <label for="training_hours">Training Hours</label>
+                            <input id="training_hours" type="text" name="training_hours" class="@error('training_hours') is-invalid @enderror form-control"  value="{{ isset($blog) ? $blog->training_hours : old('training_hours') }}">
+                            @error('training_hours')
+                                <div>
+                                     <span class="text-danger">{{ $message }}</span>
+                                </div>
+                            @enderror
+        
+                        </div>
+
+
 
                         <!--=================  Category  =================-->
                         {{-- <div class="form-group">
@@ -112,6 +137,7 @@
                         </div> --}}
 
                         <input type="hidden" name="category_id" value="0">
+                        <input type="hidden" name="keywords" value="0">
         
                         <!--=================  Tags  =================-->
                         {{-- @if ($tags->count() > 0)
@@ -207,7 +233,7 @@
                     <input type="hidden" name="userID" value="{{Auth::user()->id}}">
                     <div class="form-group mb-0">
                         {{-- <button type="submit" name="status" value="0" class="btn btn-warning">Save as Draft</button> --}}
-                        <button type="submit" name="status" value="1" class="btn btn-success">{{ isset($blog) ? 'Save as Post' : 'Add Post' }}</button>
+                        <button type="submit" name="status" value="1" class="btn btn-success">{{ isset($blog) ? 'Save' : 'Add' }}</button>
                     </div>
                 </div>
             </div>

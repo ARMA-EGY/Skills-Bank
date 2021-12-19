@@ -13,7 +13,7 @@ class Collaboration extends Model
     protected $table = 'collaboration';
 
     protected $fillable = [
-        'title','description','content','image','alt_image','category_id','user_id','token','url','status'
+        'title','description','content','image','alt_image','category_id','user_id','token','url','status','project_date','trainees_no','training_hours'
     ];
 
     public function category()

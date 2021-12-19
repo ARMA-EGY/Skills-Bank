@@ -94,7 +94,10 @@ class CollaborationController extends Controller
             'user_id' => $request->userID,
             'token' => uniqid(),
             'url' => $url,
-            'status' => $request->status
+            'status' => $request->status,
+            'project_date' => $project_date,
+            'trainees_no' => $trainees_no,
+            'training_hours' => $training_hours,
         ]);
    
 
@@ -165,8 +168,7 @@ class CollaborationController extends Controller
 
         $url =  preg_replace(array('/[-?]/', '/\s+/'), '_', $url1);
 
-        $data = $request->only(['title', 'description', 'content', 'category_id', 'alt_image', 'status']);
-
+        $data = $request->only(['title', 'description', 'content', 'category_id', 'alt_image', 'status', 'project_date', 'trainees_no', 'training_hours']);
 
         $seo                = Seo::where('page_token', $collaboration->token)->first();
         $seo->title         = $request->title;

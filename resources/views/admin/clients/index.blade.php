@@ -66,8 +66,6 @@
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Title</th>
-
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
@@ -78,7 +76,6 @@
                   <tr class="parent">
                     <td>{{ $loop->iteration }}</td>
                     <td><strong> {{  $client->name }} </strong></td>
-                    <td><strong> {{  $client->title }} </strong></td>
                     <td>
                       <a href="{{ route('clients.edit', $client->id)}}" class="btn btn-primary float-left btn-sm mx-1"><i class="fa fa-edit"></i> Edit</a>
                       <span class="btn btn-sm btn-danger remove_item" data-id="{{$client->id}}" data-url="{{route('remove-clients')}}"><i class="fa fa-trash-alt"></i> Remove</span>

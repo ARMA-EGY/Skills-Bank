@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\Clients;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\client;
+use App\Models\Client;
 use App\Seo;
 use App\Http\Requests\SeoRequest;
 use Illuminate\Support\Facades\Storage;
@@ -20,7 +20,6 @@ class ClientsController extends Controller
      */
     public function index()
     {
-		
 		$clients          = client::orderBy('id','desc')->get();
 		
         return view('admin.clients.index', [
@@ -59,20 +58,15 @@ class ClientsController extends Controller
         //ini_set('memory_limit', '256M');
         $img = Image::make($image->getRealPath());
         $img->save($destinationPath.'/'.$input['imagename']);
-
         $teamImage = 'images/clients/'.$input['imagename'];
-
-        
 
         $clients =  client::create([
             'name' => $request->name,
-            'title' => $request->title,
-            'description' => $request->description,
             'image' => $teamImage,
         ]);
 
 
-        session()->flash('success', 'client Added successfully');
+        session()->flash('success', 'Client Added successfully');
         
         return redirect(route('clients.index'));
     }
@@ -112,7 +106,7 @@ class ClientsController extends Controller
     public function update(Request $request, client $client)
     {
 
-        $data = $request->only(['name', 'title', 'description']);
+        $data = $request->only(['name']);
 
         if($request->hasfile('image'))
         {
@@ -138,7 +132,7 @@ class ClientsController extends Controller
 
         $client->update($data);
         
-        session()->flash('success', 'client updated successfully');
+        session()->flash('success', 'Client updated successfully');
         
         return redirect(route('clients.index'));
     }
