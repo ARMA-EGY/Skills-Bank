@@ -90,7 +90,7 @@
                     <td> {{$meeting->start_time}} </td>
                     <td> {{ $meeting->course->name }} </td>
                     <td>
-                      <span class="btn btn-sm btn-warning remove_item" data-id="{{$meeting->id}}" data-url="{{route('remove-meeting')}}"><i class="fa fa-trash-alt"></i> Remove</span>
+                      <span class="btn btn-sm btn-danger remove_item" data-id="{{$meeting->id}}" data-url="{{route('remove-meeting')}}"><i class="fa fa-trash-alt"></i> Remove</span>
                     </td>
                   </tr>
 

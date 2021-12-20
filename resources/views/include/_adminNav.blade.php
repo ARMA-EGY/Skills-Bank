@@ -277,51 +277,7 @@
               </h6>
               <!-- Navigation -->
               <ul class="navbar-nav mb-md-3">
-                  <li class="nav-item">
-                      <a class="nav-link collapsed" href="#navbar-lang" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-components">
-                        <i class="fas fa-language"></i>
-                        <span class="nav-link-text">{{__('master.LANGUAGE')}}</span>
-                      </a>
-                      <div class="collapse" id="navbar-lang" style="">
-                        <ul class="nav nav-sm flex-column">
-
-                          @if (LaravelLocalization::getCurrentLocale() == 'sa')
-
-                                  <li class="nav-item">
-                                      <a href="{{ LaravelLocalization::getLocalizedURL('eg', null, [], true) }}" class="nav-link nav-link-sub">
-                                      <img class="w-20 mx-2" src="{{ asset('admin_assets/flags/en.png')}}" alt="English">
-                                      <span class="sidenav-normal"> {{__('master.ENGLISH')}}</span>
-                                      </a>
-                                  </li>
-
-                                  <li class="nav-item">
-                                      <a href="#" class="nav-link nav-link-sub active">
-                                      <img class="w-20 mx-2" src="{{ asset('admin_assets/flags/ar.png')}}" alt="Arabic">
-                                      <span class="sidenav-normal">{{__('master.ARABIC')}}  </span>
-                                      </a>
-                                  </li>
-
-                          @elseif (LaravelLocalization::getCurrentLocale() == 'eg')  
-
-                                  <li class="nav-item">
-                                      <a href="#" class="nav-link nav-link-sub active">
-                                      <img class="w-20 mx-2" src="{{ asset('admin_assets/flags/en.png')}}" alt="English">
-                                      <span class="sidenav-normal"> {{__('master.ENGLISH')}}</span>
-                                      </a>
-                                  </li>
-
-                                  <li class="nav-item">
-                                      <a href="{{ LaravelLocalization::getLocalizedURL('sa', null, [], true) }}" class="nav-link nav-link-sub ">
-                                      <img class="w-20 mx-2" src="{{ asset('admin_assets/flags/ar.png')}}" alt="Arabic">
-                                      <span class="sidenav-normal">{{__('master.ARABIC')}}  </span>
-                                      </a>
-                                  </li>
-                          @endif
-                          
-                        </ul>
-                      </div>
-                  </li>
-
+                
                   <li class="nav-item">
                       <a class="nav-link {{request()->routeIs('profile') ? 'active' : '' }}" href="{{route('profile')}}">
                           <i class="fa fa-user-circle"></i>

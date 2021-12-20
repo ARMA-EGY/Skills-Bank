@@ -37,13 +37,6 @@
   <link rel="stylesheet" href="{{ asset('vendor/file-manager/css/file-manager.css') }}">
   <link rel="stylesheet" href="{{ asset('admin_assets/css/trix.min.css') }}" type="text/css">
 
-  @if (LaravelLocalization::getCurrentLocale() == 'ar')
-    <!-- RTL CSS -->
-    <link rel="stylesheet" href="{{ asset('admin_assets/css/rtl.css') }}" type="text/css">
-  @endif
-
-
-
   @yield('style')
 </head>
 <body>
