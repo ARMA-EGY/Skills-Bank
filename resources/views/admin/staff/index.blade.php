@@ -68,7 +68,6 @@
                     <th scope="col" class="sort" >{{__('master.NAME')}}</th>
                     <th scope="col" class="sort" >{{__('master.PHONE')}}</th>
                     <th scope="col" class="sort" >{{__('master.EMAIL')}}</th>
-                    <th scope="col" class="sort" >{{__('master.ROLE')}} </th>
                     <th scope="col">{{__('master.STATUS')}}</th>
                     <th scope="col"></th>
                   </tr>
@@ -82,7 +81,6 @@
                     <td> <a href="{{ route('staff.profile', $item->id)}}"> <strong> {{  $item->name }} </strong> </a> </td>
                     <td>{{ $item->phone }}</td>
                     <td>{{ $item->email }} </td>
-                    <td>{{ $item->role }} </td>
                     <td>
                       <div class="col-3">
                         <input type="checkbox" class="check_off item_check" data-id="{{$item->id}}" data-url="{{route('staff-disable')}}" data-toggle="toggle" data-size="sm"  @if ($item->disable == '0') checked @endif>
