@@ -13,7 +13,6 @@ trait MeetingTrait
             'type'  => 3,
             'start_time'  => $start_time,
 
-            'duration' => '45',
             'schedule_for'  => "youssef97hesham@gmail.com",
             'timezone'  => "Africa/Cairo",
 

@@ -171,7 +171,7 @@
                             <div class="my-2 text-left">
                               <small> {!! __('master.IMAGE-INFO') !!} </small> 
                             </div>
-                            <input class="btn-info form-control form-control-sm" type="file" accept="image/*" id="avatar" name="image" multiple="false" />
+                            <input class="btn-info form-control form-control-sm" type="file" accept="image/*" id="avatar" name="image" multiple="false"  @if(!isset($team))  required @endif  />
                         </div>
                     </div>
 
