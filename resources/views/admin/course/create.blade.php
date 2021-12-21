@@ -101,7 +101,7 @@
                                 <!--=================  PRICE_SR  =================-->
                                 <div class="form-group col-md-6 mb-2 text-left">
                                     <label class="font-weight-bold text-uppercase">{{__('master.PRICE_SR')}}</label>
-                                    <input type="number" name="price_sr" class="@error('price_sr') is-invalid @enderror form-control" placeholder="{{__('master.PRICE_SR')}}" value="{{ isset($item) ? $item->price_sr : old('price_sr') }}" required>
+                                    <input type="number" name="price_sr" class="@error('price_sr') is-invalid @enderror form-control" placeholder="{{__('master.PRICE_SR')}}" value="{{ isset($item) ? $item->price_sa : old('price_sa') }}" required>
                                 
                                     @error('price_sr')
                                         <div>

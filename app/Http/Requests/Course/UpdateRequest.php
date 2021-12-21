@@ -21,7 +21,6 @@ class UpdateRequest extends FormRequest
             'start_date' => 'required',
             'end_date' => 'required',
             'students_limit' => 'required',
-            'image' => 'required',
             'category_id' => 'required',
         ];
     }
@@ -35,7 +34,6 @@ class UpdateRequest extends FormRequest
             'start_date.required' => 'start date is required.',
             'end_date.required' => 'end date is required.',
             'students_limit.required' => 'students limit is required.',
-            'image.required' => 'image is required.',
             'category_id.required' => 'category is required.',
         ];
     }
@@ -49,7 +47,6 @@ class UpdateRequest extends FormRequest
             'start_date' => 'start date',
             'end_date' => 'end date',
             'students_limit' => 'students limit',
-            'image' => 'image',
             'category_id' => 'category',
         ];
     }
