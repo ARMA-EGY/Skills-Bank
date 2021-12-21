@@ -13,6 +13,10 @@ use App\Models\Blog;
 use App\Models\Team;
 use App\Models\Client;
 
+use App\Models\LearningTree;
+use App\Models\TreeDescription;
+use App\Models\Collaboration;
+
 use App\Models\Message;
 use App\Models\Subscriber;
 use App\Http\Requests\SubscriberRequest;
@@ -79,7 +83,10 @@ class FrontController extends Controller
     //-------------- Learning Tree Page ---------------\\
     public function learningTree()
     {  
+		$items       = LearningTree::orderBy('id','asc')->get();
+
         return view('front.learningTree', [
+            'items' => $items,
             'socials' => Social::all(),
         ]);      
     }
@@ -194,7 +201,7 @@ class FrontController extends Controller
     //-------------- Collaborations Page ---------------\\
     public function collaborations()
     {
-        $collaborations       = Blog::where('status', 1)->orderBy('id','desc')->paginate(9);
+        $collaborations       = Collaboration::where('status', 1)->orderBy('id','desc')->paginate(9);
 
         return view('front.collaborations',[
             'items' => $collaborations,
@@ -205,7 +212,7 @@ class FrontController extends Controller
     //-------------- Single Collaboration Page ---------------\\
     public function collabShow($url)
     {
-        $collaboration      = Blog::where('url', $url)->first();
+        $collaboration      = Collaboration::where('url', $url)->first();
 
         return view('front.collabDetails',[
             'item' => $collaboration,

@@ -17,7 +17,7 @@
                   <li class="breadcrumb-item"><a href="{{route('home')}}"><i class="fas fa-home"></i></a></li>
                   <li class="breadcrumb-item"><a href="{{route('home')}}">Dashboard</a></li>
                   <li class="breadcrumb-item"><a href="{{route('team.index')}}">Team</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">{{ isset($tag) ? 'Edit Member' : 'Add New Member' }}</li>
+                  <li class="breadcrumb-item active" aria-current="page">{{ isset($team) ? 'Edit Member' : 'Add New Member' }}</li>
                 </ol>
               </nav>
             </div>
@@ -198,7 +198,7 @@
             <div class="card card-defualt">
                 <div class="card-body">
                     <div class="form-group mb-0">
-                        <button type="submit" class="btn btn-success btn-block">{{ isset($item) ?  __('master.SAVE'):__('master.ADD') }}</button>
+                        <button type="submit" class="btn btn-success btn-block">{{ isset($team) ?  __('master.SAVE'):__('master.ADD') }}</button>
                     </div>
                 </div>
             </div>

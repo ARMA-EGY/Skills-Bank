@@ -95,9 +95,9 @@ class CollaborationController extends Controller
             'token' => uniqid(),
             'url' => $url,
             'status' => $request->status,
-            'project_date' => $project_date,
-            'trainees_no' => $trainees_no,
-            'training_hours' => $training_hours,
+            'project_date' => $request->project_date,
+            'trainees_no' => $request->trainees_no,
+            'training_hours' => $request->training_hours,
         ]);
    
 

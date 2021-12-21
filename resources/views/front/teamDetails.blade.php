@@ -45,6 +45,7 @@
 										</div>
 										<div class="teacher-desc-social ul-li">
 											<ul>
+												@if (!empty($item->facebook))
 												<li>
 													<a href="{{$item->facebook}}">
 														<div class="info-social">
@@ -53,6 +54,8 @@
 														<span class="info-text">Facebook</span>
 													</a>
 												</li>
+												@endif
+												@if (!empty($item->twitter))
 												<li>
 													<a href="{{$item->twitter}}">
 														<div class="info-social">
@@ -61,6 +64,8 @@
 														<span class="info-text">Twitter</span>
 													</a>
 												</li>
+												@endif
+												@if (!empty($item->linkedin))
 												<li>
 													<a href="{{$item->linkedin}}">
 														<div class="info-social">
@@ -70,6 +75,7 @@
 														
 													</a>
 												</li>
+												@endif
 											</ul>
 										</div>
 

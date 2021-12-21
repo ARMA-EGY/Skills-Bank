@@ -37,9 +37,9 @@
 								<h2>{{ $item->title}}</h2>
 
 								<div class="date-meta">
-									<span><i class="fas fa-calendar-alt"> Project Date:</i> February 2021 to April 2021 </span>
-									<span><i class="fas fa-users"> Trainees no.: </i> 20 FEI Member </span>
-									<span><i class="fas fa-history"> Training hours: </i> 72 Hours</span>
+									<span><i class="fas fa-calendar-alt"> Project Date:</i> {{ $item->project_date}} </span>
+									<span><i class="fas fa-users"> Trainees no.: </i> {{ $item->trainees_no}} </span>
+									<span><i class="fas fa-history"> Training hours: </i> {{ $item->training_hours}}</span>
 								</div>
                                 
 								<div>

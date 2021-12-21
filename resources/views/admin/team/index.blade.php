@@ -25,7 +25,7 @@
             </div>
 
             <div class="col-lg-6 col-5 text-right">
-              <a href="{{ route('team.create')}}" class="btn btn-sm btn-neutral"><i class="fa fa-plus"></i> New Employee</a>
+              <a href="{{ route('team.create')}}" class="btn btn-sm btn-neutral"><i class="fa fa-plus"></i> New Member</a>
             </div>
 
             @if(session()->has('success'))	
@@ -52,7 +52,7 @@
             <div class="card-header border-0">
               <div class="row align-items-center">
                 <div class="col">
-                  <h3 class="mb-0">All People  <span class="badge badge-primary p-2">{{$team_count}}</span></h3>
+                  <h3 class="mb-0">All Members  <span class="badge badge-primary p-2">{{$team_count}}</span></h3>
                 </div>
               </div>
             </div>

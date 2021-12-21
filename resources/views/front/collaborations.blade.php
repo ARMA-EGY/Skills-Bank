@@ -45,9 +45,6 @@
 																	<div class="blog-thumnile">
 																		<img class="rounded" src="{{asset('storage/'.$item->image)}}" alt="">
 																	</div>
-																	<div class="course-price text-center gradient-bg">
-																		<span>{{ date('j M, Y', strtotime($item->created_at))}}</span>
-																	</div>
 																</div>
 															</div>
 														</div>

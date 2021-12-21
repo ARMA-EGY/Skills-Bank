@@ -72,6 +72,7 @@ class TeamController extends Controller
             'description' => $request->description,
             'facebook' => $request->facebook,
             'twitter' => $request->twitter,
+            'linkedin' => $request->linkedin,
             'image' => $teamImage,
         ]);
 
@@ -116,7 +117,7 @@ class TeamController extends Controller
     public function update(Request $request, Team $team)
     {
 
-        $data = $request->only(['name', 'title', 'phone', 'email', 'description', 'facebook', 'twitter']);
+        $data = $request->only(['name', 'title', 'phone', 'email', 'description', 'facebook', 'twitter', 'linkedin']);
 
         if($request->hasfile('image'))
         {

@@ -68,7 +68,6 @@
                     <th scope="col">Title</th>
                     <th scope="col">Author</th>
                     <th scope="col">Publish Date</th>
-                    <th scope="col">Views</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
@@ -85,9 +84,6 @@
                     <td>
                       {{ $blog->created_at->format('d-m-Y') }}
                     </td>
-                    <td>
-                      <span >{{ number_format($blog->views) }}</span>
-                    </td>
                     <td >
                       <div class="dropdown">
                         <a class="btn btn-sm btn-icon-only text-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -96,7 +92,6 @@
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                           <a href="{{ route('collaboration.edit', $blog->id)}}" class="dropdown-item"><i class="fa fa-edit text-success"></i> Edit</a>
                           <button class="dropdown-item remove_item" data-id="{{$blog->id}}" data-url="{{route('remove-collaboration')}}"><i class="fa fa-trash-alt text-danger"></i> Remove</button>
-                          <button data-token="{{$blog->token}}" class="dropdown-item get_seo"><i class="fas fa-share-alt text-purple"></i> SEO</button>
                         </div>
                       </div>
                     </td>
@@ -111,7 +106,6 @@
                         <th class="p-2">Title</th>
                         <th class="p-2">Author</th>
                         <th class="p-2">Publish Date</th>
-                        <th class="p-2">Views</th>
                         <th class="p-2"></th>
                     </tr>
                 </tfoot>

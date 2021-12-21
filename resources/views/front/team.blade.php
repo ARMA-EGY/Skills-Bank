@@ -61,9 +61,15 @@
 												<div class="teacher-hover-item">
 													<div class="teacher-social-name ul-li-block">
 														<ul>
-															<li><a href="{{$item->facebook}}"><i class="fab fa-facebook-f"></i></a></li>
-															<li><a href="{{$item->twitter}}"><i class="fab fa-twitter"></i></a></li>
-															<li><a href="{{$item->linkedin}}"><i class="fab fa-linkedin"></i></a></li>
+															@if (!empty($item->facebook))
+																<li><a href="{{$item->facebook}}"><i class="fab fa-facebook-f"></i></a></li>
+															@endif
+															@if (!empty($item->twitter))
+																<li><a href="{{$item->twitter}}"><i class="fab fa-twitter"></i></a></li>
+															@endif
+															@if (!empty($item->linkedin))
+																<li><a href="{{$item->linkedin}}"><i class="fab fa-linkedin"></i></a></li>
+															@endif
 														</ul>
 													</div>
 													<div class="teacher-text">
