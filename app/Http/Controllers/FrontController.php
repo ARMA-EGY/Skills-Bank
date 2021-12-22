@@ -16,7 +16,9 @@ use App\Models\Client;
 use App\Models\LearningTree;
 use App\Models\TreeDescription;
 use App\Models\Collaboration;
+use App\Models\Testimonial;
 
+use App\Models\Career;
 use App\Models\Message;
 use App\Models\Subscriber;
 use App\Http\Requests\SubscriberRequest;
@@ -42,13 +44,15 @@ class FrontController extends Controller
     {
 		$sliders       = Slider::where('lang', LaravelLocalization::getCurrentLocale())->orderBy('id','desc')->get();
         $courses       = Courses::select('id', 'name', 'image', 'start_date', 'end_date', 'disable', 'price_'.LaravelLocalization::getCurrentLocale(). ' as price' )->where('disable', 0)->orderBy('id','desc')->limit(6)->get();
-		$clients       = client::orderBy('id','desc')->get();
+		$clients       = client::orderBy('id','desc')->limit(8)->get();
+		$testimonials  = Testimonial::orderBy('id','desc')->limit(4)->get();
 
         return view('front.welcome', [
-            'sliders' => $sliders,
-            'courses' => $courses,
-            'clients' => $clients,
-            'socials' => Social::all(),
+            'sliders'       => $sliders,
+            'courses'       => $courses,
+            'clients'       => $clients,
+            'testimonials'  => $testimonials,
+            'socials'       => Social::all(),
         ]);
    
     }
@@ -102,16 +106,24 @@ class FrontController extends Controller
     //-------------- Calendar Page ---------------\\
     public function calendar()
     {
+        $categories    = Categories::where('disable', 0)->orderBy('id','desc')->get();
+        $courses       = Courses::select('id', 'category_id', 'name', 'image', 'start_date', 'end_date', 'disable', 'price_'.LaravelLocalization::getCurrentLocale(). ' as price' )->where('disable', 0)->orderBy('id','desc')->get();
+
         return view('front.calendar', [
-            'socials' => Social::all(),
+            'categories'    => $categories,
+            'courses'       => $courses,
+            'socials'       => Social::all(),
         ]);       
     }
     
     //-------------- Careers Page ---------------\\
     public function careers()
     {
+		$careers          = Career::where('disable', 0)->orderBy('id','desc')->paginate(9);
+
         return view('front.careers', [
-            'socials' => Social::all(),
+            'items'     => $careers,
+            'socials'   => Social::all(),
         ]);        
     }
     

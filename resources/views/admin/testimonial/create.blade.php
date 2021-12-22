@@ -86,7 +86,7 @@
                                 <!--=================  Description =================-->
                                 <div class="form-group col-md-12 mb-2">
                                     <label for="description">Description</label>
-                                    <textarea id="content" class="content" name="description" rows="20" required>{{ isset($testimonials) ? $testimonials->description : old('description') }}</textarea>
+                                    <textarea id="content" class="content" name="description" rows="20">{{ isset($testimonials) ? $testimonials->description : old('description') }}</textarea>
                                         @error('description')
                                             <div>
                                                 <span class="text-danger">{{ $message }}</span>
