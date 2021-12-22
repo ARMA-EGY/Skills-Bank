@@ -109,6 +109,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'a
         |--------------------------------------------------------------------------
         */
         Route::resource('/coursecategory', 'Admin\Courses\CoursesCategoryController');
+        Route::post('/disablecoursecategory', 'Admin\Courses\CoursesCategoryController@disable')->name('course-category-disable');
         Route::get('/activecoursecategory', 'Admin\Courses\CoursesCategoryController@active')->name('active-course-category');
         Route::get('/deactivecoursecategory', 'Admin\Courses\CoursesCategoryController@deactive')->name('deactive-course-category');
 
@@ -130,6 +131,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'a
         Route::resource('/clients', 'Admin\Clients\ClientsController'); 
         Route::post('/removeclients', 'Admin\Clients\ClientsController@removeclients')->name('remove-clients');
 
+
+        /*
+        |--------------------------------------------------------------------------
+        | testimonials
+        |--------------------------------------------------------------------------
+        */
+        Route::resource('/testimonials', 'Admin\Testimonials\TestimonialsController'); 
+        Route::post('/removetestimonials', 'Admin\Testimonials\TestimonialsController@removetestimonials')->name('remove-testimonials');
 
 
         /*

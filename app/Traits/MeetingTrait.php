@@ -6,14 +6,14 @@ namespace App\Traits;
 trait MeetingTrait
 {
 
-    public function create_meeting($topic, $start_time)
+    public function create_meeting($email, $topic, $start_time)
     {       
         $data = array(
             'topic' => $topic,
             'type'  => 3,
             'start_time'  => $start_time,
 
-            'schedule_for'  => "youssef97hesham@gmail.com",
+            'schedule_for'  => $email,
             'timezone'  => "Africa/Cairo",
 
             'settings' =>['host_video' => false,'participant_video' => false,'mute_upon_entry' => false,'watermark' => false,'use_pmi' => false],
@@ -21,29 +21,40 @@ trait MeetingTrait
 
         );
       
-        $endpoint = 'users/youssef97hesham@gmail.com/meetings';
+        $endpoint = 'users/'.$email.'/meetings';
         $method = 'POST';
-        return $this->callApi($data,$endpoint,$method);
+        return $this->callApi($email, $data,$endpoint,$method);
 
     }
 
 
     
-    public function delete_meeting($meetingId)
+    public function delete_meeting($email, $meetingId)
     {       
         $data = array(
         );
         
         $endpoint = '/meetings/'.$meetingId;
         $method = 'DELETE';
-        return $this->callApi($data,$endpoint,$method);
+        return $this->callApi($email, $data,$endpoint,$method);
 
     }
 
 
 
-    public function callApi($data,$endpoint,$method)
+    public function callApi($email, $data,$endpoint,$method)
     {
+
+        $token;
+        if($email == "youssef97hesham@gmail.com")
+            $token = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IkFDdzRZOGdZU2tHMlhfcjU5YVVSSGciLCJleHAiOjE2NDA0OTE2NDgsImlhdCI6MTYzOTg4Njg0OX0.8cbmoZWeCbh_ddcDyBkMiAEQuC1RJl-vARc8K3amfmg';
+           
+        if($email == "eLearning@skillsbankme.com")
+            $token = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6InNiYjFZNkluUURTSjBqbmJNMDBSX1EiLCJleHAiOjE2NzIzOTQ0MDAsImlhdCI6MTY0MDExMjYzOX0.NZki7I2sg8mrvtZ_4Yr06jzqtQ1U17YVyOIe22n084g';
+
+        if($email == "Training@skillsbankme.com")
+            $token = '';
+
         $data_string = json_encode($data);
         $ch = curl_init('https://api.zoom.us/v2/'.$endpoint);
 
@@ -59,7 +70,7 @@ trait MeetingTrait
             array(
                 'Accepts: application/json',
                 'Content-Type: application/json',
-                'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6IkFDdzRZOGdZU2tHMlhfcjU5YVVSSGciLCJleHAiOjE2NDA0OTE2NDgsImlhdCI6MTYzOTg4Njg0OX0.8cbmoZWeCbh_ddcDyBkMiAEQuC1RJl-vARc8K3amfmg'
+                'Authorization: Bearer '. $token
             )
         );
 

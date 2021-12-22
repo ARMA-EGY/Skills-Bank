@@ -50,7 +50,7 @@ class MeetingsController extends Controller
      */
     public function store(AddRequest $request)
     {
-        $response = $this->create_meeting($request->topic ,$request->start_time);
+        $response = $this->create_meeting($request->email ,$request->topic ,$request->start_time);
         if($response['message'] == 'failure')
         {
             session()->flash('fail', 'opps something went wrong');
@@ -62,6 +62,8 @@ class MeetingsController extends Controller
                     'start_time' => $request->start_time,
                     'course_id' => $request->course_id,
                     'meeting_id' => $response['data']->id,
+                    'url' => $response['data']->join_url,
+                    'email' => $request->email,
                 ]); 
                 session()->flash('success', 'Meeting created successfully');
             }else{
@@ -109,7 +111,7 @@ class MeetingsController extends Controller
     public function removemeeting(Request $request)
     {
         $item = Meeting::where('id', $request->id)->first();
-        $response = $this->delete_meeting($item->meeting_id);
+        $response = $this->delete_meeting($item->email,$item->meeting_id);
         if($response['message'] == 'failure')
         {
             session()->flash('fail', 'opps something went wrong');

@@ -14,19 +14,18 @@
         <div class="header-body">
           <div class="row align-items-center py-4">
 
-            <div class="col-lg-6 col-7 text-left">
+            <div class="col-lg-6 col-7">
               <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                   <li class="breadcrumb-item"><a href="{{route('home')}}"><i class="fas fa-home"></i></a></li>
-                  <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('master.DASHBOARD')}}</a></li>
-                  <li class="breadcrumb-item"><a href="{{route('coursecategory.index')}}">Course Category</a></li>                  
-                  <li class="breadcrumb-item active" aria-current="page">All Categories</li>
+                  <li class="breadcrumb-item"><a href="{{route('home')}}">Dashboard</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Testimonials</li>
                 </ol>
               </nav>
             </div>
 
             <div class="col-lg-6 col-5 text-right">
-              <a href="{{ route('coursecategory.create')}}" class="btn btn-sm btn-neutral"><i class="fa fa-plus"></i> {{__('master.ADD-NEW-CATEGORY')}}</a>
+              <a href="{{ route('testimonials.create')}}" class="btn btn-sm btn-neutral"><i class="fa fa-plus"></i> New Testimonials</a>
             </div>
 
             @if(session()->has('success'))	
@@ -53,12 +52,12 @@
             <div class="card-header border-0">
               <div class="row align-items-center">
                 <div class="col">
-                  <h3 class="mb-0">{{__('master.ALL-CATEGORIES')}} <span class="badge badge-primary p-2">{{$total_rows}}</span></h3>
+                  <h3 class="mb-0">All Testimonials  <span class="badge badge-primary p-2">{{$testimonials_count}}</span></h3>
                 </div>
               </div>
             </div>
 
-            @if ($items->count() > 0)
+            @if ($testimonials->count() > 0)
 
             <div class="table-responsive">
               <!-- Projects table -->
@@ -66,25 +65,24 @@
                 <thead class="thead-light">
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col" class="sort" >Name</th>
-                    <th scope="col">{{__('master.STATUS')}}</th>
-                    <th scope="col"></th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
 
-                  @foreach ($items as $item)
+                  @foreach ($testimonials as $testimonial)
 
                   <tr class="parent">
                     <td>{{ $loop->iteration }}</td>
-                    <td><strong> {{  $item->name }} </strong></td>
+                    <td> {{  $testimonial->name }}</td>
+                    <td> {{  $testimonial->title }}</td>
+                    <td> {{  $testimonial->description }}</td>
                     <td>
-                      <div class="col-3">
-                        <input type="checkbox" class="check_off item_check" data-id="{{$item->id}}" data-url="{{route('course-category-disable')}}" data-toggle="toggle" data-size="sm"  @if ($item->disable == '0') checked @endif>
-                      </div>
-                    </td>
-                    <td>
-                      <a href="{{ route('coursecategory.edit', $item->id)}}" class="btn btn-primary btn-sm mx-1"> <i class="fa fa-edit"></i> {{__('master.EDIT')}} </a>
+                      <a href="{{ route('testimonials.edit', $testimonial->id)}}" class="btn btn-primary float-left btn-sm mx-1"><i class="fa fa-edit"></i> Edit</a>
+                      <span class="btn btn-sm btn-danger remove_item" data-id="{{$testimonial->id}}" data-url="{{route('remove-testimonials')}}"><i class="fa fa-trash-alt"></i> Remove</span>
                     </td>
                   </tr>
 
@@ -96,7 +94,7 @@
 
 
             @else 
-                <p class="text-center"> {{__('master.NO-CATEGORIES-AVAILABLE')}} </p>
+                <p class="text-center"> No Testimonials Yet.</p>
             @endif
 
             <!-- Card footer -->
@@ -124,11 +122,9 @@
 
 
 <script>
-
-$('#example').DataTable( {
-    "pagingType": "numbers"
-  } );
-
+  $('#example').DataTable( {
+      "pagingType": "numbers"
+    } );
 </script>
     
 @endsection

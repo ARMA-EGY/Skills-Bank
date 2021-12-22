@@ -190,7 +190,7 @@
                   </li>
 
                   <li class="nav-item">
-                      <a class="nav-link" href="#">
+                      <a class="nav-link {{request()->routeIs('testimonials.index') ? 'active' : '' }}" href="{{route('testimonials.index')}}">
                           <i class="fas fa-comment-dots"></i>
                           <span class="nav-link-text">Testimonials</span>
                       </a>

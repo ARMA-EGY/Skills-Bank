@@ -9,7 +9,7 @@ class Meeting extends Model
 {
     protected $table = 'meeting';
     
-    protected $fillable = ['topic', 'start_time', 'course_id', 'disable', 'meeting_id' ];
+    protected $fillable = ['topic', 'start_time', 'course_id', 'disable', 'meeting_id', 'email', 'url' ];
    
     public function course()
     {
