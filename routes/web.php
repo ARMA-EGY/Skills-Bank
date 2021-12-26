@@ -47,6 +47,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
     Route::post('/booking', 'FrontController@booking')->name('booking');
     Route::post('/message', 'FrontController@message')->name('message');
     Route::post('/subscribe', 'FrontController@subscribe')->name('subscribe');
+    Route::post('/careerrequest', 'FrontController@careerrequest')->name('career-request');
 });
 
 Route::get('/admin', function () {return redirect('/login');});

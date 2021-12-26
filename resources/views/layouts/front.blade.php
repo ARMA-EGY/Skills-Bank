@@ -518,6 +518,7 @@
 					var title1 	= 'Your Request Has Been Sent Successfully, We will contact you ASAP. ';
 					var head2 	= 'Oops...';
 					var title2 	= 'Something went wrong, please try again later.';
+					var title3 	= 'Sorry, this course has been completed.';
 
 				$.ajax({
 					url: 		"{{route('booking')}}",
@@ -545,6 +546,14 @@
 								Swal.fire(
 										head2,
 										title2,
+										'error'
+										)
+							}
+							else if (data['status'] == 'full')
+							{
+								Swal.fire(
+										head2,
+										title3,
 										'error'
 										)
 							}

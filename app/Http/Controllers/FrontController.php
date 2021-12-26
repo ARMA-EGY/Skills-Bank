@@ -19,6 +19,7 @@ use App\Models\Collaboration;
 use App\Models\Testimonial;
 
 use App\Models\Career;
+use App\Models\CareerRequest;
 use App\Models\Message;
 use App\Models\Subscriber;
 use App\Http\Requests\SubscriberRequest;
@@ -266,31 +267,47 @@ class FrontController extends Controller
 
     public function booking(Request $request)
     {
-        $booking =  CoursesRequest::create([
-            'name'                  => $request->name,
-            'email'                 => $request->email,
-            'phone'                 => $request->phone,
-            'company'               => $request->company,
-            'position'              => $request->position,
-            'message'               => $request->message,
-            'course_id'             => $request->course_id,
-            'payment_method'        => $request->payment_method,
-            'country'               => LaravelLocalization::getCurrentLocale(),
-        ]);
-        
-        if($booking)
+
+        $course     = Courses::where('id', $request->course_id)->first();
+        $limit      = $course->students_limit;
+        $students   = CoursesRequest::where('course_id', $request->course_id)->where('accept', 1)->count();
+
+        if($students >= $limit)
         {
             return response()->json([
-                'status' => 'true',
-                'msg' => 'success'
+                'status' => 'full',
+                'msg' => 'error'
             ]) ;
         }
         else
         {
-            return response()->json([
-                'status' => 'false',
-                'msg' => 'error'
-            ]) ;
+            $booking =  CoursesRequest::create([
+                'name'                  => $request->name,
+                'email'                 => $request->email,
+                'phone'                 => $request->phone,
+                'company'               => $request->company,
+                'position'              => $request->position,
+                'message'               => $request->message,
+                'course_id'             => $request->course_id,
+                'payment_method'        => $request->payment_method,
+                'country'               => LaravelLocalization::getCurrentLocale(),
+            ]);
+            
+            if($booking)
+            {
+                return response()->json([
+                    'status' => 'true',
+                    'msg' => 'success'
+                ]) ;
+            }
+            else
+            {
+                return response()->json([
+                    'status' => 'false',
+                    'msg' => 'error'
+                ]) ;
+            }
+                
         }
 
     }
@@ -347,6 +364,37 @@ class FrontController extends Controller
         ]);
 
         if($subscribe)
+        {
+            return response()->json([
+                'status' => 'true',
+                'msg' => 'success'
+            ]) ;
+        }
+        else
+        {
+            return response()->json([
+                'status' => 'false',
+                'msg' => 'error'
+            ]) ;
+        }
+
+    }
+
+
+    //-------------- Career Request ---------------\\
+
+    public function careerrequest(Request $request)
+    {
+        $career =  CareerRequest::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'available_date' => $request->available_date,
+            'cv' => $request->cv->store('images/cv', 'public'),
+            'career_id' => $request->career_id,
+        ]);
+
+        if($career)
         {
             return response()->json([
                 'status' => 'true',
