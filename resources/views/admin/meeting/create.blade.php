@@ -97,7 +97,6 @@
                       <div class="form-group">
                         <label class="font-weight-bold text-uppercase">Email</label>
                         <select class="form-control" name="email" required>
-                                <option value="youssef97hesham@gmail.com">youssef97hesham@gmail.com</option>
                                 <option value="eLearning@skillsbankme.com">eLearning@skillsbankme.com</option>
                                 <option value="Training@skillsbankme.com">Training@skillsbankme.com</option>
                         </select>

@@ -9,4 +9,9 @@ class Categories extends Model
     protected $table = 'categories';
     
     protected $fillable = ['name','disable'];
+
+    public function courses()
+    {
+        return $this->hasMany('App\Models\Courses','category_id');
+    }
 }

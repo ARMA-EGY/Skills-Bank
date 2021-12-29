@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\Traits\MeetingTrait;
 use App\Models\Courses;
 use App\Http\Requests\Meeting\AddRequest;
+use Illuminate\Database\Eloquent\Builder;
 
 class MeetingsController extends Controller
 {
@@ -36,7 +37,11 @@ class MeetingsController extends Controller
      */
     public function create()
     {
-		$courses       = Courses::where('disable', 0)->get();
+        $courses = Courses::whereHas('category', function (Builder $query) {
+            $query->where('disable', 0);
+        })->where('disable', 0)->get();
+
+        
         return view('admin.meeting.create', [
             'courses' => $courses,
             ]);
