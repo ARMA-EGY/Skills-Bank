@@ -66,12 +66,15 @@
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col" class="sort" >{{__('master.NAME')}}</th>
-                    <th scope="col" class="sort" >{{__('master.PRICE_EG')}}</th>
-                    <th scope="col" class="sort" >{{__('master.PRICE_SR')}}</th>
+                    <th scope="col" class="sort" >{{__('master.PRICE')}}</th>
                     <th scope="col" class="sort" >{{__('master.START_DATE')}} </th>
                     <th scope="col" class="sort" >{{__('master.END_DATE')}}</th>
+                    <th scope="col" class="sort" >{{__('master.FROM')}} </th>
+                    <th scope="col" class="sort" >{{__('master.TO')}}</th>
                     <th scope="col" class="sort" >{{__('master.STUDENTS_LIMIT')}} </th>
                     <th scope="col" class="sort" >{{__('master.CATEGORY')}}</th>
+                    <th scope="col" class="sort" >Type </th>
+                    <th scope="col" class="sort" >Country </th>
                     <th scope="col">{{__('master.STATUS')}}</th>
                     <th scope="col"></th>
                   </tr>
@@ -83,12 +86,15 @@
                   <tr class="parent">
                     <td>{{ $loop->iteration }}</td>
                     <td><strong> {{  $item->name }} </strong></td>
-                    <td><strong> {{ $item->price_eg }} </strong></td>
-                    <td><strong> {{ $item->price_sa }} </strong></td>
+                    <td><strong> {{ $item->price }} {{__('master.CURRENCY-'.$item->lang)}}</strong></td>
                     <td><strong> {{ $item->start_date }} </strong></td>
                     <td><strong> {{ $item->end_date }} </strong></td>
+                    <td><strong> {{ date('h:i A', strtotime($item->time_from))}} </strong></td>
+                    <td><strong> {{ date('h:i A', strtotime($item->time_to))}} </strong></td>
                     <td><strong> {{ $item->students_limit }} </strong></td>
                     <td><strong> {{ $item->category->name }} </strong></td>
+                    <td><strong> {{ $item->type }} </strong></td>
+                    <td><strong> {{__('master.'.$item->lang)}} </strong></td>
                     <td>
                       <div class="col-3">
                         <input type="checkbox" class="check_off item_check" data-id="{{$item->id}}" data-url="{{route('course-disable')}}" data-toggle="toggle" data-size="sm"  @if ($item->disable == '0') checked @endif>

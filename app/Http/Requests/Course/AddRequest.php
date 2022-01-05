@@ -15,7 +15,7 @@ class AddRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:courses',
+            'name' => 'required',
             'price_eg' => 'required',
             'price_sr' => 'required',
             'start_date' => 'required',

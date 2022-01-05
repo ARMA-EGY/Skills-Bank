@@ -74,7 +74,7 @@
 									<li class="menu-item-has-children ul-li-block">
 										<a href="#">Get To Know Us</a>
 										<ul class="sub-menu">
-											<li><a href="{{route('about')}}">About The Company</a></li>
+											<li><a href="{{route('about')}}">About Skills Bank</a></li>
 											<li><a href="{{route('about')}}#founder-word">Word By The Founder</a></li>
 											<li><a href="{{route('team')}}">Meet The Team</a></li>
 											<li><a href="{{route('welcome')}}#why-choose">Why SB</a></li>
@@ -421,11 +421,8 @@
 							<input type="text" name="position" class="form-control field1" id="inputPosition" required>
 						</div>
 					</div>
-
-					<div class="form-group">
-						<label class="font-weight-bold" for="inputMessage">Message</label>
-						<textarea name="message" rows="4" class="form-control field1" id="inputMessage" placeholder="Your Message Here ..."></textarea>
-					</div>
+					
+					<input type="hidden" name="message" value="">
 
 					<div class="form-group">
 						<label class="font-weight-bold">Payment Information</label>

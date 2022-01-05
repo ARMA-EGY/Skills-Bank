@@ -19,7 +19,7 @@
 									<span class="subtitle text-uppercase text-white">EDUCATION & TRAINING ORGANIZATION</span>
 								</div>
 								<div class="layer-1-3">
-									<h2><span>Inventive</span> Solution <br> for <span>Education</span></h2>
+									<h2><span>This is</span> Where You <br> Fuel Their <span>Skills Bank</span></h2>
 								</div>
 							</div>
 							<div class="layer-1-4">
@@ -149,7 +149,7 @@
 			<div class="container">
 				<div class="section-title relative-position mb20 headline text-center">
 					<span class="subtitle ml42 text-uppercase">SKILLS BANK SOLUTIONS</span>
-					<h2><span>How Do</span> We Fuel Banks? </h2>
+					<h2><span>How Do We</span> Fuel Your Skills Banks? </h2>
 				</div>
 
 				<div class="row justify-content-center" data-aos="fade-right" data-aos-duration="1000">
@@ -165,7 +165,7 @@
 									<p class="text-white">The Skills Bank Learning Design team customizes all the training programs needed to level up every core competency your team members have in their skill banks </p>
 									<div class="about-btn mt-4 text-center">
 										<div class="genius-btn gradient-bg text-center text-uppercase ul-li-block bold-font">
-											<a href="{{route('practical')}}">Need Tranning<i class="fas fa-caret-right"></i></a>
+											<a href="{{route('practical')}}">Read More<i class="fas fa-caret-right"></i></a>
 										</div>
 									</div>
 								</div>
@@ -185,7 +185,7 @@
 									<p class="text-white">Amongst the Coronavirus circumstances, we became highly aware of the urge of providing you with virtual training options.</p>
 									<div class="about-btn mt-4 text-center">
 										<div class="genius-btn gradient-bg text-center text-uppercase ul-li-block bold-font">
-											<a href="{{route('virtual')}}">Need Tranning<i class="fas fa-caret-right"></i></a>
+											<a href="{{route('virtual')}}">Read More<i class="fas fa-caret-right"></i></a>
 										</div>
 									</div>
 								</div>
@@ -205,7 +205,7 @@
 									<p class="text-white">We have responded to the increasing number of clients who want to incorporate training videos in which star Subject Matter Experts (SMEs). </p>
 									<div class="about-btn mt-4 text-center">
 										<div class="genius-btn gradient-bg text-center text-uppercase ul-li-block bold-font">
-											<a href="{{route('videos')}}">Record a SME<i class="fas fa-caret-right"></i></a>
+											<a href="{{route('videos')}}">Read More<i class="fas fa-caret-right"></i></a>
 										</div>
 									</div>
 								</div>
@@ -225,7 +225,7 @@
 									<p class="text-white">We understand the huge effort, knowledge, and focus needed to create a long term training tracks. We spare you all of that through our professional</p>
 									<div class="about-btn mt-4 text-center">
 										<div class="genius-btn gradient-bg text-center text-uppercase ul-li-block bold-font">
-											<a href="{{route('designing')}}">Request a Design<i class="fas fa-caret-right"></i></a>
+											<a href="{{route('designing')}}">Read More<i class="fas fa-caret-right"></i></a>
 										</div>
 									</div>
 								</div>
@@ -245,7 +245,7 @@
 									<p class="text-white">Every now and then, you need to know where your human assets stand and what they need to effectively move forward towards achieving your next organizational goal. </p>
 									<div class="about-btn mt-4 text-center">
 										<div class="genius-btn gradient-bg text-center text-uppercase ul-li-block bold-font">
-											<a href="{{route('assessments')}}">Need Assessment<i class="fas fa-caret-right"></i></a>
+											<a href="{{route('assessments')}}">Read More<i class="fas fa-caret-right"></i></a>
 										</div>
 									</div>
 								</div>
@@ -511,7 +511,7 @@
 			<div class="container">
 				<div class="section-title mb20 headline text-left">
 					<span class="subtitle text-uppercase">LEARN NEW SKILLS</span>
-					<h2>Top of the Month <span>Courses.</span> </h2>
+					<h2>Top of the Month <span>Workshops.</span> </h2>
 				</div>
 				<div id="course-slide-item" class="course-slide">
 
@@ -631,6 +631,12 @@
 										<div class="contact-info">
 											<input class="email field1" name="email" type="email" placeholder="Your Email" required>
 										</div>
+										<div class="contact-info">
+											<input class="company field1" name="company" type="text" placeholder="Company Name" required>
+										</div>
+										<div class="contact-info">
+											<input class="position field1" name="position" type="text" placeholder="Your Position" required>
+										</div>
 										<textarea class="field1" placeholder="Message." name="message" spellcheck="false" required></textarea>
 										<div class="nws-button text-center  gradient-bg text-capitalize mb-4">
 											<button type="submit" class="submit" value="Submit">SEND MESSAGE <i class="fas fa-caret-right text-yellow"></i></button> 
@@ -642,7 +648,7 @@
 
 						<div class="col-md-6" data-aos="fade-left" data-aos-duration="1000">
 							<div class="section-title headline text-center">
-									<h2>You Cand Find Us <span> EVERYWHERE!</span></h2>
+									<h2>You Can Find Us <span> EVERYWHERE!</span></h2>
 							</div>
 							<img src="{{asset('front_assets/img/map.png')}}" class="img-fluid rounded">
 						</div>

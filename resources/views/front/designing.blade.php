@@ -89,7 +89,7 @@
 								
 								<div class="about-btn text-center">
 									<div class="genius-btn gradient-bg text-center text-uppercase ul-li-block bold-font br-30">
-										<a href="#">Request a Design <i class="fas fa-caret-right"></i></a>
+										<a href="{{route('reachout')}}">Request a Design <i class="fas fa-caret-right"></i></a>
 									</div>
 								</div>
 								

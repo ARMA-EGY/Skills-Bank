@@ -64,11 +64,11 @@
                     <th scope="col">#</th>
                     <th scope="col" class="sort" >{{__('master.NAME')}}</th>
                     <th scope="col" class="sort" >Email</th>
-                    <th scope="col" class="sort" >phone</th>
-                    <th scope="col" class="sort" >company </th>
-                    <th scope="col" class="sort" >position</th>
-                    <th scope="col" class="sort" >country </th>
-                    <th scope="col" class="sort" >message</th>
+                    <th scope="col" class="sort" >Phone</th>
+                    <th scope="col" class="sort" >Company </th>
+                    <th scope="col" class="sort" >Position</th>
+                    <th scope="col" class="sort" >Course</th>
+                    <th scope="col" class="sort" >Country </th>
                     <th scope="col">Accept</th>
                   </tr>
                 </thead>
@@ -83,8 +83,8 @@
                     <td><strong> {{ $item->phone }} </strong></td>
                     <td><strong> {{ $item->company }} </strong></td>
                     <td><strong> {{ $item->position }} </strong></td>
-                    <td><strong> {{ $item->country }} </strong></td>
-                    <td><strong> {{ $item->message }} </strong></td>
+                    <td><strong> {{ $item->course->name }} </strong></td>
+                    <td><strong> {{__('master.'.$item->country)}} </strong></td>
                     <td>
                       <div class="col-3">
                         <input type="checkbox" class="check_off item_request" data-id="{{$item->id}}" data-url="{{route('course-request-accept')}}" data-toggle="toggle" data-size="sm"  @if ($item->accept == '1') checked @endif>

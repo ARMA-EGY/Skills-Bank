@@ -11,7 +11,8 @@
                     <div class="title1">Subject: {{$message->subject}}</div>
                     <div class="header"> 
                         <div class="from font-weight-bold">
-                            <span>Name: {{$message->name}}</span>From:  {{$message->email}}									</div>
+                            <span>Name: {{$message->name}}</span>From:  {{$message->email}}									
+                        </div>
                         <div class="date font-weight-bold">{{  date('j M, Y - h:i A', strtotime($message->created_at))  }}</div>
                     </div>
                     <div class="content">

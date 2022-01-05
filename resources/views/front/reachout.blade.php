@@ -111,6 +111,12 @@
 										<div class="contact-info">
 											<input class="email field1" name="email" type="email" placeholder="Your Email" required>
 										</div>
+										<div class="contact-info">
+											<input class="company field1" name="company" type="text" placeholder="Company Name" required>
+										</div>
+										<div class="contact-info">
+											<input class="position field1" name="position" type="text" placeholder="Your Position" required>
+										</div>
 										<textarea class="field1" placeholder="Message." name="message" spellcheck="false" required></textarea>
 										<div class="nws-button text-center  gradient-bg text-capitalize mb-4">
 											<button type="submit" class="submit" value="Submit">SEND MESSAGE <i class="fas fa-caret-right text-yellow"></i></button> 
@@ -122,7 +128,7 @@
 
 						<div class="col-md-6" data-aos="fade-left" data-aos-duration="1000">
 							<div class="section-title headline text-center">
-									<h2>You Cand Find Us <span> EVERYWHERE!</span></h2>
+									<h2>You Can Find Us <span> EVERYWHERE!</span></h2>
 							</div>
 							<img src="{{asset('front_assets/img/map.png')}}" class="img-fluid rounded">
 						</div>

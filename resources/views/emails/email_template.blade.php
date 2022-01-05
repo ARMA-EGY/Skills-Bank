@@ -9,6 +9,10 @@ Here are the details:
 <br>
 <b>Phone:</b> {{ $details['phone'] }}
 <br>
+<b>Company:</b> {{ $details['company'] }}
+<br>
+<b>Position:</b> {{ $details['position'] }}
+<br>
 <b>Message:</b> {{ $details['message'] }}
 <br>
 Thank You
