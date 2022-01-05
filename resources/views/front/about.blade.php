@@ -13,7 +13,7 @@
 			<div class="container">
 				<div class="page-breadcrumb-content text-center">
 					<div class="page-breadcrumb-title">
-						<h2 class="breadcrumb-head black bold">About The <span>Company</span></h2>
+						<h2 class="breadcrumb-head black bold">About <span>Skills Bank</span></h2>
 					</div>
 				</div>
 			</div>
@@ -34,9 +34,6 @@
 
 								<div class="col-md-7">
 									<div class="about-text-item">
-										<div class="section-title-2 headline text-left">
-											<h2>We Are <span>Skills Bank</span>, Online Courses Since 2016</h2>
-										</div>
 										<div class="about-content-text">
 											<p>
 												Skills Bank is a training service provider founded and managed by Mr. Mohamed El-Baz in 2016. Operating with the strong belief that every individual in any business has the power to efficiently take the lead to attain its organizational goals, the Skills Bank team strives to provide qualified training programs in the most needed skills for today’s workforce, such as management skills, MS Office skills, data analysis for businesses, and interpersonal skills to all career levels all around Egypt governorates and the Middle East region. Skills Bank's main focus is to consistently develop practical training and coaching services that are up to date, customized to clients’ needs, and have a direct positive impact on the business ecosystem. To reach that target with high quality and efficiency, Skills Bank established its own in-house Learning Design department that originally and exclusively designs every single training program conducted by the company and assigns the experienced trainer accordingly. 

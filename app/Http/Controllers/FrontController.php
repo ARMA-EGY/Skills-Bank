@@ -44,7 +44,7 @@ class FrontController extends Controller
     public function index()
     {
 		$sliders       = Slider::where('lang', LaravelLocalization::getCurrentLocale())->orderBy('id','desc')->get();
-        $courses       = Courses::select('id', 'name', 'image', 'start_date', 'end_date', 'disable', 'price_'.LaravelLocalization::getCurrentLocale(). ' as price' )->where('disable', 0)->orderBy('id','desc')->limit(6)->get();
+        $courses       = Courses::select('id', 'name', 'image', 'start_date', 'end_date', 'disable', 'price', 'lang')->where('lang', LaravelLocalization::getCurrentLocale())->where('top_month', 1)->where('disable', 0)->orderBy('id','desc')->limit(8)->get();
 		$clients       = client::orderBy('id','desc')->limit(8)->get();
 		$testimonials  = Testimonial::orderBy('id','desc')->limit(4)->get();
 
@@ -55,7 +55,6 @@ class FrontController extends Controller
             'testimonials'  => $testimonials,
             'socials'       => Social::all(),
         ]);
-   
     }
     
     //-------------- About Page ---------------\\
@@ -108,7 +107,7 @@ class FrontController extends Controller
     public function calendar()
     {
         $categories    = Categories::where('disable', 0)->orderBy('id','desc')->get();
-        $courses       = Courses::select('id', 'category_id', 'name', 'image', 'start_date', 'end_date', 'disable', 'price_'.LaravelLocalization::getCurrentLocale(). ' as price' )->where('disable', 0)->orderBy('id','desc')->get();
+        $courses       = Courses::select('id', 'category_id', 'name', 'image', 'start_date', 'end_date', 'disable', 'price', 'lang')->where('lang', LaravelLocalization::getCurrentLocale())->where('disable', 0)->orderBy('id','desc')->get();
 
         return view('front.calendar', [
             'categories'    => $categories,
@@ -179,7 +178,7 @@ class FrontController extends Controller
     //-------------- Single Course Page ---------------\\
     public function courseShow($id)
     {
-        $item       = Courses::select('id', 'name', 'description', 'image', 'start_date', 'end_date', 'disable', 'price_'.LaravelLocalization::getCurrentLocale(). ' as price' )->where('disable', 0)->where('id',$id)->first();
+        $item       = Courses::select('id', 'name', 'description', 'image', 'start_date', 'end_date', 'disable', 'price')->where('disable', 0)->where('id',$id)->first();
 
         return view('front.courseDetails',[
             'item'        => $item,
@@ -323,6 +322,8 @@ class FrontController extends Controller
             'subject' => $request->subject,
             'phone' => $request->phone,
             'message' => $request->message,
+            'company' => $request->company,
+            'position' => $request->position,
         ]);
 
         $receiver_email     = ReceiverEmail::first();
@@ -333,6 +334,8 @@ class FrontController extends Controller
         'subject' => $request->subject,
         'phone' => $request->phone,
         'message' => $request->message,
+        'company' => $request->company,
+        'position' => $request->position,
         ];
 
         Mail::to($receiver_email->email)->send(new ContactUs($data));

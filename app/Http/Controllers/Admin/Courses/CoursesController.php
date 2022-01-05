@@ -102,14 +102,18 @@ class CoursesController extends Controller
 
             $course =  Courses::create([
                 'name' => $request->name,
-                'price_eg' => $request->price_eg,
-                'price_sa' => $request->price_sr,
+                'price' => $request->price,
                 'start_date' => $request->start_date,
                 'end_date' => $request->end_date,
+                'time_from' => $request->time_from,
+                'time_to' => $request->time_to,
                 'students_limit' => $request->students_limit,
                 'category_id' => $request->category_id,
                 'image' => $courseImage,
                 'description' => $request->description,
+                'schedule' => $request->schedule,
+                'type' => $request->type,
+                'lang' => $request->lang,
             ]);
             
             $request->session()->flash('success', 'Course Was Added successfully');
@@ -136,7 +140,7 @@ class CoursesController extends Controller
     {
 
         $user = auth()->user();
-        $data = $request->only(['name', 'price_eg', 'price_sa', 'start_date', 'end_date', 'students_limit', 'category_id', 'description']);
+        $data = $request->only(['name', 'price', 'start_date', 'end_date', 'time_from', 'time_to', 'students_limit', 'category_id', 'description', 'schedule', 'type', 'lang']);
 
 
         if($request->hasfile('image'))

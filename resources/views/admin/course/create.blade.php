@@ -86,37 +86,6 @@
                             <hr class="my-2">
 
                             <div class="row">
-                                <!--=================  PRICE_EG  =================-->
-                                <div class="form-group col-md-6 mb-2 text-left">
-                                    <label class="font-weight-bold text-uppercase">{{__('master.PRICE_EG')}} </label>
-                                    <input type="number" name="price_eg" class="@error('price_eg') is-invalid @enderror form-control" placeholder="{{__('master.PRICE_EG')}}" value="{{ isset($item) ? $item->price_eg : old('price_eg') }}" required>
-                                
-                                    @error('price_eg')
-                                        <div>
-                                            <span class="text-danger">{{ $message }}</span>
-                                        </div>
-                                    @enderror
-                
-                                </div>
-                                <!--=================  PRICE_SR  =================-->
-                                <div class="form-group col-md-6 mb-2 text-left">
-                                    <label class="font-weight-bold text-uppercase">{{__('master.PRICE_SR')}}</label>
-                                    <input type="number" name="price_sr" class="@error('price_sr') is-invalid @enderror form-control" placeholder="{{__('master.PRICE_SR')}}" value="{{ isset($item) ? $item->price_sa : old('price_sa') }}" required>
-                                
-                                    @error('price_sr')
-                                        <div>
-                                            <span class="text-danger">{{ $message }}</span>
-                                        </div>
-                                    @enderror
-                
-                                </div>
-            
-
-
-                            </div>
-                            <hr class="my-2">
-
-                            <div class="row">
                                 <!--=================  START_DATE  =================-->
                                 <div class="form-group col-md-6 mb-2 text-left">
                                     <label class="font-weight-bold text-uppercase">{{__('master.START_DATE')}}</label>
@@ -147,6 +116,49 @@
                             <hr class="my-2">
 
                             <div class="row">
+                                <!--=================  TIME FROM  =================-->
+                                <div class="form-group col-md-6 mb-2 text-left">
+                                    <label class="font-weight-bold text-uppercase">{{__('master.FROM')}}</label>
+                                    <input type="time" name="time_from" class="@error('time_from') is-invalid @enderror form-control" placeholder="{{__('master.FROM')}}" value="{{ isset($item) ? $item->time_from : old('time_from') }}" required>
+                                
+                                    @error('time_from')
+                                        <div>
+                                            <span class="text-danger">{{ $message }}</span>
+                                        </div>
+                                    @enderror
+                
+                                </div>
+                                <!--=================  TIME TO  =================-->
+                                <div class="form-group col-md-6 mb-2 text-left">
+                                    <label class="font-weight-bold text-uppercase">{{__('master.TO')}}</label>
+                                    <input type="time" name="time_to" class="@error('time_to') is-invalid @enderror form-control" placeholder="{{__('master.TO')}}" value="{{ isset($item) ? $item->time_to : old('time_to') }}" required>
+                                
+                                    @error('time_to')
+                                        <div>
+                                            <span class="text-danger">{{ $message }}</span>
+                                        </div>
+                                    @enderror
+                
+                                </div>
+
+
+                            </div>
+                            <hr class="my-2">
+
+                            <div class="row">
+
+                                <!--=================  PRICE  =================-->
+                                <div class="form-group col-md-6 mb-2 text-left">
+                                    <label class="font-weight-bold text-uppercase">{{__('master.PRICE')}} </label>
+                                    <input type="number" name="price" class="@error('price') is-invalid @enderror form-control" placeholder="{{__('master.PRICE')}}" value="{{ isset($item) ? $item->price : old('price') }}" required>
+                                
+                                    @error('price')
+                                        <div>
+                                            <span class="text-danger">{{ $message }}</span>
+                                        </div>
+                                    @enderror
+                
+                                </div>
 
                                 <!--=================  STUDENTS_LIMIT  =================-->
                                 <div class="form-group col-md-6 mb-2 text-left">
@@ -154,6 +166,43 @@
                                     <input type="number" name="students_limit" class="@error('students_limit') is-invalid @enderror form-control" placeholder="{{__('master.STUDENTS_LIMIT')}}" value="{{ isset($item) ? $item->students_limit : old('students_limit') }}" required>
                                 
                                     @error('students_limit')
+                                        <div>
+                                            <span class="text-danger">{{ $message }}</span>
+                                        </div>
+                                    @enderror
+                
+                                </div>
+
+                            </div>
+                            <hr class="my-2">
+
+                            <div class="row">
+
+                                <!--=================  TYPE  =================-->
+                                <div class="form-group col-md-6 mb-2 text-left">
+                                    <label class="font-weight-bold text-uppercase">Type </label>
+                                    <select class="form-control" name="type" required>
+                                        <option value="Class Room" @if (isset($item))  @if ($item->type == 'Class Room' ) selected @endif @endif>Class Room</option>
+                                        <option value="Virtual" @if (isset($item))  @if ($item->type == 'Virtual' ) selected @endif @endif>Virtual</option>
+                                    </select>
+
+                                    @error('type')
+                                        <div>
+                                            <span class="text-danger">{{ $message }}</span>
+                                        </div>
+                                    @enderror
+                
+                                </div>
+
+                                <!--=================  LANG  =================-->
+                                <div class="form-group col-md-6 mb-2 text-left">
+                                    <label class="font-weight-bold text-uppercase">Country</label>
+                                    <select class="form-control" name="lang" required>
+                                        <option value="eg" @if (isset($item))  @if ($item->type == 'eg' ) selected @endif @endif>Egypt</option>
+                                        <option value="sa" @if (isset($item))  @if ($item->type == 'sa' ) selected @endif @endif>KSA</option>
+                                    </select>
+                                    
+                                    @error('lang')
                                         <div>
                                             <span class="text-danger">{{ $message }}</span>
                                         </div>
@@ -190,6 +239,23 @@
                                 <div class="form-group">
                                     <textarea id="content" class="content" name="description" rows="20">{{ isset($item) ? $item->description : old('description') }}</textarea>
                                     @error('description')
+                                        <div>
+                                            <span class="text-danger">{{ $message }}</span>
+                                        </div>
+                                    @enderror
+                
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-12">
+                    <div class="card card-defualt">
+                        <div class="card-header"> Full Schedule</div>
+                        <div class="card-body">
+                                <div class="form-group">
+                                    <textarea class="content" name="schedule" rows="20">{{ isset($item) ? $item->schedule : old('schedule') }}</textarea>
+                                    @error('schedule')
                                         <div>
                                             <span class="text-danger">{{ $message }}</span>
                                         </div>

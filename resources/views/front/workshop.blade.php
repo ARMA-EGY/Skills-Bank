@@ -217,7 +217,7 @@
 								
 								<div class="about-btn text-center">
 									<div class="genius-btn gradient-bg text-center text-uppercase ul-li-block bold-font br-30">
-										<a href="#">Check Public Calendar 2021 Now  <i class="fas fa-caret-right"></i></a>
+										<a href="{{route('public.calendar')}}">Check Public Calendar 2021 Now  <i class="fas fa-caret-right"></i></a>
 									</div>
 								</div>
 								

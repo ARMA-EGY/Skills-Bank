@@ -308,4 +308,12 @@ return [
     "REMOVED-SUCCESSFULLY" => "Removed Successfully.",
     "YES" => "Yes",
     "NO" => "No",
+
+    "eg" => "Egypt",
+    "sa" => "KSA",
+
+    "FROM" => "From",
+    "TO" => "To",
+    "CURRENCY-eg" => "L.E",
+    "CURRENCY-sa" => "SAR",
 ];
