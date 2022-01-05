@@ -26,6 +26,7 @@ use App\Http\Requests\SubscriberRequest;
 use App\Models\ReceiverEmail;
 use App\Mail\ContactUs;
 use App\Models\Social;
+use App\Traits\PaymentTrait;
 use Mail; 
 use LaravelLocalization;
 
@@ -33,7 +34,7 @@ use LaravelLocalization;
 
 class FrontController extends Controller
 {
-
+    use PaymentTrait;
 /*
 |--------------------------------------------------------------------------
 | PAGES
@@ -292,13 +293,26 @@ class FrontController extends Controller
                 'payment_method'        => $request->payment_method,
                 'country'               => LaravelLocalization::getCurrentLocale(),
             ]);
-            
+
             if($booking)
             {
+
+                if($request->payment_method == 'online')
+                {
+                    $paymentKey = $this->PaymentLink($course,$request);
+
+                    return response()->json([
+                        'status' => 'true',
+                        'msg' => 'successpay',
+                        'paymentKey' => $paymentKey,
+                    ]) ;
+                }
+
                 return response()->json([
                     'status' => 'true',
                     'msg' => 'success'
                 ]) ;
+
             }
             else
             {

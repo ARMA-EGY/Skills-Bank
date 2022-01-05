@@ -388,10 +388,17 @@
 						</div>
 					</div>
 
-					<div class="form-group">
-						<label class="font-weight-bold" for="inputName">Full Name</label>
-						<input type="text" name="name" class="form-control field1" id="inputName" required>
-					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label class="font-weight-bold" for="inputName">First Name</label>
+							<input type="text" name="name" class="form-control field1" id="inputName" required>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label class="font-weight-bold" for="inputLastName">Last Name</label>
+							<input type="text" name="lastname" class="form-control field1" id="inputLastName" required>
+						</div>
+					</div>	
 
 					<div class="form-row">
 						<div class="form-group col-md-6">
@@ -531,6 +538,14 @@
 							
 							if (data['status'] == 'true')
 							{
+								if (data['msg'] == 'successpay')
+								{
+
+									var lnk = 'https://accept.paymob.com/api/acceptance/iframes/'+'1?payment_token='+data['paymentKey'];
+									window.location.replace(lnk);
+								}
+								
+
 								Swal.fire(
 										head1,
 										title1,
