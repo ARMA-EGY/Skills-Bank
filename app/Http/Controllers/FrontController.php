@@ -253,6 +253,15 @@ class FrontController extends Controller
             'socials' => Social::all(),
         ]);     
     }
+    
+    //-------------- Payment Page ---------------\\
+    public function payment()
+    {
+
+        return view('front.payment',[
+            'socials' => Social::all(),
+        ]);     
+    }
 
 
 /*
