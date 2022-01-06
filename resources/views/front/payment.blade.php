@@ -7,7 +7,7 @@
 	.payment
 	{
 		border:1px solid #f2f2f2;
-		height:280px;
+		max-height:300px;
         border-radius:20px;
         background:#fff;
 	}
@@ -93,7 +93,7 @@
 					 <div class="content">
 						<h1>Your request has been processed successfully</h1>
 						<p>You'll receive a confirmation email shortly. </p>
-						<a class="btn btn-primary mt-4" href="{{route('welcome')}}">Go to Home</a>
+						<a class="btn btn-primary mt-4 mb-3" href="{{route('welcome')}}">Go to Home</a>
 					 </div>
 					 
 				  </div>
