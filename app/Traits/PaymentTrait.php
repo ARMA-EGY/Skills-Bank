@@ -1,21 +1,38 @@
 <?php
 
 namespace App\Traits;
-
+use App\Models\paymentOrders;
 
 trait PaymentTrait
 {
 
-    public function PaymentLink($item, $customer)
+    public function PaymentLink($item, $customer, $booking)
     {       
-        $token = $this->authenticat();
-        dd($token);
+        $tokenResponse = $this->authenticat();
+        if($tokenResponse['message'] == 'failure')
+        {
 
-        $order = $this->orderRegistration($item, $token);
-        dd($order);
+        }
+        $token = $tokenResponse['data']->token;
 
-        $paymentKey = $this->paymentKey($item, $customer, $token, $order);        
-        dd($paymentKey);
+        $orderResponse = $this->orderRegistration($item, $token);
+        if($orderResponse['message'] == 'failure')
+        {
+
+        }
+        $order = $orderResponse['data']->id;
+        paymentOrders::create([
+            'order_id' => $order,
+            'course_id' => $item->id,
+            'request_id' => $booking->id,
+        ]);
+
+        $paymentKeyResponse = $this->paymentKey($item, $customer, $token, $order);        
+        if($paymentKeyResponse['message'] == 'failure')
+        {
+
+        }
+        $paymentKey = $paymentKeyResponse['data']->token;
 
         return $paymentKey;
 
@@ -35,23 +52,27 @@ trait PaymentTrait
     
     public function orderRegistration($item, $token)
     {  
-        $items = array(
+        $singleItem = array(
             'name' => $item->name,
-            'amount_cents' => $item->price_eg,
-            'description' => $item->description,
+            'amount_cents' => $item->price,
+            'description' => $item->name,
             'quantity' => 1,
         );
         
-
+        $items = array (
+            $singleItem,
+          );
 
         $data = array(
             'auth_token' => $token,
             'delivery_needed' => "false",
-            'amount_cents' => $item->price_eg,
+            'amount_cents' => $item->price,
             'currency' => "EGP",
             'items' => $items,
 
         );
+
+
         
         $endpoint = 'https://accept.paymob.com/api/ecommerce/orders';
         $method = 'POST';
@@ -69,7 +90,7 @@ trait PaymentTrait
             "first_name" => $customer->name, 
             "street" => "NA", 
             "building" => "NA", 
-            "phone_number" => $customer->phone_number, 
+            "phone_number" => $customer->phone, 
             "shipping_method" => "NA", 
             "postal_code" => "NA", 
             "city" => "NA", 
@@ -82,16 +103,16 @@ trait PaymentTrait
 
         $data = array(
             "auth_token" => $token,
-            "amount_cents" => $item->price_eg, 
+            "amount_cents" => $item->price, 
             "expiration" => 3600, 
             "order_id" => $order,
             "billing_data" => $billingData, 
             "currency" => "EGP", 
-            "integration_id" => 1
-
+            "integration_id" => 1652794,
+            "lock_order_when_paid" => "true"
         );
         
-        $endpoint = 'https://accept.paymob.com/api/ecommerce/orders';
+        $endpoint = 'https://accept.paymob.com/api/acceptance/payment_keys';
         $method = 'POST';
         return $this->callApi($data,$endpoint,$method);
 

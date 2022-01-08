@@ -27,6 +27,7 @@ use App\Models\ReceiverEmail;
 use App\Mail\ContactUs;
 use App\Models\Social;
 use App\Traits\PaymentTrait;
+use App\Models\paymentOrders;
 use Mail; 
 use LaravelLocalization;
 
@@ -298,7 +299,7 @@ class FrontController extends Controller
 
                 if($request->payment_method == 'online')
                 {
-                    $paymentKey = $this->PaymentLink($course,$request);
+                    $paymentKey = $this->PaymentLink($course,$request, $booking);
 
                     return response()->json([
                         'status' => 'true',
@@ -325,6 +326,28 @@ class FrontController extends Controller
 
     }
 
+
+    
+    public function processedCallback(Request $request)
+    {   
+        if($request->success == true)
+        {
+            $paymentOrders = paymentOrders::where('order_id', $request->order['id'])->get();
+            
+            $coursesRequest = CoursesRequest::where('id', $paymentOrders->request_id)
+            ->update(['payed' => 1]);
+        }
+    }
+
+    public function responseCallback(Request $request)
+    {   
+        if($request->success == true)
+        {
+
+        }else{
+            
+        }
+    }
 
     //-------------- Messages ---------------\\
 
