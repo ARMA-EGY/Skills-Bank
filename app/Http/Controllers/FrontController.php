@@ -26,8 +26,10 @@ use App\Http\Requests\SubscriberRequest;
 use App\Models\ReceiverEmail;
 use App\Mail\ContactUs;
 use App\Models\Social;
+use App\Models\Meeting;
 use App\Traits\PaymentTrait;
 use App\Models\paymentOrders;
+use App\Mail\meetingInvitation;
 use Mail; 
 use LaravelLocalization;
 
@@ -260,7 +262,7 @@ class FrontController extends Controller
     public function payment()
     {
 
-        return view('front.payment',[
+        return view('front.payment-failure',[
             'socials' => Social::all(),
         ]);     
     }
@@ -303,6 +305,10 @@ class FrontController extends Controller
                 'country'               => LaravelLocalization::getCurrentLocale(),
             ]);
 
+            $mt = Meeting::with('course')->where('course_id',$request->course_id)->get();
+
+            Mail::to($request->email)->send(new meetingInvitation($mt,$booking));
+            
             if($booking)
             {
 
@@ -352,9 +358,13 @@ class FrontController extends Controller
     {   
         if($request->success == true)
         {
-
+            return view('front.payment',[
+                'socials' => Social::all(),
+            ]);   
         }else{
-            
+            return view('front.payment-failure',[
+                'socials' => Social::all(),
+            ]);  
         }
     }
 
