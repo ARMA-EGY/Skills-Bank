@@ -49,6 +49,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
     Route::post('/subscribe', 'FrontController@subscribe')->name('subscribe');
     Route::post('/careerrequest', 'FrontController@careerrequest')->name('career-request');
 
+    Route::post('/processedcallback', 'FrontController@processedCallback');
+    Route::get('/responsecallback', 'FrontController@responseCallback');
     Route::get('/payment', 'FrontController@payment')->name('payment');
 });
 

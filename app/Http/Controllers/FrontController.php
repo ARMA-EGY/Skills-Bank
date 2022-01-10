@@ -26,6 +26,10 @@ use App\Http\Requests\SubscriberRequest;
 use App\Models\ReceiverEmail;
 use App\Mail\ContactUs;
 use App\Models\Social;
+use App\Models\Meeting;
+use App\Traits\PaymentTrait;
+use App\Models\paymentOrders;
+use App\Mail\meetingInvitation;
 use Mail; 
 use LaravelLocalization;
 
@@ -33,7 +37,7 @@ use LaravelLocalization;
 
 class FrontController extends Controller
 {
-
+    use PaymentTrait;
 /*
 |--------------------------------------------------------------------------
 | PAGES
@@ -260,7 +264,7 @@ class FrontController extends Controller
     public function payment()
     {
 
-        return view('front.payment',[
+        return view('front.payment-failure',[
             'socials' => Social::all(),
         ]);     
     }
@@ -302,13 +306,30 @@ class FrontController extends Controller
                 'payment_method'        => $request->payment_method,
                 'country'               => LaravelLocalization::getCurrentLocale(),
             ]);
+
+            $mt = Meeting::with('course')->where('course_id',$request->course_id)->get();
+
+            Mail::to($request->email)->send(new meetingInvitation($mt,$booking));
             
             if($booking)
             {
+
+                if($request->payment_method == 'online')
+                {
+                    $paymentKey = $this->PaymentLink($course,$request, $booking);
+
+                    return response()->json([
+                        'status' => 'true',
+                        'msg' => 'successpay',
+                        'paymentKey' => $paymentKey,
+                    ]) ;
+                }
+
                 return response()->json([
                     'status' => 'true',
                     'msg' => 'success'
                 ]) ;
+
             }
             else
             {
@@ -322,6 +343,32 @@ class FrontController extends Controller
 
     }
 
+
+    
+    public function processedCallback(Request $request)
+    {   
+        if($request->success == true)
+        {
+            $paymentOrders = paymentOrders::where('order_id', $request->order['id'])->get();
+            
+            $coursesRequest = CoursesRequest::where('id', $paymentOrders->request_id)
+            ->update(['payed' => 1]);
+        }
+    }
+
+    public function responseCallback(Request $request)
+    {   
+        if($request->success == true)
+        {
+            return view('front.payment',[
+                'socials' => Social::all(),
+            ]);   
+        }else{
+            return view('front.payment-failure',[
+                'socials' => Social::all(),
+            ]);  
+        }
+    }
 
     //-------------- Messages ---------------\\
 

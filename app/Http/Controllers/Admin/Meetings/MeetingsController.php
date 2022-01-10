@@ -5,12 +5,16 @@ namespace App\Http\Controllers\Admin\Meetings;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Meeting;
+use App\Models\CoursesRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use App\Traits\MeetingTrait;
 use App\Models\Courses;
 use App\Http\Requests\Meeting\AddRequest;
 use Illuminate\Database\Eloquent\Builder;
+use App\Mail\meetingInvitation;
+use Mail;
+
 
 class MeetingsController extends Controller
 {
@@ -69,7 +73,19 @@ class MeetingsController extends Controller
                     'meeting_id' => $response['data']->id,
                     'url' => $response['data']->join_url,
                     'email' => $request->email,
-                ]); 
+                ]);
+                
+                $mt = Meeting::with('course')->where('id',$meeting->id)->get();
+
+                $courseRequests = CoursesRequest::where('course_id',$request->course_id)->get();
+
+                foreach($courseRequests as $courseRequest)
+                {
+                    Mail::to($courseRequest->email)->send(new meetingInvitation($mt,$courseRequest));
+                }
+
+                
+
                 session()->flash('success', 'Meeting created successfully');
             }else{
                 session()->flash('fail', $response);
