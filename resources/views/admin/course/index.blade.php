@@ -75,6 +75,7 @@
                     <th scope="col" class="sort" >{{__('master.CATEGORY')}}</th>
                     <th scope="col" class="sort" >Type </th>
                     <th scope="col" class="sort" >Country </th>
+                    <th scope="col">Top of Month</th>
                     <th scope="col">{{__('master.STATUS')}}</th>
                     <th scope="col"></th>
                   </tr>
@@ -95,6 +96,11 @@
                     <td><strong> {{ $item->category->name }} </strong></td>
                     <td><strong> {{ $item->type }} </strong></td>
                     <td><strong> {{__('master.'.$item->lang)}} </strong></td>
+                    <td>
+                      <div class="col-3">
+                        <input type="checkbox" class="check_off item_check" data-id="{{$item->id}}" data-url="{{route('course-top')}}" data-toggle="toggle" data-size="sm"  @if ($item->top_month == '1') checked @endif>
+                      </div>
+                    </td>
                     <td>
                       <div class="col-3">
                         <input type="checkbox" class="check_off item_check" data-id="{{$item->id}}" data-url="{{route('course-disable')}}" data-toggle="toggle" data-size="sm"  @if ($item->disable == '0') checked @endif>

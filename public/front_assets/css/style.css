@@ -85,6 +85,23 @@ Table of Content:
 /*---------------------------------------------------- */
 /*global area*/
 /*----------------------------------------------------*/
+.course-type
+{
+  right: 20px;
+  left: unset;
+  bottom: 20px;
+  top: unset;
+  border-radius: 5px;
+  font-weight: 700;
+  padding: 5px 15px;
+  position: absolute;
+}
+
+.course-type span
+{
+  color: #fff;
+}
+
 .w-100
 {
   width: 100%;

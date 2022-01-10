@@ -523,6 +523,9 @@
 								<div class="course-price text-center gradient-bg bg-yellow">
 									<span>{{$course->price}} {{__('front.CURRENCY')}}</span>
 								</div>
+								<div class="course-type text-center gradient-bg bg-success">
+									<span>{{$course->type}}</span>
+								</div>
 								<div class="course-details-btn">
 									<a href="{{route('course.show', $course->id)}}">COURSE DETAIL <i class="fas fa-arrow-right"></i></a>
 								</div>
@@ -537,7 +540,7 @@
 									</ul>
 								</div>
 								<div class="mt-2 text-center">
-									<button class="btn btn-sm text-uppercase gradient-bg text-white book-course" data-id="{{$course->id}}" data-name="{{$course->name}}" data-price="{{$course->price}}" data-image="{{asset($course->image)}}" data-date="{{\Carbon\Carbon::parse($course->start_date)->format('d F')}}">Book Now</button>
+									<button class="btn btn-sm text-uppercase gradient-bg text-white book-course" data-id="{{$course->id}}" data-name="{{$course->name}}" data-price="{{$course->price}}" data-type="{{$course->type}}" data-image="{{asset($course->image)}}" data-date="{{\Carbon\Carbon::parse($course->start_date)->format('d F')}}">Book Now</button>
 								</div>
 							</div>
 						</div>

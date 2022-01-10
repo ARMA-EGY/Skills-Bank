@@ -105,6 +105,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'a
         Route::post('/disablecourse', 'Admin\Courses\CoursesController@disable')->name('course-disable');
         Route::get('/course/requestes', 'Admin\Courses\CoursesController@requestes')->name('course-requestes');
         Route::post('/courserequestaccept', 'Admin\Courses\CoursesController@accept')->name('course-request-accept');
+        Route::post('/topMonth', 'Admin\Courses\CoursesController@topMonth')->name('course-top');
 
         /*
         |--------------------------------------------------------------------------

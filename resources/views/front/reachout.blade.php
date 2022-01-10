@@ -22,6 +22,60 @@
 		============================================= -->
 
 
+	<!-- Start of contact area
+		============================================= -->
+		<section id="contact-area" class="contact-area-section backgroud-style">
+			<div class="container">
+				<div class="contact-area-content">
+					<div class="row">
+						<div class="col-md-6" data-aos="fade-right" data-aos-duration="1000">
+							<div class="contact-left-content">
+								<div class="section-title  mb45 headline text-left">
+									<span class="subtitle ml42  text-uppercase">CONTACT US</span>
+									<h2><span>Have Some Skills Bank to Enrich?</span></h2>
+								</div>
+
+								<div class="contact_secound_form">
+									<form class="contact_form">
+										@csrf
+										<div class="contact-info">
+											<input class="name field1" name="name" type="text" placeholder="Your Name." required>
+										</div>
+										<div class="contact-info">
+											<input class="phone field1" name="phone" type="number" placeholder="Your Phone" required>
+										</div>
+										<div class="contact-info">
+											<input class="email field1" name="email" type="email" placeholder="Your Email" required>
+										</div>
+										<div class="contact-info">
+											<input class="company field1" name="company" type="text" placeholder="Company Name" required>
+										</div>
+										<div class="contact-info">
+											<input class="position field1" name="position" type="text" placeholder="Your Position" required>
+										</div>
+										<textarea class="field1" placeholder="Message." name="message" spellcheck="false" required></textarea>
+										<div class="nws-button text-center  gradient-bg text-capitalize mb-4">
+											<button type="submit" class="submit" value="Submit">SEND MESSAGE <i class="fas fa-caret-right text-yellow"></i></button> 
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6" data-aos="fade-left" data-aos-duration="1000">
+							<div class="section-title headline text-center">
+									<h2>You Can Find Us <span> EVERYWHERE!</span></h2>
+							</div>
+							<img src="{{asset('front_assets/img/map.png')}}" class="img-fluid rounded">
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	<!-- End of contact area
+		============================================= -->
+
+
 	<!-- Start of contact section
 		============================================= -->
 		<section id="contact-page" class="contact-page-section" data-aos="fade-up" data-aos-duration="1000">
@@ -83,60 +137,6 @@
 			</div>
 		</section>
 	<!-- End of contact section
-		============================================= -->
-
-
-	<!-- Start of contact area
-		============================================= -->
-		<section id="contact-area" class="contact-area-section backgroud-style">
-			<div class="container">
-				<div class="contact-area-content">
-					<div class="row">
-						<div class="col-md-6" data-aos="fade-right" data-aos-duration="1000">
-							<div class="contact-left-content">
-								<div class="section-title  mb45 headline text-left">
-									<span class="subtitle ml42  text-uppercase">CONTACT US</span>
-									<h2><span>Have Some Skills Bank to Enrich?</span></h2>
-								</div>
-
-								<div class="contact_secound_form">
-									<form class="contact_form">
-										@csrf
-										<div class="contact-info">
-											<input class="name field1" name="name" type="text" placeholder="Your Name." required>
-										</div>
-										<div class="contact-info">
-											<input class="phone field1" name="phone" type="number" placeholder="Your Phone" required>
-										</div>
-										<div class="contact-info">
-											<input class="email field1" name="email" type="email" placeholder="Your Email" required>
-										</div>
-										<div class="contact-info">
-											<input class="company field1" name="company" type="text" placeholder="Company Name" required>
-										</div>
-										<div class="contact-info">
-											<input class="position field1" name="position" type="text" placeholder="Your Position" required>
-										</div>
-										<textarea class="field1" placeholder="Message." name="message" spellcheck="false" required></textarea>
-										<div class="nws-button text-center  gradient-bg text-capitalize mb-4">
-											<button type="submit" class="submit" value="Submit">SEND MESSAGE <i class="fas fa-caret-right text-yellow"></i></button> 
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-md-6" data-aos="fade-left" data-aos-duration="1000">
-							<div class="section-title headline text-center">
-									<h2>You Can Find Us <span> EVERYWHERE!</span></h2>
-							</div>
-							<img src="{{asset('front_assets/img/map.png')}}" class="img-fluid rounded">
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-	<!-- End of contact area
 		============================================= -->
 		
 

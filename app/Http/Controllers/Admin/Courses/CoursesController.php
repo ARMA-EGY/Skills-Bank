@@ -229,5 +229,25 @@ class CoursesController extends Controller
         $item->save();
     }
 
+
+    //-------------- Top of Month  ---------------\\
+
+    public function topMonth(Request $request)
+    {
+        $item     = Courses::where('id', $request->id)->first();
+
+        if($item->top_month == 1)
+        {
+            $top_month = 0;
+        }
+        elseif($item->top_month == 0)
+        {
+            $top_month = 1;
+        }
+
+        $item->top_month = $top_month;
+        $item->save();
+    }
+
    
 }

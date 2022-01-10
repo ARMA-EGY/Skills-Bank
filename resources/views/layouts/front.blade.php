@@ -78,7 +78,7 @@
 											<li><a href="{{route('about')}}#founder-word">Word By The Founder</a></li>
 											<li><a href="{{route('team')}}">Meet The Team</a></li>
 											<li><a href="{{route('welcome')}}#why-choose">Why SB</a></li>
-											<li><a href="#">Clients</a></li>
+											<li><a href="{{route('clients')}}">Clients</a></li>
 										</ul>
 									</li>
 									<li class="menu-item-has-children ul-li-block">
@@ -94,7 +94,7 @@
 									<li class="menu-item-has-children ul-li-block">
 										<a href="#">Learning Approach</a>
 										<ul class="sub-menu">
-											<li><a href="#">Blended Learning Approach</a></li>
+											<li><a href="{{route('learningApproach')}}">Blended Learning Approach</a></li>
 											<li><a href="{{route('learningTree')}}">SB Learning Tree</a></li>
 										</ul>
 									</li>
@@ -374,6 +374,9 @@
 							<div class="course-price text-center gradient-bg bg-yellow">
 								<span id="booking_price"></span> <span>{{__('front.CURRENCY')}}</span> 
 							</div>
+							<div class="course-type text-center gradient-bg bg-success">
+								<span id="booking_type"></span>
+							</div>
 						</div>
 						<div class="course-item-text p-3">
 							<div class="course-title mt10 headline pb-2 relative-position">
@@ -496,6 +499,7 @@
 				var price  	= $(this).attr('data-price');
 				var date  	= $(this).attr('data-date');
 				var image  	= $(this).attr('data-image');
+				var type  	= $(this).attr('data-type');
 
 				$('#bookingModal').modal('show');
 
@@ -504,6 +508,7 @@
 				$("#booking_date").text(date);
 				$("#course_id").val(id);
 				$('#booking_image').attr('src',image);
+				$("#booking_type").text(type);
 			});
 
 			$('.booking_form').submit(function(e)
