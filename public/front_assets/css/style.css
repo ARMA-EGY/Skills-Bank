@@ -308,7 +308,8 @@ body {
   padding: 0; }
   .ul-li-block ul li {
     list-style: none;
-    display: block; }
+    display: block;
+    color: #fff; }
 
 div#preloader {
   position: fixed;
@@ -3825,9 +3826,9 @@ ul.product-tab li.active:after {
 .shorting-filter select {
   padding: 8px 15px;
   border-radius: 4px;
-  background-color: #f7f7f7;
+  background-color: #007bff;
   border: none;
-  color: #ccc;
+  color: #fff;
   font-weight: 700;
   margin-left: 15px; }
 

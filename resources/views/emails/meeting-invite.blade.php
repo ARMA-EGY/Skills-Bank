@@ -16,14 +16,16 @@
 <b>Here you will find your booking details:</b>
 <br>
 
-<b></b>{{$mt[0]->course->name}}
+<b></b>{{$mt->name}}
 <br>
 
 
-<b>Join Link : </b>{{$mt[0]->url}}
+@if(isset($mt->meeting[0]))
+<b>Join Link : </b>{{$mt->meeting[0]->url}}
 <br>
+@endif
 
-@if($mt[0]->course->type == 'Class Room')
+@if($mt->type == 'Class Room')
 <b>Where: Class Room</b>
 <br>
 @else
@@ -32,7 +34,7 @@
 @endif
 
 
-<b>Price: </b>{{$mt[0]->course->price}} L.E
+<b>Price: </b>{{$mt->price}} L.E
 <br>
 
 

@@ -149,7 +149,7 @@
 			<div class="container">
 				<div class="section-title relative-position mb20 headline text-center">
 					<span class="subtitle ml42 text-uppercase">SKILLS BANK SOLUTIONS</span>
-					<h2><span>How Do We</span> Fuel Your Skills Banks? </h2>
+					<h2><span>How Do We</span> Fuel Your Skills Bank? </h2>
 				</div>
 
 				<div class="row justify-content-center" data-aos="fade-right" data-aos-duration="1000">
@@ -162,7 +162,7 @@
 									<a href="{{route('practical')}}"><h6 class="font-weight-bold">Customized & Practical Training Programs </h6></a>
 								</div>
 								<div class="about-content-text text-center relative-position">
-									<p class="text-white">The Skills Bank Learning Design team customizes all the training programs needed to level up every core competency your team members have in their skill banks </p>
+									<p class="text-white">The Skills Bank Learning Design team customizes all the training programs needed to level up every core competency your team members have in their skills bank </p>
 									<div class="about-btn mt-4 text-center">
 										<div class="genius-btn gradient-bg text-center text-uppercase ul-li-block bold-font">
 											<a href="{{route('practical')}}">Read More<i class="fas fa-caret-right"></i></a>
@@ -527,7 +527,7 @@
 									<span>{{$course->type}}</span>
 								</div>
 								<div class="course-details-btn">
-									<a href="{{route('course.show', $course->id)}}">COURSE DETAIL <i class="fas fa-arrow-right"></i></a>
+									<a href="{{route('course.show', $course->id)}}">WORKSHOP DETAILS <i class="fas fa-arrow-right"></i></a>
 								</div>
 							</div>
 							<div class="course-item-text p-3">
@@ -537,10 +537,11 @@
 								<div class="course-viewer ul-li">
 									<ul>
 										<li><i class="fas fa-calendar-alt mr-3"></i> Started {{\Carbon\Carbon::parse($course->start_date)->format('d F')}}</li>
+										<li><i class="far fa-clock mr-3"></i> From {{\Carbon\Carbon::parse($course->time_from)->format('h:i a')}} To {{\Carbon\Carbon::parse($course->time_to)->format('h:i a')}}</li>
 									</ul>
 								</div>
 								<div class="mt-2 text-center">
-									<button class="btn btn-sm text-uppercase gradient-bg text-white book-course" data-id="{{$course->id}}" data-name="{{$course->name}}" data-price="{{$course->price}}" data-type="{{$course->type}}" data-image="{{asset($course->image)}}" data-date="{{\Carbon\Carbon::parse($course->start_date)->format('d F')}}">Book Now</button>
+									<button class="btn btn-sm text-uppercase gradient-bg text-white book-course" data-id="{{$course->id}}" data-name="{{$course->name}}" data-price="{{$course->price}}" data-type="{{$course->type}}" data-image="{{asset($course->image)}}" data-date="{{\Carbon\Carbon::parse($course->start_date)->format('d F')}}" data-date2="{{$course->start_date}}">Book Now</button>
 								</div>
 							</div>
 						</div>
@@ -588,12 +589,12 @@
 
 	<!-- Start of clients section
 		============================================= -->
-		<section id="sponsor" class="sponsor-section" style="background: #0e6aa5;" data-aos="fade-up" data-aos-duration="1000">
+		<section id="sponsor" class="sponsor-section" data-aos="fade-up" data-aos-duration="1000">
 			<div class="container">
 					
 				<div class="section-title mb20 headline text-left">
-					<span class="subtitle ml42 text-uppercase text-white">OUR AWESOME CLIENTS</span>
-					<h2 class="text-white"><span>Clients </span> We Take Pride in Serving.</h2>
+					<span class="subtitle ml42 text-uppercase">OUR AWESOME CLIENTS</span>
+					<h2 class=""><span>Clients </span> We Take Pride in working with:</h2>
 				</div>
 
 				<div class="sponsor-item sponsor-1">

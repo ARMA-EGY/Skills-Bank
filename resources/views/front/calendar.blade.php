@@ -44,19 +44,19 @@
 								<div class="short-filter-tab">
 									<div class="shorting-filter">
 										<select id="month" class="m-0 w-100">
-											<option value="all" selected>All Months</option>
-											<option value="month-01">January</option>
-											<option value="month-02">February</option>
-											<option value="month-03">March</option>
-											<option value="month-04">April</option>
-											<option value="month-05">May</option>
-											<option value="month-06">June</option>
-											<option value="month-07">July</option>
-											<option value="month-08">August</option>
-											<option value="month-09">September</option>
-											<option value="month-10">October</option>
-											<option value="month-11">November</option>
-											<option value="month-12">December</option>
+											<option value="all">All Months</option>
+											<option value="month-01" @if ($currentMonth == '01') selected @endif>January</option>
+											<option value="month-02" @if ($currentMonth == '02') selected @endif>February</option>
+											<option value="month-03" @if ($currentMonth == '03') selected @endif>March</option>
+											<option value="month-04" @if ($currentMonth == '04') selected @endif>April</option>
+											<option value="month-05" @if ($currentMonth == '05') selected @endif>May</option>
+											<option value="month-06" @if ($currentMonth == '06') selected @endif>June</option>
+											<option value="month-07" @if ($currentMonth == '07') selected @endif>July</option>
+											<option value="month-08" @if ($currentMonth == '08') selected @endif>August</option>
+											<option value="month-09" @if ($currentMonth == '09') selected @endif>September</option>
+											<option value="month-10" @if ($currentMonth == '10') selected @endif>October</option>
+											<option value="month-11" @if ($currentMonth == '11') selected @endif>November</option>
+											<option value="month-12" @if ($currentMonth == '12') selected @endif>December</option>
 										</select>
 									</div>
 								</div>
@@ -79,7 +79,7 @@
 
             										@if ($courses->count() > 0)
 														@foreach ($courses as $course)
-															<div class="col-md-4 course month-{{\Carbon\Carbon::parse($course->start_date)->format('m')}}" data-aos="fade-up" data-aos-duration="1000">
+															<div class="col-md-4 course month-{{\Carbon\Carbon::parse($course->start_date)->format('m')}}">
 																<div class="course-item-pic-text mt-5">
 																	<div class="course-pic relative-position">
 																		<img src="{{asset($course->image)}}" alt="">
@@ -90,7 +90,7 @@
 																			<span>{{$course->type}}</span>
 																		</div>
 																		<div class="course-details-btn">
-																			<a href="{{route('course.show', $course->id)}}">COURSE DETAIL <i class="fas fa-arrow-right"></i></a>
+																			<a href="{{route('course.show', $course->id)}}">WORKSHOP DETAILS <i class="fas fa-arrow-right"></i></a>
 																		</div>
 																	</div>
 																	<div class="course-item-text p-3">
@@ -100,10 +100,11 @@
 																		<div class="course-viewer ul-li">
 																			<ul>
 																				<li><i class="fas fa-calendar-alt mr-3"></i> Started {{\Carbon\Carbon::parse($course->start_date)->format('d F')}}</li>
+																				<li class="mt-1"><i class="far fa-clock mr-3"></i>  {{\Carbon\Carbon::parse($course->time_from)->format('h:i a')}} : {{\Carbon\Carbon::parse($course->time_to)->format('h:i a')}}</li>
 																			</ul>
 																		</div>
 																		<div class="mt-2 text-center">
-																			<button class="btn btn-sm text-uppercase gradient-bg text-white book-course" data-id="{{$course->id}}" data-name="{{$course->name}}" data-price="{{$course->price}}" data-type="{{$course->type}}" data-image="{{asset($course->image)}}" data-date="{{\Carbon\Carbon::parse($course->start_date)->format('d F')}}">Book Now</button>
+																			<button class="btn btn-sm text-uppercase gradient-bg text-white book-course" data-id="{{$course->id}}" data-name="{{$course->name}}" data-price="{{$course->price}}" data-type="{{$course->type}}" data-image="{{asset($course->image)}}" data-date="{{\Carbon\Carbon::parse($course->start_date)->format('d F')}}" data-date2="{{$course->start_date}}">Book Now</button>
 																		</div>
 																	</div>
 																</div>
@@ -131,7 +132,7 @@
 														@if ($courses->where('category_id', $category->id)->count() > 0)
 															@foreach ($courses as $course)
 																@if ($course->category->id == $category->id)
-																	<div class="col-md-4 course month-{{\Carbon\Carbon::parse($course->start_date)->format('m')}}" data-aos="fade-up" data-aos-duration="1000">
+																	<div class="col-md-4 course month-{{\Carbon\Carbon::parse($course->start_date)->format('m')}}">
 																		<div class="course-item-pic-text mt-5">
 																			<div class="course-pic relative-position">
 																				<img src="{{asset($course->image)}}" alt="">
@@ -142,7 +143,7 @@
 																					<span>{{$course->type}}</span>
 																				</div>
 																				<div class="course-details-btn">
-																					<a href="{{route('course.show', $course->id)}}">COURSE DETAIL <i class="fas fa-arrow-right"></i></a>
+																					<a href="{{route('course.show', $course->id)}}">WORKSHOP DETAILS <i class="fas fa-arrow-right"></i></a>
 																				</div>
 																			</div>
 																			<div class="course-item-text p-3">
@@ -152,10 +153,11 @@
 																				<div class="course-viewer ul-li">
 																					<ul>
 																						<li><i class="fas fa-calendar-alt mr-3"></i> Started {{\Carbon\Carbon::parse($course->start_date)->format('d F')}}</li>
+																						<li class="mt-1"><i class="far fa-clock mr-3"></i>  {{\Carbon\Carbon::parse($course->time_from)->format('h:i a')}} : {{\Carbon\Carbon::parse($course->time_to)->format('h:i a')}}</li>
 																					</ul>
 																				</div>
 																				<div class="mt-2 text-center">
-																					<button class="btn btn-sm text-uppercase gradient-bg text-white book-course" data-id="{{$course->id}}" data-name="{{$course->name}}" data-price="{{$course->price}}" data-type="{{$course->type}}" data-image="{{asset($course->image)}}" data-date="{{\Carbon\Carbon::parse($course->start_date)->format('d F')}}">Book Now</button>
+																					<button class="btn btn-sm text-uppercase gradient-bg text-white book-course" data-id="{{$course->id}}" data-name="{{$course->name}}" data-price="{{$course->price}}" data-type="{{$course->type}}" data-image="{{asset($course->image)}}" data-date="{{\Carbon\Carbon::parse($course->start_date)->format('d F')}}" data-date2="{{$course->start_date}}">Book Now</button>
 																				</div>
 																			</div>
 																		</div>
@@ -215,6 +217,28 @@
 
         console.log(filter);
     });
+
+
+    function filter() 
+    {
+        var filter 	   = '.' + $('#month').val()
+
+        if(filter == '.all')
+        {
+            $('.course').show();
+        }
+        else
+        {
+            $('.course').hide();
+            $(filter).show();
+        }
+    }
+
+	$(document).ready(function() 
+	{
+		filter();
+	});
+	
 
 </script>
 

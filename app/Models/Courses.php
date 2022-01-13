@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Meeting;
 
 class Courses extends Model
 {
@@ -12,5 +13,10 @@ class Courses extends Model
 
     public function category(){
         return $this->belongsTo('App\Models\Categories','category_id');
+    }
+
+    public function meeting()
+    {
+        return $this->hasMany(Meeting::class,'course_id');
     }
 }
