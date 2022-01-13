@@ -12,6 +12,7 @@ use App\Models\CoursesRequest;
 use App\Models\Blog;
 use App\Models\Team;
 use App\Models\Client;
+use App\Models\CategoryClient;
 
 use App\Models\LearningTree;
 use App\Models\TreeDescription;
@@ -74,8 +75,12 @@ class FrontController extends Controller
     //-------------- Clients Page ---------------\\
     public function clients()
     {
+		$clients       = client::orderBy('id','desc')->get();
+		$categories    = CategoryClient::where('disable',0)->orderBy('id','asc')->get();
 
         return view('front.clients', [
+            'clients'       => $clients,
+            'categories'    => $categories,
             'socials' => Social::all(),
         ]);     
     }
@@ -111,12 +116,14 @@ class FrontController extends Controller
     //-------------- Calendar Page ---------------\\
     public function calendar()
     {
+        $currentMonth       = date('m');
         $categories    = Categories::where('disable', 0)->orderBy('id','desc')->get();
         $courses       = Courses::where('lang', LaravelLocalization::getCurrentLocale())->where('disable', 0)->orderBy('id','desc')->get();
 
         return view('front.calendar', [
             'categories'    => $categories,
             'courses'       => $courses,
+            'currentMonth'  => $currentMonth,
             'socials'       => Social::all(),
         ]);       
     }
@@ -286,11 +293,19 @@ class FrontController extends Controller
         $course     = Courses::where('id', $request->course_id)->first();
         $limit      = $course->students_limit;
         $students   = CoursesRequest::where('course_id', $request->course_id)->where('accept', 1)->count();
+        $exist      = CoursesRequest::where('course_id', $request->course_id)->where('email', $request->email)->count();
 
         if($students >= $limit)
         {
             return response()->json([
                 'status' => 'full',
+                'msg' => 'error'
+            ]) ;
+        }
+        elseif($exist > 0)
+        {
+            return response()->json([
+                'status' => 'exist',
                 'msg' => 'error'
             ]) ;
         }
@@ -308,7 +323,7 @@ class FrontController extends Controller
                 'country'               => LaravelLocalization::getCurrentLocale(),
             ]);
 
-            $mt = Meeting::with('course')->where('course_id',$request->course_id)->get();
+            $mt = Courses::with('meeting')->where('id',$request->course_id)->first();
 
             Mail::to($request->email)
             ->send(new meetingInvitation($mt,$booking));

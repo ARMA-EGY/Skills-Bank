@@ -137,6 +137,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'a
         Route::resource('/clients', 'Admin\Clients\ClientsController'); 
         Route::post('/removeclients', 'Admin\Clients\ClientsController@removeclients')->name('remove-clients');
 
+        Route::resource('/clientscategory', 'Admin\Clients\ClientsCategoryController');
+        Route::post('/disableclientcategory', 'Admin\Clients\ClientsCategoryController@disable')->name('client-category-disable');
+
 
         /*
         |--------------------------------------------------------------------------

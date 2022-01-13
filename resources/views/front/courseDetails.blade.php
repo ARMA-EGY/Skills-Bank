@@ -13,7 +13,7 @@
 			<div class="container">
 				<div class="page-breadcrumb-content text-center">
 					<div class="page-breadcrumb-title">
-						<h2 class="breadcrumb-head black bold"> <span>Course Details</span></h2>
+						<h2 class="breadcrumb-head black bold"> <span>Workshop Details</span></h2>
 					</div>
 				</div>
 			</div>
@@ -38,11 +38,15 @@
                                     <div class="course-viewer ul-li mt-4">
                                         <ul>
                                             <li><a href=""><i class="fas fa-calendar-alt mr-3"></i> Started {{\Carbon\Carbon::parse($item->start_date)->format('d F')}} </a></li>
+											<li><i class="far fa-clock mr-3"></i> From {{\Carbon\Carbon::parse($item->time_from)->format('h:i a')}} To {{\Carbon\Carbon::parse($item->time_to)->format('h:i a')}}</li>
                                         </ul>
+										<div class="course-type text-center gradient-bg bg-success">
+											<span>{{$item->type}}</span>
+										</div>
                                     </div>
 								</div>
 								<div class="course-details-content">
-									<h3>Description</h3>
+									<h3>Workshop Overview</h3>
                                     {!! $item->description !!}
 								</div>
                                 
@@ -96,7 +100,7 @@
 									<span>{{$course->type}}</span>
 								</div>
 								<div class="course-details-btn">
-									<a href="{{route('course.show', $course->id)}}">COURSE DETAIL <i class="fas fa-arrow-right"></i></a>
+									<a href="{{route('course.show', $course->id)}}">WORKSHOP DETAILS <i class="fas fa-arrow-right"></i></a>
 								</div>
 							</div>
 							<div class="course-item-text p-3">
@@ -106,10 +110,11 @@
 								<div class="course-viewer ul-li">
 									<ul>
 										<li><i class="fas fa-calendar-alt mr-3"></i> Started {{\Carbon\Carbon::parse($course->start_date)->format('d F')}}</li>
+										<li><i class="far fa-clock mr-3"></i> From {{\Carbon\Carbon::parse($course->time_from)->format('h:i a')}} To {{\Carbon\Carbon::parse($course->time_to)->format('h:i a')}}</li>
 									</ul>
 								</div>
 								<div class="mt-2 text-center">
-									<button class="btn btn-sm text-uppercase gradient-bg text-white book-course" data-id="{{$course->id}}" data-name="{{$course->name}}" data-price="{{$course->price}}" data-type="{{$course->type}}" data-image="{{asset($course->image)}}" data-date="{{\Carbon\Carbon::parse($course->start_date)->format('d F')}}">Book Now</button>
+									<button class="btn btn-sm text-uppercase gradient-bg text-white book-course" data-id="{{$course->id}}" data-name="{{$course->name}}" data-price="{{$course->price}}" data-type="{{$course->type}}" data-image="{{asset($course->image)}}" data-date="{{\Carbon\Carbon::parse($course->start_date)->format('d F')}}" data-date2="{{$course->start_date}}">Book Now</button>
 								</div>
 							</div>
 						</div>

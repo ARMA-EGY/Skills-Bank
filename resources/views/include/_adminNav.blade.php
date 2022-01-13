@@ -98,6 +98,13 @@
                             </a>
                           </li>
 
+                          <li class="nav-item">
+                            <a href="{{ route('clientscategory.index')}}" class="nav-link nav-link-sub {{request()->routeIs('clientscategory.index') ? 'active' : '' }}">
+                              <i class="far fa-dot-circle"></i>
+                              <span class="sidenav-normal">Categories</span>
+                            </a>
+                          </li>
+
                         </ul>
                       </div>
                   </li>

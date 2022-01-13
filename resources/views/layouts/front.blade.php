@@ -483,7 +483,7 @@
 			(function () {
 				var options = {
 					facebook: "120174095067860", // Facebook page ID
-					whatsapp: "+2 01009779374", // WhatsApp number
+					whatsapp: "+2 01012769079", // WhatsApp number
 					call_to_action: "Message us", // Call to action
 					button_color: "#0090d0", // Color of button
 					position: "right", // Position may be 'right' or 'left'
@@ -505,29 +505,53 @@
 				var name  	= $(this).attr('data-name');
 				var price  	= $(this).attr('data-price');
 				var date  	= $(this).attr('data-date');
+				var date2  	= $(this).attr('data-date2');
 				var image  	= $(this).attr('data-image');
 				var type  	= $(this).attr('data-type');
 
-				$('#bookingModal').modal('show');
+				var head2 	= 'Oops...';
+				var title2 	= 'Sorry, this workshop has already been started.';
 
-				$("#booking_name").text(name);
-				$("#booking_price").text(price);
-				$("#booking_date").text(date);
-				$("#course_id").val(id);
-				$('#booking_image').attr('src',image);
-				$("#booking_type").text(type);
+				cd = (new Date()).toISOString().split('T')[0];
+				console.log(cd);
+				console.log(date2);
+				if(cd > date2)
+				{
+					Swal.fire(
+						head2,
+						title2,
+						'error'
+						)
+				}
+				else
+				{
+					$('#bookingModal').modal('show');
+					$("#booking_name").text(name);
+					$("#booking_price").text(price);
+					$("#booking_date").text(date);
+					$("#course_id").val(id);
+					$('#booking_image').attr('src',image);
+					$("#booking_type").text(type);
+				}
 			});
 
 			$('.booking_form').submit(function(e)
 			{
 				e.preventDefault();
 				$('.submit').prop('disabled', true);
-
-					var head1 	= 'Thank You';
-					var title1 	= 'Your Request Has Been Sent Successfully, We will contact you ASAP. ';
+					if($('input[name="payment_method"]:checked').val() == 'online')
+					{
+						var title1 	= 'You will be forward now to payment page.';
+					}
+					else
+					{
+						var title1 	= 'You will receive email with all details and one of our team will contact you ASAP.';
+					}
+					var head1 	= 'Thank you for your registration';
 					var head2 	= 'Oops...';
 					var title2 	= 'Something went wrong, please try again later.';
 					var title3 	= 'Sorry, this course has been completed.';
+					var title4 	= 'Sorry, this email has already been registered.';
 
 				$.ajax({
 					url: 		"{{route('booking')}}",
@@ -571,6 +595,14 @@
 								Swal.fire(
 										head2,
 										title3,
+										'error'
+										)
+							}
+							else if (data['status'] == 'exist')
+							{
+								Swal.fire(
+										head2,
+										title4,
 										'error'
 										)
 							}

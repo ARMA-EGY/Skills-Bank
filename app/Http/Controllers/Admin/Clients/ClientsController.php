@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Clients;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Client;
+use App\Models\CategoryClient;
 use App\Seo;
 use App\Http\Requests\SeoRequest;
 use Illuminate\Support\Facades\Storage;
@@ -36,9 +37,10 @@ class ClientsController extends Controller
      */
     public function create()
     {
+		$categories       = CategoryClient::where('disable',0)->orderBy('id','desc')->get();
 
         return view('admin.clients.create', [
-            
+            'categories' => $categories,
             ]);
     }
 
@@ -62,6 +64,7 @@ class ClientsController extends Controller
 
         $clients =  client::create([
             'name' => $request->name,
+            'category_id' => $request->category_id,
             'image' => $teamImage,
         ]);
 
@@ -90,9 +93,11 @@ class ClientsController extends Controller
      */
     public function edit(client $client)
     {
+		$categories       = CategoryClient::where('disable',0)->orderBy('id','desc')->get();
 
 		return view('admin.clients.create', [
             'clients'      => $client,
+            'categories' => $categories,
             ]);
     }
 
@@ -106,7 +111,7 @@ class ClientsController extends Controller
     public function update(Request $request, client $client)
     {
 
-        $data = $request->only(['name']);
+        $data = $request->only(['name','category_id']);
 
         if($request->hasfile('image'))
         {

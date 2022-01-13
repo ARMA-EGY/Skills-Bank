@@ -51,11 +51,28 @@
                             <div class="row">
 
                                 <!--=================  Name  =================-->
-                                <div class="form-group col-md-12 mb-2">
+                                <div class="form-group col-md-6 mb-2">
                                     <label for="name">Name</label>
                                     <input id="name" type="text" name="name" class="@error('name') is-invalid @enderror form-control" placeholder="Add Name" value="{{ isset($clients) ? $clients->name : old('name') }}" required>
                                 
                                     @error('name')
+                                        <div>
+                                            <span class="text-danger">{{ $message }}</span>
+                                        </div>
+                                    @enderror
+                                </div>
+
+                                <!--=================  CATEGORY  =================-->
+                                <div class="form-group col-md-6 mb-2 text-left">
+                                    <label class="font-weight-bold text-uppercase">{{__('master.CATEGORY')}}</label>
+
+                                    <select class="form-control" name="category_id" required>
+                                        @foreach ($categories as $category)
+                                            <option value="{{$category->id}}" @if (isset($item))  @if ($item->category_id == $category->id ) selected @endif @endif>{{$category->name}}</option>
+                                        @endforeach
+                                    </select>
+
+                                    @error('category_id')
                                         <div>
                                             <span class="text-danger">{{ $message }}</span>
                                         </div>

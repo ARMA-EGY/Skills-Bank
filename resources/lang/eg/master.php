@@ -315,5 +315,5 @@ return [
     "FROM" => "From",
     "TO" => "To",
     "CURRENCY-eg" => "L.E",
-    "CURRENCY-sa" => "SAR",
+    "CURRENCY-sa" => "$",
 ];

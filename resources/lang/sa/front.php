@@ -11,5 +11,5 @@ return [
     */
     
     "HOME" => "الرئيسية",
-    "CURRENCY" => "SAR",
+    "CURRENCY" => "$",
 ];

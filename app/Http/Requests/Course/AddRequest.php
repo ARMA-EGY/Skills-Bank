@@ -16,8 +16,7 @@ class AddRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'price_eg' => 'required',
-            'price_sr' => 'required',
+            'price' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
             'students_limit' => 'required',
@@ -31,8 +30,7 @@ class AddRequest extends FormRequest
     {
         return [
             'name.required' => 'Course Name is required.',
-            'price_eg.required' => 'price is required.',
-            'price_sr.required' => 'price is required.',
+            'price.required' => 'price is required.',
             'start_date.required' => 'start date is required.',
             'end_date.required' => 'end date is required.',
             'students_limit.required' => 'students limit is required.',
@@ -45,8 +43,7 @@ class AddRequest extends FormRequest
     {
         return [
             'name' => 'Course Name',
-            'price_eg' => 'price',
-            'price_sr' => 'price',
+            'price' => 'price',
             'start_date' => 'start date',
             'end_date' => 'end date',
             'students_limit' => 'students limit',
