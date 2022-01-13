@@ -30,6 +30,7 @@ use App\Models\Meeting;
 use App\Traits\PaymentTrait;
 use App\Models\paymentOrders;
 use App\Mail\meetingInvitation;
+use App\Mail\bookingRequest;
 use Mail; 
 use LaravelLocalization;
 
@@ -309,8 +310,14 @@ class FrontController extends Controller
 
             $mt = Meeting::with('course')->where('course_id',$request->course_id)->get();
 
-            Mail::to($request->email)->send(new meetingInvitation($mt,$booking));
+            Mail::to($request->email)
+            ->send(new meetingInvitation($mt,$booking));
             
+
+            Mail::to('admin@gmail.com')
+            ->send(new bookingRequest($mt,$booking));
+
+
             if($booking)
             {
 

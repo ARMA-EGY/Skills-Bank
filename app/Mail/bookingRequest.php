@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class meetingInvitation extends Mailable
+class bookingRequest extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -31,7 +31,7 @@ class meetingInvitation extends Mailable
      */
     public function build()
     {
-        return $this->subject('Skills Bank Training Confirmation')->view('emails.meeting-invite', [
+        return $this->subject('New booking Request')->view('emails.booking-request', [
             'mt' => $this->mt,
             'customer' => $this->customer,
             ]);
