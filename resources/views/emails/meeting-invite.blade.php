@@ -19,11 +19,11 @@
 <b></b>{{$mt->name}}
 <br>
 
-
-@if(isset($mt->meeting[0]))
-<b>Join Link : </b>{{$mt->meeting[0]->url}}
-<br>
-@endif
+@foreach($mt->meeting as $meeting)
+    <b>Join Link : </b>{{$meeting->url}}
+    <br>
+    <br>
+@endforeach
 
 @if($mt->type == 'Class Room')
 <b>Where: Class Room</b>
@@ -52,6 +52,9 @@
 <br>
 
 <b>Company: </b>{{$customer->company}}
+<br>
+<br>
+<br>
 <br>
 
 Thank You

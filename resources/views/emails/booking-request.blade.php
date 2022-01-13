@@ -11,14 +11,11 @@
 <b>booking details:</b>
 <br>
 
-<b></b>{{$mt[0]->course->name}}
+<b></b>{{$mt->name}}
 <br>
 
 
-<b>Join Link : </b>{{$mt[0]->url}}
-<br>
-
-@if($mt[0]->course->type == 'Class Room')
+@if($mt->type == 'Class Room')
 <b>Where: Class Room</b>
 <br>
 @else
@@ -27,7 +24,7 @@
 @endif
 
 
-<b>Price: </b>{{$mt[0]->course->price}} L.E
+<b>Price: </b>{{$mt->price}} L.E
 <br>
 
 
@@ -45,6 +42,9 @@ Student Information
 <br>
 
 <b>Company: </b>{{$customer->company}}
+<br>
+<br>
+<br>
 <br>
 
 Thank You
