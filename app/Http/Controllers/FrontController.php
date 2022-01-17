@@ -34,7 +34,7 @@ use App\Mail\meetingInvitation;
 use App\Mail\bookingRequest;
 use Mail; 
 use LaravelLocalization;
-
+use MailchimpMarketing\ApiClient;
 
 
 class FrontController extends Controller
@@ -290,6 +290,16 @@ class FrontController extends Controller
     public function booking(Request $request)
     {
 
+        $mailchimp = new ApiClient();
+
+        $mailchimp->setConfig([
+            'apiKey' => '4025dc9bd24a4342d0f798ecbe6e6be5-us20',
+            'server' => 'http://armasoftware.com/'
+        ]);
+
+        $response = $mailchimp->ping->get();
+        dd($response);
+
         $course     = Courses::where('id', $request->course_id)->first();
         $limit      = $course->students_limit;
         $students   = CoursesRequest::where('course_id', $request->course_id)->where('accept', 1)->count();
@@ -331,6 +341,9 @@ class FrontController extends Controller
 
             Mail::to('admin@gmail.com')
             ->send(new bookingRequest($mt,$booking));
+
+            
+
 
 
             if($booking)
