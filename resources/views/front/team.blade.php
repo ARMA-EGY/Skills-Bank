@@ -73,11 +73,8 @@
 														</ul>
 													</div>
 													<div class="teacher-text">
-														Know more about {{$item->name}} full journey 
+														 {{$item->description}}
 													</div>
-												</div>
-												<div class="teacher-next text-center">
-													<a href="{{route('member.show', $item->id)}}"><i class="text-gradiant fas fa-arrow-right"></i></a>
 												</div>
 											</div>
 											<div class="teacher-name-designation">

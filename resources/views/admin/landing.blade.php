@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.master')
 
 @section('content')
 
@@ -27,28 +27,30 @@
       <div class="row justify-content-center">
         
         
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="card card-profile">
             <img src="{{ asset('landing_assets/img/page2.jpg') }}" alt="Image placeholder" class="card-img-top">
             
             <div class="card-body p-3">
               <div class="text-center">
                 <h5 class="h3">
-                  Landing Page Two
+                  {{$landing->name}}
                 </h5>
                 <div class="h5 font-weight-300">
-                  <i class="ni location_pin mr-2"></i>Showcase - Two 
+                  <i class="ni location_pin mr-2"></i>{{$landing->showcase}} 
                 </div>
                 <div class="h5 mt-4">
-                  <i class="ni business_briefcase-24 mr-2"></i>Description Here...
+                  <i class="ni business_briefcase-24 mr-2"></i>{{$landing->description}}
                 </div>
               </div>
             </div>
             <div class="card-header text-center border-0 p-3">
               <div class="d-flex justify-content-between">
-                <a href="#" class="btn btn-sm btn-primary  mr-4 "><i class="fas fa-copy"></i> Get Link</a>
-                <a href="{{route('edit-landing')}}" target="_blank" class="btn btn-sm btn-info  mr-4 "><i class="fa fa-edit"></i> Edit</a>
-                <a href="#" target="_blank" class="btn btn-sm btn-default float-right"><i class="far fa-eye"></i> View</a>
+                <a  class="btn btn-sm btn-primary text-white pointer copyButton mr-4 "><i class="fas fa-copy"></i> Copy Link</a>
+                <input class="linkToCopy" value="https://ebe-eg.net/landing/{{$landing->url}}" style="position: absolute; opacity: 0;top: 0; left: 0;">
+                <a  class="btn btn-sm btn-warning text-white pointer  mr-4  get_landing" data-id="{{$landing->id}}"><i class="fa fa-cog"></i> Edit Data</a>
+                <a href="{{route('edit-landing')}}" target="_blank" class="btn btn-sm btn-info  mr-4 "><i class="fa fa-edit"></i> Edit Page</a>
+                <a href="https://ebe-eg.net/landing/{{$landing->url}}" target="_blank" class="btn btn-sm btn-default float-right"><i class="far fa-eye"></i> View</a>
               </div>
             </div>
           </div>
@@ -62,3 +64,129 @@
     </div>
 
 @endsection
+
+
+
+@section('script')
+
+<script>
+
+
+ const Toast = Swal.mixin({
+	  toast: true,
+	  position: 'top-end',
+	  showConfirmButton: false,
+	  timer: 3000,
+	  timerProgressBar: true,
+	  onOpen: (toast) => {
+		toast.addEventListener('mouseenter', Swal.stopTimer)
+		toast.addEventListener('mouseleave', Swal.resumeTimer)
+	  }
+	})
+
+    
+	$(document).on('click', '.copyButton', function()
+	{
+		$(this).siblings('input.linkToCopy').select();      
+		document.execCommand("copy");
+		
+		var title = 'Link Has Copied Successfully .';
+		Toast.fire({
+		  icon: 'success',
+		  title: title
+		})
+
+	});
+	
+	
+	
+        $('.get_landing').click(function()
+        {
+            var id 	= $(this).attr('data-id');
+
+            $('#popup').modal('show');
+            $('#modal_body').html('<div class="divload"><img src="/public/images/load.gif" width="50" class="m-auto"></div>');
+
+            $.ajax({
+                url:"{{route('getlanding')}}",
+                type:"POST",
+                dataType: 'text',
+                data:    {"_token": "{{ csrf_token() }}",
+                            id: id},
+                success : function(response)
+                    {
+                    $('#modal_body').html(response);
+                    }  
+                })
+
+        });
+        
+        
+        // ==========================  Edit Landing Data ==========================
+
+        $(document).on('submit', '.landing_form', function(e)
+            {
+                e.preventDefault();
+                let formData = new FormData(this);
+                $('.submit').prop('disabled', true);
+
+                var head1 	= 'Done';
+                var title1 	= 'Data Changed Successfully. ';
+                var head2 	= 'Oops...';
+                var title2 	= 'Something went wrong, please try again later.';
+
+
+                $.ajax({
+                    url: 		"{{route('editlanding')}}",
+                    method: 	'POST',
+                    data: formData,
+                    dataType: 	'json',
+                    contentType: false,
+                    processData: false,
+                    success : function(data)
+                        {
+                            $('.submit').prop('disabled', false);
+                            
+                            if (data['status'] == 'true')
+                            {
+                                Swal.fire(
+                                        head1,
+                                        title1,
+                                        'success'
+                                        )
+                                $('.modal').modal('hide');
+                            }
+                            else if (data['status'] == 'false')
+                            {
+                                Swal.fire(
+                                        head2,
+                                        title2,
+                                        'error'
+                                        )
+                            }
+                        },
+                        error : function(reject)
+                        {
+                            $('.submit').prop('disabled', false);
+
+                            var response = $.parseJSON(reject.responseText);
+                            $.each(response.errors, function(key, val)
+                            {
+                                Swal.fire(
+                                        head2,
+                                        val[0],
+                                        'error'
+                                        )
+                            });
+                        }
+                    
+                    
+                });
+
+        });
+	
+    
+</script>
+
+@endsection
+

@@ -19,7 +19,7 @@
 									<span class="subtitle text-uppercase text-white">EDUCATION & TRAINING ORGANIZATION</span>
 								</div>
 								<div class="layer-1-3">
-									<h2><span>This is</span> Where You <br> Fuel Their <span>Skills Bank</span></h2>
+									<h2><span>This is</span> Where You <br> Enrich Their <span>Skills Bank</span></h2>
 								</div>
 							</div>
 							<div class="layer-1-4">
@@ -47,7 +47,7 @@
 				<div class="search-counter-up mb-4">
 
 					<div class="section-title relative-position my-3 headline text-center">
-						<h2>In 5 Years <span>We Fueled</span></h2>
+						<h2>In 5 Years <span>We Enriched</span></h2>
 					</div>
 					
 					<div class="version-four">
@@ -149,20 +149,20 @@
 			<div class="container">
 				<div class="section-title relative-position mb20 headline text-center">
 					<span class="subtitle ml42 text-uppercase">SKILLS BANK SOLUTIONS</span>
-					<h2><span>How Do We</span> Fuel Your Skills Bank? </h2>
+					<h2><span>How Do We</span> Enrich Your Skills Bank? </h2>
 				</div>
 
 				<div class="row justify-content-center" data-aos="fade-right" data-aos-duration="1000">
 
 					<div class="col-md-4 mb-4">
-						<div class="about-box hvr-grow-shadow">
+						<div class="about-box hvr-grow-shadow" style="width: 100%">
 							<div class="about-us-text" style="background: url({{asset('front_assets/img/about/1.jpg')}});background-size: cover;position: relative;">
 								<div class="overlay"></div>
 								<div class="section-title2 relative-position mb20 headline text-center text-yellow">
 									<a href="{{route('practical')}}"><h6 class="font-weight-bold">Customized & Practical Training Programs </h6></a>
 								</div>
 								<div class="about-content-text text-center relative-position">
-									<p class="text-white">The Skills Bank Learning Design team customizes all the training programs needed to level up every core competency your team members have in their skills bank </p>
+									{{-- <p class="text-white">The Skills Bank Learning Design team customizes all the training programs needed to level up every core competency your team members have in their skills bank </p> --}}
 									<div class="about-btn mt-4 text-center">
 										<div class="genius-btn gradient-bg text-center text-uppercase ul-li-block bold-font">
 											<a href="{{route('practical')}}">Read More<i class="fas fa-caret-right"></i></a>
@@ -175,14 +175,14 @@
 					<!-- /box -->
 
 					<div class="col-md-4 mb-4">
-						<div class="about-box hvr-grow-shadow">
+						<div class="about-box hvr-grow-shadow" style="width: 100%">
 							<div class="about-us-text" style="background: url({{asset('front_assets/img/about/2.jpg')}});background-size: cover;position: relative;">
 								<div class="overlay"></div>
 								<div class="section-title2 relative-position mb20 headline text-center text-yellow">
 									<a href="{{route('virtual')}}"><h6 class="font-weight-bold">Virtual Training </h6></a>
 								</div>
 								<div class="about-content-text text-center relative-position">
-									<p class="text-white">Amongst the Coronavirus circumstances, we became highly aware of the urge of providing you with virtual training options.</p>
+									{{-- <p class="text-white">Amongst the Coronavirus circumstances, we became highly aware of the urge of providing you with virtual training options.</p> --}}
 									<div class="about-btn mt-4 text-center">
 										<div class="genius-btn gradient-bg text-center text-uppercase ul-li-block bold-font">
 											<a href="{{route('virtual')}}">Read More<i class="fas fa-caret-right"></i></a>
@@ -195,14 +195,14 @@
 					<!-- /box -->
 
 					<div class="col-md-4 mb-4">
-						<div class="about-box hvr-grow-shadow">
+						<div class="about-box hvr-grow-shadow" style="width: 100%">
 							<div class="about-us-text" style="background: url({{asset('front_assets/img/about/3.jpg')}});background-size: cover;position: relative;">
 								<div class="overlay"></div>
 								<div class="section-title2 relative-position mb20 headline text-center text-yellow">
 									<a href="{{route('videos')}}"><h6 class="font-weight-bold">Customized e-Learning Training Production </h6></a>
 								</div>
 								<div class="about-content-text text-center relative-position">
-									<p class="text-white">We have responded to the increasing number of clients who want to incorporate training videos in which star Subject Matter Experts (SMEs). </p>
+									{{-- <p class="text-white">We have responded to the increasing number of clients who want to incorporate training videos in which star Subject Matter Experts (SMEs). </p> --}}
 									<div class="about-btn mt-4 text-center">
 										<div class="genius-btn gradient-bg text-center text-uppercase ul-li-block bold-font">
 											<a href="{{route('videos')}}">Read More<i class="fas fa-caret-right"></i></a>
@@ -215,14 +215,14 @@
 					<!-- /box -->
 
 					<div class="col-md-4 mb-4">
-						<div class="about-box hvr-grow-shadow">
+						<div class="about-box hvr-grow-shadow" style="width: 100%">
 							<div class="about-us-text" style="background: url({{asset('front_assets/img/about/4.jpg')}});background-size: cover;position: relative;">
 								<div class="overlay"></div>
 								<div class="section-title2 relative-position mb20 headline text-center text-yellow">
 									<a href="{{route('designing')}}"><h6 class="font-weight-bold">Designing Learning Journeys for full tracks </h6></a>
 								</div>
 								<div class="about-content-text text-center relative-position">
-									<p class="text-white">We understand the huge effort, knowledge, and focus needed to create a long term training tracks. We spare you all of that through our professional</p>
+									{{-- <p class="text-white">We understand the huge effort, knowledge, and focus needed to create a long term training tracks. We spare you all of that through our professional</p> --}}
 									<div class="about-btn mt-4 text-center">
 										<div class="genius-btn gradient-bg text-center text-uppercase ul-li-block bold-font">
 											<a href="{{route('designing')}}">Read More<i class="fas fa-caret-right"></i></a>
@@ -235,14 +235,14 @@
 					<!-- /box -->
 
 					<div class="col-md-4 mb-4">
-						<div class="about-box hvr-grow-shadow">
+						<div class="about-box hvr-grow-shadow" style="width: 100%">
 							<div class="about-us-text" style="background: url({{asset('front_assets/img/about/5.jpg')}});background-size: cover;position: relative;">
 								<div class="overlay"></div>
 								<div class="section-title2 relative-position mb20 headline text-center text-yellow">
 									<a href="{{route('assessments')}}"><h6 class="font-weight-bold">Skills Assessments </h6></a>
 								</div>
 								<div class="about-content-text text-center relative-position">
-									<p class="text-white">Every now and then, you need to know where your human assets stand and what they need to effectively move forward towards achieving your next organizational goal. </p>
+									{{-- <p class="text-white">Every now and then, you need to know where your human assets stand and what they need to effectively move forward towards achieving your next organizational goal. </p> --}}
 									<div class="about-btn mt-4 text-center">
 										<div class="genius-btn gradient-bg text-center text-uppercase ul-li-block bold-font">
 											<a href="{{route('assessments')}}">Read More<i class="fas fa-caret-right"></i></a>
@@ -573,6 +573,7 @@
 							<div class="student-qoute">
 								<p>{!!$testimonial->description!!}</p>
 								<div class="student-name-designation">
+									<img class="d-inline-block rounded mr-2" style="width: 50px;" src="{{asset($testimonial->image)}}" alt="">
 									<span class="st-name bold-font">{{$testimonial->name}}</span>
 									<span class="st-designation">{{$testimonial->title}}</span>
 								</div>

@@ -50,12 +50,23 @@ class TestimonialsController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->description);
+        $image = $request->file('image');
+        $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
+    
+        $destinationPath = public_path('images/team');
+        //ini_set('memory_limit', '256M');
+        $img = Image::make($image->getRealPath());
+        $img->save($destinationPath.'/'.$input['imagename']);
+
+        $photo = 'images/team/'.$input['imagename'];
  
 
         $testimonials =  Testimonial::create([
             'name' => $request->name,
             'title' => $request->title,
             'description' => $request->description,
+            'image' => $photo,
         ]);
 
 
@@ -100,6 +111,28 @@ class TestimonialsController extends Controller
     {
 
         $data = $request->only(['name','title','description']);
+
+        if($request->hasfile('image'))
+        {
+
+            $file_pointer = public_path().'/'.$testimonial->image;
+            if(file_exists($file_pointer) && isset($testimonial->image))
+            {
+              unlink($file_pointer);
+            }
+
+            $image = $request->file('image');
+            $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
+        
+            $destinationPath = public_path('/images/team');
+            //ini_set('memory_limit', '256M');
+            $img = Image::make($image->getRealPath());
+            $img->save($destinationPath.'/'.$input['imagename']);
+
+            $photo = 'images/team/'.$input['imagename'];
+
+            $data['image'] = $photo;
+        }
 
         $testimonial->update($data);
         

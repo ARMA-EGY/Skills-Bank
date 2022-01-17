@@ -42,7 +42,7 @@
 
             <div class="row">
 
-                <div class="col-xl-12">
+                <div class="col-xl-8">
 
                     <div class="card card-defualt">
                         <div class="card-header"><i class="fa fa-info-circle"></i> Testimonial Information </div>
@@ -104,7 +104,20 @@
                     
                 </div>
 
+                <div class="col-xl-4">
 
+                    <div class="card card-defualt">
+                        <div class="card-header"><i class="far fa-id-badge"></i> Picture </div>
+                        <div class="card-body px-3">
+                            <div class="avatar-preview" style="background-image: url({{ isset($testimonials) ?  asset($testimonials->image)  : asset('images/avatar.png') }})"></div>
+                            <div class="my-2 text-left">
+                              <small> {!! __('master.IMAGE-INFO') !!} </small> 
+                            </div>
+                            <input class="btn-info form-control form-control-sm" type="file" accept="image/*" id="avatar" name="image" multiple="false"  @if(!isset($team))  required @endif  />
+                        </div>
+                    </div>
+
+                </div>
 
             </div>
 
