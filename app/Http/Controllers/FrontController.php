@@ -32,6 +32,13 @@ use App\Traits\PaymentTrait;
 use App\Models\paymentOrders;
 use App\Mail\meetingInvitation;
 use App\Mail\bookingRequest;
+
+use App\Models\ComponentsModel;
+use App\Models\ElementsModel;
+use App\Models\CardsModel;
+use App\Models\CardsElementsModel;
+use App\Models\LandingModel;
+
 use Mail; 
 use LaravelLocalization;
 
@@ -118,7 +125,7 @@ class FrontController extends Controller
     {
         $currentMonth       = date('m');
         $categories    = Categories::where('disable', 0)->orderBy('id','desc')->get();
-        $courses       = Courses::where('lang', LaravelLocalization::getCurrentLocale())->where('disable', 0)->orderBy('id','desc')->get();
+        $courses       = Courses::where('lang', LaravelLocalization::getCurrentLocale())->where('disable', 0)->orderBy('start_date','asc')->get();
 
         return view('front.calendar', [
             'categories'    => $categories,
@@ -329,7 +336,7 @@ class FrontController extends Controller
             ->send(new meetingInvitation($mt,$booking));
             
 
-            Mail::to('admin@gmail.com')
+            Mail::to('info@skillsbankme.com')
             ->send(new bookingRequest($mt,$booking));
 
 
@@ -492,6 +499,32 @@ class FrontController extends Controller
             ]) ;
         }
 
+    }
+    
+    //-------------- Landing Page ---------------\\
+    public function landing($urlSuffix)
+    {
+        $url                        = LandingModel::where('url', $urlSuffix)->firstOrFail();
+        $header_components          = ComponentsModel::with('ElementsModel')->where('page','landing_page')->where('section','header')->get();
+        $section_2_components       = ComponentsModel::with('ElementsModel')->where('page','landing_page')->where('section','section-2')->get();
+        $section_3_components       = ComponentsModel::with('ElementsModel')->where('page','landing_page')->where('section','section-3')->get();
+        $section_4_components       = ComponentsModel::with('ElementsModel')->where('page','landing_page')->where('section','section-4')->get();        
+        $section_2_landing_cards    = CardsModel::with('CardsElementsModel')->where('name','section_2_landing')->get();
+        $section_3_landing_cards    = CardsModel::with('CardsElementsModel')->where('name','section_3_landing')->get(); 
+        $socials                    = Social::all();  
+
+        $data = [
+                'header_components'=>$header_components ,
+                'section_2_components'=>$section_2_components,
+                'section_3_components'=>$section_3_components,
+                'section_2_landing_cards'=>$section_2_landing_cards,
+                'section_4_components'=>$section_4_components,
+                'section_3_landing_cards'=>$section_3_landing_cards,
+                'socials' => $socials
+                ];
+                
+        return view('landing')->with($data);        
+        
     }
 
 }

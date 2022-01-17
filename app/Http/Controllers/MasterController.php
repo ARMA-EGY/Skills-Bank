@@ -30,6 +30,8 @@ use App\Models\Social;
 use App\Models\Subscriber;
 use App\Models\ReceiverEmail;
 
+use App\Models\LandingModel;
+
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
@@ -133,6 +135,16 @@ class MasterController extends Controller
         return view('admin.socialmedia', [
             'socials'    => $socials,
         ]);
+    }
+
+    //======== Landin Page ======== 
+    public function landing()
+    {
+        $landing     = LandingModel::first();
+        
+        return view('admin.landing', [
+            'landing'    => $landing
+            ]);
     }
 
 /*
@@ -580,6 +592,54 @@ class MasterController extends Controller
             $event->start_date     = $request->start_date;
             $event->end_date       = $request->end_date;
             $event->save();
+    }
+    
+    
+    
+
+    //======== Get Landing Data ======== 
+    public function getlanding(Request $request)
+    {
+        $landing2     = LandingModel::where('id', $request->id)->first();
+
+        return view('admin.modals.show_landing', [
+            'landing2'    => $landing2,
+        ]);
+    }
+    
+    
+
+    //======== Edit Landing ======== 
+    public function editlanding(Request $request)
+    {
+        $landing     = LandingModel::where('id', $request->id)->first();
+
+        if($landing)
+        {
+            $landing->name          = $request->name;
+            $landing->description   = $request->description;
+            $landing->showcase      = $request->showcase;
+            $landing->url           = $request->url;
+
+
+            $landing->save();
+
+            if($landing)
+            {
+                return response()->json([
+                    'status' => 'true',
+                    'msg' => 'success'
+                ]) ;
+            }
+            else
+            {
+                return response()->json([
+                    'status' => 'false',
+                    'msg' => 'error'
+                ]) ;
+            }
+        }
+
     }
 
 }

@@ -182,7 +182,7 @@
                         <div class="card-header"> Description</div>
                         <div class="card-body">
                             <div class="form-group">
-                                <textarea id="content" class="content" name="description" rows="20">{{ isset($team) ? $team->description : old('description') }}</textarea>
+                                <textarea id="content" class="form-control" name="description" rows="5">{{ isset($team) ? $team->description : old('description') }}</textarea>
                                 @error('description')
                                     <div>
                                         <span class="text-danger">{{ $message }}</span>
