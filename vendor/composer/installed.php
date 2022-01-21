@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '93636132b7965cf3ad15a1a37c65cbd956ca4bea',
+    'reference' => '0a2937692b3ae186a8237f0042550b979788ee58',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -440,7 +440,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '93636132b7965cf3ad15a1a37c65cbd956ca4bea',
+      'reference' => '0a2937692b3ae186a8237f0042550b979788ee58',
     ),
     'laravel/socialite' => 
     array (
@@ -504,6 +504,15 @@
       array (
       ),
       'reference' => '1e7e6be2dc543bf466236fb171e5b20e1b06aee6',
+    ),
+    'mailchimp/marketing' => 
+    array (
+      'pretty_version' => '3.0.27',
+      'version' => '3.0.27.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '41dd37bb25d5ab1523f70eebec959de4bfbbff0a',
     ),
     'mcamara/laravel-localization' => 
     array (
@@ -759,8 +768,8 @@
     array (
       'provided' => 
       array (
-        0 => '1.0',
-        1 => '1.0.0',
+        0 => '1.0.0',
+        1 => '1.0',
       ),
     ),
     'psr/simple-cache' => 
