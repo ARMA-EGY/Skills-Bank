@@ -21,18 +21,13 @@
 	<!-- End of breadcrumb section
 		============================================= -->
 
-
-		<div class="section-title my-5 headline text-center">
-			<h2><span></span> Skills Bank Learning Tree  </h2>
-		</div>
-
 	<!-- Start of about us content
 		============================================= -->
 		<section class="why-choose-section version-four backgroud-style pb-5" style="position: relative;">
 
 			<div class="container">
 				<div class="extra-features-content">
-					<div class="row">
+					<div class="row justify-content-center">
 						
 						@for ($i = 0; $i < 4; $i++)
 							<div class="col-md-3 col-sm-6 hvr-pulse">
@@ -126,7 +121,7 @@
 							</div>
 						@endfor
 						
-						@for ($i = 9; $i < 12; $i++)
+						@for ($i = 9; $i < 11; $i++)
 							<div class="col-md-3 col-sm-6 hvr-pulse">
 								<div class="extra-left-content" data-aos="fade-up-right" data-aos-duration="1000">
 									<a href="#tree-{{$i+1}}" class="extra-icon-text text-left">
@@ -173,7 +168,7 @@
 										<ul class="row">
 											@if (isset($item->description))
 												@foreach ($item->description as $description)
-												<li class="col-md-6">{{$description->title}}</li>
+												<li class="col-md-6 text-dark">{{$description->title}}</li>
 												@endforeach
 											@endif
 										</ul>

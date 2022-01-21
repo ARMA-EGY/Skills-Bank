@@ -331,12 +331,13 @@ class FrontController extends Controller
             ]);
 
             $mt = Courses::with('meeting')->where('id',$request->course_id)->first();
+            $receiver_email     = ReceiverEmail::first();
 
             Mail::to($request->email)
             ->send(new meetingInvitation($mt,$booking));
             
 
-            Mail::to('info@skillsbankme.com')
+            Mail::to($receiver_email->email)
             ->send(new bookingRequest($mt,$booking));
 
 
