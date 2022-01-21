@@ -185,6 +185,7 @@ class PingApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        //dd($this->config->getHost());
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
