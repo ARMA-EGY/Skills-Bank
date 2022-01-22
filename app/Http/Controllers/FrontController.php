@@ -38,6 +38,8 @@ use App\Models\ElementsModel;
 use App\Models\CardsModel;
 use App\Models\CardsElementsModel;
 use App\Models\LandingModel;
+use App\Models\LandingContent;
+use App\Models\LandingMessage;
 
 use Mail; 
 use LaravelLocalization;
@@ -59,7 +61,7 @@ class FrontController extends Controller
     {
 		$sliders       = Slider::where('lang', LaravelLocalization::getCurrentLocale())->orderBy('id','desc')->get();
         $courses       = Courses::where('lang', LaravelLocalization::getCurrentLocale())->where('top_month', 1)->where('disable', 0)->orderBy('id','desc')->limit(8)->get();
-		$clients       = client::orderBy('id','desc')->limit(8)->get();
+		$clients       = Client::orderBy('id','desc')->limit(8)->get();
 		$testimonials  = Testimonial::orderBy('id','desc')->limit(4)->get();
 
         return view('front.welcome', [
@@ -319,8 +321,9 @@ class FrontController extends Controller
         }
         else
         {
+            $name = $request->name .' '. $request->lastname;
             $booking =  CoursesRequest::create([
-                'name'                  => $request->name,
+                'name'                  => $name,
                 'email'                 => $request->email,
                 'phone'                 => $request->phone,
                 'company'               => $request->company,
@@ -341,36 +344,37 @@ class FrontController extends Controller
             Mail::to($receiver_email->email)
             ->send(new bookingRequest($mt,$booking));
 
-            $mailchimp = new ApiClient();
-            $apiKey = '4025dc9bd24a4342d0f798ecbe6e6be5-us20';
-            $ser = substr($apiKey,strpos($apiKey,'-')+1);
-            $mailchimp->setConfig([
-                'apiKey' => '4025dc9bd24a4342d0f798ecbe6e6be5-us20',
-                'server' => $ser
-            ]);
-    
-           $listId =  'd05d1f61da';
-           try {
-    
-            $response = $mailchimp->lists->addListMember($listId, [
-                    "email_address" => $request->email,
-                    "status" => "subscribed",
-                    "merge_fields" => [
-                        "FNAME" =>  $request->name,
-                        "LNAME" =>  $request->lastname,
-                        "PHONE" =>  $request->phone
-                        ]
+            if(isset($request->newsletter))
+            {
+                $mailchimp = new ApiClient();
+                $apiKey = '4025dc9bd24a4342d0f798ecbe6e6be5-us20';
+                $ser = substr($apiKey,strpos($apiKey,'-')+1);
+                $mailchimp->setConfig([
+                    'apiKey' => '4025dc9bd24a4342d0f798ecbe6e6be5-us20',
+                    'server' => $ser
                 ]);
-            
-            } catch (\EXCEPTION $e) {
-    
+        
+               $listId =  'd05d1f61da';
+               try 
+               {
+                    $response = $mailchimp->lists->addListMember($listId, [
+                        "email_address" => $request->email,
+                        "status" => "subscribed",
+                        "merge_fields" => [
+                            "FNAME" =>  $request->name,
+                            "LNAME" =>  $request->lastname,
+                            "PHONE" =>  $request->phone
+                            ]
+                    ]);
+                
+                } 
+                catch (\EXCEPTION $e) 
+                {
+                }
             }
-
-
 
             if($booking)
             {
-
                 if($request->payment_method == 'online')
                 {
                     $paymentKey = $this->PaymentLink($course,$request, $booking);
@@ -532,27 +536,80 @@ class FrontController extends Controller
     //-------------- Landing Page ---------------\\
     public function landing($urlSuffix)
     {
-        $url                        = LandingModel::where('url', $urlSuffix)->firstOrFail();
-        $header_components          = ComponentsModel::with('ElementsModel')->where('page','landing_page')->where('section','header')->get();
-        $section_2_components       = ComponentsModel::with('ElementsModel')->where('page','landing_page')->where('section','section-2')->get();
-        $section_3_components       = ComponentsModel::with('ElementsModel')->where('page','landing_page')->where('section','section-3')->get();
-        $section_4_components       = ComponentsModel::with('ElementsModel')->where('page','landing_page')->where('section','section-4')->get();        
-        $section_2_landing_cards    = CardsModel::with('CardsElementsModel')->where('name','section_2_landing')->get();
-        $section_3_landing_cards    = CardsModel::with('CardsElementsModel')->where('name','section_3_landing')->get(); 
-        $socials                    = Social::all();  
+        $landing       = LandingModel::where('url', $urlSuffix)->firstOrFail();
+        $content       = LandingContent::where('landing_id', $landing->id)->first();
+		$clients       = Client::orderBy('id','desc')->limit(8)->get();
+		$testimonials  = Testimonial::orderBy('id','desc')->limit(4)->get();
 
-        $data = [
-                'header_components'=>$header_components ,
-                'section_2_components'=>$section_2_components,
-                'section_3_components'=>$section_3_components,
-                'section_2_landing_cards'=>$section_2_landing_cards,
-                'section_4_components'=>$section_4_components,
-                'section_3_landing_cards'=>$section_3_landing_cards,
-                'socials' => $socials
-                ];
-                
-        return view('landing')->with($data);        
+        return view('front.landing', [
+            'content'       => $content,
+            'clients'       => $clients,
+            'testimonials'  => $testimonials,
+            'socials'       => Social::all(),
+        ]);
+    }
+
+    //-------------- Landing Message ---------------\\
+
+    public function landingMessage(Request $request)
+    {
         
+        $name = $request->name .' '. $request->lastname;
+        $booking =  LandingMessage::create([
+            'name'                  => $name,
+            'email'                 => $request->email,
+            'phone'                 => $request->phone,
+            'company'               => $request->company,
+            'position'              => $request->position,
+            'message'               => $request->message,
+        ]);
+
+        if(isset($request->newsletter))
+        {
+            $mailchimp = new ApiClient();
+            $apiKey = '4025dc9bd24a4342d0f798ecbe6e6be5-us20';
+            $ser = substr($apiKey,strpos($apiKey,'-')+1);
+            $mailchimp->setConfig([
+                'apiKey' => '4025dc9bd24a4342d0f798ecbe6e6be5-us20',
+                'server' => $ser
+            ]);
+    
+           $listId =  'd05d1f61da';
+           try 
+           {
+                $response = $mailchimp->lists->addListMember($listId, [
+                    "email_address" => $request->email,
+                    "status" => "subscribed",
+                    "merge_fields" => [
+                        "FNAME" =>  $request->name,
+                        "LNAME" =>  $request->lastname,
+                        "PHONE" =>  $request->phone
+                        ]
+                ]);
+            
+            } 
+            catch (\EXCEPTION $e) 
+            {
+            }
+        }
+
+        if($booking)
+        {
+
+            return response()->json([
+                'status' => 'true',
+                'msg' => 'success'
+            ]) ;
+
+        }
+        else
+        {
+            return response()->json([
+                'status' => 'false',
+                'msg' => 'error'
+            ]) ;
+        }
+
     }
 
 }

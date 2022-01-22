@@ -7,7 +7,6 @@
 <br>
 <br>
 <br>
-<br>
 <b>booking details:</b>
 <br>
 
@@ -29,6 +28,7 @@
 
 
 Student Information
+<br>
 <b>Full Name: </b>{{$customer->name}}
 <br>
 
@@ -42,7 +42,6 @@ Student Information
 <br>
 
 <b>Company: </b>{{$customer->company}}
-<br>
 <br>
 <br>
 <br>

@@ -31,6 +31,8 @@ use App\Models\Subscriber;
 use App\Models\ReceiverEmail;
 
 use App\Models\LandingModel;
+use App\Models\LandingContent;
+use App\Models\LandingMessage;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -141,9 +143,12 @@ class MasterController extends Controller
     public function landing()
     {
         $landing     = LandingModel::first();
+        $messages    = LandingMessage::all();
         
         return view('admin.landing', [
-            'landing'    => $landing
+            'landing'    => $landing,
+            'items'      => $messages,
+            'total_rows' => count($messages),
             ]);
     }
 
@@ -609,7 +614,7 @@ class MasterController extends Controller
     
     
 
-    //======== Edit Landing ======== 
+    //======== Edit Landing data ======== 
     public function editlanding(Request $request)
     {
         $landing     = LandingModel::where('id', $request->id)->first();
@@ -640,6 +645,95 @@ class MasterController extends Controller
             }
         }
 
+    }
+
+    //======== Edit Landing Page ======== 
+    public function editlanding2($id)
+    {
+        $landing     = LandingModel::where('id', $id)->first();
+        $content     = LandingContent::where('landing_id', $landing->id)->first();
+
+        return view('admin.edit_landing', [
+            'landing'    => $landing,
+            'content'    => $content,
+        ]);
+    }
+
+    //======== Edit Landing Page ======== 
+    public function updatelanding(Request $request)
+    {
+        $landing     = LandingModel::where('id', $request->id)->first();
+        $content     = LandingContent::where('landing_id', $landing->id)->first();
+        
+        $data = $request->only(['text_1','text_2','text_3','text_4']);
+
+        if($request->hasfile('image_1'))
+        {
+            $file_pointer = public_path().'/'.$content->image_1;
+            if(file_exists($file_pointer) && isset($content->image_1))
+            {
+              unlink($file_pointer);
+            }
+
+            $image = $request->file('image_1');
+            $input['imagename'] = uniqid().'.'.$image->getClientOriginalExtension();
+        
+            $destinationPath = public_path('/images');
+            //ini_set('memory_limit', '256M');
+            $img = Image::make($image->getRealPath());
+            $img->save($destinationPath.'/'.$input['imagename']);
+
+            $photo = 'images/'.$input['imagename'];
+
+            $data['image_1'] = $photo;
+        }
+
+        if($request->hasfile('image_2'))
+        {
+            $file_pointer2 = public_path().'/'.$content->image_2;
+            if(file_exists($file_pointer2) && isset($content->image_2))
+            {
+              unlink($file_pointer2);
+            }
+
+            $image2 = $request->file('image_2');
+            $input2['imagename'] = uniqid().'.'.$image2->getClientOriginalExtension();
+        
+            $destinationPath = public_path('/images');
+            //ini_set('memory_limit', '256M');
+            $img2 = Image::make($image2->getRealPath());
+            $img2->save($destinationPath.'/'.$input2['imagename']);
+
+            $photo2 = 'images/'.$input2['imagename'];
+
+            $data['image_2'] = $photo2;
+        }
+
+        if($request->hasfile('image_3'))
+        {
+            $file_pointer3 = public_path().'/'.$content->image_3;
+            if(file_exists($file_pointer3) && isset($content->image_3))
+            {
+              unlink($file_pointer3);
+            }
+
+            $image3 = $request->file('image_3');
+            $input3['imagename'] = uniqid().'.'.$image3->getClientOriginalExtension();
+        
+            $destinationPath = public_path('/images');
+            //ini_set('memory_limit', '256M');
+            $img3 = Image::make($image3->getRealPath());
+            $img3->save($destinationPath.'/'.$input3['imagename']);
+
+            $photo3 = 'images/'.$input3['imagename'];
+
+            $data['image_3'] = $photo3;
+        }
+
+        $content->update($data);
+        
+        
+        return redirect(route('admin.landing'));
     }
 
 }

@@ -84,55 +84,89 @@
 					<span class="subtitle text-uppercase">SEND US A MESSAGE</span>
 					<h2>Keep<span> In Touch.</span></h2>
 				</div>
-				<div class="social-contact">
-					<div class="category-icon-title text-center">
-						<div class="category-icon">
-							<i class="text-gradiant fab fa-facebook-f"></i>
-						</div>
-						<div class="category-title">
-							<h4>Facebbok</h4>
-						</div>
-					</div>
-					<div class="category-icon-title text-center">
-						<div class="category-icon">
-							<i class="text-gradiant fab fa-twitter"></i>
-						</div>
-						<div class="category-title">
-							<h4>Twitter</h4>
-						</div>
-					</div>
-					<div class="category-icon-title text-center">
-						<div class="category-icon">
-							<i class="text-gradiant fab fa-google-plus-g"></i>
-						</div>
-						<div class="category-title">
-							<h4>Google +</h4>
-						</div>
-					</div>
-					<div class="category-icon-title text-center">
-						<div class="category-icon">
-							<i class="text-gradiant fab fa-behance"></i>
-						</div>
-						<div class="category-title">
-							<h4>Behance</h4>
-						</div>
-					</div>
-					<div class="category-icon-title text-center">
-						<div class="category-icon">
-							<i class="text-gradiant fab fa-instagram"></i>
-						</div>
-						<div class="category-title">
-							<h4>Instagram</h4>
-						</div>
-					</div>
-					<div class="category-icon-title text-center">
-						<div class="category-icon">
-							<i class="text-gradiant fab fa-dribbble"></i>
-						</div>
-						<div class="category-title">
-							<h4>Dribble</h4>
-						</div>
-					</div>
+				<div class="social-contact d-flex justify-content-center">
+
+					@foreach ($socials as $social)
+
+						@if ($social->platform == 'Facebook' && $social->off == 1)
+							<a href="{{$social->link}}" target="_blank" class="category-icon-title text-center">
+								<div class="category-icon">
+									<i class="text-gradiant fab fa-facebook-f"></i>
+								</div>
+								<div class="category-title">
+									<h4>{{$social->platform}}</h4>
+								</div>
+							</a>
+						@endif
+
+						@if ($social->platform == 'Twitter' && $social->off == 1)
+							<a href="{{$social->link}}" target="_blank" class="category-icon-title text-center">
+								<div class="category-icon">
+									<i class="text-gradiant fab fa-twitter"></i>
+								</div>
+								<div class="category-title">
+									<h4>{{$social->platform}}</h4>
+								</div>
+							</a>
+						@endif
+
+						@if ($social->platform == 'Instagram' && $social->off == 1)
+							<a href="{{$social->link}}" target="_blank" class="category-icon-title text-center">
+								<div class="category-icon">
+									<i class="text-gradiant fab fa-instagram"></i>
+								</div>
+								<div class="category-title">
+									<h4>{{$social->platform}}</h4>
+								</div>
+							</a>
+						@endif
+
+						@if ($social->platform == 'Linkedin' && $social->off == 1)
+							<a href="{{$social->link}}" target="_blank" class="category-icon-title text-center">
+								<div class="category-icon">
+									<i class="text-gradiant fab fa-linkedin-in"></i>
+								</div>
+								<div class="category-title">
+									<h4>{{$social->platform}}</h4>
+								</div>
+							</a>
+						@endif
+
+						@if ($social->platform == 'Youtube' && $social->off == 1)
+							<a href="{{$social->link}}" target="_blank" class="category-icon-title text-center">
+								<div class="category-icon">
+									<i class="text-gradiant fab fa-youtube"></i>
+								</div>
+								<div class="category-title">
+									<h4>{{$social->platform}}</h4>
+								</div>
+							</a>
+						@endif
+
+						@if ($social->platform == 'Pinterest' && $social->off == 1)
+							<a href="{{$social->link}}" target="_blank" class="category-icon-title text-center">
+								<div class="category-icon">
+									<i class="text-gradiant fab fa-pinterest-p"></i>
+								</div>
+								<div class="category-title">
+									<h4>{{$social->platform}}</h4>
+								</div>
+							</a>
+						@endif
+
+						@if ($social->platform == 'Telegram' && $social->off == 1)
+							<a href="{{$social->link}}" target="_blank" class="category-icon-title text-center">
+								<div class="category-icon">
+									<i class="text-gradiant fab fa-telegram"></i>
+								</div>
+								<div class="category-title">
+									<h4>{{$social->platform}}</h4>
+								</div>
+							</a>
+						@endif
+
+					@endforeach
+					
 				</div>
 			</div>
 		</section>
