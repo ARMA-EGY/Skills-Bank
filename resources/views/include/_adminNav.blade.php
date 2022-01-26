@@ -217,6 +217,13 @@
                     </a>
                   </li>
 
+                  <li class="nav-item">
+                    <a class="nav-link {{request()->routeIs('admin.landing') ? 'active' : '' }}" href="{{route('admin.landing')}}">
+                        <i class="fas fa-copy"></i>
+                        <span class="nav-link-text">Landing Page</span>
+                    </a>
+                  </li>
+
                   {{-- <li class="nav-item">
                       <a class="nav-link" href="#">
                           <i class="fas fa-copy"></i>

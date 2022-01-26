@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '0a2937692b3ae186a8237f0042550b979788ee58',
+    'reference' => 'ef0dcb15d2182e59b9cf34aec3617fd443fefbf5',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -440,7 +440,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '0a2937692b3ae186a8237f0042550b979788ee58',
+      'reference' => 'ef0dcb15d2182e59b9cf34aec3617fd443fefbf5',
     ),
     'laravel/socialite' => 
     array (
@@ -507,12 +507,12 @@
     ),
     'mailchimp/marketing' => 
     array (
-      'pretty_version' => '3.0.27',
-      'version' => '3.0.27.0',
+      'pretty_version' => '3.0.73',
+      'version' => '3.0.73.0',
       'aliases' => 
       array (
       ),
-      'reference' => '41dd37bb25d5ab1523f70eebec959de4bfbbff0a',
+      'reference' => 'a15500dee2052589c0659e5e7a8524b041e41308',
     ),
     'mcamara/laravel-localization' => 
     array (

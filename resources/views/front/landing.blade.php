@@ -1,271 +1,238 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/png" href="assets/img/favicon.ico">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <title>Landing Page</title>
-        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-        <meta name="viewport" content="width=device-width" />
 
-        <link href="{{ asset('landing_assets/css/bootstrap.css') }}" rel="stylesheet" />
-        <link href="{{ asset('landing_assets/css/landing-page.css') }}" rel="stylesheet"/>
-        <link href="{{ asset('css/edit.css') }}" rel="stylesheet"/>
-
-        <!--     Fonts and icons     -->
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300' rel='stylesheet' type='text/css'>
-        <link href="{{ asset('landing_assets/css/pe-icon-7-stroke.css') }}" rel="stylesheet" />
-      <!-- Favicon -->
-      <link rel="icon" href="{{ asset('public/images/favicon.png') }}" type="image/png">
-        
-
-    </head>
-    <body class="landing-page landing-page1">
-        <nav class="navbar navbar-transparent navbar-top" role="navigation">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar bar1"></span>
-                    <span class="icon-bar bar2"></span>
-                    <span class="icon-bar bar3"></span>
-                    </button>
-                    <a href="#">
-                        <div class="logo-container">
-                            <div class="">
-                                 <img src="{{ asset('public/storage/'.$logo->logo) }}" style="width: 150px;" alt="logo">
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="example" >
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="https://www.facebook.com/EBE1.eg" target="_blank">
-                            <i class="fa fa-facebook-square"></i>
-                            Like
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.linkedin.com/company/ebe-isanad/" target="_blank">
-                            <i class="fa fa-linkedin"></i>
-                            Linkedin
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-            </div>
-        </nav>
-        <div class="wrapper">
-            <div class="parallax filter-gradient blue" data-color="blue">
-                <div class="parallax-background">
-                    <img class="parallax-background-image" src="{{asset('public/'.$header_components[2]->ElementsModel[0]->content)}}">
-                    
-                </div>
-                <div class= "container">
-                    <div class="row">
-                        <div class="col-md-5 hidden-xs">
-                            <div class="parallax-image">
-                                <img class="phone" src="{{asset('public/'.$header_components[1]->ElementsModel[0]->content)}}" id="elt_{{$header_components[1]->ElementsModel[0]->id}}" style="margin-top: 50px"/>
-
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-md-offset-1">
-                            <div class="description">
-
-                                <h2>{{$header_components[0]->ElementsModel[0]->content}}</h2>
-                                <br>
-                                <h5>{{$header_components[0]->ElementsModel[1]->content}}</h5>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="section section-gray section-clients">
-                <div class="container text-center">
-                    <div class="">
-    
-                        <h4 class="header-text">{{$section_2_components[0]->ElementsModel[0]->content}}</h4>
-                        <p>
-                            {{$section_2_components[0]->ElementsModel[1]->content}}<br>
-                        </p>
-                    </div>
-                    
-                    
-                    
-                
-                    
-                    <div class="logos">
-                        <ul class="list-unstyled section_2_landing">
-                            
-                         @foreach($section_2_landing_cards as $card)                   
-                            <li  class="parent">
-      
-                                <img src="{{asset('public/'.$card->CardsElementsModel[0]->content)}}"/>
-                            </li>
-                        @endforeach
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="section section-presentation">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="description">
-                            
-                                <h4  class="header-text">{{$section_3_components[1]->ElementsModel[0]->content}}</h4>
-                                <p>{{$section_3_components[1]->ElementsModel[1]->content}}
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-md-5 col-md-offset-1 hidden-xs">
-<img src="{{asset('public/'.$section_3_components[0]->ElementsModel[0]->content)}}"  >
-  
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="section section-demo">
-                <div class="container">
-                    <div class="row">
-                        
-                        <div class="col-md-6">
-                            <div id="description-carousel" class="carousel fade" data-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="item active">
-                                        <img src="{{asset('public/'.$section_3_components[4]->ElementsModel[0]->content)}}" id="elt_{{$section_3_components[4]->ElementsModel[0]->id}}" >
-                                    </div>
-       
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-5 col-md-offset-1">
-                            
-         
-                            
-                            <h4 class="header-text">{{$section_3_components[2]->ElementsModel[0]->content}}</h4>
-                            <p>
-                                {{$section_3_components[2]->ElementsModel[1]->content}}
-                            </p>
-                            <a href="{{$section_3_components[2]->ElementsModel[3]->content}}"  class="btn btn-fill btn-info" data-button="info">{{$section_3_components[2]->ElementsModel[2]->content}}</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="section section-features">
-                <div class="container">
-                    <div class="">
-  
-                        <h4 class="header-text text-center">{{$section_3_components[3]->ElementsModel[0]->content}}</h4>
-                    </div>
-                    
-                <div class="p-4 text-right" style="position: relative;">
-     
-                </div>    
-                    
-                    
-                    <div class="row">
-                        
-                        @foreach($section_3_landing_cards as $card)
-                        
-                        <div class="col-md-4" >
-                            <div class="card card-blue">
-                            
-                                <div class="icon mt-2">
-                                    <img  style="border-radius: 60px;" src="{{asset('public/'.$card->CardsElementsModel[2]->content)}}"/>
-                                </div>
-                                <div class="text">
-                                    <h4>{{$card->CardsElementsModel[0]->content}}</h4>
-                                    <p>{{$card->CardsElementsModel[1]->content}}</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        @endforeach
- 
-                    </div>
-                    
-                    
-                </div>
-            </div>
-
-            <div class="section section-no-padding">
-                <div class="parallax filter-gradient blue" data-color="blue">
-                    <div class="parallax-background">
-                        <img class ="parallax-background-image" src="{{asset('public/'.$section_4_components[1]->ElementsModel[0]->content)}}"/>
-                        
- 
-                
-                    </div>
-                    <div class="info">
-                   
-                        <h1>{{$section_4_components[0]->ElementsModel[0]->content}}</h1>
-                        <p>{{$section_4_components[0]->ElementsModel[1]->content}}</p>
-                        <a href="{{$section_4_components[0]->ElementsModel[3]->content}}" class="btn btn-neutral btn-lg btn-fill">{{$section_4_components[0]->ElementsModel[2]->content}}</a>
-                    </div>
-                </div>
-            </div>
-            <footer class="footer">
-                <div class="container">
-                    <nav class="pull-left">
-                        <ul>
-                            <li>
-                                <a href="https://ebe-eg.net/">
-                                Home
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://ebe-eg.net/about">
-                                About
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://ebe-eg.net/clients">
-                                Clients
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://ebe-eg.net/blog">
-                                Blog
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                    <div class="social-area pull-right">
-                        <a href="https://www.facebook.com/EBE1.eg" target="_blank" class="btn btn-social btn-facebook btn-simple">
-                        <i class="fa fa-facebook-square"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/company/ebe-isanad/" target="_blank" class="btn btn-social btn-facebook btn-simple">
-                        <i class="fa fa-linkedin"></i>
-                        </a>
-                    </div>
-                </div>
-            </footer>
-        </div>
+@extends('layouts.landing')
 
 
+@section('style')
+<style>
+.owl-controls
+{
+    display: none;
+}
+</style>
+@endsection
+
+@section('content')
+
+	<!-- Start of slider section
+		============================================= -->
+		<section id="slide" class="slider-section">
+			<div id="slider-item" class="slider-item-details">
+					
+					<div class="slider-area slider-bg-1 relative-position" style="background-image: url({{asset($content->image_1)}});">
+						<div id="particles-stars" class="particles"></div>
+						<div class="slider-text">
+							<div class="section-title mb20 headline text-center">
+								<div class="layer-1-1">
+									<span class="subtitle text-uppercase text-white">EDUCATION & TRAINING ORGANIZATION</span>
+								</div>
+								<div class="layer-1-3">
+									<h2><span>{!!$content->text_1!!}</span></h2>
+								</div>
+							</div>
+						</div>
+					</div>
+
+			</div>
+		</section>
+	<!-- End of slider section
+		============================================= -->
 
 
+	<!-- Start of Search Courses
+		============================================= -->
+		<section id="search-course" class="search-course-section search-course-third bg-light py-5" data-aos="fade-up" data-aos-duration="1000">
+			<div class="container">
+				<div class="search-counter-up mb-4">
+					<div class="relative-position my-3 headline text-center">
+						{!!$content->text_2!!}
+					</div>
+				</div>
+			</div>
+		</section>
+	<!-- End of Search Courses
+		============================================= -->
 
 
+	<!-- Start of about us section
+		============================================= -->
+		<section class="about-page-section">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-md-12">
+						<div class="about-us-content-item">
+
+							<div class="row" data-aos="fade-left" data-aos-duration="1000">
+								<div class="col-md-7 m-auto">
+									<div class="about-text-item">
+										{!!$content->text_3!!}
+									</div>
+								</div>
+
+								<div class="col-md-4 m-auto">
+									<img src="{{asset($content->image_2)}}" class="img-fluid br-30">
+								</div>
+							</div>
+
+							<div class="row" data-aos="fade-right" data-aos-duration="1000">
+								<div class="col-md-4 m-auto">
+									<img src="{{asset($content->image_3)}}" class="img-fluid br-30">
+								</div>
+
+								<div class="col-md-7 m-auto">
+									<div class="about-text-item">
+										{!!$content->text_4!!}
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</section>
+	<!-- End of about us section
+		============================================= -->
 
 
+	<!-- Start of contact area
+		============================================= -->
+		<section id="contact-area" class="contact-area-section backgroud-style">
+			<div class="container">
+				<div class="contact-area-content">
+					<div class="row justify-content-center">
+						<div class="col-md-8" data-aos="fade-right" data-aos-duration="1000">
+							<div class="contact-left-content" style="max-width: unset;">
+								<div class="section-title  mb45 headline text-center">
+									<h2><span>Have Some Skills Bank to Enrich?</span></h2>
+								</div>
+
+								<div class="contact_secound_form">
+
+                                    <form class="landing_form" style="padding: 20px;border: 1px solid #ccc;border-radius: 10px;box-shadow: 0 0 5px 1px #ccc;">
+                                        @csrf
+
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label class="font-weight-bold" for="inputName">First Name</label>
+                                                <input type="text" name="name" class="form-control field1" id="inputName" required>
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+                                                <label class="font-weight-bold" for="inputLastName">Last Name</label>
+                                                <input type="text" name="lastname" class="form-control field1" id="inputLastName" required>
+                                            </div>
+                                        </div>	
+
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label class="font-weight-bold" for="inputEmail">Email</label>
+                                                <input type="email" name="email" class="form-control field1" id="inputEmail" required>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="font-weight-bold" for="inputphone">Phone</label>
+                                                <input type="number" name="phone" class="form-control field1" id="inputPhone" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label class="font-weight-bold" for="inputCompany">Company</label>
+                                                <input type="text" name="company" class="form-control field1" id="inputCompany" required>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="font-weight-bold" for="inputPosition">Position</label>
+                                                <input type="text" name="position" class="form-control field1" id="inputPosition" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group col-md-12">
+                                                <label class="font-weight-bold" for="inputCompany">Message</label>
+                                                <textarea class="form-control field1" rows="5" placeholder="Write your message here." name="message" spellcheck="false"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <hr>
+                                        <div class="form-group form-check">
+                                            <input type="checkbox" name="newsletter" class="form-check-input" id="exampleCheck1">
+                                            <label class="form-check-label" for="exampleCheck1">Subscribe to our newsletters</label>
+                                        </div>
+                                        
+                                        <div class="nws-button text-center  gradient-bg text-capitalize mb-4">
+                                            <button type="submit" class="submit" value="Submit">SEND MESSAGE <i class="fas fa-caret-right text-yellow"></i></button> 
+                                        </div>
+                                    </form>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	<!-- End of contact area
+		============================================= -->
 
 
+	<!-- Start of testimonial secound section
+		============================================= -->
+		<section id="testimonial_2" class="testimonial_2_section pt-4 mb-5" data-aos="flip-right" data-aos-duration="1000">
+			<div class="container">
+				<div class="testimonial-slide">
+					
+					<div class="section-title mb20 headline text-left">
+						<span class="subtitle ml42 text-uppercase">WHAT THEY SAY ABOUT US</span>
+						<h2>Corporate <span>Testimonial.</span></h2>
+					</div>
+
+					<div  id="testimonial-slide-item" class="testimonial-slide-area">
+
+						@foreach ($testimonials as $testimonial)
+							<div class="student-qoute">
+								<p>{!!$testimonial->description!!}</p>
+								<div class="student-name-designation">
+									<img class="d-inline-block rounded mr-2" style="width: 50px;" src="{{asset($testimonial->image)}}" alt="">
+									<span class="st-name bold-font">{{$testimonial->name}}</span>
+									<span class="st-designation">{{$testimonial->title}}</span>
+								</div>
+							</div>
+						@endforeach
+
+					</div>
+				</div>
+			</div>
+		</section>
+	<!-- End  of testimonial secound section
+		============================================= -->
 
 
-    </body>
-    <script src="{{ asset('landing_assets/js/jquery-1.10.2.js') }}" type="text/javascript"></script>
-    
-    <script src="{{asset('js/addons.js')}}"></script>
+	<!-- Start of clients section
+		============================================= -->
+		<section id="sponsor" class="sponsor-section" data-aos="fade-up" data-aos-duration="1000">
+			<div class="container">
+					
+				<div class="section-title mb20 headline text-left">
+					<span class="subtitle ml42 text-uppercase">OUR AWESOME CLIENTS</span>
+					<h2 class=""><span>Clients </span> We Take Pride in working with:</h2>
+				</div>
 
-    <script src="{{ asset('landing_assets/js/jquery-ui-1.10.4.custom.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('landing_assets/js/bootstrap.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('landing_assets/js/awesome-landing-page.js') }}" type="text/javascript"></script>
-</html>
+				<div class="sponsor-item sponsor-1">
+					@foreach ($clients as $client)
+						<div class="sponsor-pic text-center">
+							<img src="{{asset($client->image)}}" alt="{{$client->name}}">
+						</div>
+					@endforeach
+				</div>
+			</div>
+		</section>
+	<!-- End of clients section
+		============================================= -->
+
+
+@endsection
+
+
+@section('script')
+
+@endsection

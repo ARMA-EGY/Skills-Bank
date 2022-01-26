@@ -151,7 +151,7 @@
 							<li><a href="{{route('about')}}#founder-word">Word By The Founder</a></li>
 							<li><a href="{{route('team')}}">Meet The Team</a></li>
 							<li><a href="{{route('welcome')}}#why-choose">Why SB</a></li>
-							<li><a href="#">Clients</a></li>
+							<li><a href="{{route('clients')}}">Clients</a></li>
 						</ul>
 					</li>
 					<!-- About - end -->
@@ -181,7 +181,7 @@
 							</button>
 						</div>
 						<ul id="collapsethree" class="submenu collapse" aria-labelledby="headingthree" data-parent="#accordion" style="">
-							<li><a href="#">Blended Learning Approach</a></li>
+							<li><a href="{{route('learningApproach')}}">Blended Learning Approach</a></li>
 							<li><a href="{{route('learningTree')}}">SB Learning Tree</a></li>
 						</ul>
 					</li>
@@ -243,7 +243,7 @@
 										<ul>
 											<li><a href="{{route('about')}}"><i class="fas fa-caret-right"></i>About The Company</a></li>
 											<li><a href="{{route('team')}}"><i class="fas fa-caret-right"></i>Meet The Team</a></li>
-											<li><a href="#"><i class="fas fa-caret-right"></i>Learning Approach</a></li>
+											<li><a href="{{route('learningApproach')}}"><i class="fas fa-caret-right"></i>Learning Approach</a></li>
 											<li><a href="{{route('learningTree')}}"><i class="fas fa-caret-right"></i>SB Learning Tree</a></li>
 											<li><a href="{{route('workshop')}}"><i class="fas fa-caret-right"></i>Workshops Details</a></li>
 											<li><a href="{{route('public.calendar')}}"><i class="fas fa-caret-right"></i>Public Calendar</a></li>
@@ -438,6 +438,11 @@
 							<label class="form-check-label" for="exampleRadios2"> Credit/Debit Card Payment</label>
 						</div>
 					</div>
+					<hr>
+					<div class="form-group form-check">
+						<input type="checkbox" name="newsletter" class="form-check-input" id="exampleCheck1">
+						<label class="form-check-label" for="exampleCheck1">Subscribe to our newsletters</label>
+					</div>
 
 				</div>
 				<div class="modal-footer">
@@ -513,8 +518,6 @@
 				var title2 	= 'Sorry, this workshop has already been started.';
 
 				cd = (new Date()).toISOString().split('T')[0];
-				console.log(cd);
-				console.log(date2);
 				if(cd > date2)
 				{
 					Swal.fire(

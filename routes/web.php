@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/landing/{urlSuffix}', 'FrontController@landing')->name('landing');
+Route::post('/landingmessage', 'FrontController@landingMessage')->name('landing.message');
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function()
 {
@@ -86,9 +87,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'a
     Route::group(['prefix' => 'admin','middleware' => [ 'admin' ]], function () 
     {
         
-        Route::get('/landing', 'MasterController@landing')->name('admin-landing');
+        Route::get('/landing', 'MasterController@landing')->name('admin.landing');
         Route::post('/getlanding', 'MasterController@getlanding')->name('getlanding');
         Route::post('/editlanding', 'MasterController@editlanding')->name('editlanding');
+        Route::get('/editlanding2/{id}', 'MasterController@editlanding2')->name('edit-landing');
+        Route::post('/updatelanding', 'MasterController@updatelanding')->name('updatelanding');
 
         Route::get('/calendar', 'MasterController@calendar')->name('calendar');
         
