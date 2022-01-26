@@ -341,14 +341,14 @@ class FrontController extends Controller
             ->send(new bookingRequest($mt,$booking));
 
             $mailchimp = new ApiClient();
-            $apiKey = '4025dc9bd24a4342d0f798ecbe6e6be5-us20';
+            $apiKey = '41eebf7d7b35b4f8346f50c2f0533cda-us20';
             $ser = substr($apiKey,strpos($apiKey,'-')+1);
             $mailchimp->setConfig([
-                'apiKey' => '4025dc9bd24a4342d0f798ecbe6e6be5-us20',
+                'apiKey' => '41eebf7d7b35b4f8346f50c2f0533cda-us20',
                 'server' => $ser
             ]);
     
-           $listId =  'd05d1f61da';
+           $listId =  '6115052794';
            try {
     
             $response = $mailchimp->lists->addListMember($listId, [
