@@ -10,6 +10,7 @@ use App\Models\Countries;
 use App\Models\Roles;
 use App\Models\Categories;
 use App\Models\CoursesRequest;
+use App\Models\Meeting;
 use App\Http\Requests\Course\AddRequest;
 use App\Http\Requests\Course\UpdateRequest;
 use Illuminate\Support\Facades\Storage;
@@ -21,6 +22,8 @@ use Illuminate\Support\Facades\Validator;
 
 use Image;
 use LaravelLocalization;
+use Mail; 
+use App\Mail\meetingInvitation;
 
 class CoursesController extends Controller
 {
@@ -169,7 +172,15 @@ class CoursesController extends Controller
 
 
         $course->update($data);
-		
+
+        $mt = Courses::with('meeting')->where('id',$course->id)->first();
+
+        $courseRequests = CoursesRequest::where('course_id',$course->id)->get();
+
+        foreach($courseRequests as $courseRequest)
+        {
+            Mail::to($courseRequest->email)->send(new meetingInvitation($mt,$courseRequest));
+        }
 		session()->flash('success', 'Course was updated successfully');
 		
 		return redirect(route('courses.index'));

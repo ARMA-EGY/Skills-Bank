@@ -75,7 +75,7 @@ class MeetingsController extends Controller
                     'email' => $request->email,
                 ]);
                 
-                $mt = Meeting::with('course')->where('id',$meeting->id)->get();
+                $mt = Courses::with('meeting')->where('id',$request->course_id)->first();
 
                 $courseRequests = CoursesRequest::where('course_id',$request->course_id)->get();
 
