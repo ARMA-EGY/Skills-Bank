@@ -178,7 +178,7 @@ class CollaborationController extends Controller
         if($request->hasfile('image'))
         {
             $image = $request->image->store('images/collaboration', 'public');
-            Storage::disk('public')->delete($Collaboration->image);
+            Storage::disk('public')->delete($collaboration->image);
 
             $data['image'] = $image;
             $seo->image     = $image;

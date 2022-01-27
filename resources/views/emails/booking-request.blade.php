@@ -23,7 +23,7 @@
 @endif
 
 
-<b>Price: </b>{{$mt->price}} L.E
+<b>Price: </b>{{$mt->price}} L.E 
 <br>
 
 

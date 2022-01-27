@@ -54,6 +54,9 @@
 <b>Company: </b>{{$customer->company}}
 <br>
 <br>
+@if($customer->discount != 0)
+Congratulation, You Got a {{$customer->discount}}% Discount, After Using Our Promo Code.
+@endif
 <br>
 <br>
 

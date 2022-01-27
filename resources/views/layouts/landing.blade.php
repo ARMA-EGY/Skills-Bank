@@ -314,7 +314,7 @@
 					</div>
 					<hr>
 					<div class="form-group form-check">
-						<input type="checkbox" name="newsletter" class="form-check-input" id="exampleCheck1">
+						<input type="checkbox" name="newsletter" class="form-check-input" id="exampleCheck1" checked>
 						<label class="form-check-label" for="exampleCheck1">Subscribe to our newsletters</label>
 					</div>
 

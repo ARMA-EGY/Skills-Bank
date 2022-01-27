@@ -394,34 +394,34 @@
 					<div class="form-row">
 						<div class="form-group col-md-6">
 							<label class="font-weight-bold" for="inputName">First Name</label>
-							<input type="text" name="name" class="form-control field1" id="inputName" required>
+							<input type="text" name="name" class="form-control form-control-sm field1" id="inputName" required>
 						</div>
 
 						<div class="form-group col-md-6">
 							<label class="font-weight-bold" for="inputLastName">Last Name</label>
-							<input type="text" name="lastname" class="form-control field1" id="inputLastName" required>
+							<input type="text" name="lastname" class="form-control form-control-sm field1" id="inputLastName" required>
 						</div>
 					</div>	
 
 					<div class="form-row">
 						<div class="form-group col-md-6">
 							<label class="font-weight-bold" for="inputEmail">Email</label>
-							<input type="email" name="email" class="form-control field1" id="inputEmail" required>
+							<input type="email" name="email" class="form-control form-control-sm field1" id="inputEmail" required>
 						</div>
 						<div class="form-group col-md-6">
 							<label class="font-weight-bold" for="inputphone">Phone</label>
-							<input type="number" name="phone" class="form-control field1" id="inputPhone" required>
+							<input type="number" name="phone" class="form-control form-control-sm field1" id="inputPhone" required>
 						</div>
 					</div>
 
 					<div class="form-row">
 						<div class="form-group col-md-6">
 							<label class="font-weight-bold" for="inputCompany">Company</label>
-							<input type="text" name="company" class="form-control field1" id="inputCompany" required>
+							<input type="text" name="company" class="form-control form-control-sm field1" id="inputCompany" required>
 						</div>
 						<div class="form-group col-md-6">
 							<label class="font-weight-bold" for="inputPosition">Position</label>
-							<input type="text" name="position" class="form-control field1" id="inputPosition" required>
+							<input type="text" name="position" class="form-control form-control-sm field1" id="inputPosition" required>
 						</div>
 					</div>
 					
@@ -439,8 +439,23 @@
 						</div>
 					</div>
 					<hr>
+
+					<div class="my-3">
+						<label class="font-weight-bold">Have a Promo Code ?</label>
+						<div class="input-group col-md-12">
+							<input type="text" class="form-control form-control-sm field1" id="promo_code" placeholder="Write Code Here...">
+							<div class="input-group-prepend">
+								<button type="button" class="input-group-text" id="apply_code">Apply</button>
+							</div>
+						</div>
+						<small class="text-success mt-2 d-block text-center" id="promo_text"></small>
+						<input type="hidden" name="coupon_id" id="coupon_id" value="0">
+						<input type="hidden" name="discount"  id="discount" value="0">
+					</div>
+
+					<hr>
 					<div class="form-group form-check">
-						<input type="checkbox" name="newsletter" class="form-check-input" id="exampleCheck1">
+						<input type="checkbox" name="newsletter" class="form-check-input" id="exampleCheck1" checked>
 						<label class="form-check-label" for="exampleCheck1">Subscribe to our newsletters</label>
 					</div>
 
@@ -744,11 +759,86 @@
                                         )
                             });
                         }
-                    
-                    
                 });
 
             });
+
+			$(document).on("click","#apply_code", function()
+			{
+				var code 	  	= $('#promo_code').val();
+
+                var head1 	= 'Thank You';
+                var title1 	= 'Your Promo Code is Activated';
+				var head2 	= 'Oops...';
+				var title2 	= 'Promo Code is empty, Please write the promo code.';
+				var title3 	= 'Your Promo Code is Invalid.';
+
+				if(code == '')
+				{
+					Swal.fire(
+						head2,
+						title2,
+						'error'
+						)
+				}
+				else
+				{
+
+					$('#apply_code').prop('disabled', true);
+					$.ajax({
+                    url: 		"{{route('promocode')}}",
+                    method: 	'POST',
+                    dataType: 	'json',
+                    data:    {"_token": "{{ csrf_token() }}",
+								code: code},
+                    success : function(data)
+                        {
+                            if (data['status'] == 'true')
+                            {
+                                Swal.fire(
+                                        head1,
+                                        title1,
+                                        'success'
+                                        )
+								var text = 'Congratulation, You Got a '+data['discount']+'% Discount.'
+								$('#promo_text').text(text);
+								$('#coupon_id').val(data['id']);
+								$('#discount').val(data['discount']);
+                            }
+                            else if (data['status'] == 'false')
+                            {
+                                Swal.fire(
+                                        head2,
+                                        title3,
+                                        'error'
+                                        )
+								$('#promo_text').text('');
+								$('#coupon_id').val(0);
+								$('#discount').val(0);
+                            }
+
+							$('#apply_code').prop('disabled', false);
+                        },
+                        error : function(reject)
+                        {
+                            var response = $.parseJSON(reject.responseText);
+                            $.each(response.errors, function(key, val)
+                            {
+                                Swal.fire(
+                                        head2,
+                                        val[0],
+                                        'error'
+                                        )
+                            });
+
+							$('#apply_code').prop('disabled', false);
+							$('#promo_text').text('');
+							$('#coupon_id').val(0);
+							$('#discount').val(0);
+                        }
+                });
+				}
+			});
 
 		</script>
 

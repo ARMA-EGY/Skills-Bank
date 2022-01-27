@@ -55,6 +55,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
     Route::post('/processedcallback', 'FrontController@processedCallback');
     Route::get('/responsecallback', 'FrontController@responseCallback');
     Route::get('/payment', 'FrontController@payment')->name('payment');
+
+    Route::post('/promocode', 'FrontController@promocode')->name('promocode');
 });
 
 Route::get('/admin', function () {return redirect('/login');});
@@ -87,6 +89,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'a
     Route::group(['prefix' => 'admin','middleware' => [ 'admin' ]], function () 
     {
         
+        Route::resource('/coupons', 'Admin\Coupons\CouponsController'); 
+        Route::post('/disablecoupons', 'Admin\Coupons\CouponsController@disable')->name('coupon-disable');
+
         Route::get('/landing', 'MasterController@landing')->name('admin.landing');
         Route::post('/getlanding', 'MasterController@getlanding')->name('getlanding');
         Route::post('/editlanding', 'MasterController@editlanding')->name('editlanding');

@@ -150,6 +150,13 @@
                   </li>
 
                   <li class="nav-item">
+                      <a class="nav-link {{request()->routeIs('coupons.index') ? 'active' : '' }}" href="{{route('coupons.index')}}">
+                          <i class="fa fa-tags"></i>
+                          <span class="nav-link-text">Coupons</span>
+                      </a>
+                  </li>
+
+                  <li class="nav-item">
                       <a class="nav-link collapsed" href="#navbar-career" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-components">
                         <i class="fas fa-briefcase"></i>
                         <span class="nav-link-text">Careers</span>

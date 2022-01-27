@@ -41,6 +41,8 @@ use App\Models\LandingModel;
 use App\Models\LandingContent;
 use App\Models\LandingMessage;
 
+use App\Models\Coupon;
+
 use Mail; 
 use LaravelLocalization;
 use MailchimpMarketing\ApiClient;
@@ -332,6 +334,8 @@ class FrontController extends Controller
                 'course_id'             => $request->course_id,
                 'payment_method'        => $request->payment_method,
                 'country'               => LaravelLocalization::getCurrentLocale(),
+                'coupon_id'             => $request->coupon_id,
+                'discount'              => $request->discount,
             ]);
 
             $mt = Courses::with('meeting')->where('id',$request->course_id)->first();
@@ -347,14 +351,14 @@ class FrontController extends Controller
             if(isset($request->newsletter))
             {
                 $mailchimp = new ApiClient();
-                $apiKey = '4025dc9bd24a4342d0f798ecbe6e6be5-us20';
+                $apiKey = '41eebf7d7b35b4f8346f50c2f0533cda-us20';
                 $ser = substr($apiKey,strpos($apiKey,'-')+1);
                 $mailchimp->setConfig([
-                    'apiKey' => '4025dc9bd24a4342d0f798ecbe6e6be5-us20',
+                    'apiKey' => '41eebf7d7b35b4f8346f50c2f0533cda-us20',
                     'server' => $ser
                 ]);
         
-               $listId =  'd05d1f61da';
+               $listId =  '6115052794';
                try 
                {
                     $response = $mailchimp->lists->addListMember($listId, [
@@ -567,14 +571,14 @@ class FrontController extends Controller
         if(isset($request->newsletter))
         {
             $mailchimp = new ApiClient();
-            $apiKey = '4025dc9bd24a4342d0f798ecbe6e6be5-us20';
+            $apiKey = '41eebf7d7b35b4f8346f50c2f0533cda-us20';
             $ser = substr($apiKey,strpos($apiKey,'-')+1);
             $mailchimp->setConfig([
-                'apiKey' => '4025dc9bd24a4342d0f798ecbe6e6be5-us20',
+                'apiKey' => '41eebf7d7b35b4f8346f50c2f0533cda-us20',
                 'server' => $ser
             ]);
     
-           $listId =  'd05d1f61da';
+           $listId =  '6115052794';
            try 
            {
                 $response = $mailchimp->lists->addListMember($listId, [
@@ -601,6 +605,33 @@ class FrontController extends Controller
                 'msg' => 'success'
             ]) ;
 
+        }
+        else
+        {
+            return response()->json([
+                'status' => 'false',
+                'msg' => 'error'
+            ]) ;
+        }
+
+    }
+
+
+    //-------------- Promo Code ---------------\\
+    
+    public function promocode(Request $request)
+    {
+        $today      = date('Y-m-d');
+        $code       = Coupon::where('code', $request->code)->where('off', 0)->where('end_date', '>', $today)->first();
+
+        if($code)
+        {
+            return response()->json([
+                'status' => 'true',
+                'msg' => 'success',
+                'discount' => $code->discount,
+                'id' => $code->id
+            ]) ;
         }
         else
         {
