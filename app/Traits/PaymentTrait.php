@@ -15,7 +15,7 @@ trait PaymentTrait
         }
         $token = $tokenResponse['data']->token;
 
-        $orderResponse = $this->orderRegistration($item, $token);
+        $orderResponse = $this->orderRegistration($item, $token, $booking);
         if($orderResponse['message'] == 'failure')
         {
 
@@ -27,7 +27,7 @@ trait PaymentTrait
             'request_id' => $booking->id,
         ]);
 
-        $paymentKeyResponse = $this->paymentKey($item, $customer, $token, $order);        
+        $paymentKeyResponse = $this->paymentKey($item, $customer, $token, $order, $booking);        
         if($paymentKeyResponse['message'] == 'failure')
         {
 
@@ -50,11 +50,11 @@ trait PaymentTrait
 
     }
     
-    public function orderRegistration($item, $token)
+    public function orderRegistration($item, $token, $booking)
     {  
         $singleItem = array(
             'name' => $item->name,
-            'amount_cents' => $item->price,
+            'amount_cents' => $item->price - $booking->discount,
             'description' => $item->name,
             'quantity' => 1,
         );
@@ -66,7 +66,7 @@ trait PaymentTrait
         $data = array(
             'auth_token' => $token,
             'delivery_needed' => "false",
-            'amount_cents' => $item->price,
+            'amount_cents' => $item->price - $booking->discount,
             'currency' => "EGP",
             'items' => $items,
 
@@ -81,7 +81,7 @@ trait PaymentTrait
     }
 
 
-    public function paymentKey($item, $customer, $token, $order)
+    public function paymentKey($item, $customer, $token, $order, $booking)
     {  
         $billingData = array(
             "apartment" => "NA", 
@@ -103,7 +103,7 @@ trait PaymentTrait
 
         $data = array(
             "auth_token" => $token,
-            "amount_cents" => $item->price, 
+            "amount_cents" => $item->price - $booking->discount, 
             "expiration" => 3600, 
             "order_id" => $order,
             "billing_data" => $billingData, 
