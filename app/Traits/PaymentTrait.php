@@ -52,9 +52,10 @@ trait PaymentTrait
     
     public function orderRegistration($item, $token, $booking)
     {  
+        $discount = $item->price * $booking->discount / 100;
         $singleItem = array(
             'name' => $item->name,
-            'amount_cents' => $item->price - $booking->discount,
+            'amount_cents' => $item->price - $discount,
             'description' => $item->name,
             'quantity' => 1,
         );
@@ -66,7 +67,7 @@ trait PaymentTrait
         $data = array(
             'auth_token' => $token,
             'delivery_needed' => "false",
-            'amount_cents' => $item->price - $booking->discount,
+            'amount_cents' => $item->price - $discount,
             'currency' => "EGP",
             'items' => $items,
 
@@ -100,10 +101,11 @@ trait PaymentTrait
         );
         
 
+        $discount = $item->price * $booking->discount / 100;
 
         $data = array(
             "auth_token" => $token,
-            "amount_cents" => $item->price - $booking->discount, 
+            "amount_cents" => $item->price - $discount, 
             "expiration" => 3600, 
             "order_id" => $order,
             "billing_data" => $billingData, 
