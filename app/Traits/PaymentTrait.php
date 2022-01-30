@@ -114,7 +114,7 @@ trait PaymentTrait
             "order_id" => $order,
             "billing_data" => $billingData, 
             "currency" => "EGP", 
-            "integration_id" => 1652857,
+            "integration_id" => 1652794,
             "lock_order_when_paid" => "true"
         );
         
