@@ -341,13 +341,6 @@ class FrontController extends Controller
             $mt = Courses::with('meeting')->where('id',$request->course_id)->first();
             $receiver_email     = ReceiverEmail::first();
 
-            // Mail::to($request->email)
-            // ->send(new meetingInvitation($mt,$booking));
-            
-
-            // Mail::to($receiver_email->email)
-            // ->send(new bookingRequest($mt,$booking));
-
             if(isset($request->newsletter))
             {
                 $mailchimp = new ApiClient();
@@ -411,13 +404,26 @@ class FrontController extends Controller
 
     
     public function processedCallback(Request $request)
-    {   
-        if($request->success == true)
+    {
+        
+        if($request->obj['success'] == true)
         {
-            $paymentOrders = paymentOrders::where('order_id', $request->order['id'])->get();
+            $paymentOrders = paymentOrders::where('order_id', $request->obj['order']['id'])->get();
             
-            $coursesRequest = CoursesRequest::where('id', $paymentOrders->request_id)
+            $coursesRequest = CoursesRequest::where('id', $paymentOrders[0]->request_id)
             ->update(['payed' => 1]);
+
+            $mt = Courses::with('meeting')->where('id',$paymentOrders[0]->course_id)->first();
+            $receiver_email     = ReceiverEmail::first();
+            
+            $coursesRequestm = CoursesRequest::where('id', $paymentOrders[0]->request_id)->get();
+
+             Mail::to($coursesRequestm[0]->email)
+             ->send(new meetingInvitation($mt,$coursesRequestm[0]));
+            
+
+             Mail::to($receiver_email->email)
+             ->send(new bookingRequest($mt,$coursesRequestm[0]));
         }
     }
 
