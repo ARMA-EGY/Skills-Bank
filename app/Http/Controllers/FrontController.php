@@ -45,6 +45,7 @@ use App\Models\LandingMessage;
 use App\Models\Coupon;
 
 use Mail; 
+use Carbon\Carbon;
 use LaravelLocalization;
 use MailchimpMarketing\ApiClient;
 use MailchimpMarketing\ApiException;
@@ -690,6 +691,43 @@ class FrontController extends Controller
                 'status' => 'false',
                 'msg' => 'error'
             ]) ;
+        }
+
+    }
+
+
+    public function alertmail()
+    {
+        
+        $courses =  Courses::where('start_date', '>=', date('Y-m-d'))->where('id',58)->get();
+        //dd($courses);
+
+        foreach($courses as $course)
+        {
+            $todate = Carbon::now();
+
+            $finishTime = new Carbon($course->start_date);
+            $totalDuration = $finishTime->diffInDays($todate);
+
+            if( $totalDuration <= 2)
+            {
+               $CourseRequests = CoursesRequest::where('course_id',$course->id)
+               ->where('accept',1)
+               ->where('payed',1)
+               ->where('two_day_mail_sent',0)
+               ->get();
+
+               foreach($CourseRequests as $CourseRequest)
+               {
+                $mt = Courses::with('meeting')->where('id',$CourseRequest->course_id)->first();
+                $receiver_email     = ReceiverEmail::first();
+
+                Mail::to($CourseRequest->email)
+                ->send(new meetingInvitation($mt,$CourseRequest));
+
+                $CourseRequest->update(['two_day_mail_sent'=>1]);
+               }
+            }
         }
 
     }

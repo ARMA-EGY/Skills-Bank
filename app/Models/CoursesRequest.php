@@ -10,7 +10,7 @@ class CoursesRequest extends Model
     protected $table = 'courses_request';
 
     protected $fillable = [
-        'name','email','phone','company','position','message','course_id','accept','country','payment_method','payed','coupon_id','discount'
+        'name','email','phone','company','position','message','course_id','accept','country','payment_method','payed','coupon_id','discount','two_day_mail_sent'
     ];
 
     public function course()
