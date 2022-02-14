@@ -11,7 +11,7 @@
 
 				@foreach ($sliders as $slider)
 					
-					<div class="slider-area slider-bg-1 relative-position" style="background-image: url({{asset('storage/'.$slider->image)}});">
+					<div class="slider-area slider-bg-{{ $loop->iteration }} relative-position" style="background-image: url({{asset('storage/'.$slider->image)}});">
 						<div id="particles-stars" class="particles"></div>
 						<div class="slider-text">
 							<div class="section-title mb20 headline text-center">
@@ -115,8 +115,13 @@
 										<img src="{{asset('front_assets/img/icons/locations.png')}}">
 									</div>
 									<div class="counter-number ml-2">
-										<span class="counter-count bold-font">15</span><span>+</span>
-										<p>Governorates Around Egypt</p>
+										@if (LaravelLocalization::getCurrentLocale() == 'eg')
+											<span class="counter-count bold-font">15</span><span>+</span>
+											<p>Governorates Around Egypt</p>
+										@elseif (LaravelLocalization::getCurrentLocale() == 'sa')  
+											<span class="counter-count bold-font">3</span><span>+</span>
+											<p>Egypt, KSA, kuwait</p>
+										@endif
 									</div>
 								</div>
 							</div>
@@ -665,6 +670,32 @@
 		============================================= -->
 
 
+	<!-- Newsletter Modal -->
+		<div class="modal fade" id="newsletterModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-sm modal-dialog-centered">
+			<div class="modal-content" style="background: #0090d0;border: 3px dashed #fccb41;padding: 10px;">
+				
+				<h4 class="text-center font-weight-bold text-white">Skills Bank Newsletter</h4>
+				<p class="text-center text-white">Join our newsletter to get latest updates</p>
+	
+				<form class="subscribe_form">
+					@csrf
+						<div class="form-row">
+							<div class="form-group col-md-12">
+								<input type="email" name="subscriber_email" class="form-control field1" placeholder="Your email address" id="inputName" required="">
+							</div>
+						</div>	
+	
+						<div class="form-row">
+							<div class="form-group col-md-12">
+								<button type="submit" class="btn btn-warning btn-block text-white font-weight-bold submit">Sign up</button>
+							</div>
+						</div>
+				</form>
+			</div>
+			</div>
+		</div>
+
 @endsection
 
 
@@ -684,6 +715,15 @@
             minWidth: 200,
             theme: 'tooltipster-borderless'
             });
+
+			$(window).on('load', function() 
+			{
+				setTimeout(
+					function() 
+					{
+						$('#newsletterModal').modal('show');
+					}, 5000);
+			});
         });
     </script>
 

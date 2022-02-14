@@ -51,7 +51,7 @@
                             <div class="row">
 
                                 <!--=================  Name  =================-->
-                                <div class="form-group col-md-6 mb-2">
+                                <div class="form-group col-md-4 mb-2">
                                     <label for="name">Name</label>
                                     <input id="name" type="text" name="name" class="@error('name') is-invalid @enderror form-control" placeholder="Add Name" value="{{ isset($testimonials) ? $testimonials->name : old('name') }}" required>
                                 
@@ -64,11 +64,28 @@
 
 
                                 <!--=================  Title  =================-->
-                                <div class="form-group col-md-6 mb-2">
+                                <div class="form-group col-md-4 mb-2">
                                     <label for="title">Tile</label>
-                                    <input id="title" type="text" name="title" class="@error('tite') is-invalid @enderror form-control" placeholder="Add title" value="{{ isset($testimonials) ? $testimonials->name : old('title') }}" required>
+                                    <input id="title" type="text" name="title" class="@error('tite') is-invalid @enderror form-control" placeholder="Add title" value="{{ isset($testimonials) ? $testimonials->title : old('title') }}">
                                 
                                     @error('title')
+                                        <div>
+                                            <span class="text-danger">{{ $message }}</span>
+                                        </div>
+                                    @enderror
+                                </div>
+
+                                <!--=================  Type  =================-->
+                                <div class="form-group col-md-4 mb-2 text-left">
+                                    <label class="font-weight-bold text-uppercase">Type</label>
+
+                                    <select class="form-control" name="type" required>
+                                        <option value="client" @if (isset($testimonials))  @if ($testimonials->type == 'client' ) selected @endif @endif>Client</option>
+                                        <option value="trainee" @if (isset($testimonials))  @if ($testimonials->type == 'trainee' ) selected @endif @endif>Trainee</option>
+                                       
+                                    </select>
+
+                                    @error('type')
                                         <div>
                                             <span class="text-danger">{{ $message }}</span>
                                         </div>
@@ -113,7 +130,7 @@
                             <div class="my-2 text-left">
                               <small> {!! __('master.IMAGE-INFO') !!} </small> 
                             </div>
-                            <input class="btn-info form-control form-control-sm" type="file" accept="image/*" id="avatar" name="image" multiple="false"  @if(!isset($team))  required @endif  />
+                            <input class="btn-info form-control form-control-sm" type="file" accept="image/*" id="avatar" name="image" multiple="false" />
                         </div>
                     </div>
 

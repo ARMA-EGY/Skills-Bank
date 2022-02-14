@@ -67,6 +67,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">Title</th>
+                    <th scope="col">Type</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
@@ -78,6 +79,7 @@
                     <td>{{ $loop->iteration }}</td>
                     <td><b>{{  $testimonial->name }}</b></td>
                     <td><b>{{  $testimonial->title }}</b></td>
+                    <td><b>{{  $testimonial->type }}</b></td>
                     <td>
                       <a href="{{ route('testimonials.edit', $testimonial->id)}}" class="btn btn-primary float-left btn-sm mx-1"><i class="fa fa-edit"></i> Edit</a>
                       <span class="btn btn-sm btn-danger remove_item" data-id="{{$testimonial->id}}" data-url="{{route('remove-testimonials')}}"><i class="fa fa-trash-alt"></i> Remove</span>

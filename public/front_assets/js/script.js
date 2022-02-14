@@ -134,6 +134,41 @@ mainSlide: function (){
 		responsiveClass:true,
 		nav: true,
 		dots: true,
+		autoplay: true,
+		loop:true,
+		autoplayTimeout:5000,
+		navText:["<i class='fas fa-chevron-left'></i>","<i class='fas fa-chevron-right'></i>"],
+		smartSpeed: 1000,
+		responsive:{
+			0:{
+				items:1,
+			},
+			400:{
+				items:1,
+			},
+			600:{
+				items:1,
+			},
+			700:{
+				items:1,
+			},
+			800:{
+				items:1,
+			},
+			1000:{
+				items:1,
+
+			}
+		},
+	})
+},
+
+mainSlide: function (){
+	$('#slider-item2').owlCarousel({
+		margin:0,
+		responsiveClass:true,
+		nav: true,
+		dots: true,
 		autoplay: false,
 		navText:["<i class='fas fa-chevron-left'></i>","<i class='fas fa-chevron-right'></i>"],
 		smartSpeed: 1000,
@@ -266,9 +301,10 @@ testimonialSlide: function (){
 		margin:85,
 		responsiveClass:true,
 		nav: true,
-		autoplay: false,
+		autoplay: true,
+		loop:true,
+		autoplayTimeout:5000,
 		navText:["<i class='fas fa-chevron-left'></i>","<i class='fas fa-chevron-right'></i>"],
-		autoplay: false,
 		dots: false,
 		smartSpeed: 1000,
 		responsive:{

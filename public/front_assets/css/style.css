@@ -309,7 +309,7 @@ body {
   .ul-li-block ul li {
     list-style: none;
     display: block;
-    color: #fff; }
+    color: #555; }
 
 div#preloader {
   position: fixed;

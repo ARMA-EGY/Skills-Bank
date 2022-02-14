@@ -184,6 +184,7 @@
 			processData: false,
 			success : function(data)
 			{
+				$('#careerModal').modal('hide');
 				$('.submit').prop('disabled', false);
 				if (data['status'] == 'true')
 				{

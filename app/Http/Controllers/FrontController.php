@@ -32,6 +32,7 @@ use App\Traits\PaymentTrait;
 use App\Models\paymentOrders;
 use App\Mail\meetingInvitation;
 use App\Mail\bookingRequest;
+use App\Mail\CareerMail;
 
 use App\Models\ComponentsModel;
 use App\Models\ElementsModel;
@@ -63,8 +64,8 @@ class FrontController extends Controller
     {
 		$sliders       = Slider::where('lang', LaravelLocalization::getCurrentLocale())->orderBy('id','desc')->get();
         $courses       = Courses::where('lang', LaravelLocalization::getCurrentLocale())->where('top_month', 1)->where('disable', 0)->orderBy('id','desc')->limit(8)->get();
-		$clients       = Client::orderBy('id','desc')->limit(8)->get();
-		$testimonials  = Testimonial::orderBy('id','desc')->limit(4)->get();
+		$clients       = Client::inRandomOrder()->limit(8)->get();
+		$testimonials  = Testimonial::inRandomOrder()->limit(4)->where('type', 'client')->get();
 
         return view('front.welcome', [
             'sliders'       => $sliders,
@@ -120,7 +121,10 @@ class FrontController extends Controller
     //-------------- Workshop Page ---------------\\
     public function workshop()
     { 
+		$testimonials  = Testimonial::orderBy('id','desc')->limit(4)->inRandomOrder()->where('type', 'trainee')->get();
+
         return view('front.workshop', [
+            'testimonials'  => $testimonials,
             'socials' => Social::all(),
         ]);     
     }
@@ -382,6 +386,15 @@ class FrontController extends Controller
                         'paymentKey' => $paymentKey,
                     ]) ;
                 }
+                else
+                {
+                    Mail::to($request->email)
+                    ->send(new meetingInvitation($mt,$booking));
+                    
+
+                    Mail::to($receiver_email->email)
+                    ->send(new bookingRequest($mt,$booking));
+                }
 
                 return response()->json([
                     'status' => 'true',
@@ -401,8 +414,6 @@ class FrontController extends Controller
 
     }
 
-
-    
     public function processedCallback(Request $request)
     {
         
@@ -495,6 +506,27 @@ class FrontController extends Controller
             'subscriber_email' => $request->subscriber_email,
         ]);
 
+        $mailchimp = new ApiClient();
+        $apiKey = '41eebf7d7b35b4f8346f50c2f0533cda-us20';
+        $ser = substr($apiKey,strpos($apiKey,'-')+1);
+        $mailchimp->setConfig([
+            'apiKey' => '41eebf7d7b35b4f8346f50c2f0533cda-us20',
+            'server' => $ser
+        ]);
+
+        $listId =  '6115052794';
+        try 
+        {
+                $response = $mailchimp->lists->addListMember($listId, [
+                    "email_address" => $request->email,
+                    "status" => "subscribed",
+                ]);
+            
+        } 
+        catch (\EXCEPTION $e) 
+        {
+        }
+
         if($subscribe)
         {
             return response()->json([
@@ -526,8 +558,21 @@ class FrontController extends Controller
             'career_id' => $request->career_id,
         ]);
 
+
         if($career)
         {
+            $position     = Career::where('id', $request->career_id)->first();
+            $data = [
+                'name' => $career->name,
+                'email' => $career->email,
+                'phone' => $career->phone,
+                'available_date' => $career->available_date,
+                'position' => $position->title,
+                'cv' => $career->cv,
+                ];
+
+            Mail::to('career@skillsbankme.com')->send(new CareerMail($data));
+
             return response()->json([
                 'status' => 'true',
                 'msg' => 'success'
@@ -549,7 +594,7 @@ class FrontController extends Controller
         $landing       = LandingModel::where('url', $urlSuffix)->firstOrFail();
         $content       = LandingContent::where('landing_id', $landing->id)->first();
 		$clients       = Client::orderBy('id','desc')->limit(8)->get();
-		$testimonials  = Testimonial::orderBy('id','desc')->limit(4)->get();
+		$testimonials  = Testimonial::orderBy('id','desc')->limit(4)->inRandomOrder()->where('type', 'client')->get();
 
         return view('front.landing', [
             'content'       => $content,

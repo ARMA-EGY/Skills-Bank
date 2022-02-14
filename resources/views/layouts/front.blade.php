@@ -9,6 +9,7 @@
 	<!-- Page Title -->
     <title>Skills Bank</title>
 
+	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('front_assets/img/favicon.png') }}" />
 	<link rel="stylesheet" href="{{ asset('front_assets/css/owl.carousel.css')}}">
 	<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
 	<link rel="stylesheet" href="{{ asset('front_assets/css/flaticon.css')}}">
@@ -76,7 +77,7 @@
 										<ul class="sub-menu">
 											<li><a href="{{route('about')}}">About Skills Bank</a></li>
 											<li><a href="{{route('about')}}#founder-word">Word By The Founder</a></li>
-											<li><a href="{{route('team')}}">Meet The Team</a></li>
+											{{-- <li><a href="{{route('team')}}">Meet The Team</a></li> --}}
 											<li><a href="{{route('welcome')}}#why-choose">Why SB</a></li>
 											<li><a href="{{route('clients')}}">Clients</a></li>
 										</ul>
@@ -149,7 +150,7 @@
 						<ul id="collapse1" class="submenu collapse" aria-labelledby="heading1" data-parent="#accordion" style="">
 							<li><a href="{{route('about')}}">About The Company</a></li>
 							<li><a href="{{route('about')}}#founder-word">Word By The Founder</a></li>
-							<li><a href="{{route('team')}}">Meet The Team</a></li>
+							{{-- <li><a href="{{route('team')}}">Meet The Team</a></li> --}}
 							<li><a href="{{route('welcome')}}#why-choose">Why SB</a></li>
 							<li><a href="{{route('clients')}}">Clients</a></li>
 						</ul>
@@ -724,6 +725,8 @@
                         {
                             $('.submit').prop('disabled', false);
                             
+							$('.modal').modal('hide');
+							
                             if (data['status'] == 'true')
                             {
                                 Swal.fire(

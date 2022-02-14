@@ -166,37 +166,18 @@
 					</div>
 
 					<div  id="testimonial-slide-item" class="testimonial-slide-area">
-						<div class="student-qoute">
-							<p>“This was our first time lorem ipsum and we <b> were very pleased with the whole experience</b>. Your price was lower than other companies. Our experience was good from start to finish, so we’ll be back in the future lorem ipsum diamet.”</p>
-							<div class="student-name-designation">
-								<span class="st-name bold-font">Robertho Garcia </span>
-								<span class="st-designation">Graphic Designer</span>
-							</div>
-						</div>
 
-						<div class="student-qoute">
-							<p>“This was our first time lorem ipsum and we <b> were very pleased with the whole experience</b>. Your price was lower than other companies. Our experience was good from start to finish, so we’ll be back in the future lorem ipsum diamet.”</p>
-							<div class="student-name-designation">
-								<span class="st-name bold-font">Robertho Garcia </span>
-								<span class="st-designation">Graphic Designer</span>
+						@foreach ($testimonials as $testimonial)
+							<div class="student-qoute">
+								<p>{!!$testimonial->description!!}</p>
+								<div class="student-name-designation">
+									<img class="d-inline-block rounded mr-2" style="width: 50px;" src="{{asset($testimonial->image)}}" alt="">
+									<span class="st-name bold-font">{{$testimonial->name}}</span>
+									<span class="st-designation">{{$testimonial->title}}</span>
+								</div>
 							</div>
-						</div>
+						@endforeach
 
-						<div class="student-qoute">
-							<p>“This was our first time lorem ipsum and we <b> were very pleased with the whole experience</b>. Your price was lower than other companies. Our experience was good from start to finish, so we’ll be back in the future lorem ipsum diamet.”</p>
-							<div class="student-name-designation">
-								<span class="st-name bold-font">Robertho Garcia </span>
-								<span class="st-designation">Graphic Designer</span>
-							</div>
-						</div>
-
-						<div class="student-qoute">
-							<p>“This was our first time lorem ipsum and we <b> were very pleased with the whole experience</b>. Your price was lower than other companies. Our experience was good from start to finish, so we’ll be back in the future lorem ipsum diamet.”</p>
-							<div class="student-name-designation">
-								<span class="st-name bold-font">Robertho Garcia </span>
-								<span class="st-designation">Graphic Designer</span>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
