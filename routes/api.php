@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::post('/processedcallback', 'FrontController@processedCallback');
+Route::get('/alertmail', 'FrontController@alertmail');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
